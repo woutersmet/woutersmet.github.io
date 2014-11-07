@@ -5,20 +5,16 @@
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container" id="">
+<div class="container" id="container">
 
 <a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
 
 <div class="col-md-9">
   <h1>Firebase test: room <span id="roomname"></span></h1>
 
-  <div id="container">
-
-  </div>
-
 </div>
 
-<div class="col-md-3" style="background-color:#fafafa;border:1px solid #aaa;border-radius:5px;">
+<div class="col-md-3" id="sidebar">
 <form method="get">
   Start/join a room: <br />
   <label>Room name:<input type="text" name="room" value="" /></label><br />
@@ -26,6 +22,10 @@
   <input type="submit" value="Join" />
 </form>
 
+<div id="share">
+  <h3>Invite others!</h3>
+  Share url: <input type="text" id="shareurl" />
+</div>
 <div id="log">
 <h3>Log</h3>
 Mouse X: <span id="mouseX"></span><br />
@@ -48,7 +48,9 @@ Mouse Y: <span id="mouseY"></span>
     background-color:red;
   }
 
-  #container {cursor:none;background-color:#111;height:500px;}
+  #container {cursor:none;}
+
+  #sidebar{background-color:#fafafa;border:1px solid #aaa;border-radius:5px;cursor:default !important;}
 </style>
 
 <!-- CHAT JAVACRIPT -->
@@ -65,8 +67,8 @@ Mouse Y: <span id="mouseY"></span>
 
    }
 
-   window.roomname = 'room_' + getUrlVars()['room'];
-   window.username = getUrlVars()['username'];
+   window.roomname = 'room_' + (getUrlVars()['room'] || 'anonymous');
+   window.username = getUrlVars()['username'] || 'anonymous';
    $('#roomname').html(roomname);
 
    window.drewShips = {};
@@ -76,9 +78,9 @@ Mouse Y: <span id="mouseY"></span>
   var roomRef = new Firebase('https://woutertest.firebaseio.com/mousemove/' + roomname);
 
   // LISTEN FOR MOUSE EVENT
-  $('#container').mousemove(function(e){
-    var x = e.pageX - $('#container').offset().left;
-    var y = e.pageY - $('#container').offset().top;
+  $(document).mousemove(function(e){
+    var x = e.pageX;
+    var y = e.pageY;
     $('#mouseX').html(x);
     $('#mouseY').html(y);
 
@@ -108,7 +110,7 @@ Mouse Y: <span id="mouseY"></span>
 
       var $ship = $('#usership_' + user);
       //console.log(state.y +'px');
-      $ship.css({'top' : state[user].y + 'px', 'left' : state[user].x + 'px'});
+      $ship.css({'top' : (state[user].y + 5) + 'px', 'left' : (state[user].x + 5) + 'px'});
     }
 
   });
