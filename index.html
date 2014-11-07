@@ -1,0 +1,161 @@
+<html>
+<head>
+  <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" id="">
+
+<a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
+
+<div class="col-md-9">
+  <h1>Firebase test: room <span id="roomname"></span></h1>
+
+  <div id="container">
+
+  </div>
+
+</div>
+
+<div class="col-md-3" style="background-color:#fafafa;border:1px solid #aaa;border-radius:5px;">
+<form method="get">
+  Start/join a room: <br />
+  <label>Room name:<input type="text" name="room" value="" /></label><br />
+  <label>Your name:<input type="text" name="username" value="" /></label><br />
+  <input type="submit" value="Join" />
+</form>
+
+<div id="log">
+<h3>Log</h3>
+Mouse X: <span id="mouseX"></span><br />
+Mouse Y: <span id="mouseY"></span>
+</div>
+
+<h3>Users</h3>
+<div id="users">
+
+</div>
+</div>
+
+<style>
+  .usership {
+    /*height:30px;*/
+    padding:3px;
+    border-radius:5px;
+    /*width:20px;*/
+    position:absolute;
+    background-color:red;
+  }
+
+  #container {cursor:none;background-color:#111;height:500px;}
+</style>
+
+<!-- CHAT JAVACRIPT -->
+<script>
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+   function drawUser(username, x, y){
+
+   }
+
+   window.roomname = 'room_' + getUrlVars()['room'];
+   window.username = getUrlVars()['username'];
+   $('#roomname').html(roomname);
+
+   window.drewShips = {};
+
+  // CREATE A REFERENCE TO FIREBASE
+  var mousemoveRef = new Firebase('https://woutertest.firebaseio.com/mousemove');
+  var roomRef = new Firebase('https://woutertest.firebaseio.com/mousemove/' + roomname);
+
+  // LISTEN FOR MOUSE EVENT
+  $('#container').mousemove(function(e){
+    var x = e.pageX - $('#container').offset().left;
+    var y = e.pageY - $('#container').offset().top;
+    $('#mouseX').html(x);
+    $('#mouseY').html(y);
+
+    mousemoveRef.child(roomname).child('user_' + window.username).set({x:x, y:y});
+  });
+
+  //listen for people moving
+  roomRef.on('value', function (snapshot) {
+    var state = snapshot.val();
+    //console.log(state);
+
+    $('#users').html('');
+    for (var user in state){
+      if (!state.hasOwnProperty(user)) continue;
+      $('#users').html($('#users').html() + user + ' moved to '+ state[user].x + ',' + state[user].y +'<br>');
+
+      //console.log(user);
+      //console.log(state[user]);
+
+      console.log(typeof(window.drewShips[user]));
+      if (typeof(window.drewShips[user]) == 'undefined'){
+          var shipEl = $('<div id="usership_'+user+'" class="usership"><span id="usership_username">'+user.substr(5)+'</span></div>');
+          $('#container').append(shipEl);
+          console.log('New ship: ' + user);
+          window.drewShips[user] = true;
+      }
+
+      var $ship = $('#usership_' + user);
+      //console.log(state.y +'px');
+      $ship.css({'top' : state[user].y + 'px', 'left' : state[user].x + 'px'});
+    }
+
+  });
+
+  //orig chat app
+  /*
+
+  // REGISTER DOM ELEMENTS
+  var messageField = $('#messageInput');
+  var nameField = $('#nameInput');
+  var messageList = $('#example-messages');
+
+  // LISTEN FOR KEYPRESS EVENT
+  messageField.keypress(function (e) {
+    if (e.keyCode == 13) {
+      //FIELD VALUES
+      var username = nameField.val();
+      var message = messageField.val();
+
+      //SAVE DATA TO FIREBASE AND EMPTY FIELD
+      messagesRef.push({name:username, text:message});
+      messageField.val('');
+    }
+  });
+
+  // Add a callback that is triggered for each chat message.
+  messagesRef.limit(10).on('child_added', function (snapshot) {
+    //GET DATA
+    var data = snapshot.val();
+    var username = data.name || "anonymous";
+    var message = data.text;
+
+    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+    var messageElement = $("<li>");
+    var nameElement = $("<strong class='example-chat-username'></strong>")
+    nameElement.text(username);
+    messageElement.text(message).prepend(nameElement);
+
+    //ADD MESSAGE
+    messageList.append(messageElement)
+
+    //SCROLL TO BOTTOM OF MESSAGE LIST
+    messageList[0].scrollTop = messageList[0].scrollHeight;
+  });
+    */
+</script>
+
+</div>
+</body>
+</html>
