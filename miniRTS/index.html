@@ -20,9 +20,7 @@
 <div class="col-md-9">
   <h2>room <span id="roomname"></span></h2>
 
- <table id="grid">
-
- </table>
+ <div id="gridcontainer"><table id="grid"></table></div>
 </div>
 
 <div id="menu">
@@ -30,23 +28,45 @@
 
 <script>
 
+window.units = {
+  soldier : {
+    draggable : true,
+    unit : 's',
+    attackpower : {
+      buildings : 1,
+      s : 1,
+      t : 1,
+      a : 2
+    },
+    price : 100
+  }
+};
+
  var buildings = ['f','h','m','q','w'];
  window.draggables = ['t','s','a','c','e','d'];
  window.game = {playercolor : 'b'};
  window.game.mousemode = {state : 'nothing'};
 
 window.grid = {
-     '1-1' : ['b','h','m'],
-     '1-2' : ['b','t','m'],
-     '2-4' : ['r','s','m'],
-     '4-4' : ['r','h','f'],
-     '5-5' : ['r','f','f'],
+     '1-1' : ['b','h',10],
+     '1-2' : ['b','t',6],
+     '2-4' : ['r','s',5],
+     '4-4' : ['r','h',2],
+     '5-5' : ['r','f',5],
  };
 
+ function healthToLevel(health){
+     var level;
+     if (health >= 10) { level ='f';  }
+     else if (health >= 7){ level ='h';}
+     else if (health >= 4){ level ='m'; }
+     else if (health >= 1){ level ='l'; }
+      else {/*death */}
+     return level;
+ }
+
 function isDraggable(unit){
-  var draggable =  window.draggables.indexOf(unit) > -1;
-  console.log("Is " + unit + " draggable?" + draggable);
-    return draggable;
+  return window.draggables.indexOf(unit) > -1;
 }
 
 /*
@@ -77,12 +97,12 @@ function isDraggable(unit){
      }
  }
 
- function getUnitPath(color,unit,health){
-  return 'img/tiles/tile_' + color + '_' + unit + '_'+health+'h.png';
+ function getUnitPath(color,unit,healthlevel){
+  return 'img/tiles/tile_' + color + '_' + unit + '_'+healthlevel+'h.png';
  }
 
  function getUnitEl(unitdata){
-  var src = getUnitPath(unitdata[0],unitdata[1],unitdata[2]);
+  var src = getUnitPath(unitdata[0],unitdata[1],healthToLevel(unitdata[2]));
   var unitEl = $('<img class="unit" src="'+src+'">');
   unitEl.data('unit', unitdata[0]);
   unitEl.data('color', unitdata[1]);
@@ -140,12 +160,60 @@ function isDraggable(unit){
     }
  });
 
+ function removeExplosions(){
+    $('.explosion').remove();
+ }
+
+ function explode(locationKey){
+     console.log("Drawing explosion at location " + locationKey);
+     var coords = keyToCoords(locationKey);
+     var src = 'img/explosion.gif';
+    var explosionEl = $('<img class="explosion" src="' + src +'" />' );
+    explosionEl.css({
+      'top' : ((coords[0] - 1) * 30) + 'px',
+      'left' : ((coords[1] - 1)* 30) + 'px',
+    });
+    console.log(explosionEl);
+    $('#gridcontainer').prepend(explosionEl);
+
+    setTimeout(removeExplosions,800);
+ }
+
+ function coordsToKey(row,col) {
+  return row +'-' + col;
+ }
+
+ function keyToCoords(key){
+  return key.split('-');
+ }
+
  function moveUnit(unit,from,to){
     console.log("Moving unit ["+unit+"] from " + from + " to " + to);
-    delete(window.grid[from]);
-    window.grid[to] = unit;
 
- drawGrid(window.grid);
+    //regular move
+    if (to == from) {
+      //no movement!
+    }
+    else if (typeof window.grid[to] == 'undefined'){
+      delete(window.grid[from]);
+      window.grid[to] = unit;
+    }
+    else {
+      //attack!
+      var attackedunit = window.grid[to];
+      attackedunit[2] = attackedunit[2] - 1;
+
+      if (attackedunit[2] <= 0) { //unit death!
+        delete(window.grid[to]);
+      }
+      else {
+        window.grid[to] = attackedunit;
+      }
+      console.log("Attack! Location " + to + " now has unit: " + attackedunit);
+      explode(to);
+    }
+
+   drawGrid(window.grid);
  }
 
  $('#grid').mouseup(function(e){
@@ -155,8 +223,8 @@ function isDraggable(unit){
     var pxY = e.pageY - cos.top;
     var cellY = 1 + Math.floor(pxX/30);
     var cellX = 1 + Math.floor(pxY/30);
-    console.log(cos);
-    console.log('mouseup on ' + pxX + ',' + pxY + ' cell: ' + cellX + ',' + cellY);
+    //console.log(cos);
+    //console.log('mouseup on ' + pxX + ',' + pxY + ' cell: ' + cellX + ',' + cellY);
     var dest = cellX +'-' + cellY;
     if (window.draggingunit){
       window.draggingfrom;
@@ -196,6 +264,19 @@ Mouse Y: <span id="mouseY"></span>
   header {
     background-color:#ddd;
   }
+
+  #gridcontainer {
+    border:15px solid #231;
+    float:left;
+    position:relative;
+  }
+
+  .explosion {
+    position:absolute;
+    height:50px;
+    z-index:500;
+  }
+
   #grid td {
     height:28px;
     width:28px;
