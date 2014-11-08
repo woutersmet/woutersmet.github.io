@@ -1,0 +1,286 @@
+<html>
+<head>
+<title>Mini RTS</title>
+  <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<header>
+  <div class="container">
+  <h1>TinkerTanks Instant</h1>
+  </div>
+</header>
+<div class="container" id="container">
+
+<a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
+
+
+<div class="col-md-9">
+  <h2>room <span id="roomname"></span></h2>
+
+ <table id="grid">
+
+ </table>
+</div>
+
+<div id="menu">
+</div>
+
+<script>
+
+ var buildings = ['f','h','m','q','w'];
+ window.draggables = ['t','s','a','c','e','d'];
+ window.game = {playercolor : 'b'};
+ window.game.mousemode = {state : 'nothing'};
+
+window.grid = {
+     '1-1' : ['b','h','m'],
+     '1-2' : ['b','t','m'],
+     '2-4' : ['r','s','m'],
+     '4-4' : ['r','h','f'],
+     '5-5' : ['r','f','f'],
+ };
+
+function isDraggable(unit){
+  var draggable =  window.draggables.indexOf(unit) > -1;
+  console.log("Is " + unit + " draggable?" + draggable);
+    return draggable;
+}
+
+/*
+ window.grid = {
+     '1-1' : ['b','h','m'],
+     '1-2' : ['b','t','m'],
+     '2-4' : ['r','s','m'],
+     '1-4' : ['b','t','m'],
+     '4-4' : ['r','h','f'],
+     '5-5' : ['r','f','f'],
+     '5-4' : ['b','t','f'],
+ };
+ */
+
+ function drawBuildings(){
+     for (var i=0;i<buildings.length;i++){
+      var unit = buildings[i];
+      var src = getUnitPath('b',unit,'f');
+      var img = $('<img class="tile menu-tile" src="' + src + '" />');
+      img.data('unit', unit);
+
+      img.click(function(e){
+          alert("Clicked a " + $(this).data('unit'));
+          window.mousemode = {state : 'placingbuilding', 'unit' : unit};
+      });
+
+      $('#menu').append(img);
+     }
+ }
+
+ function getUnitPath(color,unit,health){
+  return 'img/tiles/tile_' + color + '_' + unit + '_'+health+'h.png';
+ }
+
+ function getUnitEl(unitdata){
+  var src = getUnitPath(unitdata[0],unitdata[1],unitdata[2]);
+  var unitEl = $('<img class="unit" src="'+src+'">');
+  unitEl.data('unit', unitdata[0]);
+  unitEl.data('color', unitdata[1]);
+  unitEl.data('health', unitdata[2]);
+  return unitEl;
+ }
+
+ function drawGrid(positions){
+  console.log("Will drag this grid:");
+     console.log(window.grid);
+     $('#grid').html('');
+
+     positions = positions || {};
+     var rows = 5;
+     var cols = 5;
+     for (var i=1;i<=rows;i++){
+        var row = $('<tr class="grid-row"></tr>');
+        for (var j=1;j<=cols;j++){
+          var cell = $('<td class="grid-cell" id="cell_'+i+'_'+j+'"></td>');
+          cell.data('x', i);
+          cell.data('y', j);
+
+          var key = i + '-' + j;
+          if (typeof positions[key] != 'undefined'){
+            //console.log("Found a unit at "+key+"!");
+             var unitdata = positions[key];
+             //console.log(unitdata);
+             var unitEl = getUnitEl(unitdata);
+
+             if (isDraggable(unitdata[1]))unitEl.draggable();
+
+             //console.log(unitEl);
+             cell.append(unitEl);
+             cell.data('unit', unitdata);
+          }
+
+          row.append(cell);
+        }
+        $('#grid').append(row);
+     }
+ }
+
+ $('#grid').on('mousedown','.grid-cell',function(){
+    var x = $(this).data('x');
+    var y = $(this).data('y');
+    console.log("Clicked grid coordinates " + x + "," + y);
+    window.draggingfrom = x+'-'+y;
+    if (typeof window.grid[window.draggingfrom] != 'undefined'){
+      window.draggingunit = window.grid[window.draggingfrom];
+      console.log ("Dragging unit!");
+      console.log(draggingunit);
+    }
+    else {
+      window.draggingunit = false;
+    }
+ });
+
+ function moveUnit(unit,from,to){
+    console.log("Moving unit ["+unit+"] from " + from + " to " + to);
+    delete(window.grid[from]);
+    window.grid[to] = unit;
+
+ drawGrid(window.grid);
+ }
+
+ $('#grid').mouseup(function(e){
+  var gridsize = 30;
+    var cos = $('#grid').offset();
+    var pxX = e.pageX - cos.left;
+    var pxY = e.pageY - cos.top;
+    var cellY = 1 + Math.floor(pxX/30);
+    var cellX = 1 + Math.floor(pxY/30);
+    console.log(cos);
+    console.log('mouseup on ' + pxX + ',' + pxY + ' cell: ' + cellX + ',' + cellY);
+    var dest = cellX +'-' + cellY;
+    if (window.draggingunit){
+      window.draggingfrom;
+      moveUnit(window.draggingunit,window.draggingfrom,dest);
+    }
+ });
+
+ drawGrid(window.grid);
+ drawBuildings();
+</script>
+
+<div class="col-md-3" id="sidebar">
+<form method="get">
+  Start/join a room: <br />
+  <label>Room name:<input type="text" name="room" value="" /></label><br />
+  <label>Your name:<input type="text" name="username" value="" /></label><br />
+  <input type="submit" value="Join" />
+</form>
+
+<div id="share">
+  <h3>Invite others!</h3>
+  Share url: <input type="text" id="shareurl" />
+</div>
+<div id="log">
+<h3>Log</h3>
+Mouse X: <span id="mouseX"></span><br />
+Mouse Y: <span id="mouseY"></span>
+</div>
+
+<h3>Users</h3>
+<div id="users">
+
+</div>
+</div>
+
+<style>
+  header {
+    background-color:#ddd;
+  }
+  #grid td {
+    height:28px;
+    width:28px;
+    border:1px solid black;
+    background-color:#446633;
+  }
+  .usership {
+    /*height:30px;*/
+    padding:3px;
+    border-radius:5px;
+    /*width:20px;*/
+    position:absolute;
+    background-color:red;
+  }
+
+  /*#container {cursor:none;}*/
+
+  #sidebar{background-color:#fafafa;border:1px solid #aaa;border-radius:5px;cursor:default !important;}
+</style>
+
+<!-- CHAT JAVACRIPT -->
+<script>
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+   function drawUser(username, x, y){
+
+   }
+
+   window.roomname = 'room_' + (getUrlVars()['room'] || 'anonymous');
+   window.username = getUrlVars()['username'] || 'anonymous';
+   $('#roomname').html(roomname);
+
+   window.drewShips = {};
+
+  // CREATE A REFERENCE TO FIREBASE
+  var mousemoveRef = new Firebase('https://woutertest.firebaseio.com/mousemove');
+  var roomRef = new Firebase('https://woutertest.firebaseio.com/mousemove/' + roomname);
+
+  // LISTEN FOR MOUSE EVENT
+  $(document).mousemove(function(e){
+    var x = e.pageX;
+    var y = e.pageY;
+    $('#mouseX').html(x);
+    $('#mouseY').html(y);
+
+    mousemoveRef.child(roomname).child('user_' + window.username).set({x:x, y:y});
+  });
+
+  //listen for people moving
+  roomRef.on('value', function (snapshot) {
+    var state = snapshot.val();
+    //console.log(state);
+
+    $('#users').html('');
+    for (var user in state){
+      if (!state.hasOwnProperty(user)) continue;
+      $('#users').html($('#users').html() + user + ' moved to '+ state[user].x + ',' + state[user].y +'<br>');
+
+      //console.log(user);
+      //console.log(state[user]);
+      //console.log(typeof(window.drewShips[user]));
+
+      if (typeof(window.drewShips[user]) == 'undefined'){
+          var shipEl = $('<div id="usership_'+user+'" class="usership"><span id="usership_username">'+user.substr(5)+'</span></div>');
+          //$('#container').append(shipEl);
+          console.log('New ship: ' + user);
+          window.drewShips[user] = true;
+      }
+
+      var $ship = $('#usership_' + user);
+      //console.log(state.y +'px');
+      //$ship.css({'top' : (state[user].y + 5) + 'px', 'left' : (state[user].x + 5) + 'px'});
+    }
+
+  });
+
+</script>
+
+</div>
+</body>
+</html>
+
