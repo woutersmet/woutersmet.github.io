@@ -1,8 +1,7 @@
  window.game = {};
- window.playercolor = 'b';
- window.game.mousemode = {state : 'nothing'};
 
-window.grid = {
+/*
+window.game.grid = {
      '1-1' : ['b','h',10],
      '1-2' : ['b','t',6],
      '1-3' : ['e','x',10],
@@ -16,6 +15,7 @@ window.grid = {
      '5-1' : ['e','b',10],
      '5-2' : ['e','b',10],
  };
+ */
 
 $(document).ready(function(){
 
@@ -24,13 +24,13 @@ $(document).ready(function(){
     var y = $(this).data('y');
     console.log("Clicked grid coordinates " + x + "," + y);
     window.draggingfrom = x+'-'+y;
-    var clickedUnit = window.grid[window.draggingfrom];
+    var clickedUnit = window.game.grid[window.draggingfrom];
     if (typeof clickedUnit != 'undefined'){
       doActiveUnitStuff(window.draggingfrom,clickedUnit);
       if (isBuilding(clickedUnit[1])){ //clicked building!
       }
       else {
-        window.draggingunit = window.grid[window.draggingfrom];
+        window.draggingunit = window.game.grid[window.draggingfrom];
         console.log ("Dragging unit:" + clickedUnit);
       }
     }
@@ -46,29 +46,31 @@ $(document).ready(function(){
     if (to == from) {
       //no movement!
     }
-    else if (typeof window.grid[to] == 'undefined'){ //good to move unit
-      delete(window.grid[from]);
-      window.grid[to] = unit;
+    else if (typeof window.game.grid[to] == 'undefined'){ //good to move unit
+      delete(window.game.grid[from]);
+      window.game.grid[to] = unit;
     }
-    else if (window.grid[to][0] == 'e'){ //environment! cannot move there
+    else if (window.game.grid[to][0] == 'e'){ //environment! cannot move there
         //
     }
     else {
       //attack!
-      var attackedunit = window.grid[to];
+      var attackedunit = window.game.grid[to];
       attackedunit[2] = attackedunit[2] - 1;
 
       if (attackedunit[2] <= 0) { //unit death!
-        delete(window.grid[to]);
+        delete(window.game.grid[to]);
       }
       else {
-        window.grid[to] = attackedunit;
+        window.game.grid[to] = attackedunit;
       }
       console.log("Attack! Location " + to + " now has unit: " + attackedunit);
       explode(to);
     }
 
-   drawGrid(window.grid);
+    console.log(window.game);
+   Data.updateGame(window.game.id,window.game);
+   //drawGrid(window.game.grid);
  }
 
  $('#grid').mouseup(function(e){
@@ -88,8 +90,7 @@ $(document).ready(function(){
     }
  });
 
- drawGrid(window.grid);
- drawBuildings();
+ //drawGrid(window.game.grid); //see starting game logic
 
 //maps to start new game
 
@@ -107,7 +108,44 @@ $('#creategameform').submit(function(e){
   var playername = 'testuser';
   Data.createGame(mapname, playername, function(game){
     console.log("Game created! Navigate to it?");
+    console.log("Game id: " + game.id);
+    alert("Game created! Will now navigate to it...");
+    document.location.href = 'index.html?gameid=' + game.id;
   });
 });
+
+//getting a game
+var urlvars = getUrlVars();
+
+ window.playercolor = 'b';
+ window.game.mousemode = {state : 'nothing'};
+
+if (typeof(urlvars.gameid) !== 'undefined'){
+  console.log("We're in a game!");
+  Data.getGame(urlvars.gameid,function(game){
+    console.log("Game loaded:");
+    console.log(game);
+
+    window.game = game;
+    //drawGrid(window.game.grid);
+
+    if (typeof urlvars.playercolor !== 'undefined'){
+      window.playercolor = urlvars.playercolor;
+      console.log("Playing with color:" + window.playercolor);
+    }
+
+    $('#currentmapname').html(game.map);
+    $('#currentgamecreatedate').html(game.created);
+    $('#currentgameid').html(game.id);
+
+    var gameRef = getRef('games/' + urlvars.gameid);
+    gameRef.on('value', function (snapshot) {
+      console.log("Game changed!");
+      var game = snapshot.val();
+      console.log(game);
+      drawGrid(game.grid);
+    });
+  });
+}
 
 });

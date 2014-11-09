@@ -4,6 +4,18 @@ var Data = {};
 
 Data.baseUrl = 'https://woutertest.firebaseio.com/miniRTS/';
 
+function makeId()
+{
+    var length = length || 5;
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < length; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
 function getRef(section){
   var ref = new Firebase(Data.baseUrl + section);
   return ref;
@@ -45,15 +57,40 @@ Data.createGame = function(mapname, playername, callback){
   Data.getMap(mapname,function(map){
     console.log("Got our map! Now we can init game with it");
     console.log(map);
+    var id = makeId();
+    var date = new Date();
     var game = {
+      id : id,
+      created : date.toString(),
       map : mapname,
-      grid : map.grid
+      grid : map.grid,
+      players : {
+        b : playername
+      }
     }
 
-    var ref = getRef('games');
-    ref.push(game);
+    var ref = getRef('games/' + id);
+    ref.set(game);
     callback(game);
   })
+}
+
+Data.updateGame = function (gameid, newgame){
+  console.log("Updating game grid for game " + gameid);
+  var ref = getRef('games/' + gameid);
+  ref.set(newgame);
+}
+
+Data.getGame = function (gameid, callback){
+  console.log("Getting game with id " + gameid);
+  var ref = getRef('games/' + gameid);
+
+    ref.once("value", function(data) {
+      var game = data.val();
+      console.log("Loaded game:");
+      console.log(game);
+      callback(game);
+  });
 }
 
 //creating a user
