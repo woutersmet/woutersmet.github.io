@@ -2,20 +2,69 @@
 
 var Data = {};
 
-Data.baseUrl = 'https://woutertest.firebaseio.com/miniRTS/maps';
+Data.baseUrl = 'https://woutertest.firebaseio.com/miniRTS/';
+
+function getRef(section){
+  var ref = new Firebase(Data.baseUrl + section);
+  return ref;
+}
 
 Data.saveMap = function (mapname, grid){
   console.log("Will save map with name " + mapname);
   // CREATE A REFERENCE TO FIREBASE
-  var mapRef = new Firebase(Data.baseUrl);
+  var mapRef = getRef('maps');
 
   mapRef.child(mapname).set({grid : grid, name : mapname});
 }
 
 Data.getMaps = function(callback){
-  var mapRef = new Firebase(Data.baseUrl);
+  mapRef = getRef('maps');
+
   mapRef.on('child_added', function(snapshot) {
         var map = snapshot.val();
         callback(map);
       });
 }
+
+//see https://www.firebase.com/docs/web/guide/retrieving-data.html
+Data.getMap = function (mapname, callback){
+  console.log("Getting map with name " + mapname);
+    var ref = getRef('maps/' + mapname);
+
+    ref.once("value", function(data) {
+      var map = data.val();
+      console.log("Loaded map:");
+      console.log(map);
+      callback(map);
+  });
+}
+
+Data.createGame = function(mapname, playername, callback){
+  console.log("Creating game with map " + mapname);
+
+  Data.getMap(mapname,function(map){
+    console.log("Got our map! Now we can init game with it");
+    console.log(map);
+    var game = {
+      map : mapname,
+      grid : map.grid
+    }
+
+    var ref = getRef('games');
+    ref.push(game);
+    callback(game);
+  })
+}
+
+//creating a user
+var ref = new Firebase(Data.baseUrl);
+ref.createUser({
+  email    : "bobtony@firebase.com",
+  password : "correcthorsebatterystaple"
+}, function(error) {
+  if (error === null) {
+    console.log("User created successfully");
+  } else {
+    console.log("Error creating user:", error);
+  }
+});

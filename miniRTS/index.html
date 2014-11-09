@@ -38,11 +38,13 @@
 
 <div class="col-md-3" id="sidebar">
 <a href="mapbuilder.html">Map builder</a>
-<form method="get">
-  Start/join a room: <br />
-  <label>Room name:<input type="text" name="room" value="" /></label><br />
-  <label>Your name:<input type="text" name="username" value="" /></label><br />
-  <input type="submit" value="Join" />
+<form method="get" id="creategameform">
+  Create a new game: <br />
+  <label>
+    Map:
+    <select id="mapselect"></select>
+  </label>
+  <input type="submit" value="Start game" />
 </form>
 
 <div id="share">

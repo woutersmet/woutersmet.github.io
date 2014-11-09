@@ -91,4 +91,23 @@ $(document).ready(function(){
  drawGrid(window.grid);
  drawBuildings();
 
+//maps to start new game
+
+Data.getMaps(function(map){
+  console.log("Getting maps");
+  console.log(map);
+  var listEl = $('<option value="'+map.name+'">' + map.name + '</option>');
+  $('#mapselect').append(listEl);
+});
+
+$('#creategameform').submit(function(e){
+  e.preventDefault();
+  alert('here');
+  var mapname = $('#mapselect').val();
+  var playername = 'testuser';
+  Data.createGame(mapname, playername, function(game){
+    console.log("Game created! Navigate to it?");
+  });
+});
+
 });
