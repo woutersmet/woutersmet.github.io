@@ -2,13 +2,13 @@
 window.colors = {b : 'blue',r : 'red',g : 'green',y : 'yellow'};
 
 window.units = {
-  s : {name : 'soldier',    type : 'draggable',    attackbonus : { a : 2},    price : 100},
-  t : {name : 'tank',    type : 'draggable',    attackbonus : { s : 2},    price : 100},
-  a : {name : 'artillery',    type : 'draggable',    attackbonus : { t : 2},    price : 100},
-  v : {name : 'attack dog',    type : 'draggable',    attackbonus : { t : 2},    price : 100},
-  i : {name : 'engineer',    type : 'draggable',    attackbonus : { t : 2},    price : 100},
-  u : {name : 'war ship',    type : 'draggable',    attackbonus : { t : 2},    price : 100},
-  j : {name : 'submarine',    type : 'draggable',    attackbonus : { t : 2},    price : 100},
+  s : {name : 'soldier',    type : 'draggable', speed : 1, range : 2, attackbonus : { a : 2},    price : 100},
+  t : {name : 'tank',       type : 'draggable', speed : 2, range : 2, attackbonus : { s : 2},    price : 100},
+  a : {name : 'artillery',  type : 'draggable', speed : 2, range : 3, attackbonus : { t : 2},    price : 100},
+  v : {name : 'attack dog', type : 'draggable', speed : 1, range : 3, attackbonus : { t : 2},    price : 100},
+  i : {name : 'engineer',   type : 'draggable', speed : 1, range : 1, attackbonus : { t : 2},    price : 100},
+  u : {name : 'war ship',   type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 100},
+  j : {name : 'submarine',  type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 100},
 
   f : {name : 'war factory',    type : 'building'},
   h : {name : 'home base',    type : 'building'},
@@ -74,6 +74,32 @@ function isBuilding(unit){
   unitEl.data('color', unitdata[1]);
   unitEl.data('health', unitdata[2]);
   return unitEl;
+ }
+
+ function drawCircleAtPosition(speedOrRange,row,col,value){
+    console.log("Drawing " + speedOrRange + " circle at position "+row+","+col+" of value " + value);
+
+    var el = $('#circle-'+speedOrRange+'-'+value);
+    var shift = 30 * value;
+    var top = (row-1)*30 - shift;
+    var left = (col-1)*30 - shift;
+    var positionCss = {top : top+'px',left : left+'px'};
+
+    el.css(positionCss).show();
+ }
+
+ function drawCircles(row,col,clickedUnit){
+  var specs = window.units[clickedUnit[1]];
+  var speed = specs.speed;
+  var range = specs.range;
+  console.log("Drawing circles for at location "+row+','+col+" for unit " + clickedUnit + " which has speed "+ speed + ' and range ' + range);
+
+  drawCircleAtPosition('speed', row,col,speed);
+  drawCircleAtPosition('range', row,col,range);
+ }
+
+ function removeCircles(){
+  $('.unitcircle').hide();
  }
 
  function drawGrid(positions, prevpositions){

@@ -14,7 +14,7 @@
   <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
   <script src='data.js'></script>
   <script src='core.js'></script>
-  <script src='game.js'></script>
+  <script src='newgame.js'></script>
 
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -57,34 +57,21 @@
 <div class="col-md-9">
   <h2>New game</h2>
 
-  Choose a map and all that
-</div>
-
-<div class="col-md-3" id="sidebar">
-<a href="mapbuilder.html">Map builder</a>
-<form method="get" id="creategameform">
+  <form method="get" id="creategameform">
   Create a new game: <br />
-  <label>
     Map:
-    <select id="mapselect"></select>
-  </label>
+    <select class="form-control" id="mapselect"></select>
+    <br />
+    Join as:
+    <select class="form-control" id="colorselect">
+        <option value="b">Blue</option>
+        <option value="r">Red</option>
+        <option value="g">Green</option>
+        <option value="y">Yellow</option>
+    </select>
+    <br />
   <input type="submit" value="Start game" />
 </form>
-
-<div id="share">
-  <h3>Invite others!</h3>
-  Share url: <input type="text" id="shareurl" />
-</div>
-<div id="log">
-<h3>Log</h3>
-Mouse X: <span id="mouseX"></span><br />
-Mouse Y: <span id="mouseY"></span>
-</div>
-
-<h3>Users</h3>
-<div id="users">
-
-</div>
 </div>
 
 </div>

@@ -12,6 +12,16 @@
     background-color:#555;
   }
 
+  .unitcircle {
+    position:absolute;
+    display:none;
+    opacity:0.3;
+  }
+
+   #circle-speed-1, #circle-range-1 {width:90px;}
+   #circle-speed-2, #circle-range-2 {width:150px;}
+   #circle-speed-3, #circle-range-3 {width:210px;}
+
   .player {
     padding:5px;
     margin:0 5px;

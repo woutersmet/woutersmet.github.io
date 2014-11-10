@@ -22,6 +22,9 @@ $(document).ready(function(){
           if (window.playercolor == clickedUnit[0] && !isBuilding(clickedUnit[1])){ //clicked draggable!
             window.draggingunit = clickedUnit;
             console.log ("Dragging unit:" + clickedUnit);
+
+            //range circles?
+            drawCircles(row,col,clickedUnit);
           }
         }
         else {
@@ -64,10 +67,12 @@ $(document).ready(function(){
 
     console.log(newgamestate);
    Data.updateGame(newgamestate.id,newgamestate);
+   removeCircles();
    //drawGrid(window.game.grid);
  }
 
- $('#grid').mouseup(function(e){
+//used to be grid, but then circle elements hinder mouseup detection
+ $(document).mouseup(function(e){
   if (window.mousemode == 'CLICK') return; //here it all happens on mousedown
 
   var gridsize = 30;
