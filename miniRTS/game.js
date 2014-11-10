@@ -125,7 +125,7 @@ $('#creategameform').submit(function(e){
     console.log("Game created! Navigate to it?");
     console.log("Game id: " + game.id);
     alert("Game created! Will now navigate to it...");
-    document.location.href = 'index.html?gameid=' + game.id;
+    document.location.href = 'game.html?gameid=' + game.id;
   });
 });
 

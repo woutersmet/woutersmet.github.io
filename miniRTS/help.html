@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,11 +10,6 @@
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
   <script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-  <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
-  <script src='data.js'></script>
-  <script src='core.js'></script>
-  <script src='mapbuilder.js'></script>
 
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -42,55 +38,20 @@
           <ul class="nav navbar-nav">
             <li><a href="index.html">Play</a></li>
             <li><a href="newgame.html">New game</a></li>
-            <li  class="active"><a href="mapbuilder.html">Map builder</a></li>
-            <li><a href="help.html">About / help</a></li>
+            <li><a href="mapbuilder.html">Map builder</a></li>
+            <li  class="active"><a href="help.html">About / help</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
 <div class="container" id="container">
 
-<a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
+<h1>About / help</h1>
 
-<div class="col-md-9">
-  <h2>Map builder <span id="roomname"></span></h2>
-
-  <form id="saveform">
-      Save map<br />
-      Name: <input name="mapname" id="mapname" />
-      <input type="submit" value="Save map" />
-  </form>
-
- <div id="gridcontainer"><table id="grid"></table></div>
-  <div style="clear:both;"></div>
-
-<div id="unitpickercontainer">
-  Unitpicker
-  <div id="unitpicker-e"><div id="unitpicker-e-environments"></div></div>
-
-  <div id="unitpicker-b"><div id="unitpicker-b-buildings"></div><div id="unitpicker-b-draggables"></div></div>
-  <div id="unitpicker-r"><div id="unitpicker-r-buildings"></div><div id="unitpicker-r-draggables"></div></div>
-  <div id="unitpicker-g"><div id="unitpicker-g-buildings"></div><div id="unitpicker-g-draggables"></div></div>
-  <div id="unitpicker-y"><div id="unitpicker-y-buildings"></div><div id="unitpicker-y-draggables"></div></div>
-</div>
-
- <div id="activeunitcontainer">
-    <h3 id="activeunit-name-header">Selected: <span id="activeunit-name"></span></h3>
-    <img src="img/unitgraphics/large_b.png" class="activeunit-graphic" id="activeunit-graphic" />
- </div>
-</div>
-
-<div id="menu">
-</div>
-
-<div class="col-md-3" id="sidebar">
-<a href="index.html">Play</a>
-
-<h3>Maps</h3>
-<ul id="maplist">
-
-</ul>
-</div>
+<p>
+Wonderful!
+</p>
 
 </div>
 </body>
