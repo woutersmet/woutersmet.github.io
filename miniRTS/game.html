@@ -10,6 +10,7 @@
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
   <script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="jquery.cookie.js"></script>
 
   <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
   <script src='data.js'></script>
@@ -52,57 +53,45 @@
 
 <div class="container" id="container">
 
-<a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
+  <div id="loading"><em>Loading game...</em></div>
 
-<div class="col-md-9">
-  <h2>Game <span id="currentgameid"></span> on map <span id="currentmapname"></span></h2>
-  <p>
-    <em>Created <span id="currentgamecreatedate"></span></em>.
+  <div id="gamecontainer" style="display:none;">
+    <div class="col-md-9">
 
-   Add &amp;playercolor=r (or y or g...) to play as other color
-  </p>
+   <div id="players">
+      <div id="player-b" class="player">&nbsp;</div>
+      <div id="player-r" class="player">&nbsp;</div>
+      <div id="player-g" class="player">&nbsp;</div>
+      <div id="player-y" class="player">&nbsp;</div>
+      <div style="clear:both;"></div>
+   </div>
 
-  <select id="modeselect" class="form-control">
-    <option value="DRAG">Move mode: with drag &amp; drop (best for desktop)</option>
-    <option value="CLICK">Move mode: with click (best for mobile)</option>
-  </select>
-<div style="clear:both;"></div>
- <div id="gridcontainer"><table id="grid"></table></div>
   <div style="clear:both;"></div>
- <div id="activeunitcontainer">
-    <h3 id="activeunit-name-header">Selected: <span id="activeunit-name"></span></h3>
-    <img src="img/unitgraphics/large_b.png" class="activeunit-graphic" id="activeunit-graphic" />
- </div>
-</div>
+   <div id="gridcontainer"><table id="grid"></table></div>
+    <div style="clear:both;"></div>
+   <div id="activeunitcontainer">
+      <h3 id="activeunit-name-header">Selected: <span id="activeunit-name"></span></h3>
+      <img src="img/unitgraphics/large_b.png" class="activeunit-graphic" id="activeunit-graphic" />
+   </div>
+   </div>
 
-<div id="menu">
-</div>
+   <div class="col-md-3" class="sidebar" id="sidebar">
 
-<div class="col-md-3" id="sidebar">
-<a href="mapbuilder.html">Map builder</a>
-<form method="get" id="creategameform">
-  Create a new game: <br />
-  <label>
-    Map:
-    <select id="mapselect"></select>
-  </label>
-  <input type="submit" value="Start game" />
-</form>
+    <h2>Game <span id="currentgameid"></span></h2>
+    <ul>
+      <li>Map: <span id="currentmapname"></span></li>
+      <li>Created: <span id="currentgamecreatedate"></span></li>
+    </ul>
 
-<div id="share">
-  <h3>Invite others!</h3>
-  Share url: <input type="text" id="shareurl" />
-</div>
-<div id="log">
-<h3>Log</h3>
-Mouse X: <span id="mouseX"></span><br />
-Mouse Y: <span id="mouseY"></span>
-</div>
+    Move mode:
+    <select id="modeselect" class="form-control">
+      <option value="DRAG">Drag &amp; drop (best for desktop)</option>
+      <option value="CLICK">Click (best for mobile)</option>
+    </select>
+   </div>
 
-<h3>Users</h3>
-<div id="users">
-
-</div>
+   <h4>Links</h4>
+   <a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
 </div>
 
 </div>

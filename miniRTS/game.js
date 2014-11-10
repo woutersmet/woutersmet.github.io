@@ -1,22 +1,3 @@
-// window.game = {};
-
-/*
-window.game.grid = {
-     '1-1' : ['b','h',10],
-     '1-2' : ['b','t',6],
-     '1-3' : ['e','x',10],
-     '1-4' : ['e','x',10],
-     '1-5' : ['e','x',10],
-     '2-4' : ['r','s',5],
-     '2-1' : ['e','o',10],
-     '4-4' : ['r','h',2],
-     '5-5' : ['r','f',5],
-     '4-1' : ['e','b',10],
-     '5-1' : ['e','b',10],
-     '5-2' : ['e','b',10],
- };
- */
-
 $(document).ready(function(){
 
  $('#grid').on('mousedown','.grid-cell',function(){
@@ -105,7 +86,7 @@ $(document).ready(function(){
       }
  });
 
- //drawGrid(window.game.grid); //see starting game logic
+//drawGrid(window.game.grid); //see starting game logic
 
 //getting a game
 var urlvars = getUrlVars();
@@ -113,13 +94,44 @@ var urlvars = getUrlVars();
  window.playercolor = 'b';
  //window.game.mousemode = {state : 'nothing'};
 
+function drawPlayers(players,usercolor){
+  console.log("drawing players...");
+  console.log(players);
+  for (color in players){
+    if (players.hasOwnProperty(color)){
+      var name = players[color].name;
+      console.log("Updating player " + color + ' with name '+ name);
+      var playerEl = $('#player-' + color);
+      playerEl.show().html(name);
+      if (color == usercolor) playerEl.addClass('player-active');
+    }
+  }
+}
+
 function onGameChanged (snapshot) {
   console.log("Game changed!");
   var newgame = snapshot.val();
   if (typeof (window.game) == 'undefined') window.game = newgame;
 
+  //grid
   drawGrid(newgame.grid, window.game.grid);
   window.game = newgame;
+
+  //players
+  drawPlayers(newgame.players, window.playercolor);
+}
+
+function getUserName() {
+  console.log("Getting username...");
+  var username = $.cookie('username');
+  console.log("From cookie: " + username);
+
+  if (typeof username == 'undefined'){
+    username = prompt("Pick a username?");
+    $.cookie('username',username);
+  }
+
+  return username;
 }
 
 if (typeof(urlvars.gameid) !== 'undefined'){
@@ -127,15 +139,27 @@ if (typeof(urlvars.gameid) !== 'undefined'){
   Data.getGame(urlvars.gameid,function(game){
     console.log("Game loaded:");
     console.log(game);
+    if (game == null) {
+      alert("Didn't find a valid game for id " + urlvars.gameid);
+      return;
+    }
 
+    var username = getUserName();
+
+    //this should be validated more
     if (typeof urlvars.playercolor !== 'undefined'){
       window.playercolor = urlvars.playercolor;
       console.log("Playing with color:" + window.playercolor);
+      game.players[window.playercolor] = {name : username, money : 100};
+      Data.updateGame(game.id,game);
     }
 
     $('#currentmapname').html(game.map);
     $('#currentgamecreatedate').html(game.created);
     $('#currentgameid').html(game.id);
+
+    $('#gamecontainer').show();
+    $('#loading').hide();
 
     //listen to game changes
     var gameRef = getRef('games/' + urlvars.gameid);

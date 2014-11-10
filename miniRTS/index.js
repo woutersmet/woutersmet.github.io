@@ -29,7 +29,7 @@ Data.getGames(function(games){
   for (gameid in games){
     if (!games.hasOwnProperty(gameid)) continue;
     var game = games[gameid];
-    var gameEl = $('<div class="listedgame"><strong>Game '+gameid+'</strong><br /> Created by '+game.createdby+' on '+game.created+'<br></div>');
+    var gameEl = $('<div class="listedgame"><strong>Game '+gameid+'</strong><br /> Created by <strong>'+game.createdby+'</strong> on '+game.created+'<br></div>');
 
     for (color in game.players){
       if (game.players.hasOwnProperty(color)){
