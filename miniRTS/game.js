@@ -107,28 +107,6 @@ $(document).ready(function(){
 
  //drawGrid(window.game.grid); //see starting game logic
 
-//maps to start new game
-
-Data.getMaps(function(map){
-  console.log("Getting maps");
-  console.log(map);
-  var listEl = $('<option value="'+map.name+'">' + map.name + '</option>');
-  $('#mapselect').append(listEl);
-});
-
-$('#creategameform').submit(function(e){
-  e.preventDefault();
-  alert('here');
-  var mapname = $('#mapselect').val();
-  var playername = 'testuser';
-  Data.createGame(mapname, playername, function(game){
-    console.log("Game created! Navigate to it?");
-    console.log("Game id: " + game.id);
-    alert("Game created! Will now navigate to it...");
-    document.location.href = 'game.html?gameid=' + game.id;
-  });
-});
-
 //getting a game
 var urlvars = getUrlVars();
 
@@ -172,7 +150,15 @@ function onMouseModeChange (e){
   drawGrid(window.game.grid, window.game.grid); //redraw grid taking into account whether or not to create draggables
 }
 $('#modeselect').change(onMouseModeChange);
-window.mousemode = 'DRAG';
+
+//on mobile?
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ window.mousemode = 'CLICK';
+}
+else {
+  window.mousemode = 'DRAG';
+}
+$('#modeselect').val(window.mousemode);
 //onMouseModeChange();
 
 });

@@ -15,8 +15,6 @@ window.grid = {
      '5-5' : ['r','h',10],
  };
 
- drawBuildings();
-
 drawGrid(window.grid);
 
 function onUnitPickClicked(e){
@@ -41,8 +39,8 @@ function onUnitPickClicked(e){
  });
 
  $('#grid').on('mousedown','.grid-cell',function(){
-      var row = $(this).data('x');
-      var col = $(this).data('y');
+      var row = $(this).data('row');
+      var col = $(this).data('col');
       console.log("Clicked grid coordinates " + row + "," + col);
       var key = coordsToKey(row,col);
 

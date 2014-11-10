@@ -2,6 +2,11 @@
     background-color:#ddd;
   }
 
+  .listedgame {
+    background:#ddd;
+    padding:5px;
+  }
+
   #activeunitcontainer {
       border:15px solid #ddd;
       padding:10px;

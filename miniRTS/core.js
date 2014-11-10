@@ -109,7 +109,7 @@ function isBuilding(unit){
              cell.data('unit', unitdata);
 
              //explosion?
-             if (typeof(prevpositions[key]) != 'undefined' && prevpositions[key][2] > unitdata[2]){
+             if (typeof(prevpositions) != 'undefined' && typeof(prevpositions[key]) != 'undefined' && prevpositions[key][2] > unitdata[2]){
               console.log("Explosion at " + key);
               explode(key);
              }

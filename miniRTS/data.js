@@ -26,7 +26,16 @@ Data.saveMap = function (mapname, grid){
   // CREATE A REFERENCE TO FIREBASE
   var mapRef = getRef('maps');
 
-  mapRef.child(mapname).set({grid : grid, name : mapname});
+  //which colors are present?
+  var colors = [];
+  for (key in grid){
+     var color = grid[key][0];
+     console.log("Colors index: " + colors.indexOf(colors));
+     if (color != 'e' && colors.indexOf(color) == -1) colors.push(color);
+  }
+  console.log("Map contains colors:" + colors);
+
+  mapRef.child(mapname).set({grid : grid, name : mapname, colors : colors});
 }
 
 Data.getMaps = function(callback){
@@ -36,6 +45,19 @@ Data.getMaps = function(callback){
         var map = snapshot.val();
         callback(map);
       });
+}
+
+//see https://www.firebase.com/docs/web/guide/retrieving-data.html
+Data.getGames = function (callback){
+  console.log("Getting Games");
+    var ref = getRef('games/');
+
+    ref.on("value", function(data) {
+      var games = data.val();
+      console.log("Loaded games:");
+      console.log(games);
+      callback(games);
+  });
 }
 
 //see https://www.firebase.com/docs/web/guide/retrieving-data.html
@@ -63,14 +85,21 @@ Data.createGame = function(mapname, playername, callback){
       id : id,
       created : date.toString(),
       map : mapname,
+      createdby : playername,
       grid : map.grid,
       explosions : '',
       players : {
+        /*
         b : {name : playername, money : 100},
         r : {name : false, money : 100},
         g : {name : false, money : 100},
         y : {name : false, money : 100}
+        */
       }
+    }
+
+    for (var i=0;i<map.colors.length;i++){
+      game.players[map.colors[i]] = {name : false, money : 100};
     }
 
     var ref = getRef('games/' + id);
