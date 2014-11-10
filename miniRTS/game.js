@@ -116,7 +116,13 @@ function drawPlayers(players,usercolor){
         console.log(color + " is an empty slot!");
         var name = '[Waiting for player]';
         playerEl.show().html(name);
-        $('#inviteplayer-'+color).show();
+        var inviteEl = $('#inviteplayer-'+color);
+        inviteEl.click(function(e){
+          e.preventDefault();
+          var invitelink = 'game.html?gameid=' + window.game.id + '&playercolor=' + color;
+          prompt("Copy-paste this link to invite " + window.colors[color] + ' player:',invitelink);
+        });
+        inviteEl.show();
       }
     }
   }
