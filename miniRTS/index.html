@@ -26,9 +26,14 @@
   <h2>Game <span id="currentgameid"></span> on map <span id="currentmapname"></span></h2>
   <p>
     <em>Created <span id="currentgamecreatedate"></span></em>.
-   Add &playercolor=r (or y or g...) to play as other color
+   Add &amp;playercolor=r (or y or g...) to play as other color
   </p>
 
+  Movement mode:
+  <select id="modeselect">
+    <option value="DRAG">Drag &amp; drop</option>
+    <option value="CLICK">Click</option>
+  </select>
 
  <div id="gridcontainer"><table id="grid"></table></div>
   <div style="clear:both;"></div>

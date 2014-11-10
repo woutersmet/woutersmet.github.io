@@ -78,8 +78,6 @@ function isBuilding(unit){
 
  function drawGrid(positions, prevpositions){
   console.log("Redrawing grid... ");
-  console.log(prevpositions);
-  console.log(positions);
      $('#grid').html('');
 
      positions = positions || {};
@@ -101,7 +99,7 @@ function isBuilding(unit){
 
             if (window.playercolor == unitdata[0]){
               unitEl.addClass('user-unit');
-               if (isDraggable(unitdata[1])){
+               if (window.mousemode == 'DRAG' && isDraggable(unitdata[1])){
                 unitEl.draggable();
               }
             }

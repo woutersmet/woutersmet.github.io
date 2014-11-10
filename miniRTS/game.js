@@ -23,20 +23,30 @@ $(document).ready(function(){
     var row = $(this).data('row');
     var col = $(this).data('col');
     console.log("Clicked grid coordinates " + row + "," + col);
-    window.draggingfrom = row+'-'+col;
-    var clickedUnit = window.game.grid[window.draggingfrom];
-    if (typeof clickedUnit != 'undefined'){
-      doActiveUnitStuff(window.draggingfrom,clickedUnit);
-      if (isBuilding(clickedUnit[1])){ //clicked building!
+    var locationClicked = coordsToKey(row,col);
+    var clickedUnit = window.game.grid[locationClicked];
+
+    if (window.draggingunit && window.mousemode == 'CLICK'){ //in click (mobile) mode, this can move a unit!
+        console.log("in click mode, moving a unit, and clicked an empty cell! Moving");
+        var to = coordsToKey(row,col);
+        moveUnit(window.draggingunit,window.draggingfrom,locationClicked);
+        window.draggingunit = false;
       }
       else {
-        window.draggingunit = window.game.grid[window.draggingfrom];
-        console.log ("Dragging unit:" + clickedUnit);
+        if (typeof clickedUnit != 'undefined'){
+          doActiveUnitStuff(window.draggingfrom,clickedUnit);
+
+          window.draggingfrom = locationClicked;
+
+          if (window.playercolor == clickedUnit[0] && !isBuilding(clickedUnit[1])){ //clicked draggable!
+            window.draggingunit = clickedUnit;
+            console.log ("Dragging unit:" + clickedUnit);
+          }
+        }
+        else {
+          window.draggingunit = false;
+        }
       }
-    }
-    else {
-      window.draggingunit = false;
-    }
  });
 
  function moveUnit(unit,from,to){
@@ -77,6 +87,8 @@ $(document).ready(function(){
  }
 
  $('#grid').mouseup(function(e){
+  if (window.mousemode == 'CLICK') return; //here it all happens on mousedown
+
   var gridsize = 30;
     var cos = $('#grid').offset();
     var pxX = e.pageX - cos.left;
@@ -87,10 +99,10 @@ $(document).ready(function(){
     //console.log('mouseup on ' + pxX + ',' + pxY + ' cell: ' + cellX + ',' + cellY);
     var dest = cellX +'-' + cellY;
     if (window.draggingunit){
-      window.draggingfrom;
-      moveUnit(window.draggingunit,window.draggingfrom,dest);
-      window.draggingunit = false;
-    }
+        //console.log("Mouse mode drag, so mouse up is when to move unit!");
+        moveUnit(window.draggingunit,window.draggingfrom,dest);
+        window.draggingunit = false;
+      }
  });
 
  //drawGrid(window.game.grid); //see starting game logic
@@ -138,9 +150,6 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     console.log("Game loaded:");
     console.log(game);
 
-    //window.game = game;
-    //drawGrid(window.game.grid);
-
     if (typeof urlvars.playercolor !== 'undefined'){
       window.playercolor = urlvars.playercolor;
       console.log("Playing with color:" + window.playercolor);
@@ -155,5 +164,15 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     gameRef.on('value', onGameChanged);
   });
 }
+
+//drag and drop or click?
+function onMouseModeChange (e){
+  window.mousemode = $(this).val();
+  console.log("Mouse mode set to: " + window.mousemode);
+  drawGrid(window.game.grid, window.game.grid); //redraw grid taking into account whether or not to create draggables
+}
+$('#modeselect').change(onMouseModeChange);
+window.mousemode = 'DRAG';
+//onMouseModeChange();
 
 });
