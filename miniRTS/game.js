@@ -1,4 +1,4 @@
- window.game = {};
+// window.game = {};
 
 /*
 window.game.grid = {
@@ -20,10 +20,10 @@ window.game.grid = {
 $(document).ready(function(){
 
  $('#grid').on('mousedown','.grid-cell',function(){
-    var x = $(this).data('x');
-    var y = $(this).data('y');
-    console.log("Clicked grid coordinates " + x + "," + y);
-    window.draggingfrom = x+'-'+y;
+    var row = $(this).data('row');
+    var col = $(this).data('col');
+    console.log("Clicked grid coordinates " + row + "," + col);
+    window.draggingfrom = row+'-'+col;
     var clickedUnit = window.game.grid[window.draggingfrom];
     if (typeof clickedUnit != 'undefined'){
       doActiveUnitStuff(window.draggingfrom,clickedUnit);
@@ -42,34 +42,37 @@ $(document).ready(function(){
  function moveUnit(unit,from,to){
     console.log("Moving unit ["+unit+"] from " + from + " to " + to);
 
+    //deep copy, assure window.game isnt changed by our changes, just pushing to server  - see http://stackoverflow.com/questions/5364650/cloning-an-object-in-javascript
+    var newgamestate = $.extend(true, {}, window.game);
     //regular move
     if (to == from) {
       //no movement!
     }
-    else if (typeof window.game.grid[to] == 'undefined'){ //good to move unit
-      delete(window.game.grid[from]);
-      window.game.grid[to] = unit;
+    else if (typeof newgamestate.grid[to] == 'undefined'){ //good to move unit
+      delete(newgamestate.grid[from]);
+      newgamestate.grid[to] = unit;
     }
-    else if (window.game.grid[to][0] == 'e'){ //environment! cannot move there
-        //
+    else if (newgamestate.grid[to][0] == 'e'){ //environment! cannot move there
+        console.log("Dragging to environment! No movement allowed - just redraw grid");
+        drawGrid(newgamestate.grid,newgamestate.grid);
     }
     else {
       //attack!
-      var attackedunit = window.game.grid[to];
+      var attackedunit = newgamestate.grid[to];
       attackedunit[2] = attackedunit[2] - 1;
 
       if (attackedunit[2] <= 0) { //unit death!
-        delete(window.game.grid[to]);
+        delete(newgamestate.grid[to]);
       }
       else {
-        window.game.grid[to] = attackedunit;
+        newgamestate.grid[to] = attackedunit;
       }
       console.log("Attack! Location " + to + " now has unit: " + attackedunit);
-      explode(to);
+      //explode(to);
     }
 
-    console.log(window.game);
-   Data.updateGame(window.game.id,window.game);
+    console.log(newgamestate);
+   Data.updateGame(newgamestate.id,newgamestate);
    //drawGrid(window.game.grid);
  }
 
@@ -118,7 +121,16 @@ $('#creategameform').submit(function(e){
 var urlvars = getUrlVars();
 
  window.playercolor = 'b';
- window.game.mousemode = {state : 'nothing'};
+ //window.game.mousemode = {state : 'nothing'};
+
+function onGameChanged (snapshot) {
+  console.log("Game changed!");
+  var newgame = snapshot.val();
+  if (typeof (window.game) == 'undefined') window.game = newgame;
+
+  drawGrid(newgame.grid, window.game.grid);
+  window.game = newgame;
+}
 
 if (typeof(urlvars.gameid) !== 'undefined'){
   console.log("We're in a game!");
@@ -126,7 +138,7 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     console.log("Game loaded:");
     console.log(game);
 
-    window.game = game;
+    //window.game = game;
     //drawGrid(window.game.grid);
 
     if (typeof urlvars.playercolor !== 'undefined'){
@@ -138,13 +150,9 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     $('#currentgamecreatedate').html(game.created);
     $('#currentgameid').html(game.id);
 
+    //listen to game changes
     var gameRef = getRef('games/' + urlvars.gameid);
-    gameRef.on('value', function (snapshot) {
-      console.log("Game changed!");
-      var game = snapshot.val();
-      console.log(game);
-      drawGrid(game.grid);
-    });
+    gameRef.on('value', onGameChanged);
   });
 }
 

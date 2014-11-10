@@ -76,9 +76,10 @@ function isBuilding(unit){
   return unitEl;
  }
 
- function drawGrid(positions){
-  console.log("Redrawing grid...");
-  //console.log(window.grid);
+ function drawGrid(positions, prevpositions){
+  console.log("Redrawing grid... ");
+  console.log(prevpositions);
+  console.log(positions);
      $('#grid').html('');
 
      positions = positions || {};
@@ -88,10 +89,10 @@ function isBuilding(unit){
         var row = $('<tr class="grid-row"></tr>');
         for (var j=1;j<=cols;j++){
           var cell = $('<td class="grid-cell" id="cell_'+i+'_'+j+'"></td>');
-          cell.data('x', i);
-          cell.data('y', j);
+          cell.data('row', i);
+          cell.data('col', j);
 
-          var key = i + '-' + j;
+          var key = coordsToKey(i,j);
           if (typeof positions[key] != 'undefined'){
             //console.log("Found a unit at "+key+"!");
              var unitdata = positions[key];
@@ -108,6 +109,12 @@ function isBuilding(unit){
              //console.log(unitEl);
              cell.append(unitEl);
              cell.data('unit', unitdata);
+
+             //explosion?
+             if (typeof(prevpositions[key]) != 'undefined' && prevpositions[key][2] > unitdata[2]){
+              console.log("Explosion at " + key);
+              explode(key);
+             }
           }
 
           row.append(cell);

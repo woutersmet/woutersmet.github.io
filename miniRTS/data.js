@@ -64,8 +64,12 @@ Data.createGame = function(mapname, playername, callback){
       created : date.toString(),
       map : mapname,
       grid : map.grid,
+      explosions : '',
       players : {
-        b : playername
+        b : {name : playername, money : 100},
+        r : {name : false, money : 100},
+        g : {name : false, money : 100},
+        y : {name : false, money : 100}
       }
     }
 
