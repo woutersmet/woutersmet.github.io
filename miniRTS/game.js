@@ -97,13 +97,22 @@ var urlvars = getUrlVars();
 function drawPlayers(players,usercolor){
   console.log("drawing players...");
   console.log(players);
+  $('.inviteplayer').hide();
   for (color in players){
     if (players.hasOwnProperty(color)){
       var name = players[color].name;
-      console.log("Updating player " + color + ' with name '+ name);
       var playerEl = $('#player-' + color);
-      playerEl.show().html(name);
-      if (color == usercolor) playerEl.addClass('player-active');
+      if (name){
+        console.log("Updating player " + color + ' with name '+ name);
+        playerEl.show().html(name);
+        if (color == usercolor) playerEl.addClass('player-active');
+      }
+      else {
+        console.log(color + " is an empty slot!");
+        var name = '[Waiting for player]';
+        playerEl.show().html(name);
+        $('#inviteplayer-'+color).show();
+      }
     }
   }
 }

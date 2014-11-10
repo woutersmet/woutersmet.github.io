@@ -151,6 +151,8 @@ Data.createGame = function(mapname, playername, callback){
     var game = {
       id : id,
       created : date.toString(),
+      createdtime : (date.getTime() / 1000),
+      createddate : date.getDate(),
       map : mapname,
       createdby : playername,
       grid : map.grid,
