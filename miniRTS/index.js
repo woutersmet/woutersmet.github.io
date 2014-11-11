@@ -19,7 +19,13 @@ Data.getGames(function(games){
       for (color in game.players){
         if (game.players.hasOwnProperty(color)){
           var colorname = window.colors[color];
-            gameEl.append($('<a class="btn btn-default" style="color:'+colorname+'" href="game.html?gameid=' + gameid +'&playercolor='+color+'">Play as '+colorname+' </a> '))
+          var player = game.players[color];
+          if (!player.name){
+            gameEl.append($('<a class="btn btn-default" style="color:'+colorname+'" href="game.html?gameid=' + gameid +'&playercolor='+color+'">Join game as '+colorname+' </a> '))
+          }
+          else {
+            gameEl.append($('<span style="color:'+colorname+'"><strong>'+player.name+'</strong> is playing as '+colorname+' </span> '))
+          }
         }
       }
       $('#gameslist').append(gameEl);

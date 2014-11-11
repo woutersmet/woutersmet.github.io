@@ -22,7 +22,7 @@ $('#creategameform').submit(function(e){
   var mapname = $('input[name=mapname]:checked', '#creategameform').val();
 
   var color = $('#colorselect').val();
-  var playername = 'testuser';
+  var playername = getUserName();
   Data.createGame(mapname, playername, function(game){
     console.log("Game created! Navigate to it?");
     console.log("Game id: " + game.id);

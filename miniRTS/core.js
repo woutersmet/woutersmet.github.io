@@ -25,6 +25,22 @@ window.units = {
  window.draggables = ['t','s','a','c','e','d'];
  window.environmentals = ['b','o','x'];
 
+function drawShops(){
+  console.log("Drawing shops");
+  for (unit in window.units){
+    if (window.units.hasOwnProperty(unit)){
+      var unitdata = window.units[unit];
+      var shopEl = $('<a class="shopunit">'+unitdata.name+'<br />'+unitdata.price+'$</a>');
+      if (unitdata.type == 'draggable'){
+        $('#shop-draggables').append(shopEl);
+      }
+      else if (unitdata.type == 'building'){
+        $('#shop-buildings').append(shopEl);
+      }
+    }
+  }
+}
+
  function healthToLevel(health){
      var level;
      if (health >= 10) { level ='f';  }
@@ -160,11 +176,26 @@ function isBuilding(unit){
  }
 
  function doActiveUnitStuff(location,building){
-  console.log("Clicked a building at "+location+"! building: " + building);
+  console.log("Clicked a unit at "+location+"! unit: " + building);
 
   $('#activeunit-name').html(window.units[building[1]].name);
   $('#activeunit-name').css('color', window.colors[building[0]]);
   $('#activeunit-graphic').attr('src',getUnitGraphicPath(building[1]));
+
+  if (building[1] == 'f'){
+    console.log("War factory! Showing unit shop");
+    $('#shop-draggables').show();
+  }
+  else {
+    $('#shop-draggables').hide();
+  }
+  if (building[1] == 'h'){
+    console.log("Home base! Showing building shop");
+    $('#shop-buildings').show();
+  }
+  else {
+    $('#shop-buildings').hide();
+  }
  }
 
  function removeExplosions(){

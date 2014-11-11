@@ -161,6 +161,9 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     $('#gamecontainer').show();
     $('#loading').hide();
 
+    //draw shop
+    drawShops();
+
     //listen to game changes
     var gameRef = getRef('games/' + urlvars.gameid);
     gameRef.on('value', onGameChanged);

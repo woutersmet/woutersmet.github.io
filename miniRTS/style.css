@@ -20,6 +20,17 @@
     float:left;
   }
 
+  .shop {
+    display:none;
+  }
+
+  a.shopunit {
+    display:block;
+    float:left;
+    margin:5px;
+    background-color:#ddd;
+  }
+
   .unitcircle {
     position:absolute;
     display:none;
