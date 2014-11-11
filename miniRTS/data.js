@@ -88,21 +88,28 @@ function getRef(section){
   return ref;
 }
 
-Data.saveMap = function (mapname, grid){
+Data.saveMap = function (mapname, createdby, grid){
   console.log("Will save map with name " + mapname);
   // CREATE A REFERENCE TO FIREBASE
   var mapRef = getRef('maps');
 
   //which colors are present?
   var colors = [];
-  for (key in grid){
-     var color = grid[key][0];
+  for (key in grid.cells){
+     var color = grid.cells[key][0];
      console.log("Colors index: " + colors.indexOf(colors));
      if (color != 'e' && colors.indexOf(color) == -1) colors.push(color);
   }
   console.log("Map contains colors:" + colors);
 
-  mapRef.child(mapname).set({grid : grid, name : mapname, colors : colors});
+  var values = {
+    grid : grid,
+    createdby : createdby,
+    name : mapname,
+    colors : colors
+  };
+
+  mapRef.child(mapname).set(values);
 }
 
 Data.getMaps = function(callback){

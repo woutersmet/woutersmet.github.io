@@ -7,7 +7,7 @@ $(document).ready(function(){
     var row = coords[0];
     var col = coords[1];
     console.log("Clicked grid coordinates " + row + "," + col);
-    var clickedUnit = window.game.grid[locationClicked];
+    var clickedUnit = window.game.grid.cells[locationClicked];
 
     if (window.draggingunit && window.mousemode == 'CLICK'){ //in click (mobile) mode, this can move a unit!
         console.log("in click mode, moving a unit, and clicked an empty cell! Moving");
@@ -44,24 +44,24 @@ $(document).ready(function(){
     if (to == from) {
       //no movement!
     }
-    else if (typeof newgamestate.grid[to] == 'undefined'){ //good to move unit
-      delete(newgamestate.grid[from]);
-      newgamestate.grid[to] = unit;
+    else if (typeof newgamestate.grid.cells[to] == 'undefined'){ //good to move unit
+      delete(newgamestate.grid.cells[from]);
+      newgamestate.grid.cells[to] = unit;
     }
-    else if (newgamestate.grid[to][0] == 'e'){ //environment! cannot move there
+    else if (newgamestate.grid.cells[to][0] == 'e'){ //environment! cannot move there
         console.log("Dragging to environment! No movement allowed - just redraw grid");
         drawGrid($('#grid'),newgamestate.grid,newgamestate.grid);
     }
     else {
       //attack!
-      var attackedunit = newgamestate.grid[to];
+      var attackedunit = newgamestate.grid.cells[to];
       attackedunit[2] = attackedunit[2] - 1;
 
       if (attackedunit[2] <= 0) { //unit death!
-        delete(newgamestate.grid[to]);
+        delete(newgamestate.grid.cells[to]);
       }
       else {
-        newgamestate.grid[to] = attackedunit;
+        newgamestate.grid.cells[to] = attackedunit;
       }
       console.log("Attack! Location " + to + " now has unit: " + attackedunit);
       //explode(to);
@@ -77,8 +77,9 @@ $(document).ready(function(){
   if (window.mousemode == 'CLICK') return; //here it all happens on mousedown
 
     var dest = mouseCoordsToGridLocation(e.pageX,e.pageY);
+
     if (window.draggingunit){
-        //console.log("Mouse mode drag, so mouse up is when to move unit!");
+        console.log("Mouse mode drag, so mouse up is when to move unit!");
         moveUnit(window.draggingunit,window.draggingfrom,dest);
         window.draggingunit = false;
       }
@@ -132,19 +133,6 @@ function onGameChanged (snapshot) {
   drawPlayers(newgame.players, window.playercolor);
 }
 
-function getUserName() {
-  console.log("Getting username...");
-  var username = $.cookie('username');
-  console.log("From cookie: " + username);
-
-  if (typeof username == 'undefined'){
-    username = prompt("Pick a username?");
-    $.cookie('username',username);
-  }
-
-  return username;
-}
-
 if (typeof(urlvars.gameid) !== 'undefined'){
   console.log("We're in a game!");
   Data.getGame(urlvars.gameid,function(game){
@@ -152,6 +140,7 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     console.log(game);
     if (game == null) {
       alert("Didn't find a valid game for id " + urlvars.gameid);
+      document.location.href= 'index.html';
       return;
     }
 

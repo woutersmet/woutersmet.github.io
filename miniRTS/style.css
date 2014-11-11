@@ -12,6 +12,14 @@
     background-color:#555;
   }
 
+  .listedmap {
+    padding:10px;
+    background-color:#ddd;
+    margin-bottom:10px;
+    margin-right:10px;
+    float:left;
+  }
+
   .unitcircle {
     position:absolute;
     display:none;
@@ -73,14 +81,14 @@
     user-select: none;
   }
 
-  #grid td {
+  .grid td {
     height:28px;
     width:28px;
-    border:1px solid black;
+    border:1px solid #114422;
     background-color:#446633;
   }
 
-  #grid td img {
+  .grid td img {
     z-index:20;
   }
 

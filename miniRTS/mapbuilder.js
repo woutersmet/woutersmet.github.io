@@ -2,7 +2,10 @@
 
 $(document).ready(function(){
 
-window.grid = {
+window.map = {
+  name : 'whatever',
+  grid : {
+     cells : {
      '1-1' : ['b','h',10],
      '1-2' : ['b','t',10],
      '2-1' : ['e','o',10],
@@ -12,10 +15,30 @@ window.grid = {
      '4-4' : ['r','t',10],
      '5-1' : ['e','b',10],
      '5-4' : ['e','b',10],
-     '5-5' : ['r','h',10],
+     '5-5' : ['r','h',10]
+     },
+     cols : 5,
+     rows : 5
+   }
  };
 
-drawGrid($('#grid'),window.grid);
+drawGrid($('#grid'),window.map.grid);
+
+function fillSizes(){
+  var max = 12;
+  for (var i=2;i<=12;i++){
+    var sel = $('<option value="'+i+'">'+i+'</option>');
+    var sel2 = $('<option value="'+i+'">'+i+'</option>');
+    if (i==5) {
+      sel.attr('selected','selected');
+      sel2.attr('selected','selected');
+    }
+    $('#colsselect').append(sel);
+    $('#rowsselect').append(sel2);
+  }
+}
+
+fillSizes();
 
 function onUnitPickClicked(e){
   var color = $(this).data('color');
@@ -26,6 +49,13 @@ function onUnitPickClicked(e){
   doActiveUnitStuff('1-1',window.placingunit);
 }
 
+$('#saveform').change(function(e){
+  window.map.grid.cols = $('#colsselect').val();
+  window.map.grid.rows = $('#rowsselect').val();
+  console.log(window.map.grid);
+  drawGrid($('#grid'),window.map.grid);
+});
+
  $('#saveform').submit(function(e){
   e.preventDefault();
   console.log("Saving map!");
@@ -35,7 +65,7 @@ function onUnitPickClicked(e){
     return;
   }
 
-  Data.saveMap(name,window.grid);
+  Data.saveMap(name,getUserName(),window.map.grid);
  });
 
  $('#grid').on('mousedown','.grid-cell',function(){
@@ -44,19 +74,19 @@ function onUnitPickClicked(e){
       console.log("Clicked grid coordinates " + row + "," + col);
       var key = coordsToKey(row,col);
 
-      if (typeof(window.grid[key]) == 'undefined'){ //clicked empty cell
+      if (typeof(window.map.grid.cells[key]) == 'undefined'){ //clicked empty cell
         if (typeof window.placingunit == 'undefined'){
           return alert ("First select a unit to place");
         }
         else {
-            window.grid[key] = window.placingunit;
+            window.map.grid.cells[key] = window.placingunit;
           }
       }
       else {
-        delete(window.grid[key]);
+        delete(window.map.grid.cells[key]);
       }
 
-      drawGrid($('#grid'),window.grid);
+      drawGrid($('#grid'),window.map.grid);
  });
 
 function setupMenu(){

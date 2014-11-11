@@ -115,16 +115,15 @@ function isBuilding(unit){
     return location;
  }
 
- function drawGrid(el, positions, prevpositions){
+ function drawGrid(el, grid, prevpositions){
   console.log("Redrawing grid... ");
+  console.log(grid);
      $(el).html('');
 
-     positions = positions || {};
-     var rows = 5;
-     var cols = 5;
-     for (var i=1;i<=rows;i++){
+     positions = grid.cells;
+     for (var i=1;i<=grid.rows;i++){
         var row = $('<tr class="grid-row"></tr>');
-        for (var j=1;j<=cols;j++){
+        for (var j=1;j<=grid.cols;j++){
           var cell = $('<td class="grid-cell" id="cell_'+i+'_'+j+'"></td>');
           cell.data('row', i);
           cell.data('col', j);
@@ -148,7 +147,7 @@ function isBuilding(unit){
              cell.data('unit', unitdata);
 
              //explosion?
-             if (typeof(prevpositions) != 'undefined' && typeof(prevpositions[key]) != 'undefined' && prevpositions[key][2] > unitdata[2]){
+             if (typeof(prevpositions) != 'undefined' && typeof(prevpositions.cells[key]) != 'undefined' && prevpositions.cells[key][2] > unitdata[2]){
               console.log("Explosion at " + key);
               explode(key);
              }
@@ -195,6 +194,18 @@ function isBuilding(unit){
   return key.split('-');
  }
 
+function getUserName() {
+  console.log("Getting username...");
+  var username = $.cookie('username');
+  console.log("From cookie: " + username);
+
+  if (typeof username == 'undefined'){
+    username = prompt("Pick a username?");
+    $.cookie('username',username);
+  }
+
+  return username;
+}
 
 /* chat stuff */
   function getUrlVars() {
