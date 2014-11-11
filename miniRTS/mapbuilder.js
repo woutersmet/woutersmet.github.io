@@ -122,7 +122,7 @@ Data.getMaps(function(map){
   console.log("Getting maps");
   console.log(map);
   var listEl = $('<li class="listedmap">' + map.name + '</li>');
-  listEl.append($('<a href="">edit</a>'));
+  listEl.append($('<a href="mapbuilder.html?mapname='+map.name+'">edit</a>'));
   $('#maplist').append(listEl);
 });
 
