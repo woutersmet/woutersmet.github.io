@@ -5,6 +5,9 @@ Data.getMaps(function(map){
   console.log(map);
   var listEl = $('<option value="'+map.name+'">' + map.name + '</option>');
   $('#mapselect').append(listEl);
+
+  //draw grid
+  drawGrid(map.grid);
 });
 
 $('#creategameform').submit(function(e){

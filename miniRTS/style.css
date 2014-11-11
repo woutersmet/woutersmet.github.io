@@ -64,11 +64,24 @@
     z-index:500;
   }
 
+  #grid {
+     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
   #grid td {
     height:28px;
     width:28px;
     border:1px solid black;
     background-color:#446633;
+  }
+
+  #grid td img {
+    z-index:20;
   }
 
   .usership {

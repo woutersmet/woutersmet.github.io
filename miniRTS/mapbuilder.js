@@ -15,7 +15,7 @@ window.grid = {
      '5-5' : ['r','h',10],
  };
 
-drawGrid(window.grid);
+drawGrid($('#grid'),window.grid);
 
 function onUnitPickClicked(e){
   var color = $(this).data('color');
@@ -56,7 +56,7 @@ function onUnitPickClicked(e){
         delete(window.grid[key]);
       }
 
-      drawGrid(window.grid);
+      drawGrid($('#grid'),window.grid);
  });
 
 function setupMenu(){

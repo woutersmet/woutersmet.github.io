@@ -102,9 +102,22 @@ function isBuilding(unit){
   $('.unitcircle').hide();
  }
 
- function drawGrid(positions, prevpositions){
+ function mouseCoordsToGridLocation(pageX,pageY){
+    var gridsize = 30;
+    var cos = $('#grid').offset();
+    var pxX = pageX - cos.left;
+    var pxY = pageY - cos.top;
+    var cellY = 1 + Math.floor(pxX/30);
+    var cellX = 1 + Math.floor(pxY/30);
+    //console.log(cos);
+    console.log('page coords '+pageX+','+pageY+' on ' + pxX + ',' + pxY + ' within grid, giving cell: ' + cellX + ',' + cellY);
+    var location = cellX +'-' + cellY;
+    return location;
+ }
+
+ function drawGrid(el, positions, prevpositions){
   console.log("Redrawing grid... ");
-     $('#grid').html('');
+     $(el).html('');
 
      positions = positions || {};
      var rows = 5;
@@ -143,7 +156,7 @@ function isBuilding(unit){
 
           row.append(cell);
         }
-        $('#grid').append(row);
+        $(el).append(row);
      }
  }
 

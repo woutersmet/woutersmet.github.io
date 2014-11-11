@@ -1,10 +1,12 @@
 $(document).ready(function(){
 
- $('#grid').on('mousedown','.grid-cell',function(){
-    var row = $(this).data('row');
-    var col = $(this).data('col');
+ $(document).on('mousedown',function(e){
+
+    var locationClicked = mouseCoordsToGridLocation(e.pageX,e.pageY);
+    var coords = keyToCoords(locationClicked);
+    var row = coords[0];
+    var col = coords[1];
     console.log("Clicked grid coordinates " + row + "," + col);
-    var locationClicked = coordsToKey(row,col);
     var clickedUnit = window.game.grid[locationClicked];
 
     if (window.draggingunit && window.mousemode == 'CLICK'){ //in click (mobile) mode, this can move a unit!
@@ -48,7 +50,7 @@ $(document).ready(function(){
     }
     else if (newgamestate.grid[to][0] == 'e'){ //environment! cannot move there
         console.log("Dragging to environment! No movement allowed - just redraw grid");
-        drawGrid(newgamestate.grid,newgamestate.grid);
+        drawGrid($('#grid'),newgamestate.grid,newgamestate.grid);
     }
     else {
       //attack!
@@ -68,30 +70,19 @@ $(document).ready(function(){
     console.log(newgamestate);
    Data.updateGame(newgamestate.id,newgamestate);
    removeCircles();
-   //drawGrid(window.game.grid);
  }
 
 //used to be grid, but then circle elements hinder mouseup detection
  $(document).mouseup(function(e){
   if (window.mousemode == 'CLICK') return; //here it all happens on mousedown
 
-  var gridsize = 30;
-    var cos = $('#grid').offset();
-    var pxX = e.pageX - cos.left;
-    var pxY = e.pageY - cos.top;
-    var cellY = 1 + Math.floor(pxX/30);
-    var cellX = 1 + Math.floor(pxY/30);
-    //console.log(cos);
-    //console.log('mouseup on ' + pxX + ',' + pxY + ' cell: ' + cellX + ',' + cellY);
-    var dest = cellX +'-' + cellY;
+    var dest = mouseCoordsToGridLocation(e.pageX,e.pageY);
     if (window.draggingunit){
         //console.log("Mouse mode drag, so mouse up is when to move unit!");
         moveUnit(window.draggingunit,window.draggingfrom,dest);
         window.draggingunit = false;
       }
  });
-
-//drawGrid(window.game.grid); //see starting game logic
 
 //getting a game
 var urlvars = getUrlVars();
@@ -134,7 +125,7 @@ function onGameChanged (snapshot) {
   if (typeof (window.game) == 'undefined') window.game = newgame;
 
   //grid
-  drawGrid(newgame.grid, window.game.grid);
+  drawGrid($('#grid'),newgame.grid, window.game.grid);
   window.game = newgame;
 
   //players
@@ -191,7 +182,7 @@ if (typeof(urlvars.gameid) !== 'undefined'){
 function onMouseModeChange (e){
   window.mousemode = $(this).val();
   console.log("Mouse mode set to: " + window.mousemode);
-  drawGrid(window.game.grid, window.game.grid); //redraw grid taking into account whether or not to create draggables
+  drawGrid($('#grid'),window.game.grid, window.game.grid); //redraw grid taking into account whether or not to create draggables
 }
 $('#modeselect').change(onMouseModeChange);
 
