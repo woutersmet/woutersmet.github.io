@@ -58,6 +58,12 @@
     display:none;
   }
 
+  .shop {float:left;}
+
+  .activeunit-graphic {
+    float:left;
+  }
+
   .player-active {
     font-weight:bold;
     border:2px solid #555;
