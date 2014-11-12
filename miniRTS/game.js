@@ -188,7 +188,7 @@ if (typeof(urlvars.gameid) !== 'undefined'){
     if (['b','r','g','y'].indexOf(urlvars.playercolor) > -1){
       window.playercolor = urlvars.playercolor;
       debug("Playing with color:" + window.playercolor);
-      game.players[window.playercolor] = {name : username, money : 100};
+      game.players[window.playercolor] = {name : username, money : window.startmoney};
 
       Data.updateGame(game.id,game);
 

@@ -4,7 +4,7 @@ function debug(smt){
 }
 
 window.colors = {b : 'blue',r : 'red',g : 'green',y : 'yellow'};
-
+window.startmoney = 1000;
 window.units = {
   s : {name : 'soldier',    type : 'draggable', speed : 1, range : 2, attackbonus : { a : 2},    price : 100},
   t : {name : 'tank',       type : 'draggable', speed : 2, range : 2, attackbonus : { s : 2},    price : 150},
