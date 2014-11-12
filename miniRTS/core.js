@@ -116,14 +116,22 @@ window.units = {
 
  function onShopElClicked(e){
   e.preventDefault();
+  var currentmoney = window.game.players[window.playercolor].money;
   var unit = $(this).data('unit');
+  var unitprice = window.units[unit].price;
   debug("Shop el clicked! " + unit);
+
+  if (unitprice > currentmoney) {
+    alert("Sorry, this unit costs " + unitprice + "$ which you don't have.");
+    return;
+  }
 
   debug(window.draggingfrom);
   var unitdata = [window.playercolor,unit,10];
   //where to place el?
   var destination = whereToPutUnit(window.draggingfrom);
   window.game.grid.cells[destination] = unitdata;
+  window.game.players[window.playercolor].money -= unitprice;
   Data.updateGame(window.game.id,window.game);
  }
 

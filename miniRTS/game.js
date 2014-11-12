@@ -127,6 +127,8 @@ function drawPlayers(players,usercolor){
     if (players.hasOwnProperty(color)){
       var name = players[color].name;
       var playerEl = $('#player-' + color);
+      $('#playermoney-' + color).html(players[color].money +'$');
+
       if (name){
         debug("Updating player " + color + ' with name '+ name);
         playerEl.show().html(name);
