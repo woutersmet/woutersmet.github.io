@@ -87,12 +87,54 @@ window.units = {
     return reached;
  }
 
+ //whwere to put new units?
+ function whereToPutUnit(buildingPos){
+  var coords = keyToCoords(buildingPos);
+    var buildingRow = coords[0];
+    var buildingCol = coords[1];
+
+    var row =1,col=buildingRow;
+    //upper or lower half?
+    if (buildingRow < window.game.grid.rows / 2){
+        row = buildingRow+1;
+    }
+    else {
+        row = buildingRow-1;
+    }
+
+    //upper or lower half?
+    var increment = buildingCol < window.game.grid.cols / 2 ? 1 : -1;
+    for (var i=0;i<12;i++){
+      if (typeof window.game.grid.cells[coordsToKey(row,col+increment*i)] == 'undefined'){
+        col+=i;
+        break;
+      }
+    }
+
+    return coordsToKey(row,col);
+ }
+
+ function onShopElClicked(e){
+  e.preventDefault();
+  var unit = $(this).data('unit');
+  debug("Shop el clicked! " + unit);
+
+  debug(window.draggingfrom);
+  var unitdata = [window.playercolor,unit,10];
+  //where to place el?
+  var destination = whereToPutUnit(window.draggingfrom);
+  window.game.grid.cells[destination] = unitdata;
+  Data.updateGame(window.game.id,window.game);
+ }
+
 function drawShops(){
   debug("Drawing shops");
   for (unit in window.units){
     if (window.units.hasOwnProperty(unit)){
       var unitdata = window.units[unit];
-      var shopEl = $('<a class="shopunit">'+unitdata.name+'<br />'+unitdata.price+'$</a>');
+      var shopEl = $('<a href="#" class="shopunit">'+unitdata.name+'<br />'+unitdata.price+'$</a>');
+      shopEl.data('unit',unit);
+      shopEl.click(onShopElClicked);
       if (unitdata.type == 'draggable'){
         $('#shop-draggables').append(shopEl);
       }

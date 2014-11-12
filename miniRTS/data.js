@@ -4,72 +4,20 @@ var Data = {};
 
 Data.baseUrl = 'https://woutertest.firebaseio.com/miniRTS/';
 
+function doPresenceStuff(gameid,usercolor){
+  console.log("Doing presence stuff...");
 
-/*
-var ref = new Firebase("https://woutertest.firebaseio.com/miniRTS");
-ref.authAnonymously(function(error, authData) {
-  if (error) {
-    console.log("Error authenticating user anonymously: " + error);
-    // There was an error logging in anonymously
-  } else {
-    console.log("User authenticated");
-    // User authenticated with Firebase
-  }
-});
-*/
-
-/*
-var ref = new Firebase("https://woutertest.firebaseio.com/miniRTS");
-ref.onAuth(function(authData) {
-  console.log(authData);
-  console.log("we're authorized! Getting user...");
-
-  if (authData == null){ //not authorized yet!
-      console.log("No auth data!");
-      ref.authAnonymously(function(error, authData) {
-    if (error) {
-      console.log("Error authenticating user anonymously: " + error);
-      // There was an error logging in anonymously
-    } else {
-      console.log("User authenticated");
-      // User authenticated with Firebase
-      var username = prompt('Username?', "moehaha");
-        user['username'] = username;
-        ref.child('users').child(authData.uid).set(user);
+  //online presence stuff?
+  //source: https://www.firebase.com/blog/2013-06-17-howto-build-a-presence-system.html
+  var amOnline = new Firebase('https://woutertest.firebaseio.com/.info/connected'); //new Firebase('https://<demo>.firebaseio.com/.info/connected');
+  var userStatusRef = getRef('games/'+gameid+'/players/'+usercolor + '/status'); //new Firebase('https://<demo>.firebaseio.com/presence/' + userid);
+  amOnline.on('value', function(snapshot) {
+    if (snapshot.val()) {
+      userStatusRef.onDisconnect().set('offline');
+      userStatusRef.set('online');
     }
   });
-  }
-
-  //get user data
-  ref.child('users').child(authData.uid).once("value", function(data) {
-      var user = data.val();
-      console.log(user);
-      console.log("Loaded user with username " + user.username);
-
-      if (typeof(user['username']) == 'undefined') {
-        var username = prompt('Username?', "moehaha");
-        user['username'] = username;
-        ref.child('users').child(authData.uid).set(user);
-      }
-    });
-
-});
-*/
-
-//creating a user
-/*
-var ref = new Firebase(Data.baseUrl);
-ref.createUser({
-  email    : "bobtony@firebase.com",
-  password : "correcthorsebatterystaple"
-}, function(error) {
-  if (error === null) {
-    console.log("User created successfully");
-  } else {
-    console.log("Error creating user:", error);
-  }
-});
-*/
+}
 
 function makeId(length)
 {
@@ -161,6 +109,13 @@ Data.createGame = function(mapname, playername, callback){
       createdtime : (date.getTime() / 1000),
       createddate : date.getDate(),
       map : mapname,
+      log : [
+        {
+          type : 'game_created',
+          byuser : playername,
+          timestamp : Firebase.ServerValue.TIMESTAMP
+        }
+      ],
       createdby : playername,
       grid : map.grid,
       explosions : '',
@@ -175,7 +130,7 @@ Data.createGame = function(mapname, playername, callback){
     }
 
     for (var i=0;i<map.colors.length;i++){
-      game.players[map.colors[i]] = {name : false, money : 100};
+      game.players[map.colors[i]] = {name : false, money : 100, status : 'offline'};
     }
 
     var ref = getRef('games/' + id);

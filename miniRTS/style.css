@@ -46,7 +46,10 @@
     margin:0 5px;
     display:none;
     float:left;
+    border-radius:5px;
   }
+
+  .online,.offline {display:block;text-decoration:none;background:black;padding:2px;}
 
   .inviteplayer {
     display:none;
@@ -58,10 +61,10 @@
     text-decoration:underline;
   }
 
-  #player-b {color:blue;}
-  #player-r {color:red;}
-  #player-g {color:green;}
-  #player-y {color:yellow;}
+  #player-b {background-color:#4455aa;}
+  #player-r {background-color:#aa5555;}
+  #player-g {background-color:#66aa88;}
+  #player-y {background-color:#66aaaa;}
 
   #activeunitcontainer {
       border:15px solid #ddd;
