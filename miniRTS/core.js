@@ -7,12 +7,12 @@ window.colors = {b : 'blue',r : 'red',g : 'green',y : 'yellow'};
 
 window.units = {
   s : {name : 'soldier',    type : 'draggable', speed : 1, range : 2, attackbonus : { a : 2},    price : 100},
-  t : {name : 'tank',       type : 'draggable', speed : 2, range : 2, attackbonus : { s : 2},    price : 100},
-  a : {name : 'artillery',  type : 'draggable', speed : 2, range : 3, attackbonus : { t : 2},    price : 100},
-  v : {name : 'attack dog', type : 'draggable', speed : 1, range : 3, attackbonus : { t : 2},    price : 100},
-  i : {name : 'engineer',   type : 'draggable', speed : 1, range : 1, attackbonus : { t : 2},    price : 100},
-  u : {name : 'war ship',   type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 100},
-  j : {name : 'submarine',  type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 100},
+  t : {name : 'tank',       type : 'draggable', speed : 2, range : 2, attackbonus : { s : 2},    price : 150},
+  a : {name : 'artillery',  type : 'draggable', speed : 2, range : 3, attackbonus : { t : 2},    price : 200},
+  v : {name : 'attack dog', type : 'draggable', speed : 1, range : 3, attackbonus : { t : 2},    price : 200},
+  i : {name : 'engineer',   type : 'draggable', speed : 1, range : 1, attackbonus : { t : 2},    price : 250},
+  u : {name : 'war ship',   type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 300},
+  j : {name : 'submarine',  type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 250},
 
   f : {name : 'war factory',    type : 'building'},
   h : {name : 'home base',    type : 'building'},

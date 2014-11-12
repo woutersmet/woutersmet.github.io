@@ -130,7 +130,7 @@ Data.createGame = function(mapname, playername, callback){
     }
 
     for (var i=0;i<map.colors.length;i++){
-      game.players[map.colors[i]] = {name : false, money : 100, status : 'offline'};
+      game.players[map.colors[i]] = {name : false, money : 1000, status : 'offline'};
     }
 
     var ref = getRef('games/' + id);
