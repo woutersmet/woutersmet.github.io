@@ -6,7 +6,7 @@ $(document).ready(function(){
     var coords = keyToCoords(locationClicked);
     var row = coords[0];
     var col = coords[1];
-    console.log("Clicked grid coordinates " + row + "," + col);
+    //console.log("Clicked grid coordinates " + row + "," + col);
     var clickedUnit = window.game.grid.cells[locationClicked];
 
     if (window.draggingunit && window.mousemode == 'CLICK'){ //in click (mobile) mode, this can move a unit!
@@ -40,36 +40,59 @@ $(document).ready(function(){
 
     //deep copy, assure window.game isnt changed by our changes, just pushing to server  - see http://stackoverflow.com/questions/5364650/cloning-an-object-in-javascript
     var newgamestate = $.extend(true, {}, window.game);
+    var gridchanged = false;
+    var fromcoords = keyToCoords(from);
+    var tocoords = keyToCoords(to);
+
     //regular move
     if (to == from) {
       //no movement!
     }
     else if (typeof newgamestate.grid.cells[to] == 'undefined'){ //good to move unit
-      delete(newgamestate.grid.cells[from]);
-      newgamestate.grid.cells[to] = unit;
+      var withinMoveReach = cellWithinReach(newgamestate.grid,fromcoords[0],fromcoords[1],tocoords[0],tocoords[1],window.units[unit[1]].speed);
+      if (!withinMoveReach){
+        console.log("Tried to move unit out of its reach!");
+      }
+      else {
+        delete(newgamestate.grid.cells[from]);
+        newgamestate.grid.cells[to] = unit;
+        gridchanged = true;
+      }
     }
     else if (newgamestate.grid.cells[to][0] == 'e'){ //environment! cannot move there
         console.log("Dragging to environment! No movement allowed - just redraw grid");
-        drawGrid($('#grid'),newgamestate.grid,newgamestate.grid);
     }
     else {
-      //attack!
-      var attackedunit = newgamestate.grid.cells[to];
-      attackedunit[2] = attackedunit[2] - 1;
-
-      if (attackedunit[2] <= 0) { //unit death!
-        delete(newgamestate.grid.cells[to]);
+      //attack! can be on own units. Check if within range?
+      var withinAttackReach = cellWithinReach(newgamestate.grid,fromcoords[0],fromcoords[1],tocoords[0],tocoords[1],window.units[unit[1]].range);
+      if (!withinAttackReach){
+        console.log("Tried to attack a unit out of its reach!");
       }
       else {
-        newgamestate.grid.cells[to] = attackedunit;
+        var attackedunit = newgamestate.grid.cells[to];
+        attackedunit[2] = attackedunit[2] - 1;
+
+        if (attackedunit[2] <= 0) { //unit death!
+          delete(newgamestate.grid.cells[to]);
+        }
+        else {
+          newgamestate.grid.cells[to] = attackedunit;
+        }
+        console.log("Attack! Location " + to + " now has unit: " + attackedunit);
+        gridchanged = true;
       }
-      console.log("Attack! Location " + to + " now has unit: " + attackedunit);
-      //explode(to);
     }
 
     console.log(newgamestate);
-   Data.updateGame(newgamestate.id,newgamestate);
-   removeCircles();
+
+    //either redraw remotely (update) if grid changed, or locally if it didn't
+    if (gridchanged){
+      Data.updateGame(newgamestate.id,newgamestate);
+    }
+    else {
+      drawGrid($('#grid'),newgamestate.grid,newgamestate.grid);
+    }
+    removeCircles();
  }
 
 //used to be grid, but then circle elements hinder mouseup detection

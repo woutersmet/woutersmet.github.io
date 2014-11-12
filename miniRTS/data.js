@@ -71,7 +71,7 @@ ref.createUser({
 });
 */
 
-function makeId()
+function makeId(length)
 {
     var length = length || 5;
     var text = "";
