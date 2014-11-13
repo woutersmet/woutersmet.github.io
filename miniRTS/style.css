@@ -46,10 +46,10 @@
     margin:0 5px;
     float:left;
     border-radius:5px;
+    display:none;
   }
 
   .player {
-     display:none;
   }
 
   .online,.offline {display:block;text-decoration:none;background:black;padding:2px;}

@@ -6,18 +6,18 @@ function debug(smt){
 window.colors = {b : 'blue',r : 'red',g : 'green',y : 'yellow'};
 window.startmoney = 1000;
 window.units = {
-  s : {name : 'soldier',    type : 'draggable', speed : 1, range : 2, attackbonus : { a : 2},    price : 100},
+  s : {name : 'soldier',    type : 'draggable', speed : 1, range : 2, attackbonus : { a : 3},    price : 100},
   t : {name : 'tank',       type : 'draggable', speed : 2, range : 2, attackbonus : { s : 2},    price : 150},
-  a : {name : 'artillery',  type : 'draggable', speed : 2, range : 3, attackbonus : { t : 2},    price : 200},
+  a : {name : 'artillery',  type : 'draggable', speed : 2, range : 3, attackbonus : { t : 2, f : 2, h : 1},    price : 200},
   v : {name : 'attack dog', type : 'draggable', speed : 1, range : 3, attackbonus : { t : 2},    price : 200},
   i : {name : 'engineer',   type : 'draggable', speed : 1, range : 1, attackbonus : { t : 2},    price : 250},
   u : {name : 'war ship',   type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 300},
   j : {name : 'submarine',  type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 250},
 
-  f : {name : 'war factory',    type : 'building'},
-  h : {name : 'home base',    type : 'building'},
-  p : {name : 'sea base',    type : 'building'},
-  q : {name : 'research center',    type : 'building'},
+  f : {name : 'war factory',    type : 'building', price : 700},
+  h : {name : 'home base',    type : 'building', price : 700},
+  p : {name : 'sea base',    type : 'building', price : 700},
+  q : {name : 'research center',    type : 'building', price : 700},
 
   b : {name : 'forest',    type : 'environment' },
   x : {name : 'water',type : 'environment'},
@@ -52,6 +52,26 @@ window.units = {
   }
  }
 
+ function getVisibleTiles(grid){
+  var visible = [];
+  for (cell in grid.cells){
+    if (grid.cells.hasOwnProperty(cell)){
+      var unitdata = grid.cells[cell];
+      if (unitdata[0] !== window.playercolor) continue;
+      var range = window.units[unitdata[1]].range;
+      var coords = keyToCoords(cell);
+      var reached = getReachedCells(grid,coords[0],coords[1],range);
+
+      for (var i =0;i<reached.length;i++){
+        visible[coordsToKey(reached[i][0],reached[i][1])] = true;
+      }
+    }
+  }
+    debug("Visible tiles:");
+    debug(visible);
+    return visible;
+ }
+
  function getReachedCells(grid,row,col,range){
     var cacheKey = row + '-' + col + '-' + range;
     debug("Getting reached cells for " + cacheKey);
@@ -65,16 +85,23 @@ window.units = {
       range = parseInt(range,10);
       row = parseInt(row,10);
       col = parseInt(col,10);
-      for (var rowToCheck=row-range;rowToCheck<=row+range;rowToCheck++){
+      for (var rowToCheck=row-range, i=0;rowToCheck<=row+range;rowToCheck++,i++){
         //row within grid?
         if (rowToCheck<=0) continue;
         if (rowToCheck>grid.rows) continue;
 
-        for (var colToCheck=col-range;colToCheck<=col+range;colToCheck++){
+        for (var colToCheck=col-range,j=0;colToCheck<=col+range;colToCheck++,j++){
           //col within grid?
           if (colToCheck<=0) continue;
           if (colToCheck>grid.cols) continue;
 
+          //exclude 'corners' if range bigger than 1
+          if (range > 1){
+            if (i == 0 && j==0) continue;
+            if (i == 0 && j==2*range) continue;
+            if (i ==  2*range && j==0) continue;
+            if (i == 2*range && j==2*range ) continue;
+          }
           reached.push([rowToCheck,colToCheck]);
         }
       }
@@ -249,6 +276,7 @@ function isBuilding(unit){
 
      $(el).html('');
 
+     var visible = getVisibleTiles(grid);
      positions = grid.cells;
      for (var i=1;i<=grid.rows;i++){
         var row = $('<tr class="grid-row"></tr>');
@@ -258,27 +286,33 @@ function isBuilding(unit){
           cell.data('col', j);
 
           var key = coordsToKey(i,j);
-          if (typeof positions[key] != 'undefined'){
-            //debug("Found a unit at "+key+"!");
-             var unitdata = positions[key];
-             //debug(unitdata);
-             var unitEl = getUnitEl(unitdata);
+             if (visible[key] !== true){
+                 var unitEl = getUnitEl(['e','z',10]);
+                 cell.append(unitEl);
+             }
+             else {
+              if (typeof positions[key] != 'undefined'){
+                //debug("Found a unit at "+key+"!");
+                 var unitdata = positions[key];
+                 //debug(unitdata);
+                 var unitEl = getUnitEl(unitdata);
 
-            if (window.playercolor == unitdata[0]){
-              unitEl.addClass('user-unit');
-               if (window.mousemode == 'DRAG' && isDraggable(unitdata[1])){
-                unitEl.draggable();
-              }
-            }
+                if (window.playercolor == unitdata[0]){
+                  unitEl.addClass('user-unit');
+                   if (window.mousemode == 'DRAG' && isDraggable(unitdata[1])){
+                    unitEl.draggable();
+                  }
+                }
 
-             //debug(unitEl);
-             cell.append(unitEl);
-             cell.data('unit', unitdata);
+                 //debug(unitEl);
+                 cell.append(unitEl);
+                 cell.data('unit', unitdata);
 
-             //explosion?
-             if (typeof(prevpositions) != 'undefined' && typeof(prevpositions.cells[key]) != 'undefined' && prevpositions.cells[key][2] > unitdata[2]){
-              debug("Explosion at " + key);
-              explode(key);
+                 //explosion?
+                 if (typeof(prevpositions) != 'undefined' && typeof(prevpositions.cells[key]) != 'undefined' && prevpositions.cells[key][2] > unitdata[2]){
+                  debug("Explosion at " + key);
+                  explode(key);
+                 }
              }
           }
 

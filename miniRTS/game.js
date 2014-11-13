@@ -75,7 +75,9 @@ $(document).ready(function(){
       }
       else {
         var attackedunit = newgamestate.grid.cells[to];
-        attackedunit[2] = attackedunit[2] - 1;
+        var bonus = window.units[unit[1]].attackbonus[attackedunit[1]];
+        if (typeof bonus == 'undefined') bonus = 0;
+        attackedunit[2] = attackedunit[2] - 1 - bonus;
 
         if (attackedunit[2] <= 0) { //unit death!
           delete(newgamestate.grid.cells[to]);
@@ -126,12 +128,13 @@ function drawPlayers(players,usercolor){
   for (color in players){
     if (players.hasOwnProperty(color)){
       var name = players[color].name;
+      $('#playercontainer-'+color).show();
+      debug("Updating player " + color + ' with name '+ name);
       var playerEl = $('#player-' + color);
-      $('#playermoney-' + color).html(players[color].money +'$');
 
       if (name){
-        debug("Updating player " + color + ' with name '+ name);
-        playerEl.show().html(name);
+        $('#playermoney-' + color).html(players[color].money +'$');
+        playerEl.html(name);
         if (color == usercolor) playerEl.addClass('player-active');
 
         //online?
