@@ -167,7 +167,7 @@ function onGameChanged (snapshot) {
   if (typeof (window.game) == 'undefined') window.game = newgame;
 
   //grid
-  drawGrid($('#grid'),newgame.grid, window.game.grid, window.game.fogofwar);
+  drawGrid($('#grid'),newgame.grid, window.game.grid, (window.game.fogofwar && window.playercolor));
   window.game = newgame;
 
   //players
