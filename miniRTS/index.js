@@ -25,15 +25,17 @@ Data.getGames(function(games){
           }
           else {
             var el = $('<span style="color:'+colorname+'"><strong>'+player.name+'</strong> is playing as '+colorname+' </span> ');
+            /*
             if (player.status == 'offline'){
               el.append($('<a href="game.html?gameid=' + gameid +'&playercolor='+color+'">but offline! Join</a>'));
             }
+            */
             gameEl.append(el);
           }
         }
       }
 
-      gameEl.append($('<a class="btn btn-default" style="color:'+colorname+'" href="game.html?gameid=' + gameid +'">Join as spectator</a> '))
+      gameEl.append($('<a class="btn btn-default" href="game.html?gameid=' + gameid +'">Join as spectator</a> '))
 
       $('#gameslist').append(gameEl);
     }
