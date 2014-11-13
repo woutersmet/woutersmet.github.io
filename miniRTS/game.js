@@ -97,7 +97,7 @@ $(document).ready(function(){
       Data.updateGame(newgamestate.id,newgamestate);
     }
     else {
-      drawGrid($('#grid'),newgamestate.grid,newgamestate.grid);
+      drawGrid($('#grid'),newgamestate.grid,newgamestate.grid,window.game.fogofwar);
     }
     removeCircles();
  }
@@ -167,7 +167,7 @@ function onGameChanged (snapshot) {
   if (typeof (window.game) == 'undefined') window.game = newgame;
 
   //grid
-  drawGrid($('#grid'),newgame.grid, window.game.grid);
+  drawGrid($('#grid'),newgame.grid, window.game.grid, window.game.fogofwar);
   window.game = newgame;
 
   //players
@@ -221,7 +221,7 @@ if (typeof(urlvars.gameid) !== 'undefined'){
 function onMouseModeChange (e){
   window.mousemode = $(this).val();
   debug("Mouse mode set to: " + window.mousemode);
-  drawGrid($('#grid'),window.game.grid, window.game.grid); //redraw grid taking into account whether or not to create draggables
+  drawGrid($('#grid'),window.game.grid, window.game.grid, window.game.fogofwar); //redraw grid taking into account whether or not to create draggables
 }
 $('#modeselect').change(onMouseModeChange);
 

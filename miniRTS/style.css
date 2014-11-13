@@ -1,129 +1,43 @@
-  header {
-    background-color:#ddd;
-  }
+  /* GLOBAL */
+  header {background-color:#ddd;}
+  #sidebar{background-color:#fafafa;border:1px solid #aaa;border-radius:5px;cursor:default !important;}
 
-  .listedgame {
-    background:#ddd;
-    padding:5px;
-  }
+  /* OVERVIEW PAGES */
 
-  #players {
-    color:white;
-    background-color:#555;
-  }
+  .listedgame {background:#ddd;padding:5px;margin:10px;}
+  .listedmap {padding:10px;background-color:#ddd;margin-bottom:10px;margin-right:10px;float:left;}
 
-  .listedmap {
-    padding:10px;
-    background-color:#ddd;
-    margin-bottom:10px;
-    margin-right:10px;
-    float:left;
-  }
+  /* IN-GAME: GRID */
+  #gridcontainer {border:5px solid #231;float:left;position:relative;}
+  #grid {user-select: none;}
+  .grid td {height:28px;width:28px;border:1px solid #114422;background-color:#446633;}
+  .grid td img {z-index:20;}
+  img.user-unit {cursor:pointer;}
 
-  .shop {
-    display:none;
-  }
-
-  a.shopunit {
-    display:block;
-    float:left;
-    margin:5px;
-    background-color:#ddd;
-  }
-
-  .unitcircle {
-    position:absolute;
-    display:none;
-    opacity:0.3;
-  }
-
-   #circle-speed-1, #circle-range-1 {width:90px;}
-   #circle-speed-2, #circle-range-2 {width:150px;}
-   #circle-speed-3, #circle-range-3 {width:210px;}
-
-  .playercontainer {
-    padding:5px;
-    margin:0 5px;
-    float:left;
-    border-radius:5px;
-    display:none;
-  }
-
-  .player {
-  }
-
+  /* IN-GAME: PLAYERS */
+  .playercontainer {padding:5px;margin:0 5px;float:left;border-radius:5px;display:none;}
+  #players {color:white;background-color:#555;}
+  .player {}
+  .inviteplayer {display:none;}
   .online,.offline {display:block;text-decoration:none;background:black;padding:2px;}
-
-  .inviteplayer {
-    display:none;
-  }
-
-  .shop {float:left;}
-
-  .activeunit-graphic {
-    float:left;
-  }
-
-  .player-active {
-    font-weight:bold;
-    border:2px solid #555;
-    text-decoration:underline;
-  }
-
+  .player-active {font-weight:bold;border:2px solid #555;text-decoration:underline;}
   #playercontainer-b {background-color:#4455aa;}
   #playercontainer-r {background-color:#aa5555;}
   #playercontainer-g {background-color:#66aa88;}
   #playercontainer-y {background-color:#66aaaa;}
 
-  #activeunitcontainer {
-      border:15px solid #ddd;
-      padding:10px;
-      background:black;
-  }
+  /* IN GAME: UNIT DETAIL */;
+  .unitdetailscontainer {float:left;}
+  .shop {float:left;}
+  .activeunit-graphic {float:left;}
+  #activeunit-name-header {padding:0;margin:0 0 5px 5px;}
+  #activeunitcontainer {border:15px solid #ddd;padding:10px;background:black;}
+  .shop {display:none;}
+  a.shopunit {display:block;float:left;margin:5px;background-color:#aaa;color:black;padding:5px;border-radius:5px;}
 
-  img.user-unit {cursor:pointer;}
-
-  #gridcontainer {
-    border:15px solid #231;
-    float:left;
-    position:relative;
-  }
-
-  .explosion {
-    position:absolute;
-    height:50px;
-    z-index:500;
-  }
-
-  #grid {
-     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  .grid td {
-    height:28px;
-    width:28px;
-    border:1px solid #114422;
-    background-color:#446633;
-  }
-
-  .grid td img {
-    z-index:20;
-  }
-
-  .usership {
-    /*height:30px;*/
-    padding:3px;
-    border-radius:5px;
-    /*width:20px;*/
-    position:absolute;
-    background-color:red;
-  }
-
-  /*#container {cursor:none;}*/
-
-  #sidebar{background-color:#fafafa;border:1px solid #aaa;border-radius:5px;cursor:default !important;}
+  /* IN-GAME: EFFECTS */
+   #circle-speed-1, #circle-range-1 {width:90px;}
+   #circle-speed-2, #circle-range-2 {width:150px;}
+   #circle-speed-3, #circle-range-3 {width:210px;}
+  .unitcircle {position:absolute;display:none;opacity:0.3;user-select:none;}
+  .explosion {position:absolute;height:50px;z-index:500;}

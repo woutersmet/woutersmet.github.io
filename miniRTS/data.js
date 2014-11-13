@@ -118,6 +118,7 @@ Data.createGame = function(mapname, playername, callback){
       ],
       createdby : playername,
       grid : map.grid,
+      fogofwar : true,
       explosions : '',
       players : {
         /*

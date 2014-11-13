@@ -14,10 +14,10 @@ window.units = {
   u : {name : 'war ship',   type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 300},
   j : {name : 'submarine',  type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 250},
 
-  f : {name : 'war factory',    type : 'building', price : 700},
-  h : {name : 'home base',    type : 'building', price : 700},
-  p : {name : 'sea base',    type : 'building', price : 700},
-  q : {name : 'research center',    type : 'building', price : 700},
+  f : {name : 'war factory',    type : 'building', range : 3, price : 700},
+  h : {name : 'home base',    type : 'building', range : 3, price : 700},
+  p : {name : 'sea base',    type : 'building', range : 3, price : 700},
+  q : {name : 'research center',    type : 'building', range : 3, price : 700},
 
   b : {name : 'forest',    type : 'environment' },
   x : {name : 'water',type : 'environment'},
@@ -167,7 +167,9 @@ function drawShops(){
   for (unit in window.units){
     if (window.units.hasOwnProperty(unit)){
       var unitdata = window.units[unit];
-      var shopEl = $('<a href="#" class="shopunit">'+unitdata.name+'<br />'+unitdata.price+'$</a>');
+      var shopEl = $('<a href="#" class="shopunit"></a>');
+      shopEl.append($('<img src="img/unitgraphics/tiny_'+unit+'.png" />'));
+      shopEl.append($('<span>'+unitdata.name+'<br />'+unitdata.price+'$</span>'));
       shopEl.data('unit',unit);
       shopEl.click(onShopElClicked);
       if (unitdata.type == 'draggable'){
@@ -270,13 +272,19 @@ function isBuilding(unit){
     return location;
  }
 
- function drawGrid(el, grid, prevpositions){
+ function drawGrid(el, grid, prevpositions, fog){
   debug("Redrawing grid... ");
   debug(grid);
 
+  var fog = fog || false;
+
      $(el).html('');
 
-     var visible = getVisibleTiles(grid);
+     var visible;
+     if (fog){
+      visible = getVisibleTiles(grid);
+     }
+
      positions = grid.cells;
      for (var i=1;i<=grid.rows;i++){
         var row = $('<tr class="grid-row"></tr>');
@@ -286,7 +294,7 @@ function isBuilding(unit){
           cell.data('col', j);
 
           var key = coordsToKey(i,j);
-             if (visible[key] !== true){
+             if (fog && visible[key] !== true){
                  var unitEl = getUnitEl(['e','z',10]);
                  cell.append(unitEl);
              }
@@ -313,8 +321,8 @@ function isBuilding(unit){
                   debug("Explosion at " + key);
                   explode(key);
                  }
-             }
-          }
+              }
+            }
 
           row.append(cell);
         }
@@ -329,6 +337,7 @@ function isBuilding(unit){
   $('#activeunit-name').css('color', window.colors[building[0]]);
   $('#activeunit-graphic').attr('src',getUnitGraphicPath(building[1]));
 
+
   if (building[1] == 'f'){
     debug("War factory! Showing unit shop");
     $('#shop-draggables').show();
@@ -336,6 +345,8 @@ function isBuilding(unit){
   else {
     $('#shop-draggables').hide();
   }
+
+  /*
   if (building[1] == 'h'){
     debug("Home base! Showing building shop");
     $('#shop-buildings').show();
@@ -343,6 +354,7 @@ function isBuilding(unit){
   else {
     $('#shop-buildings').hide();
   }
+  */
  }
 
  function removeExplosions(){
