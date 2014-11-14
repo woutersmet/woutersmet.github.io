@@ -11,7 +11,7 @@
   <script src='https://code.jquery.com/ui/1.11.2/jquery-ui.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-  <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.0.3/firebase.js"></script>
   <script src='data.js'></script>
   <script src='core.js'></script>
   <script src='index.js'></script>
@@ -52,16 +52,34 @@
 
 <div class="container" id="container">
 
+  <div class="col-md-4">
+  <h2>Tiny RTS!</h2>
+  <img src="img/teaser6.png" style="max-width:100%;float:right;" />
   <p>
-    Drag, drop and click tiny tanks and soldiers on a grid map to destroy your enemy!
-    This is Wouter's experiment in FireBase.io.
-  </p>
-  <p>
-    You can join an active game below or <a href="newgame.html">create a new game</a> yourself.
+    Build and move tiny tanks and soldiers on a grid map to destroy your enemy! Real-time multiplayer RTS.
   </p>
 
-  <h2>Join an active game</h2>
+  <p>
+    You can join an active game or <a href="newgame.html">create a new game</a> yourself.
+  </p>
 
+  <p>
+    <small>This is <a href="http://www.woutersmet.com" target="_blank">Wouter</a>'s experiment in <a href="http://www.firebase.com" target="_blank">FireBase</a> (<a href="https://woutertest.firebaseio.com/" target="_blank">DB link</a>).</small>
+  </p>
+
+  </div>
+  <div class="col-md-8">
+
+  <h2>Join active game</h2>
+
+  <form method="get">
+      Enter a game id:
+      <input name="gameid" type="text" class="form-control" style="display:inline;width:100px;" />
+      <input type="submit" class="btn btn-primary" value="Join game" />
+      or <a href="creategame.html">Create a new game</a>
+  </form>
+
+  <h4>Recently created games</h4>
   <div id="nogamesfound">
     No games found. <a href="newgame.html">Start a new game</a>
   </div>
@@ -70,6 +88,7 @@
 
   </div>
 
+  </div>
 </div>
 </body>
 </html>

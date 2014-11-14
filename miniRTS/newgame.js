@@ -26,7 +26,7 @@ $('#creategameform').submit(function(e){
   Data.createGame(mapname, playername, function(game){
     console.log("Game created! Navigate to it?");
     console.log("Game id: " + game.id);
-    alert("Game created! It will show up in the games list where you can join as the color you choose");
+    alert("Game created - joining as " +window.colors[color]+ "!");
     document.location.href = 'game.html?gameid=' + game.id + '&playercolor='+color;
   });
 });

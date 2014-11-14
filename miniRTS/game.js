@@ -132,11 +132,13 @@ function drawPlayers(players,usercolor){
       debug("Updating player " + color + ' with name '+ name);
       var playerEl = $('#player-' + color);
 
+      var inviteEl = $('#inviteplayer-'+color);
+      var joinEl = $('#joinasplayer-'+color);
+
       if (name){
         $('#playermoney-' + color).html(players[color].money +'$');
         playerEl.html(name);
         if (color == usercolor) playerEl.addClass('player-active');
-
         //online?
         if (players[color].status == 'online'){
           playerEl.append($('<span class="online">online</span>'));
@@ -149,16 +151,35 @@ function drawPlayers(players,usercolor){
         debug(color + " is an empty slot!");
         var name = '[Waiting for player]';
         playerEl.show().html(name);
-        var inviteEl = $('#inviteplayer-'+color);
+        var invitelink = 'game.html?gameid=' + window.game.id + '&playercolor=' + color;
+        joinEl.attr('href', invitelink);
         inviteEl.click(function(e){
           e.preventDefault();
-          var invitelink = 'game.html?gameid=' + window.game.id + '&playercolor=' + color;
           prompt("Copy-paste this link to invite " + window.colors[color] + ' player:',invitelink);
         });
         inviteEl.show();
       }
     }
   }
+}
+
+function checkForWinner(grid,players){
+  //which colors are present?
+  var colorsInGrid = [];
+  for (key in grid.cells){
+     var color = grid.cells[key][0];
+     debug("colorsInGrid index: " + colorsInGrid.indexOf(colorsInGrid));
+     if (color != 'e' && colorsInGrid.indexOf(color) == -1) colorsInGrid.push(color);
+  }
+
+  debug("Grid contains colors:" + colorsInGrid);
+  for (color in players){
+      if (colorsInGrid.indexOf(color) == -1){
+        //check if each player represented on grid?
+      }
+  }
+
+  return false;
 }
 
 function onGameChanged (snapshot) {

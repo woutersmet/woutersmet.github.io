@@ -14,7 +14,7 @@ Data.getGames(function(games){
     for (gameid in games){
       if (!games.hasOwnProperty(gameid)) continue;
       var game = games[gameid];
-      var gameEl = $('<div class="listedgame"><strong>Game '+gameid+' on map '+game.map+'</strong><br /> Created by <strong>'+game.createdby+'</strong> on '+game.created+'<br></div>');
+      var gameEl = $('<div class="listedgame"><strong>'+game.map+'</strong> started by <strong>'+game.createdby+'</strong><br />Game id: '+gameid+' - created: '+game.created+'<br></div>');
 
       for (color in game.players){
         if (game.players.hasOwnProperty(color)){
@@ -35,7 +35,7 @@ Data.getGames(function(games){
         }
       }
 
-      gameEl.append($('<a class="btn btn-default" href="game.html?gameid=' + gameid +'">Join as spectator</a> '))
+      gameEl.append($('<a class="pull-right" href="game.html?gameid=' + gameid +'">Join as spectator</a> '))
 
       $('#gameslist').append(gameEl);
     }

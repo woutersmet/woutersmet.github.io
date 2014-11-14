@@ -5,7 +5,7 @@ var Data = {};
 Data.baseUrl = 'https://woutertest.firebaseio.com/miniRTS/';
 
 function doPresenceStuff(gameid,usercolor){
-  console.log("Doing presence stuff...");
+  debug("Doing presence stuff...");
 
   //online presence stuff?
   //source: https://www.firebase.com/blog/2013-06-17-howto-build-a-presence-system.html
@@ -23,7 +23,7 @@ function makeId(length)
 {
     var length = length || 5;
     var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
 
     for( var i=0; i < length; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -37,7 +37,7 @@ function getRef(section){
 }
 
 Data.saveMap = function (mapname, createdby, grid){
-  console.log("Will save map with name " + mapname);
+  debug("Will save map with name " + mapname);
   // CREATE A REFERENCE TO FIREBASE
   var mapRef = getRef('maps');
 
@@ -45,10 +45,10 @@ Data.saveMap = function (mapname, createdby, grid){
   var colors = [];
   for (key in grid.cells){
      var color = grid.cells[key][0];
-     console.log("Colors index: " + colors.indexOf(colors));
+     debug("Colors index: " + colors.indexOf(colors));
      if (color != 'e' && colors.indexOf(color) == -1) colors.push(color);
   }
-  console.log("Map contains colors:" + colors);
+  debug("Map contains colors:" + colors);
 
   var values = {
     grid : grid,
@@ -61,7 +61,7 @@ Data.saveMap = function (mapname, createdby, grid){
 }
 
 Data.getMaps = function(callback){
-  mapRef = getRef('maps');
+  var mapRef = getRef('maps');
 
   mapRef.on('child_added', function(snapshot) {
         var map = snapshot.val();
@@ -71,43 +71,45 @@ Data.getMaps = function(callback){
 
 //see https://www.firebase.com/docs/web/guide/retrieving-data.html
 Data.getGames = function (callback){
-  console.log("Getting Games");
-    var ref = getRef('games/');
+    debug("Getting Games");
 
-    ref.on("value", function(data) {
+    var ref = getRef('games');
+    debug(ref);
+    debug(ref.orderByChild);
+    ref.orderByChild("createdtime").limitToLast(2).on("value", function(data) {
       var games = data.val();
-      console.log("Loaded games:");
-      console.log(games);
+      debug("Loaded games:");
+      debug(games);
       callback(games);
   });
 }
 
 //see https://www.firebase.com/docs/web/guide/retrieving-data.html
 Data.getMap = function (mapname, callback){
-  console.log("Getting map with name " + mapname);
+  debug("Getting map with name " + mapname);
     var ref = getRef('maps/' + mapname);
 
     ref.once("value", function(data) {
       var map = data.val();
-      console.log("Loaded map:");
-      console.log(map);
+      debug("Loaded map:");
+      debug(map);
       callback(map);
   });
 }
 
 Data.createGame = function(mapname, playername, callback){
-  console.log("Creating game with map " + mapname);
+  debug("Creating game with map " + mapname);
 
   Data.getMap(mapname,function(map){
-    console.log("Got our map! Now we can init game with it");
-    console.log(map);
+    debug("Got our map! Now we can init game with it");
+    debug(map);
     var id = makeId();
     var date = new Date();
     var game = {
       id : id,
       created : date.toString(),
-      createdtime : (date.getTime() / 1000),
-      createddate : date.getDate(),
+      createdtime : Math.floor(date.getTime() / 1000),
+      createddate : date.getYear() + '-' + date.getDate() + '-' + date.getDay(),
       map : mapname,
       log : [
         {
@@ -119,15 +121,7 @@ Data.createGame = function(mapname, playername, callback){
       createdby : playername,
       grid : map.grid,
       fogofwar : true,
-      explosions : '',
-      players : {
-        /*
-        b : {name : playername, money : 100},
-        r : {name : false, money : 100},
-        g : {name : false, money : 100},
-        y : {name : false, money : 100}
-        */
-      }
+      players : {}
     }
 
     for (var i=0;i<map.colors.length;i++){
@@ -141,19 +135,19 @@ Data.createGame = function(mapname, playername, callback){
 }
 
 Data.updateGame = function (gameid, newgame){
-  console.log("Updating game grid for game " + gameid);
+  debug("Updating game grid for game " + gameid);
   var ref = getRef('games/' + gameid);
   ref.set(newgame);
 }
 
 Data.getGame = function (gameid, callback){
-  console.log("Getting game with id " + gameid);
+  debug("Getting game with id " + gameid);
   var ref = getRef('games/' + gameid);
 
     ref.once("value", function(data) {
       var game = data.val();
-      console.log("Loaded game:");
-      console.log(game);
+      debug("Loaded game:");
+      debug(game);
       callback(game);
   });
 }
