@@ -132,6 +132,8 @@ function drawPlayers(players,usercolor){
       debug("Updating player " + color + ' with name '+ name);
       var playerEl = $('#player-' + color);
 
+
+      var invitelink = 'game.html?gameid=' + window.game.id + '&playercolor=' + color;
       var inviteEl = $('#inviteplayer-'+color);
       var joinEl = $('#joinasplayer-'+color);
 
@@ -144,6 +146,7 @@ function drawPlayers(players,usercolor){
           playerEl.append($('<span class="online">online</span>'));
         }
         else {
+          joinEl.show().attr('href', invitelink);
           playerEl.append($('<span class="offline">offline</span>'));
         }
       }
@@ -151,8 +154,7 @@ function drawPlayers(players,usercolor){
         debug(color + " is an empty slot!");
         var name = '[Waiting for player]';
         playerEl.show().html(name);
-        var invitelink = 'game.html?gameid=' + window.game.id + '&playercolor=' + color;
-        joinEl.attr('href', invitelink);
+        joinEl.show().attr('href', invitelink);
         inviteEl.click(function(e){
           e.preventDefault();
           prompt("Copy-paste this link to invite " + window.colors[color] + ' player:',invitelink);

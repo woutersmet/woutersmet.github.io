@@ -1,5 +1,7 @@
   /* GLOBAL */
   header {background-color:#ddd;}
+
+  footer {background-color:#eee;}
   #sidebar{background-color:#fafafa;border:1px solid #aaa;border-radius:5px;cursor:default !important;}
 
   /* OVERVIEW PAGES */
@@ -18,7 +20,7 @@
   .playercontainer {padding:5px;margin:0 5px;float:left;border-radius:5px;display:none;}
   #players {color:white;background-color:#555;}
   .player {}
-  .inviteplayer {display:none;}
+  .inviteplayer,.joinasplayer {display:none;}
   .online,.offline {display:block;text-decoration:none;background:black;padding:2px;}
   .player-active {font-weight:bold;border:2px solid #555;text-decoration:underline;}
   #playercontainer-b {background-color:#4455aa;}
