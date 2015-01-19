@@ -77,35 +77,42 @@
           <p>Dashboard</p>
 
           <div ng-app="" ng-controller="ContactController">
-          <h2 class="sub-header">Contacts ({{contactcount}})</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Company</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
+            <h2 class="sub-header">Contacts ({{contactcount}})</h2>
 
-                <tr style="background:#ffa;">
-                  <td></td>
-                  <td><input type="text" placeholder="Name" ng-model="name" /></td>
-                  <td><input type="text" placeholder="Company" ng-model="company" /></td>
-                  <td><input type="text" placeholder="Email" ng-model="email" /></td>
-                  <td><button class="btn btn-primary" ng-click="add()">Quick Add</button>
-                </tr>
-                <tr ng-repeat="contact in contacts">
-                  <td></td>
-                  <td>{{contact.name}}</td>
-                  <td>{{contact.company}}</td>
-                  <td>{{contact.email}}</td>
-                  <td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+
+            <form ng-submit="saveContact()">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr style="background:#ffa;">
+                    <td></td>
+                    <td><input type="text" placeholder="Name" ng-model="newcontact.name" /></td>
+                    <td><input type="text" placeholder="Company" ng-model="newcontact.company" /></td>
+                    <td><input type="text" placeholder="Email" ng-model="newcontact.email" /></td>
+                    <td><button class="btn btn-primary" ng-click="add()">Quick Save</button>
+                  </tr>
+                  <tr ng-repeat="contact in contacts">
+                    <td></td>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.company}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>
+                       <a  href="#" ng-click="edit(contact.id)">edit</a> |
+                        <a href="#" ng-click="delete(contact.id)">delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </form>
           </div>
 
           </div>
@@ -114,28 +121,50 @@
     </div>
 
     <script>
-    function ContactController($scope) {
+var uid = 1;
+
+function ContactController($scope) {
+
     $scope.contacts = [
-    {name : "Wouter Smet", company : "Apple", email : "viralpatel.net@gmail.com"},
-    {name : "Bill Gates", company : "Microsoft", email : "bill@email.com"}
+        {id:0, 'name': 'Viral', 'email':'hello@gmail.com', 'company': 'testcompany'}
     ];
 
     $scope.contactcount = $scope.contacts.length;
 
-      $scope.add = function() {
-          alert('adding!');
-          var contact = {
-            name : $scope.name,
-            company : $scope.company,
-            email : $scope.email,
-          }
+    $scope.saveContact = function() {
 
-          $scope.contacts.push(contact);
+        if($scope.newcontact.id == null) {
+             $scope.newcontact.id = uid++;
+             $scope.contacts.push($scope.newcontact);
+             $scope.contactcount++;
+        } else {
+             for(i in $scope.contacts) {
+                    if($scope.contacts[i].id == $scope.newcontact.id) {
+                        $scope.contacts[i] = $scope.newcontact;
+                    }
+             }
+        }
+        $scope.newcontact = {};
+    }
 
-          $scope.newcontact = "";
-          $scope.contactcount++;
-      }
-  }
+    $scope.delete = function(id) {
+        for(i in $scope.contacts) {
+            if($scope.contacts[i].id == id) {
+                $scope.contacts.splice(i,1);
+                $scope.newcontact = {};
+                $scope.contactcount--;
+            }
+        }
+    }
+
+    $scope.edit = function(id) {
+        for(i in $scope.contacts) {
+            if($scope.contacts[i].id == id) {
+                $scope.newcontact = angular.copy($scope.contacts[i]);
+            }
+        }
+    }
+}
 </script>
   </body>
 </html>
