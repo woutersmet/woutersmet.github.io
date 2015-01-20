@@ -15,7 +15,7 @@
   <script src="js/firebase.js"></script>
   <script src='js/data.js'></script>
   <script src='js/core.js'></script>
-  <script src='js/index.js'></script>
+  <script src='js/settings.js'></script>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -27,7 +27,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-app="objectsApp">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -53,6 +53,17 @@
       </div>
     </nav>
 
+      <div class="container" style="background:#fafafa;">
+        <ul class="nav nav-pills" ng-controller="GlobalNavCtrl">
+            <li role="presentation" class="active"><a href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+              {{ appname }} Home
+              </a></li>
+            <li ng-repeat="object in navobjects" role="presentation"><a href="#">{{object.pluralname | uppercase}}</a></li>
+            <li><a href="#">+</a></li>
+          </ul>
+      </div>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -66,111 +77,35 @@
             <li><a href="">Nav item</a></li>
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
           </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Settings</h1>
 
-          <p>Dashboard</p>
+          <!--
+          <div class="alert alert-info">
+            <h4>Define objects</h4>
+            <p>
+              Define the objects that will make up your app. For example:<br>
+              <ul>
+                <li>Contacts, companies, activities and deals</li>
+                <li>Invoices, estimates and payments</li>
+                <li>Projects, tasks and milestones</li>
+              </ul>
+            </p>
+          </div>
+          -->
 
-          <div ng-app="" ng-controller="ContactController">
+          <div>
+            <div ng-view="">
 
-            <h2 class="sub-header">Contacts ({{contactcount}})</h2>
-
-            <div class="table-responsive">
-
-            <form ng-submit="saveContact()">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Company</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <tr style="background:#ffa;">
-                    <td></td>
-                    <td><input type="text" placeholder="Name" ng-model="newcontact.name" /></td>
-                    <td><input type="text" placeholder="Company" ng-model="newcontact.company" /></td>
-                    <td><input type="text" placeholder="Email" ng-model="newcontact.email" /></td>
-                    <td><button class="btn btn-primary" ng-click="add()">Quick Save</button>
-                  </tr>
-                  <!-- ng-repeat contact in contats -->
-                  <tr ng-repeat="contact in contacts">
-                    <td></td>
-                    <td>{{contact.name}}</td>
-                    <td>{{contact.company}}</td>
-                    <td>{{contact.email}}</td>
-                    <td>
-                       <a  href="#" ng-click="edit(contact.id)">edit</a> |
-                        <a href="#" ng-click="delete(contact.id)">delete</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              </form>
+            </div>
           </div>
 
-          </div>
         </div>
       </div>
     </div>
 
-    <script>
-
-    /*
-      * contacts list
-     */
-
-var uid = 1;
-
-function ContactController($scope) {
-
-    $scope.contacts = [
-        {id:0, 'name': 'Viral', 'email':'hello@gmail.com', 'company': 'testcompany'}
-    ];
-
-    $scope.contactcount = $scope.contacts.length;
-
-    $scope.saveContact = function() {
-        if($scope.newcontact.id == null) {
-             $scope.newcontact.id = uid++;
-             $scope.contacts.push($scope.newcontact);
-             $scope.contactcount++;
-        } else {
-             for(i in $scope.contacts) {
-                    if($scope.contacts[i].id == $scope.newcontact.id) {
-                        $scope.contacts[i] = $scope.newcontact;
-                    }
-             }
-        }
-        $scope.newcontact = {};
-    }
-
-    $scope.delete = function(id) {
-        for(i in $scope.contacts) {
-            if($scope.contacts[i].id == id) {
-                $scope.contacts.splice(i,1);
-                $scope.newcontact = {};
-                $scope.contactcount--;
-            }
-        }
-    }
-
-    $scope.edit = function(id) {
-        for(i in $scope.contacts) {
-            if($scope.contacts[i].id == id) {
-                $scope.newcontact = angular.copy($scope.contacts[i]);
-            }
-        }
-    }
-}
-</script>
   </body>
 </html>
