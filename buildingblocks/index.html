@@ -42,9 +42,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="profile.html">Profile</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -77,6 +77,7 @@
           <p>Dashboard</p>
 
           <div ng-app="" ng-controller="ContactController">
+
             <h2 class="sub-header">Contacts ({{contactcount}})</h2>
 
             <div class="table-responsive">
@@ -100,6 +101,7 @@
                     <td><input type="text" placeholder="Email" ng-model="newcontact.email" /></td>
                     <td><button class="btn btn-primary" ng-click="add()">Quick Save</button>
                   </tr>
+                  <!-- ng-repeat contact in contats -->
                   <tr ng-repeat="contact in contacts">
                     <td></td>
                     <td>{{contact.name}}</td>
@@ -121,6 +123,11 @@
     </div>
 
     <script>
+
+    /*
+      * contacts list
+     */
+
 var uid = 1;
 
 function ContactController($scope) {
@@ -132,7 +139,6 @@ function ContactController($scope) {
     $scope.contactcount = $scope.contacts.length;
 
     $scope.saveContact = function() {
-
         if($scope.newcontact.id == null) {
              $scope.newcontact.id = uid++;
              $scope.contacts.push($scope.newcontact);

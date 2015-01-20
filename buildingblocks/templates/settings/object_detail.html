@@ -1,0 +1,25 @@
+<h2>Object detail: {{ object.name }} </h2>
+<a href="#ObjectList">&larr; Back to list</a>
+
+<h3>Info</h3>
+
+<p>
+This is the detail of object # {{ object.id }}
+</p>
+
+<h3>Fields</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Label</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="field in object.fields">
+        <td>{{field.type}}</td>
+        <td>{{field.label}}</td>
+        <td>{{field.name}}</td>
+    </tr>
+</table>

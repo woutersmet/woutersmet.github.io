@@ -1,0 +1,11 @@
+<h2>Object List</h2>
+
+{{ message }}
+
+<table class="table">
+    <tr ng-repeat="object in objects">
+        <td>{{ object.id }}</td>
+        <td>{{ object.name }}</td>
+        <td><a href="#ViewDetail/{{object.id}}">Detail</a></td>
+    </tr>
+</table>
