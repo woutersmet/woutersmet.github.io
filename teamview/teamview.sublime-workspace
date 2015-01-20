@@ -564,6 +564,17 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/tadabon/meta_resources/materials/bonnen effectjes.docx",
+		"/Applications/MAMP/htdocs/tadabon/static/css/bootstrap.css",
+		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.developer.html",
+		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/locale.php",
+		"/Applications/MAMP/htdocs/tadabon/controllers/admin/logsController.php",
+		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/link-parse-opml.php",
+		"/Applications/MAMP/htdocs/tadabon/controllers/shopmanager/layoutController.php",
+		"/Applications/MAMP/htdocs/tadabon/controllers/admin/developerController.php",
+		"/Applications/MAMP/htdocs/tadabon/classes/class.invoice.php",
+		"/Applications/MAMP/htdocs/tadabon/classes/class.order.php",
+		"/Users/woutersmet/Desktop/woutersmet.github.io/buildingblocks/index.js",
 		"/Applications/MAMP/htdocs/engagor/app/protected/class/services/fastspring/Subscriptions.php",
 		"/Applications/MAMP/htdocs/engagor/app/protected/class/payments/Subscriptions.php",
 		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Account.php",
@@ -590,7 +601,6 @@
 		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Currency.php",
 		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Curdbee.php",
 		"/Applications/MAMP/htdocs/engagor/api/classes/locales/sq_al.php",
-		"/Applications/MAMP/htdocs/tadabon/static/css/bootstrap.css",
 		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/bookmark.php",
 		"/Applications/MAMP/htdocs/tadabon/bumptemplates.sh",
 		"/Applications/MAMP/htdocs/tadabon/templates/site.cssincludes.html",
@@ -624,11 +634,9 @@
 		"/Applications/MAMP/htdocs/tadabon/lib/phpqrcode/VERSION",
 		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.layout.html",
 		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.giftvouchers.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.developer.html",
 		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.addtocartformvoucher.html",
 		"/Applications/MAMP/htdocs/tadabon/controllers/public/storefrontController.php",
 		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.cart.html",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.order.php",
 		"/Applications/MAMP/htdocs/tadabon/classes/class.pdf.php",
 		"/Applications/MAMP/htdocs/tadabon/classes/class.cronjob.php",
 		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/class-wp-ajax-response.php",
@@ -652,7 +660,6 @@
 		"/Applications/MAMP/htdocs/tadabon/blog/.qidb/Filedigests",
 		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/jetpack/languages/jetpack-fa_IR.mo",
 		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.deliveryfieldsinput.html",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/developerController.php",
 		"/Applications/MAMP/htdocs/tadabon/controllers/shopmanager/ordersController.php",
 		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.orders.one.html",
 		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.orders.html",
@@ -682,16 +689,9 @@
 		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/ms-delete-site.php",
 		"/Applications/MAMP/htdocs/tadabon/controllers/admin/invoicesController.php",
 		"/Applications/MAMP/htdocs/tadabon/index.php",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.invoice.php",
 		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/templates/head.php",
 		"/Users/woutersmet/Desktop/bounced emails.csv",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-signup.php",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-pass.php",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/lib/widgets.php",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/node_modules/grunt-contrib-less/node_modules/less/build/browser-header.js",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/.sass-cache/37635e234e2eb315e45e1483234e328a4c9e1ae5/_hyphenation.scssc",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/.sass-cache/bf9ef6e4b1ffabe4a88de906f9c239af086bed23/_home.scssc",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/.sass-cache/bf9ef6e4b1ffabe4a88de906f9c239af086bed23/_plans.scssc"
+		"/Applications/MAMP/htdocs/engagor-wordpress/wp-signup.php"
 	],
 	"find":
 	{
@@ -837,6 +837,68 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"invoicepdfurl",
+			"filepa",
+			"promptsave",
+			"{email :",
+			"email",
+			"var3",
+			"var2",
+			"Header",
+			"<td>",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"invoice__c",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"estimate",
+			"Estimate",
+			"Not Ch",
+			"Edit | Del",
+			"\">",
+			"<option",
+			"<inpu",
+			"id=\"",
+			"\">",
+			"value=\"",
+			"ue=\"",
+			"Nog geen bestaande ondergrond op dit moment",
+			"Fermacell",
+			"Egaline",
+			"Fermacell",
+			"Andere",
+			"Leverancier",
+			"Bedrijf",
+			"Architect",
+			"Particulier",
+			"00N240000027q0s",
+			"00N240000027q6k",
+			"Andere",
+			"Particulier",
+			"country_code",
+			"<tex",
+			"textarea",
+			"id",
 			"order by",
 			"<th>account executive",
 			"issue",
@@ -902,69 +964,7 @@
 			"deliverylocationid",
 			"placedbyuserid",
 			"insertid",
-			"deliveryaddress",
-			"packagedvoucher",
-			"packagedvoucherrecipient",
-			"grouporsolo",
-			"Unqualified",
-			"Right direction",
-			"@",
-			"wp_head",
-			"needle",
-			"wp_head",
-			"n wp_head",
-			"wp_head()",
-			"<head>",
-			"startyear",
-			"start",
-			"string",
-			"start",
-			"Not Checked",
-			"hasGiverDelivery",
-			"hasgiverdelivery",
-			"hasGiverDelivery",
-			"hasHomeDelivery",
-			"eee",
-			"aaa",
-			"red",
-			"white",
-			"carttable",
-			"selectEl",
-			"el",
-			"deliverymethod",
-			"checked",
-			"assignPageVars",
-			"giver",
-			"deliverymethod",
-			"packagingcode",
-			"show",
-			"Leveringsadres",
-			"packaginginput",
-			"EMAIL",
-			"SENDER",
-			"packaginginput",
-			"valid",
-			"deliverymethod",
-			"orders.add",
-			"add",
-			"printoremail",
-			"printoremailselect",
-			"printoremail",
-			"addtocartform",
-			"printoremail",
-			"snailmail",
-			"SNAILMAIL",
-			"snailmail",
-			"SNAILMAIL",
-			"printoremail",
-			"div",
-			"optioncode",
-			"'code'",
-			"'name'",
-			"packagingname",
-			"Enveloppe",
-			"label",
-			"packagingoptions"
+			"deliveryaddress"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1036,7 +1036,7 @@
 	{
 		"height": 124.0
 	},
-	"project": "buildingblocks.sublime-project",
+	"project": "teamview.sublime-project",
 	"replace":
 	{
 		"height": 50.0
@@ -1047,6 +1047,42 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"readme",
+				"README.md"
+			],
+			[
+				"betalingcon",
+				"controllers/public/betalingController.php"
+			],
+			[
+				"admin.invoices.one",
+				"templates/admin/admin.invoices.one.html"
+			],
+			[
+				"admin.invoice",
+				"templates/admin/admin.invoices.html"
+			],
+			[
+				"admin.deve",
+				"templates/admin/admin.developer.html"
+			],
+			[
+				"developercon",
+				"controllers/admin/developerController.php"
+			],
+			[
+				"style.",
+				"css/style.css"
+			],
+			[
+				"index.js",
+				"js/index.js"
+			],
+			[
+				"core.js",
+				"core.js"
+			],
 			[
 				"subscriptions.",
 				"app/protected/class/subscription/component/Subscriptions.php"
@@ -1522,42 +1558,6 @@
 			[
 				"class.conver",
 				"classes/class.conversation.php"
-			],
-			[
-				"global.css",
-				"static/css/global.css"
-			],
-			[
-				"datatabl",
-				"pages/data.browse.datatable.php"
-			],
-			[
-				"beforee",
-				"beforeeachpage.php"
-			],
-			[
-				"class.util",
-				"classes/class.util.php"
-			],
-			[
-				"bottom",
-				"pages/bottom.php"
-			],
-			[
-				"dbexpo",
-				"meta_resources/db export.txt"
-			],
-			[
-				"class.de",
-				"classes/class.debug.php"
-			],
-			[
-				"parse",
-				"lib/language/NEWSTYLElang_parse_questions_onthology.json"
-			],
-			[
-				"parsep",
-				"lib/language/NEWSTYLElang_parse_questions_relationsandpreferences.json"
 			]
 		],
 		"width": 0.0

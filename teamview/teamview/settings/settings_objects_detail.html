@@ -1,0 +1,58 @@
+<ul class="nav nav-pills">
+    <li role="presentation"><a href="#Settings/Objects/List">Objects list</a></li>
+    <li role="presentation" class="active"><a href="#Settings/Objects/ViewDetail/{{object.id}}">Detail: {{ object.name }}</a></li>
+    <li role="presentation"><a href="#Settings/Objects/AddNew">+ Add new</a></li>
+</ul>
+
+<h2>Object detail: {{ object.name }} </h2>
+<a href="#ObjectList">&larr; Back to list</a>
+
+<h3>Info</h3>
+
+<p>
+This is the detail of object # {{ object.id }}
+</p>
+
+<h3>Settings</h3>
+<table class="table table-striped">
+    <tbody>
+    <tr>
+        <th>Created</th>
+        <td>2014-01-15</td>
+    </tr>
+</table>
+
+<h3>Fields</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Label</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="field in object.fields">
+        <td>{{field.label}}</td>
+        <td>{{field.type}}</td>
+        <td>{{field.name}}</td>
+    </tr>
+</table>
+
+<h3>Layouts</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="layout in object.layouts">
+        <td>{{layout.type}}</td>
+        <td>{{layout.label}}</td>
+        <td>{{layout.name}}</td>
+    </tr>
+</table>
+
+<h3>Site forms</h3>

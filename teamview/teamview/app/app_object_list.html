@@ -1,0 +1,20 @@
+<h2>Object List: {{object.pluralname}}</h2>
+
+<a href="#App/{{object.pluralname}}/AddNew" class="pull-right btn btn-primary">+ New {{object.name}}</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="object in objects">
+        <td>{{ object.id }}</td>
+        <td><a href="#App/{{object.pluralname}}/{{object.id}}">{{ object.name }}</a></td>
+        <td><a href="#App/{{object.pluralname}}/{{object.id}}">Detail</a></td>
+    </tr>
+    </tbody>
+</table>
