@@ -34,8 +34,7 @@
 
   <body>
 
-    <div ng-controller="TVAppNavCtrl">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="TVAppNavCtrl">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -47,10 +46,13 @@
           <a class="navbar-brand" href="#">TeamView: {{ appname }}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li ng-repeat="object in navobjects" ><a href="#app/{{object.pluralname}}">{{object.pluralname | uppercase}}</a></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="settings.html">Settings</a></li>
-            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li><a href="#profile">Profile</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -58,19 +60,6 @@
         </div>
       </div>
     </nav>
-
-      <div class="container" style="background:#fafafa;">
-        <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#">
-            <span class="glyphicon glyphicon-cog"></span>
-              {{ appname }} Home
-              </a></li>
-            <li ng-repeat="object in navobjects" role="presentation"><a href="#app/{{object.pluralname}}">{{object.pluralname | uppercase}}</a></li>
-            <li><a href="#">+</a></li>
-          </ul>
-      </div>
-
-    </div>
 
     <div class="container-fluid">
       <div class="row">

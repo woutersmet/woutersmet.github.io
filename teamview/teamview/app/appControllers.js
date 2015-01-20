@@ -18,5 +18,6 @@
   objectsApp.controller('TVAppIndexController', function($scope, $routeParams){
     $scope.message = 'App dashboard';
 
+    $scope.appname = global.app.appname;
     $scope.widgets = global.app.widgets;
   });

@@ -18,5 +18,5 @@
 
   objectsApp.controller('TVSettingsObjectListController', function($scope) {
       $scope.objects = global.app.objects;
-      $scope.message = 'This is Show orders screen';
+      $scope.message = 'This is object list settings';
   });
