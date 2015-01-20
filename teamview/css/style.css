@@ -102,3 +102,27 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+/*
+* wouter custom stuff
+ */
+
+.widget {
+  border:1px solid #ddd;
+  background:#fafafa;
+  border-radius:20px;
+  min-height:200px;
+  text-align:center;
+}
+
+.widget a {text-decoration:none;}
+
+.widget .severity-low {color:#8d8;}
+.widget .severity-medium {color:#fa5;}
+.widget .severity-high {color:#f55;}
+
+.bignumber {
+  font-size:100px;
+  font-weight:bold;
+  color:#aaa;
+}

@@ -7,22 +7,26 @@
       /*
       SETTINGS
        */
-        when('/Settings',
+        when('/settings',
           {templateUrl: 'teamview/settings/settings_index.html',controller: 'TVSettingsController'}).
-        when('/Settings/Objects/List',
+        when('/settings/objects/list',
           {templateUrl: 'teamview/settings/settings_objects_list.html',controller: 'TVSettingsObjectListController'}).
-        when('/Settings/Objects/ViewDetail/:objectId',
+        when('/settings/objects/detail/:objectid',
           {templateUrl: 'teamview/settings/settings_objects_detail.html',controller: 'TVSettingsObjectDetailController'}).
-        when('/Settings/Objects/AddNew',
+        when('/settings/objects/addnew',
           {templateUrl: 'teamview/settings/settings_objects_addnew.html',controller: 'TVSettingsObjectAddNewController'}).
       /*
       * APP
        */
-      when('/App/:pluralname',
+      when('/app',
+          {templateUrl: 'teamview/app/app_index.html',controller: 'TVAppIndexController'}).
+      when('/app/:pluralname',
           {templateUrl: 'teamview/app/app_object_list.html',controller: 'TVAppObjectListController'}).
-      when('/App/:pluralname/AddNew',
+      when('/app/:pluralname/detail/:objectid',
+          {templateUrl: 'teamview/app/app_object_detail.html',controller: 'TVAppObjectDetailController'}).
+      when('/app/:pluralname/addnew',
           {templateUrl: 'teamview/app/app_object_addnew.html',controller: 'TVAppObjectAddNewController'}).
         otherwise({
-          redirectTo: '/Settings'
+          redirectTo: '/app'
         });
   }]);

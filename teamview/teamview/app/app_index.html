@@ -1,0 +1,10 @@
+<h1>TeamView</h1>
+
+<div ng-repeat="widget in widgets" class="col-md-3">
+    <div class="widget">
+    <a href="#">
+        <h3>{{widget.label}}</h3>
+        <div class="bignumber severity-{{widget.severity}}">{{widget.value}}</div>
+    </a>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 <ul class="nav nav-pills">
-    <li role="presentation"><a href="#Settings/Objects/List">Objects list</a></li>
-    <li role="presentation" class="active"><a href="#Settings/Objects/AddNew">+ Add new</a></li>
+    <li role="presentation"><a href="#App/{{object.pluralname}}/List">{{object.pluralname}} list</a></li>
+    <li role="presentation" class="active"><a href="#App/{{object.pluralname}}/AddNew">+ Add new</a></li>
 </ul>
 
 <h2>Add new {{object.name}}</h2>
@@ -23,6 +23,11 @@
                 <input class="form-control" type="text" name="{{field.name}}" placeholder="{{field.label}}" />
             </td>
         </tr>
+        <tr>
+            <th></th>
+            <td>
+                <input class="btn btn-primary" type="submit" value="Save {{object.name}}" />
+            </td>
     </tbody>
 </table>
 

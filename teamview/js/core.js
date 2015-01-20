@@ -23,18 +23,24 @@ global.app.appname = "CRM";
 global.app.data =
   {
     'contacts' : [
-              {name : 'Wouter Smet', email : 'woutersmet@gmail.com'},
-              {name : 'John Doe', email : 'johndoe@oracle.com', phone : '+12345'},
+              {id:1, name : 'Wouter Smet', email : 'woutersmet@gmail.com'},
+              {id:2,name : 'John Doe', email : 'johndoe@oracle.com', phone : '+12345'},
             ],
     'companies' : [
-          {name : 'Oracle', industry : 'B2B'},
-          {name : 'McDonalds', industry : 'food'},
+          {id:1,name : 'Oracle', industry : 'B2B'},
+          {id:2,name : 'McDonalds', industry : 'food'},
     ],
     'deals' : [
-          {name : 'Oracle', stage : 'new'},
-          {name : 'McDonalds', stage : 'closed lost'},
+          {id:1,name : 'Oracle', stage : 'new'},
+          {id:2,name : 'McDonalds', stage : 'closed lost'},
     ],
   };
+
+global.app.widgets = [
+      {id : 1, label : 'Widget 1',value : 35, severity : 'low'},
+      {id : 1, label : 'Widget 2',value : 12, severity : 'medium'},
+      {id : 1, label : 'Widget 3',value : 35.2, severity : 'high'}
+    ];
 
 global.app.objects = [
       {
@@ -42,11 +48,11 @@ global.app.objects = [
         name : 'contact',
         pluralname : 'contacts',
         fields : [
-          {name : 'name', label : 'name', type : 'text'},
-          {name : 'datecreated', label : 'datecreated', type : 'date'},
-          {name : 'role', label : 'role', type : 'picklist', options : {picklistvalues : ['new','open','closed']}},
-          {name : 'email', label : 'email', type : 'email'},
-          {name : 'phone', label : 'phone', type : 'text'},
+          {id: 1, name : 'name', label : 'name', type : 'text'},
+          {id: 2, name : 'datecreated', label : 'datecreated', type : 'date'},
+          {id: 3, name : 'role', label : 'role', type : 'picklist', options : {picklistvalues : ['new','open','closed']}},
+          {id: 4, name : 'email', label : 'email', type : 'email'},
+          {id: 5, name : 'phone', label : 'phone', type : 'text'},
         ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},
@@ -58,9 +64,9 @@ global.app.objects = [
         name : 'company',
         pluralname : 'companies',
         fields : [
-          {name : 'name', label : 'name', type : 'text'},
-          {name : 'datecreated', label : 'date created', type : 'date'},
-          {name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
+          {id : 1, name : 'name', label : 'name', type : 'text'},
+          {id : 2, name : 'datecreated', label : 'date created', type : 'date'},
+          {id : 3, name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
         ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},
@@ -72,9 +78,9 @@ global.app.objects = [
         name : 'deal',
         pluralname : 'deals',
         fields : [
-          {name : 'name', label : 'name', type : 'text'},
-          {name : 'datecreated', label : 'datecreated', type : 'date'},
-          {name : 'stage', label : 'stage', type : 'picklist', options : {picklistvalues : ['new','open','closed won', 'closed lost']}},
+          {id : 1, name : 'name', label : 'name', type : 'text'},
+          {id : 2, name : 'datecreated', label : 'datecreated', type : 'date'},
+          {id : 3, name : 'stage', label : 'stage', type : 'picklist', options : {picklistvalues : ['new','open','closed won', 'closed lost']}},
         ]
       },
       {

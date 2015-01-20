@@ -1,6 +1,6 @@
-<h2>Object List: {{object.pluralname}}</h2>
+<h2>{{object.pluralname}}</h2>
 
-<a href="#App/{{object.pluralname}}/AddNew" class="pull-right btn btn-primary">+ New {{object.name}}</a>
+<a href="#app/{{object.pluralname}}/addnew" class="pull-right btn btn-primary">+ New {{object.name}}</a>
 
 <table class="table table-striped">
     <thead>
@@ -13,8 +13,8 @@
     <tbody>
     <tr ng-repeat="object in objects">
         <td>{{ object.id }}</td>
-        <td><a href="#App/{{object.pluralname}}/{{object.id}}">{{ object.name }}</a></td>
-        <td><a href="#App/{{object.pluralname}}/{{object.id}}">Detail</a></td>
+        <td><a href="#app/{{object.pluralname}}/detail/{{object.id}}">{{ object.name }}</a></td>
+        <td><a href="#app/{{object.pluralname}}/detail/{{object.id}}">Detail</a></td>
     </tr>
     </tbody>
 </table>
