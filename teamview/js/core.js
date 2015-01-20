@@ -18,7 +18,7 @@ global.system.fieldtypes = [
     {name : 'user', label : 'App User', glyphicon : 'pencil'},
   ]
 
-global.app.appname = "CRM";
+global.app.appname = "Customer Relations";
 
 global.app.data =
   {
@@ -54,10 +54,15 @@ global.app.objects = [
           {id: 4, name : 'email', label : 'email', type : 'email'},
           {id: 5, name : 'phone', label : 'phone', type : 'text'},
         ],
-        layouts : [
-            {type : 'list', label : 'Default List View', name : 'default_list_view'},
-            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
-        ]
+        layouts : {
+              detail : [
+                {
+                  type : 'dualpanel',
+                  left : ['name', 'email', 'phone'],
+                  right : ['role', 'datecreated']
+                }
+              ]
+            }
       },
       {
         id : 2,
@@ -99,9 +104,25 @@ global.app.objects = [
             {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
         ]
       },
+      {
+        id : 5,
+        name : 'task',
+        pluralname : 'tasks',
+        fields : [
+          {name : 'subject', label : 'subject', type : 'text'},
+          {name : 'comments', label : 'comments', type : 'longtext'},
+          {name : 'assignedto', label : 'assigned to', type : 'user'},
+          {name : 'datecreated', label : 'datecreated', type : 'date'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['todo','done']}},
+        ],
+        layouts : [
+            {type : 'list', label : 'Default List View', name : 'default_list_view'},
+            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
+        ]
+      },
   ];
 
-  function getObjectList(pluralname){
+  function getObjectItems(pluralname){
     return global.app.data[pluralname];
   }
 
@@ -119,3 +140,14 @@ global.app.objects = [
           }
       }
   }
+
+  function getObjectByPluralNameAndId(pluralname,objectid){
+      var data = global.app.data[pluralname];
+      for(i in data) {
+          if(data[i].id == objectid) {
+              return data[i];
+          }
+      }
+  }
+
+

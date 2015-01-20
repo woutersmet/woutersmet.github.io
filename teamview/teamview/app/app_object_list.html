@@ -11,10 +11,10 @@
         </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="object in objects">
-        <td>{{ object.id }}</td>
-        <td><a href="#app/{{object.pluralname}}/detail/{{object.id}}">{{ object.name }}</a></td>
-        <td><a href="#app/{{object.pluralname}}/detail/{{object.id}}">Detail</a></td>
+    <tr ng-repeat="item in items">
+        <td>{{ item.id }}</td>
+        <td><a href="#app/{{object.pluralname}}/detail/{{item.id}}">{{ item.name }}</a></td>
+        <td><a href="#app/{{object.pluralname}}/detail/{{item.id}}">Detail</a></td>
     </tr>
     </tbody>
 </table>

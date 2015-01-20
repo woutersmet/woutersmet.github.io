@@ -66,6 +66,14 @@ body {
   background-color: #428bca;
 }
 
+.navbar-brand {
+  padding:0 10px;
+  position:relative;
+}
+
+.navbar-brand img {float:left;height:40px;margin-top:5px;display:inline;}
+.navbar-brand .appname {float:left;padding-top:15px;padding-left:10px;}
+
 
 /*
  * Main content
@@ -112,6 +120,7 @@ body {
   border-radius:20px;
   min-height:200px;
   text-align:center;
+  margin-bottom:10px;
 }
 
 .widget a {text-decoration:none;}
@@ -125,3 +134,10 @@ body {
   font-weight:bold;
   color:#aaa;
 }
+
+/*
+* APP: ITEM DETAIL
+ */
+
+.item-detail .objecttitle {color:#999;}
+h2 {margin-top:2px;}

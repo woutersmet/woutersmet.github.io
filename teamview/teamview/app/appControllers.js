@@ -1,6 +1,6 @@
 //app controllers be here
   objectsApp.controller('TVAppObjectListController', function($scope, $routeParams) {
-      $scope.objects = getObjectList($routeParams.pluralname)
+      $scope.items = getObjectItems($routeParams.pluralname)
       $scope.message = 'This is app object list screen';
       $scope.object = getObjectByPluralName($routeParams.pluralname);
   });
@@ -12,7 +12,8 @@
 
   objectsApp.controller('TVAppObjectDetailController', function($scope, $routeParams){
     $scope.message = 'object detail';
-    $scope.object = getObjectByNameAndId($routeParams.objectId);
+    $scope.object = getObjectByPluralName($routeParams.pluralname);
+    $scope.item = getObjectByPluralNameAndId($routeParams.pluralname,$routeParams.objectid);
   });
 
   objectsApp.controller('TVAppIndexController', function($scope, $routeParams){
