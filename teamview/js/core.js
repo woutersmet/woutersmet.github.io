@@ -19,18 +19,19 @@ global.system.fieldtypes = [
   ]
 
 global.app.appname = "Customer Relations";
+global.app.appcolors = {main : "#738E73", secondary: '#D39B7E', links : '#2424ff'};
 
 global.app.data =
   {
-    'contacts' : [
+    'contact' : [
               {id:1, name : 'Wouter Smet', email : 'woutersmet@gmail.com'},
               {id:2,name : 'John Doe', email : 'johndoe@oracle.com', phone : '+12345'},
             ],
-    'companies' : [
+    'company' : [
           {id:1,name : 'Oracle', industry : 'B2B'},
           {id:2,name : 'McDonalds', industry : 'food'},
     ],
-    'deals' : [
+    'deal' : [
           {id:1,name : 'Oracle', stage : 'new'},
           {id:2,name : 'McDonalds', stage : 'closed lost'},
     ],
@@ -46,7 +47,9 @@ global.app.objects = [
       {
         id : 1,
         name : 'contact',
-        pluralname : 'contacts',
+        label : 'contact',
+        plurallabel : 'contacts',
+        icon : 'user',
         fields : [
           {id: 1, name : 'name', label : 'name', type : 'text'},
           {id: 2, name : 'datecreated', label : 'datecreated', type : 'date'},
@@ -67,7 +70,9 @@ global.app.objects = [
       {
         id : 2,
         name : 'company',
-        pluralname : 'companies',
+        label : 'company',
+        plurallabel : 'companies',
+        icon : 'home',
         fields : [
           {id : 1, name : 'name', label : 'name', type : 'text'},
           {id : 2, name : 'datecreated', label : 'date created', type : 'date'},
@@ -81,7 +86,8 @@ global.app.objects = [
       {
         id : 3,
         name : 'deal',
-        pluralname : 'deals',
+        icon : 'star',
+        plurallabel : 'deals',
         fields : [
           {id : 1, name : 'name', label : 'name', type : 'text'},
           {id : 2, name : 'datecreated', label : 'datecreated', type : 'date'},
@@ -91,7 +97,8 @@ global.app.objects = [
       {
         id : 4,
         name : 'lead',
-        pluralname : 'leads',
+        icon : 'user',
+        plurallabel : 'leads',
         fields : [
           {name : 'name', label : 'name', type : 'text'},
           {name : 'company', label : 'company', type : 'text'},
@@ -107,7 +114,8 @@ global.app.objects = [
       {
         id : 5,
         name : 'task',
-        pluralname : 'tasks',
+        plurallabel : 'tasks',
+        icon : 'tasks',
         fields : [
           {name : 'subject', label : 'subject', type : 'text'},
           {name : 'comments', label : 'comments', type : 'longtext'},
@@ -120,10 +128,96 @@ global.app.objects = [
             {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
         ]
       },
+      {
+        id : 6,
+        name : 'project',
+        plurallabel : 'projects',
+        icon : 'tasks',
+        fields : [
+          {name : 'name', label : 'name', type : 'text'},
+          {name : 'comments', label : 'comments', type : 'longtext'},
+          {name : 'assignedto', label : 'assigned to', type : 'user'},
+          {name : 'datecreated', label : 'datecreated', type : 'date'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['not started yet','in progress','completed','invoiced']}},
+        ],
+        layouts : [
+            {type : 'list', label : 'Default List View', name : 'default_list_view'},
+            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
+        ]
+      },
+      {
+        id : 6,
+        name : 'deliverable',
+        plurallabel : 'deliverables',
+        icon : 'star-empty',
+        fields : [
+          {name : 'name', label : 'name', type : 'text'},
+          {name : 'comments', label : 'comments', type : 'longtext'},
+          {name : 'assignedto', label : 'assigned to', type : 'user'},
+          {name : 'datecreated', label : 'datecreated', type : 'date'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['not started yet','in progress','completed','invoiced']}},
+        ],
+        layouts : [
+            {type : 'list', label : 'Default List View', name : 'default_list_view'},
+            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
+        ]
+      },
+      {
+        id : 7,
+        name : 'quotes',
+        plurallabel : 'quotes',
+        icon : 'star-empty',
+        fields : [
+          {name : 'name', label : 'name', type : 'text'},
+          {name : 'comments', label : 'comments', type : 'longtext'},
+          {name : 'assignedto', label : 'assigned to', type : 'user'},
+          {name : 'datecreated', label : 'datecreated', type : 'date'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['not started yet','in progress','completed','invoiced']}},
+        ],
+        layouts : [
+            {type : 'list', label : 'Default List View', name : 'default_list_view'},
+            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
+        ]
+      },
+      {
+        id : 8,
+        name : 'invoice',
+        plurallabel : 'invoices',
+        icon : 'star-empty',
+        fields : [
+          {name : 'name', label : 'name', type : 'text'},
+          {name : 'comments', label : 'comments', type : 'longtext'},
+          {name : 'assignedto', label : 'assigned to', type : 'user'},
+          {name : 'datecreated', label : 'datecreated', type : 'date'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['not started yet','in progress','completed','invoiced']}},
+        ],
+        layouts : [
+            {type : 'list', label : 'Default List View', name : 'default_list_view'},
+            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
+        ]
+      },
+      {
+        id : 9,
+        name : 'line_item',
+        plurallabel : 'line items',
+        icon : 'star-empty',
+        fields : [
+          {name : 'name', label : 'name', type : 'text'},
+          {name : 'comments', label : 'comments', type : 'longtext'},
+          {name : 'assignedto', label : 'assigned to', type : 'user'},
+          {name : 'datecreated', label : 'datecreated', type : 'date'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['not started yet','in progress','completed','invoiced']}},
+        ],
+        layouts : [
+            {type : 'list', label : 'Default List View', name : 'default_list_view'},
+            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
+        ]
+      },
+
   ];
 
-  function getObjectItems(pluralname){
-    return global.app.data[pluralname];
+  function getObjectItems(name){
+    return global.app.data[name];
   }
 
   function getObjectById(id){
@@ -133,21 +227,30 @@ global.app.objects = [
           }
       }
   }
-  function getObjectByPluralName(pluralname){
+
+  function getObjectByName(name){
     for(i in global.app.objects) {
-          if(global.app.objects[i].pluralname == pluralname) {
+          if(global.app.objects[i].name == name) {
               return global.app.objects[i];
           }
       }
   }
 
-  function getObjectByPluralNameAndId(pluralname,objectid){
-      var data = global.app.data[pluralname];
+  function getItemByObjectNameAndItemId(name,itemid){
+      var data = global.app.data[name];
       for(i in data) {
-          if(data[i].id == objectid) {
+          if(data[i].id == itemid) {
               return data[i];
           }
       }
   }
 
+  function getContextualNavItems(name){
+    var items = [
+      {name : 'dynamic link 1', link : 'settings/objects/list'},
+      {name : 'dynamic link 2', link : 'settings/objects/list'},
+      {name : 'dynamic link 3', link : 'settings/objects/list'}
+    ];
 
+    return items;
+  }

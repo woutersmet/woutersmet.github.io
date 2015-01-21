@@ -2,21 +2,22 @@
 * SETTINGS CONTROLLERS
  */
 
-  objectsApp.controller('TVSettingsController', function($scope){
+  objectsApp.controller('TVSettingsCtrl', function($scope){
     $scope.message = 'Settings home';
   });
 
-  objectsApp.controller('TVSettingsObjectDetailController', function($scope, $routeParams){
+  objectsApp.controller('TVSettingsObjectDetailCtrl', function($scope, $routeParams){
     $scope.message = 'object detail';
-    $scope.object = getObjectById($routeParams.objectId);
+
+    $scope.object = getObjectById($routeParams.objectid);
   });
 
-  objectsApp.controller('TVSettingsObjectAddNewController', function($scope) {
+  objectsApp.controller('TVSettingsObjectAddNewCtrl', function($scope) {
     $scope.fieldtypes = global.system.fieldtypes;
       $scope.message = 'This is Add new order screen';
   });
 
-  objectsApp.controller('TVSettingsObjectListController', function($scope) {
+  objectsApp.controller('TVSettingsObjectListCtrl', function($scope) {
       $scope.objects = global.app.objects;
       $scope.message = 'This is object list settings';
   });
