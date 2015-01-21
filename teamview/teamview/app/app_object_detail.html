@@ -6,19 +6,67 @@
     <div class="objecttitle">{{object.name}}</div>
     <a href="#app/{{object.pluralname}}">&larr; Back to {{object.name}} list</a>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Label</th>
-                <th>Name</th>
-            </tr>
-        </thead>
+    <div class="panel panel-default">
+        <div class="panel-heading">data</div>
+        <div class="panel-content">
 
-        <tr ng-repeat="field in object.fields">
-            <td>{{field.label}}</td>
-            <td>{{field.type}}</td>
-            <td>{{field.name}}</td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="detailpane">
+            <table class="table">
+                <tr ng-repeat="field in filledlayout.topleft">
+                    <th>{{field.name}}</th>
+                    <td>{{field.value}}</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="detailpane">
+            <table class="table">
+                <tr ng-repeat="field in filledlayout.topright">
+                    <th>{{field.name}}</th>
+                    <td>{{field.value}}</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="detailpane">
+            <table class="table">
+                <tr ng-repeat="field in filledlayout.detailleft">
+                    <th>{{field.name}}</th>
+                    <td>{{field.value}}</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="detailpane">
+            <table class="table">
+                <tr ng-repeat="field in filledlayout.detailright">
+                    <th>{{field.name}}</th>
+                    <td>{{field.value}}</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">history</div>
+        <div class="panel-content">
+        <table class="table">
+                <tr><th>2015-01-015</th><td>asdf asdf adf</td></tr>
+                <tr><th>2015-01-015</th><td>asdf asdf adf</td></tr>
+                <tr><th>2015-01-015</th><td>asdf asdf adf</td></tr>
+                <tr><th>2015-01-015</th><td>asdf asdf adf</td></tr>
+            </table>
+        </div>
 </div>

@@ -3,6 +3,7 @@
  */
 
   objectsApp.controller('TVReportsCtrl', function($scope){
+    $scope.reports = global.app.reports;
     $scope.message = 'Reports home';
   });
 

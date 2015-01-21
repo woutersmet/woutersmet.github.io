@@ -21,6 +21,8 @@
   <script src='teamview/common/commonControllers.js'></script>
   <script src='teamview/app/appControllers.js'></script>
   <script src='teamview/settings/settingsControllers.js'></script>
+  <script src='teamview/reports/reportsControllers.js'></script>
+  <script src='teamview/user/userControllers.js'></script>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -34,7 +36,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top background-main" ng-controller="TVAppNavCtrl" style="background:{{app.appcolors.main}}">
+    <nav class="navbar navbar-inverse navbar-fixed-top background-primary" ng-controller="TVAppNavCtrl">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -60,7 +62,7 @@
              <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More... <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="object in navobjects" ><a href="#app/{{object.name}}">{{object.plurallabel | uppercase}}</a></li>
+            <li ng-repeat="object in navobjects | limitTo : -(navobjects.length - 4)" ><a href="#app/{{object.name}}">{{object.plurallabel | uppercase}}</a></li>
           </ul>
         </li>
           </ul>

@@ -1,7 +1,21 @@
-<a href="#reports/addnew" class="pull-right btn btn-danger">+ New {{object.name}}</a>
+<a href="#reports/addnew" class="pull-right btn btn-danger">+ New Report</a>
 <h2>Reports</h2>
-View reports
 
-<table>
+Reports
 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="report in reports">
+        <td>{{ report.id }}</td>
+        <td><a href="#app/{{object.name}}/detail/{{report.id}}">{{ report.label }}</a></td>
+        <td><a href="#app/{{object.name}}/detail/{{report.id}}">Detail</a></td>
+    </tr>
+    </tbody>
 </table>

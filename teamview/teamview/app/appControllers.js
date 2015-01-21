@@ -16,9 +16,18 @@
 
   objectsApp.controller('TVAppObjectDetailCtrl', function($rootScope,$scope, $routeParams){
     $scope.message = 'object detail';
-    $scope.object = getObjectByName($routeParams.objectname);
-    $scope.item = getItemByObjectNameAndItemId($routeParams.objectname,$routeParams.itemid);
+    var object = getObjectByName($routeParams.objectname);
+    var item = getItemByObjectNameAndItemId($routeParams.objectname,$routeParams.itemid);
 
+    var layout = object.layouts.detail;
+
+    console.log(layout);
+    var filledlayout = createFilledLayout(layout,item);
+
+    debug(filledlayout);
+    $scope.object = object;
+    $scope.item = item;
+    $scope.filledlayout = filledlayout;
     $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
   });
 

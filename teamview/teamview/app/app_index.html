@@ -1,10 +1,9 @@
 <a href="#settings/widgets/addnew" class="btn btn-danger pull-right">+ New Widget</a>
-<h1>{{appname}} dashboard</h1>
-
+<h2>{{appname}} dashboard</h2>
 
 <div ng-repeat="widget in widgets" class="col-md-4">
     <div class="widget">
-    <a href="#">
+    <a href="#{{widget.link}}">
         <h3>{{widget.label}}</h3>
         <div class="bignumber severity-{{widget.severity}}">{{widget.value}}</div>
     </a>

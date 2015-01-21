@@ -1,8 +1,9 @@
 
 
   var objectsApp = angular.module('objectsApp', [])
-  .run(function($rootScope) {
+  .run(function($rootScope) { //global app setup stuff
       $rootScope.app = global.app;
+      applyAppStyles();
   });
 
   //Define Routing for app
