@@ -29,8 +29,8 @@ body {
   background:#555;
 }
 
-.navbar-inverse ul.nav li a{color:#f2f2f2;}
-.navbar-inverse .navbar-brand .appname {color:#fafafa;}
+.navbar-inverse ul.nav li a{color:#f2f2f2;opacity:0.7;}
+.navbar-inverse .navbar-brand .appname {color:#000;opacity:0.4;}
 .navbar-inverse ul.dropdown-menu li a {color:#555;}
 /*
  * Sidebar
@@ -150,8 +150,17 @@ body {
 * APP: ITEM DETAIL
  */
 
-.item-detail .objecttitle {color:#999;}
+.objecttitle {color:#aaa;}
 h2 {margin-top:2px;}
 h2 {color:#444;}
 .detailpane {background:white;}
 .item-detail {background:#fafafa;padding:20px;}
+
+.inline {display:inline;width:auto;}
+
+.listtoolbar {background:#fafafa;padding:10px;}
+thead {background:#eee;}
+
+td.data a {color:#333;text-decoration:underline;}
+
+.viewlinks {padding-left:20px;padding-top:10px;}

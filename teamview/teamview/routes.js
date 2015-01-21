@@ -41,11 +41,13 @@
       when('/app',
           {templateUrl: 'teamview/app/app_index.html',controller: 'TVAppIndexCtrl'}).
       when('/app/:objectname',
-          {templateUrl: 'teamview/app/app_object_list.html',controller: 'TVAppObjectListCtrl'}).
+          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'}).
+      when('/app/:objectname/:viewname',
+          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'}).
       when('/app/:objectname/detail/:itemid',
-          {templateUrl: 'teamview/app/app_object_detail.html',controller: 'TVAppObjectDetailCtrl'}).
+          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppItemDetailCtrl'}).
       when('/app/:objectname/addnew',
-          {templateUrl: 'teamview/app/app_object_addnew.html',controller: 'TVAppObjectAddNewCtrl'}).
+          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppItemAddNewCtrl'}).
         otherwise({
           redirectTo: '/app'
         });
