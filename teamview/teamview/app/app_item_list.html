@@ -37,7 +37,10 @@
     <tbody>
     <tr ng-repeat="item in items">
         <td><input type="checkbox" /></td>
-        <td><a href="#">{{'edit'|lng|tc}}</a> | <a href="#">{{'del'|lng|tc}}</a></td>
+        <td>
+          <a href="#" title="{{'edit'|lng|tc}}"><span class="glyphicon glyphicon-pencil"></span></a> |
+          <a href="#" title="{{'del'|lng|tc}}"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
         <td ng-repeat="value in item.values" class="data"><a href="#/app/{{object.name}}/detail/{{item.id}}">{{ value }}</a></td>
     </tr>
     </tbody>

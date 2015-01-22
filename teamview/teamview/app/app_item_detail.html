@@ -4,14 +4,14 @@
 
     <div class="objecttitle">{{object.name}}</div>
     <h2 class="item-heading"><span class="glyphicon glyphicon-{{object.icon}}"></span> {{ item.name }} </h2>
-    <a href="#/app/{{object.name}}">&larr; Back to {{object.name}} list</a>
+    <a href="#/app/{{object.name}}">&larr; {{'back to list'|lng}}</a>
 
     <div class="panel panel-default">
         <div class="panel-heading clearfix text-center">
             <span class="pull-left">Details</span>
 
-            <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">Edit</a>
-            <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">New {{object.label}}</a>
+            <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">{{'edit'|lng|tc}}</a>
+            <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">{{'new'|lng|tc}} {{object.label}}</a>
         </div>
         <div class="panel-content">
 

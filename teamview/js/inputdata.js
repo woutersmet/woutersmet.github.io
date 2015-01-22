@@ -48,7 +48,8 @@ global.system.translations = {
       'app name' : 'app naam',
       'app colors' : 'app kleuren',
       'app settings' : 'app instellingen',
-      'create new view' : 'nieuwe view aanmaken',
+      'back to list' : 'terug naar lijst',
+      'create new view' : 'nieuwe weergave aanmaken',
       'dashboard' : 'dashboard',
       'del' : 'verwijderen',
       'edit' : 'bewerken',
@@ -56,7 +57,7 @@ global.system.translations = {
       'log out' : 'uitloggen',
       'team beheren' : 'team beheren',
       'more...' : 'meer...',
-      'my views' : 'mijn views',
+      'my views' : 'mijn weergaven',
       'new' : 'nieuw',
       'objects' : 'objecten',
       'overview' : 'overzicht',
@@ -67,7 +68,7 @@ global.system.translations = {
       'search' : 'zoeken',
       'settings' : 'instellingen',
       'switch to app' : 'naar andere app',
-      'team views' : 'team views'
+      'team views' : 'team weergaven'
     }
   };
 
