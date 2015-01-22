@@ -2,8 +2,13 @@
 * global data
  */
 
-global = { system : {}, app : {}};
+global = {};
 
+/*
+* SYSTEM
+ */
+
+global.system = {};
 global.system.fieldtypes = [
     {name : 'text', label : 'Text', glyphicon : 'pencil'},
     {name : 'longtext', label : 'Long Text', glyphicon : 'pencil'},
@@ -13,11 +18,77 @@ global.system.fieldtypes = [
     {name : 'picklist', label : 'Picklist', glyphicon : 'pencil'},
     {name : 'relation', label : 'Relation', glyphicon : 'pencil'},
     {name : 'user', label : 'App User', glyphicon : 'pencil'},
+  ];
+
+global.system.translations = {
+    en : {
+      'actions' : 'actions',
+      'app name' : 'app name',
+      'app colors' : 'app colors',
+      'app settings' : 'app settings',
+      'create new view' : 'create new view',
+      'dashboard' : 'dashboard',
+      'del' : 'del',
+      'edit' : 'edit',
+      'global links' : 'global links',
+      'more...' : 'more...',
+      'log out' : 'log out',
+      'manage team' : 'manage team',
+      'my views' : 'my views',
+      'new' : 'new',
+      'reports' : 'reports',
+      'settings' : 'settings',
+      'switch to app' : 'switch to app',
+      'overview' : 'overview',
+      'search' : 'search',
+      'team views' : 'team views'
+    },
+    nl : {
+      'actions' : 'acties',
+      'app name' : 'app naam',
+      'app colors' : 'app kleuren',
+      'app settings' : 'app instellingen',
+      'create new view' : 'nieuwe view aanmaken',
+      'dashboard' : 'dashboard',
+      'del' : 'verwijderen',
+      'edit' : 'bewerken',
+      'global links' : 'globale links',
+      'log out' : 'uitloggen',
+      'team beheren' : 'team beheren',
+      'more...' : 'meer...',
+      'my views' : 'mijn views',
+      'new' : 'nieuw',
+      'objects' : 'objecten',
+      'overview' : 'overzicht',
+      'primary' : 'primair',
+      'secondary' : 'secondair',
+      'links' : 'links',
+      'reports' : 'rapporten',
+      'search' : 'zoeken',
+      'settings' : 'instellingen',
+      'switch to app' : 'naar andere app',
+      'team views' : 'team views'
+    }
+  };
+
+global.system.colorthemes = [
+  {themename : 'bootstrap',primary : "#111", secondary: '#428bca', links : '#337ab7'},
+  {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'},
+  {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'},
+  {themename: 'vivid', primary : "#933", secondary: '#999', links : '#27d'},
+  {themename: 'grayscale', primary : "#666", secondary: '#999', links : '#888'},
   ]
 
-global.app.appname = "Customer Relations";
+/*
+* SPECIFIC APP
+ */
 
-global.app.appcolors = {primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}; //podio
+global.app = {
+  appname : "Customer Relations",
+  language : "nl"
+};
+
+global.app.appcolors = {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}; //podio
 //global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}; //forest
 //global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'}; //dark grey boring
 

@@ -1,13 +1,49 @@
-<h2>App settings</h2>
+<h2>{{'app settings'|lng|tc}}</h2>
 <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#settings">Settings</a></li>
-    <li role="presentation"><a href="#settings/objects/list">Objects</a></li>
+    <li role="presentation" class="active"><a href="#settings">{{'settings'|lng|tc}}</a></li>
+    <li role="presentation"><a href="#settings/objects/list">{{'objects'|lng|tc}}</a></li>
 </ul>
 
 {{ message }}
 
+<form>
+<table class="table">
+  <tr><td>{{'app name'|lng|tc}}</td><td><input class="form-control" type="text" name="appname" value="{{app.appname}}" /></td>
+  <tr><td>{{'app language'|lng|tc}}</td><td>
+  <select class="form-control" name="applanguage">
+    <option value="en">English</option>
+    <option value="nl">Nederlands</option>
+  </select>
+  </td>
+  </tr>
+  <tr>
+    <td>{{'app colors'|lng|tc}}</td>
+    <td>
+      <label class="colortheme" ng-repeat="colortheme in colorthemes">
+        <input type="radio" name="appcolors" value="{{colortheme.themename}}" />
+        {{colortheme.themename}}<br />
+        <div class="themecolors clearfix">
+          <div class="themecolor" style="background:{{colortheme.primary}}">{{'primary'|lng}}</div>
+          <div class="themecolor" style="background:{{colortheme.secondary}}">{{'secondary'|lng}}</div>
+          <div class="themecolor" style="color:{{colortheme.links}};background:white;">{{'links'|lng}}</div>
+        </div>
+      </label>
+      <label class="colortheme">
+        <input type="radio" name="appcolors" value="customtheme" />
+        {{colortheme.themename}}<br />
+        <div class="themecolors clearfix">
+          <div class="themecolor" style="background:#555">{{'primary'|lng}}<input type="text" class="colorpic" /></div>
+          <div class="themecolor" style="background:#777">{{'secondary'|lng}}<input type="text" class="colorpic" /></div>
+          <div class="themecolor" style="color:#999;background:white;">{{'links'|lng}}<input type="text" class="colorpic" /></div>
+        </div>
+      </label>
+    </td>
+  </tr>
+</table>
+</form>
+
 <div class="alert alert-info">
-<h4>Define objects</h4>
+<h4>{{'define objects'}}</h4>
 <p>
   Define the objects that will make up your app. For example:<br>
   <ul>

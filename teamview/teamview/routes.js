@@ -1,13 +1,13 @@
 
 
-  var objectsApp = angular.module('objectsApp', [])
+  var TeamViewApp = angular.module('TeamViewApp', ['TVFilters'])
   .run(function($rootScope) { //global app setup stuff
       $rootScope.app = global.app;
       applyAppStyles();
   });
 
   //Define Routing for app
-  objectsApp.config(['$routeProvider',
+  TeamViewApp.config(['$routeProvider',
     function($routeProvider) {
       $routeProvider.
       /*

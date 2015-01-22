@@ -7,15 +7,15 @@
   </h2>
 
   <div class="viewlinks pull-left">
-    <a href="#app/{{object.name}}/{{object.view.name}}/edit">Edit</a> |
-    <a href="#app/{{object.name}}/addview">Create new view</a>
+    <a href="#app/{{object.name}}/{{object.view.name}}/edit">{{'edit'|lng}}</a> |
+    <a href="#app/{{object.name}}/addview">{{'create new view'|lng}}</a>
 </div>
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li class="dropdowntitle">My views</li>
+    <li class="dropdowntitle">{{'my views'|lng|tc}}</li>
     <li role="presentation" ng-repeat="view in object.views"><a role="menuitem" tabindex="-1" href="#/app/{{object.name}}/{{view.name}}">{{view.label}}</a></li>
 
-    <li class='dropdowntitle'>Team views</li>
+    <li class='dropdowntitle'>{{'team views'|lng|tc}}</li>
     <li role="presentation" ng-repeat="view in object.views"><a role="menuitem" tabindex="-1" href="#/app/{{object.name}}/{{view.name}}">{{view.label}}</a></li>
   </ul>
 
@@ -23,21 +23,21 @@
 </div>
 
 <div class="listtoolbar text-center">
-    <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-sm">New {{object.label}}</a>
+    <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-sm">{{'new'|lng|tc}} {{object.label}}</a>
 </div>
 
 <table class="table table-striped table-condensed table-bordered table-hover">
     <thead>
         <tr>
             <th style="width:20px;"><input type="checkbox" /></th>
-            <th style="width:70px;">Action</th>
+            <th style="width:70px;">{{'actions'|lng|tc}}</th>
             <th ng-repeat="column in view.columns">{{column}}</th>
         </tr>
     </thead>
     <tbody>
     <tr ng-repeat="item in items">
         <td><input type="checkbox" /></td>
-        <td><a href="#">edit</a> | <a href="#">del</a></td>
+        <td><a href="#">{{'edit'|lng|tc}}</a> | <a href="#">{{'del'|lng|tc}}</a></td>
         <td ng-repeat="value in item.values" class="data"><a href="#/app/{{object.name}}/detail/{{item.id}}">{{ value }}</a></td>
     </tr>
     </tbody>

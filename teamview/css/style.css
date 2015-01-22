@@ -165,3 +165,6 @@ td.data a {color:#333;text-decoration:underline;}
 
 .viewlinks {padding-left:20px;padding-top:10px;}
 .dropdowntitle{color:#aaa;font-size:90%;padding:3px;}
+
+.colortheme {background:#fafafa;display:block;margin:15px;}
+.themecolor {height:30px;border-radius:3px;margin:5px;border:1px solid black;float:left;padding:5px;color:white;}

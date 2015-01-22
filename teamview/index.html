@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" ng-app="objectsApp">
+<html lang="en" ng-app="TeamViewApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,24 +9,25 @@
     <title>{{title}} TeamView - organize everything</title>
     <link rel="icon" href="img/favicon.ico">
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/angular.min.js"></script>
-  <script src="js/firebase.js"></script>
-
-  <script src='js/data.js'></script>
+  <script src="lib/js/jquery.min.js"></script>
+  <script src="lib/js/bootstrap.min.js"></script>
+  <script src="lib/js/angular.min.js"></script>
+  <script src="lib/js/firebase.js"></script>
 
   <script src='js/inputdata.js'></script>
+
+  <script src='js/data.js'></script>
   <script src='js/core.js'></script>
 
+  <script src='teamview/filters.js'></script>
   <script src='teamview/routes.js'></script>
-  <script src='teamview/common/commonControllers.js'></script>
+  <script src='teamview/commonControllers.js'></script>
   <script src='teamview/app/appControllers.js'></script>
   <script src='teamview/settings/settingsControllers.js'></script>
   <script src='teamview/reports/reportsControllers.js'></script>
   <script src='teamview/user/userControllers.js'></script>
 
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -62,31 +63,31 @@
               </a>
             </li>
              <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More... <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'more...'|lng|tc}} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li ng-repeat="object in navobjects | limitTo : -(navobjects.length - 4)" ><a href="#/app/{{object.name}}">{{object.plurallabel | uppercase}}</a></li>
           </ul>
         </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#reports"><span class="glyphicon glyphicon-stats"> Reports</a></li>
+            <li><a href="#reports"><span class="glyphicon glyphicon-stats"> {{'reports'|lng|tc}}</a></li>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'settings'|lng|tc}} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#user">Wouter Smet</a></li>
+            <li><a href="#/user">Wouter Smet</a></li>
             <li class="divider"></li>
-            <li><a href="/#settings">App settings</a></li>
-            <li><a href="/#settings">Manage team</a></li>
+            <li><a href="#/settings">{{'app settings'|lng|tc}}</a></li>
+            <li><a href="#/settings">{{'manage team'|lng|tc}}</a></li>
             <li class="divider"></li>
-            <li><a href="/#">Switch to app: CRM</a></li>
-            <li><a href="/#">Switch to app: accounting</a></li>
+            <li><a href="#/">{{'switch to app'|lng|tc}}: CRM</a></li>
+            <li><a href="#/">{{'switch to app'|lng|tc}}: Accounting</a></li>
             <li class="divider"></li>
-            <li><a href="#logout">Log out</a></li>
+            <li><a href="#logout">{{'log out'|lng|tc}}</a></li>
           </ul>
         </li>
           </ul>
           <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
+            <input type="text" class="form-control" placeholder="{{'search'|lng|tc}}...">
           </form>
         </div>
       </div>

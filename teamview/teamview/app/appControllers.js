@@ -1,5 +1,5 @@
 //app controllers be here
-  objectsApp.controller('TVAppItemListCtrl', function($rootScope,$scope, $routeParams) {
+  TeamViewApp.controller('TVAppItemListCtrl', function($rootScope,$scope, $routeParams) {
       $scope.message = 'This is app object list screen';
       var object = getObjectByName($routeParams.objectname);
       var viewname = $routeParams.viewname || 'all_' + object.plurallabel;
@@ -14,14 +14,14 @@
       $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
   });
 
-  objectsApp.controller('TVAppItemAddNewCtrl', function($rootScope,$scope, $routeParams) {
+  TeamViewApp.controller('TVAppItemAddNewCtrl', function($rootScope,$scope, $routeParams) {
       $scope.message = 'This is app add new object screen';
       $scope.object = getObjectByName($routeParams.objectname);
 
       $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
   });
 
-  objectsApp.controller('TVAppItemDetailCtrl', function($rootScope,$scope, $routeParams){
+  TeamViewApp.controller('TVAppItemDetailCtrl', function($rootScope,$scope, $routeParams){
     $scope.message = 'object detail';
     var object = getObjectByName($routeParams.objectname);
     var item = getItemByObjectNameAndItemId($routeParams.objectname,$routeParams.itemid);
@@ -38,7 +38,7 @@
     $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
   });
 
-  objectsApp.controller('TVAppIndexCtrl', function($rootScope,$scope, $routeParams){
+  TeamViewApp.controller('TVAppIndexCtrl', function($rootScope,$scope, $routeParams){
     $scope.message = 'App dashboard';
 
     $scope.appname = global.app.appname;
