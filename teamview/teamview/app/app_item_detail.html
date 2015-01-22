@@ -4,10 +4,15 @@
 
     <div class="objecttitle">{{object.name}}</div>
     <h2 class="item-heading"><span class="glyphicon glyphicon-{{object.icon}}"></span> {{ item.name }} </h2>
-    <a href="#app/{{object.pluralname}}">&larr; Back to {{object.name}} list</a>
+    <a href="#/app/{{object.name}}">&larr; Back to {{object.name}} list</a>
 
     <div class="panel panel-default">
-        <div class="panel-heading">data</div>
+        <div class="panel-heading clearfix text-center">
+            <span class="pull-left">Details</span>
+
+            <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">Edit</a>
+            <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">New {{object.label}}</a>
+        </div>
         <div class="panel-content">
 
     <div class="row">
@@ -60,7 +65,9 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading">history</div>
+        <div class="panel-heading clearfix text-center">
+            <span class="pull-left">Details</span>
+        </div>
         <div class="panel-content">
         <table class="table">
                 <tr><th>2015-01-015</th><td>asdf asdf adf</td></tr>

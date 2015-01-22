@@ -8,6 +8,7 @@ global.system.fieldtypes = [
     {name : 'text', label : 'Text', glyphicon : 'pencil'},
     {name : 'longtext', label : 'Long Text', glyphicon : 'pencil'},
     {name : 'number', label : 'Number', glyphicon : 'pencil'},
+    {name : 'currency', label : 'Currency', glyphicon : 'pencil'},
     {name : 'date', label : 'Date', glyphicon : 'pencil'},
     {name : 'picklist', label : 'Picklist', glyphicon : 'pencil'},
     {name : 'relation', label : 'Relation', glyphicon : 'pencil'},
@@ -15,8 +16,10 @@ global.system.fieldtypes = [
   ]
 
 global.app.appname = "Customer Relations";
-global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'};
-//global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'};
+
+global.app.appcolors = {primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}; //podio
+//global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}; //forest
+//global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'}; //dark grey boring
 
 global.app.data =
   {
@@ -106,16 +109,21 @@ global.app.objects = [
         icon : 'home',
         fields : [
           {id : 1, name : 'name', label : 'name', type : 'text'},
-          {id : 2, name : 'datecreated', label : 'date created', type : 'date'},
-          {id : 3, name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
+          {id : 2, name : 'country', label : 'country', type : 'text'},
+          {id : 3, name : 'datecreated', label : 'date created', type : 'date'},
+          {id : 3, name : 'createdby', label : 'created by', type : 'user'},
+          {id : 4, name : 'type', label : 'type', type : 'picklist', options : {picklistvalues : ['prospect','customer','partner']}},
+          {id : 5, name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
         ],
         views : [
           {name : 'all_companies', label : 'All companies', filter : [], columns : ['name','industry']},
         ],
-        layouts : [
-            {type : 'list', label : 'Default List View', name : 'default_list_view'},
-            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
-        ]
+        layouts : {
+              detail : {
+                  top: { left : ['name','type','industry'], right : ['owner','country']},
+                  detail: { left : ['datecreated'], right : ['createdby']}
+                }
+            }
       },
       {
         id : 3,
