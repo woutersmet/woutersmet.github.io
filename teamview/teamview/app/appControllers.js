@@ -1,14 +1,15 @@
 //app controllers be here
   objectsApp.controller('TVAppItemListCtrl', function($rootScope,$scope, $routeParams) {
       $scope.message = 'This is app object list screen';
-      $scope.object = getObjectByName($routeParams.objectname);
+      var object = getObjectByName($routeParams.objectname);
+      var viewname = $routeParams.viewname || 'all_' + object.plurallabel;
 
-      var viewname = $routeParams.viewname;
-      if (typeof viewname !== 'undefined'){
+      var view = getViewByObjectAndName($routeParams.objectname,viewname);
 
-      }
-      $scope.items = getObjectItems($routeParams.objectname, viewname);
-      $scope.viewname = viewname;
+      debug(view);
+      $scope.object = object;
+      $scope.items = getItemList($routeParams.objectname, view);
+      $scope.view = view;
 
       $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
   });

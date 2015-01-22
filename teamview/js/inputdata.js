@@ -16,6 +16,7 @@ global.system.fieldtypes = [
 
 global.app.appname = "Customer Relations";
 global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'};
+//global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'};
 
 global.app.data =
   {
@@ -88,7 +89,7 @@ global.app.objects = [
         ],
         views : [
           {name : 'all_contacts', label : 'All contacts', filter : [], columns : ['name','email','phone']},
-          {name : 'managers', label : 'Managers', filter : [], columns : ['name','email','phone']},
+          {name : 'managers', label : 'Managers', filter : {role : 'manager'}, columns : ['name','email']},
         ],
         layouts : {
               detail : {
@@ -108,6 +109,9 @@ global.app.objects = [
           {id : 2, name : 'datecreated', label : 'date created', type : 'date'},
           {id : 3, name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
         ],
+        views : [
+          {name : 'all_companies', label : 'All companies', filter : [], columns : ['name','industry']},
+        ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},
             {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
@@ -123,7 +127,11 @@ global.app.objects = [
           {id : 1, name : 'name', label : 'name', type : 'text'},
           {id : 2, name : 'datecreated', label : 'datecreated', type : 'date'},
           {id : 3, name : 'stage', label : 'stage', type : 'picklist', options : {picklistvalues : ['new','open','closed won', 'closed lost']}},
-        ]
+          {id : 4, name : 'owner', label : 'owner', type : 'user'},
+        ],
+        views : [
+          {name : 'all_deals', label : 'All deals', filter : [], columns : ['name','stage']}
+        ],
       },
       {
         id : 4,
@@ -133,10 +141,16 @@ global.app.objects = [
         plurallabel : 'leads',
         fields : [
           {name : 'name', label : 'name', type : 'text'},
+          {name : 'email', label : 'email', type : 'email'},
+          {name : 'phone', label : 'phone', type : 'text'},
           {name : 'company', label : 'company', type : 'text'},
+          {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['new','qualified','unqualified']}},
           {name : 'owner', label : 'owner', type : 'user'},
           {name : 'datecreated', label : 'datecreated', type : 'date'},
           {name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['internet','retail','agriculture']}},
+        ],
+        views : [
+          {name : 'all_leads', label : 'All leads', filter : [], columns : ['name','company','email']}
         ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},

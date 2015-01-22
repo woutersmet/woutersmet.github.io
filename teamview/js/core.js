@@ -2,8 +2,44 @@ function debug(smt){
   console.log(smt);
 }
 
-  function getObjectItems(name){
-    return global.app.data[name];
+  function getViewByObjectAndName(objectname,viewname){
+    for (i in global.app.objects){
+      if (global.app.objects[i].name == objectname){
+        var object = global.app.objects[i];
+        for (j in object.views){
+          if (object.views[j].name == viewname){
+            var view = object.views[j];
+            return view;
+          }
+        }
+      }
+    }
+  }
+
+  function getItemList(objectname,view){
+
+    //get items (should be filtered by the view filter!)
+    var items = global.app.data[objectname];
+
+    if (typeof view == 'undefined'){
+      return items;
+    }
+    else {
+      debug(view.columns);
+      var itemlist = [];
+      var filtereditem = [];
+      for (j in items){
+        filtereditem = [];
+        for (k in view.columns){
+          column = view.columns[k];
+          filtereditem.push(items[j][column]);
+        }
+        itemlist.push({id : items[j].id, values : filtereditem});
+      }
+      //rearrange by view columns
+      debug(itemlist);
+      return itemlist;
+    }
   }
 
   function getObjectById(id){
