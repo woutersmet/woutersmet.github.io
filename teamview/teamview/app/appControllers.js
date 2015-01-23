@@ -46,3 +46,11 @@
 
     $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
   });
+
+    TeamViewApp.controller('TVAppViewAddNewCtrl', function($rootScope,$scope, $routeParams) {
+      $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
+  });
+
+    TeamViewApp.controller('TVAppViewEditCtrl', function($rootScope,$scope, $routeParams) {
+      $rootScope.leftnavitems = getContextualNavItems('object', $routeParams.objectname);
+  });

@@ -34,6 +34,7 @@ global.system.translations = {
       'more...' : 'more...',
       'log out' : 'log out',
       'manage team' : 'manage team',
+      'my account' : 'my account',
       'my views' : 'my views',
       'new' : 'new',
       'reports' : 'reports',
@@ -46,6 +47,7 @@ global.system.translations = {
     nl : {
       'actions' : 'acties',
       'app name' : 'app naam',
+      'app language' : 'app taal',
       'app colors' : 'app kleuren',
       'app settings' : 'app instellingen',
       'back to list' : 'terug naar lijst',
@@ -55,6 +57,7 @@ global.system.translations = {
       'edit' : 'bewerken',
       'global links' : 'globale links',
       'log out' : 'uitloggen',
+      'my account' : 'mijn account',
       'team beheren' : 'team beheren',
       'more...' : 'meer...',
       'my views' : 'mijn weergaven',

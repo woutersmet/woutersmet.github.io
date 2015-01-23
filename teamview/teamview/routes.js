@@ -38,8 +38,10 @@
       /*
       * APP
        */
+      //index
       when('/app',
           {templateUrl: 'teamview/app/app_index.html',controller: 'TVAppIndexCtrl'}).
+      //items
       when('/app/:objectname',
           {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'}).
       when('/app/:objectname/:viewname',
@@ -48,6 +50,11 @@
           {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppItemDetailCtrl'}).
       when('/app/:objectname/addnew',
           {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppItemAddNewCtrl'}).
+      //editing / creating views
+      when('/app/:objectname/:viewname/edit',
+          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppViewEditCtrl'}).
+      when('/app/:objectname/addnewview',
+          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppViewAddNewCtrl'}).
         otherwise({
           redirectTo: '/app'
         });
