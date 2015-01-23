@@ -58,9 +58,9 @@ getCurrentTabUrl(function(currenturl){
       //$('#chatform').submit(function (e) {
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
+          window.name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
+          myDataRef.push({name: window.name, text: text});
           $('#messageInput').val('');
         }
       });
@@ -71,7 +71,10 @@ getCurrentTabUrl(function(currenturl){
       });
 
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        var authorclass = 'author';
+        if (name == window.name) authorclass += ' me';
+
+        $('<div class="message"/>').text(text).prepend($('<span class="'+authorclass+'" />').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
 });
