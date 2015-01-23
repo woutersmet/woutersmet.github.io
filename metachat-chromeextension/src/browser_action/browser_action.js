@@ -55,13 +55,28 @@ getCurrentTabUrl(function(currenturl){
 
       var myDataRef = new Firebase('https://metachat.firebaseio.com/' + cleanurl + '/');
 
+      //remember username?
+      /*
+      chrome.storage.sync.get('username', function(value){
+        if (typeof value !== 'undefined') window.username = value;
+      };
+      */
+
       //$('#chatform').submit(function (e) {
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          window.name = $('#nameInput').val();
+            window.username = $('#nameInput').val();
+            /*
+          if (typeof window.username == 'undefined'){
+            chrome.storage.sync.set({'username': window.username}, function() {
+              //username saved!
+            });
+          }
+          */
           var text = $('#messageInput').val();
-          myDataRef.push({name: window.name, text: text});
+          myDataRef.push({name: window.username, text: text});
           $('#messageInput').val('');
+
         }
       });
 
@@ -72,7 +87,7 @@ getCurrentTabUrl(function(currenturl){
 
       function displayChatMessage(name, text) {
         var authorclass = 'author';
-        if (name == window.name) authorclass += ' me';
+        if (name == window.username) authorclass += ' me';
 
         $('<div class="message"/>').text(text).prepend($('<span class="'+authorclass+'" />').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
