@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+
+
+</head>
+<body>
+
+
+<style type="text/css">
+	#mainPopup {
+
+		padding: 10px;
+		height: 200px;
+		width: 400px;
+		font-family: Arial;
+	}
+	h1 {
+		font-size: 2em;
+	}
+
+    input {
+        font-size:15px;
+    }
+
+    #messagesDiv {height:300px;border:3px solid #eee;overflow:auto;}
+    #nameInput {width:15%;}
+    #messageInput {width:80%;}
+</style>
+
+<div id="mainPopup">
+<h1> Meta chat!</h1>
+
+Chat with fellow visitors of <strong><span id="sitename"></span></strong>
+
+<div id='messagesDiv'></div>
+<input type='text' id='nameInput' placeholder='Name'>
+<input type='text' id='messageInput' placeholder='Message'>
+
+</div>
+<script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js"></script>
+<script src="jquery.min.js"></script>
+<script src="browser_action.js"></script>
+
+</body>
+</html>

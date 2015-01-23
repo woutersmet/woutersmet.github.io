@@ -1,0 +1,31 @@
+{
+  "name": "Meta Chat",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Chat With Fellow Visitors of the current site.",
+  "homepage_url": "https://github.com/firebase/firebase-chrome-extension",
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'",
+  "icons": {
+    "16": "icons/icon.png",
+    "48": "icons/icon.png",
+    "128": "icons/icon.png"
+  },
+    "permissions": [
+    "activeTab",
+    "tabs",
+    "https://*.firebaseio.com/*",
+    "https://ajax.googleapis.com/",
+    "https://auth.firebase.com/*",
+    "https://apis.google.com/*",
+    "https://metachat.firebaseio.com/*"
+  ],
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "default_title": "Meta chat",
+    "default_popup": "src/browser_action/browser_action.html"
+  }
+}
