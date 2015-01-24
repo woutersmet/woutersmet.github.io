@@ -38,35 +38,37 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
           {templateUrl: 'teamview/user/user_account.html',controller: 'TVUserAccountCtrl', authRequired : true},
       //settings
         '/settings':
-          {templateUrl: 'teamview/settings/settings_index.html',controller: 'TVSettingsCtrl'},
+          {templateUrl: 'teamview/settings/settings_index.html',controller: 'TVSettingsCtrl', authRequired: true},
         '/settings/team':
-          {templateUrl: 'teamview/settings/settings_team.html',controller: 'TVSettingsObjectListCtrl'},
+          {templateUrl: 'teamview/settings/settings_team.html',controller: 'TVSettingsObjectListCtrl', authRequired: true},
+        '/settings/newapp':
+          {templateUrl: 'teamview/settings/settings_app_addnew.html',controller: 'TVSettingsAppAddNewCtrl', authRequired: true},
         '/settings/objects/list':
-          {templateUrl: 'teamview/settings/settings_objects_list.html',controller: 'TVSettingsObjectListCtrl'},
+          {templateUrl: 'teamview/settings/settings_objects_list.html',controller: 'TVSettingsObjectListCtrl', authRequired: true},
         '/settings/objects/detail/:objectid':
-          {templateUrl: 'teamview/settings/settings_objects_detail.html',controller: 'TVSettingsObjectDetailCtrl'},
+          {templateUrl: 'teamview/settings/settings_objects_detail.html',controller: 'TVSettingsObjectDetailCtrl', authRequired: true},
         '/settings/objects/addnew':
-          {templateUrl: 'teamview/settings/settings_objects_addnew.html',controller: 'TVSettingsObjectAddNewCtrl'},
+          {templateUrl: 'teamview/settings/settings_objects_addnew.html',controller: 'TVSettingsObjectAddNewCtrl', authRequired: true},
       //reports
        '/reports':
-          {templateUrl: 'teamview/reports/reports_index.html',controller: 'TVReportsCtrl'},
+          {templateUrl: 'teamview/reports/reports_index.html',controller: 'TVReportsCtrl', authRequired: true},
       //app
       '/app':
-          {templateUrl: 'teamview/app/app_index.html',controller: 'TVAppIndexCtrl'},
+          {templateUrl: 'teamview/app/app_index.html',controller: 'TVAppIndexCtrl', authRequired: true},
       //items
       '/app/:objectname':
-          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'},
-      '/app/:objectname/:viewname':
-          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'},
-      '/app/:objectname/detail/:itemid':
-          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppItemDetailCtrl'},
+          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl', authRequired: true},
       '/app/:objectname/addnew':
-          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppItemAddNewCtrl'},
+          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppItemAddNewCtrl', authRequired: true},
+      '/app/:objectname/:viewname':
+          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl', authRequired: true},
+      '/app/:objectname/detail/:itemid':
+          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppItemDetailCtrl', authRequired: true},
       //editing / creating views
-      '/app/:objectname/:viewname/edit':
-          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppViewEditCtrl'},
+      '/app/:objectname/:viewname/editview':
+          {templateUrl: 'teamview/app/app_view_edit.html',controller: 'TVAppViewEditCtrl', authRequired: true},
       '/app/:objectname/addnewview':
-          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppViewAddNewCtrl'}
+          {templateUrl: 'teamview/app/app_view_addnew.html',controller: 'TVAppViewAddNewCtrl'}
   })
 
   /**

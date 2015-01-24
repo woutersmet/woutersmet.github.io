@@ -1,0 +1,15 @@
+<h2>{{'create new app'|lng|tc}}</h2>
+
+<form ng-submit="createApp()">
+    <label>
+        App name:
+        <input class="form-control" ng-model="newapp.name" name="appname"  />
+    </label>
+    <br />
+    <label>
+        First object:
+        <input class="form-control" ng-model="app.firstobject" name="firstobject" />
+    </label>
+    <br />
+    <input class="btn btn-default" type="submit" value="Create my app" />
+</form>

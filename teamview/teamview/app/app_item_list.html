@@ -1,17 +1,17 @@
 <div class="objecttitle">{{object.plurallabel}}</div>
 
-<div class="dropdown">
-  <h2 class="dropdown-toggle pull-left" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+<div class="dropdown" dropdown>
+  <h2 class="dropdown-toggle pull-left" id="dropdownMenu1" dropdown-toggle ng-disabled="disabled">
     <span class="glyphicon glyphicon-{{object.icon}}"></span> {{view.label}}
     <span class="caret"></span>
   </h2>
 
   <div class="viewlinks pull-left">
-    <a href="#/app/{{object.name}}/{{view.name}}/edit">{{'edit'|lng}}</a> |
+    <a href="#/app/{{object.name}}/{{view.name}}/editview">{{'edit'|lng}}</a> |
     <a href="#/app/{{object.name}}/addnewview">{{'create new view'|lng}}</a>
 </div>
 
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" dropdown>
     <li class="dropdowntitle">{{'my views'|lng|tc}}</li>
     <li role="presentation" ng-repeat="view in object.views"><a role="menuitem" tabindex="-1" href="#/app/{{object.name}}/{{view.name}}">{{view.label}}</a></li>
 

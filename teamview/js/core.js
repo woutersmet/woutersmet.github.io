@@ -84,6 +84,7 @@ function debug(smt){
     css += 'a { color: '+global.app.appcolors.links+'; }';
     css += '.background-primary, .background-primary { background-color:'+global.app.appcolors.primary+' !important; }';
     css += '.background-secondary,.background-secondary a { background-color:'+global.app.appcolors.secondary+' !important; }';
+    //css += 'button.btn-default, a.btn-default { background-color:'+global.app.appcolors.secondary+' !important;color:white; }';
 
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
