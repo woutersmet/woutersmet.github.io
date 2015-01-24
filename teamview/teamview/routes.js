@@ -16,6 +16,22 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
         }]
       }
     },
+    '/chat': {
+      templateUrl: 'partials/chat.html',
+      controller: 'ChatCtrl'
+    },
+    '/login': {
+      templateUrl: 'teamview/home/home_login.html',
+      controller: 'TVLoginCtrl'
+    },
+    '/account': {
+      templateUrl: 'partials/account.html',
+      controller: 'AccountCtrl',
+      // require user to be logged in to view this route
+      // the whenAuthenticated method below will resolve the current user
+      // before this controller loads and redirect if necessary
+      authRequired: true
+    },
       '/user':
           {templateUrl: 'teamview/user/user_index.html',controller: 'TVUserCtrl'},
         '/user/account':
@@ -50,23 +66,7 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       '/app/:objectname/:viewname/edit':
           {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppViewEditCtrl'},
       '/app/:objectname/addnewview':
-          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppViewAddNewCtrl'},
-    '/chat': {
-      templateUrl: 'partials/chat.html',
-      controller: 'ChatCtrl'
-    },
-    '/login': {
-      templateUrl: 'partials/login.html',
-      controller: 'LoginCtrl'
-    },
-    '/account': {
-      templateUrl: 'partials/account.html',
-      controller: 'AccountCtrl',
-      // require user to be logged in to view this route
-      // the whenAuthenticated method below will resolve the current user
-      // before this controller loads and redirect if necessary
-      authRequired: true
-    }
+          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppViewAddNewCtrl'}
   })
 
   /**

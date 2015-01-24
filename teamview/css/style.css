@@ -7,6 +7,8 @@ body {
   padding-top: 50px;
 }
 
+/* because angular-ui bootstrap at http://angular-ui.github.io/bootstrap/ tells us to do this */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 /*
  * Global add-ons

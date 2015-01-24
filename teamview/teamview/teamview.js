@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 var TeamViewApp = angular.module('TeamViewApp', [
+    'ui.bootstrap',
     'TeamView.config',
     'TeamView.controllers',
     'TeamView.decorators',
