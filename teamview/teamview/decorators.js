@@ -1,4 +1,5 @@
 /**
+* From angular seed app
 * Wraps ng-cloak so that, instead of simply waiting for Angular to compile, it waits until
 * simpleLogin resolves with the remote Firebase services.
 *
@@ -6,7 +7,7 @@
 *    <div ng-cloak>Authentication has resolved.</div>
 * </code>
 */
-angular.module('myApp.decorators', ['firebase.utils', 'simpleLogin'])
+angular.module('TeamView.decorators', ['firebase.utils', 'simpleLogin'])
   .config(['$provide', function($provide) {
     // adapt ng-cloak to wait for auth before it does its magic
     $provide.decorator('ngCloakDirective', ['$delegate', 'simpleLogin',

@@ -1,8 +1,9 @@
+'use strict';
 /*
 * global data
  */
 
-global = {};
+var global = {};
 
 /*
 * SYSTEM

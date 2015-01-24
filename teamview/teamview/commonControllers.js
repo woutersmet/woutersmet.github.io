@@ -1,4 +1,4 @@
-TeamViewApp.controller('TVAppNavCtrl',function($scope){
+TeamViewAppControllers.controller('TVAppNavCtrl',function($scope){
     $scope.navobjects = global.app.objects;
     $scope.appname = global.app.appname;
   });

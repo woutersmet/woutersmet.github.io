@@ -1,31 +1,66 @@
-<ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#settings">Settings</a></li>
-    <li role="presentation"><a href="#settings/objects/list">Objects</a></li>
-</ul>
+<h2>User account</h2>
 
-<h2>Settings</h2>
-{{ message }}
+<form>
+    <fieldset>
+        <legend>Profile</legend>
 
-<div class="alert alert-info">
-<h4>Define objects</h4>
-<p>
-  Define the objects that will make up your app. For example:<br>
-  <ul>
-    <li>Contacts, companies, activities and deals</li>
-    <li>Invoices, estimates and payments</li>
-    <li>Projects, tasks and milestones</li>
-  </ul>
-</p>
-</div>
+        <label>
+            <span>Name:</span>
+            <input type="text" name="name" ng-model="profile.name"/>
+        </label>
 
-<div class="alert alert-warning">
-<h4>Manage users</h4>
-<p>
-  Define the objects that will make up your app. For example:<br>
-  <ul>
-    <li>Contacts, companies, activities and deals</li>
-    <li>Invoices, estimates and payments</li>
-    <li>Projects, tasks and milestones</li>
-  </ul>
-</p>
-</div>
+        <label>
+            <span>Email:</span>
+            <br />{{profile.email}}
+        </label>
+    </fieldset>
+</form>
+
+<form>
+    <fieldset>
+        <legend>Change Password</legend>
+
+        <label>
+            <span>Old Password:</span>
+            <input type="password" ng-keypress="clear()" ng-model="oldpass"/>
+        </label>
+
+        <label>
+            <span>New Password:</span>
+            <input type="password" ng-keypress="clear()" ng-model="newpass"/>
+        </label>
+
+        <label>
+            <span>Confirm New Password:</span>
+            <input type="password" ng-keypress="clear()" ng-model="confirm"/>
+        </label>
+
+        <button ng-click="changePassword(oldpass, newpass, confirm)">change password</button>
+
+        <p class="error" ng-show="err">{{err}}</p>
+        <p class="good" ng-show="msg">{{msg}}</p>
+    </fieldset>
+</form>
+
+<form>
+    <fieldset>
+        <legend>Change Email</legend>
+
+        <label>
+            <span>New Email:</span>
+            <input type="text" ng-keypress="clear()" ng-model="newEmail"/>
+        </label>
+
+        <label>
+            <span>Password:</span>
+            <input type="password" ng-keypress="clear()" ng-model="pass"/>
+        </label>
+
+        <button ng-click="changeEmail(pass, newEmail)">update email</button>
+
+        <p class="error" ng-show="emailerr">{{emailerr}}</p>
+        <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
+    </fieldset>
+</form>
+
+<button ng-click="logout()">Log Out</button>
