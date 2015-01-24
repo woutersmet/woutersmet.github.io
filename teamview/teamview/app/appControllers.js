@@ -2,7 +2,7 @@
   TeamViewAppControllers.controller('TVAppItemListCtrl', function($rootScope,$scope, $routeParams) {
       $scope.message = 'This is app object list screen';
       var object = getObjectByName($routeParams.objectname);
-      var viewname = $routeParams.viewname || 'all_' + object.plurallabel;
+      var viewname = $routeParams.viewname || object.name + '_all';
 
       var view = getViewByObjectAndName($routeParams.objectname,viewname);
 

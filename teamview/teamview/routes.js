@@ -39,6 +39,8 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       //settings
         '/settings':
           {templateUrl: 'teamview/settings/settings_index.html',controller: 'TVSettingsCtrl', authRequired: true},
+        '/settings/org':
+          {templateUrl: 'teamview/settings/settings_organisation.html',controller: 'TVSettingsOrganisationCtrl', authRequired: true},
         '/settings/team':
           {templateUrl: 'teamview/settings/settings_team.html',controller: 'TVSettingsObjectListCtrl', authRequired: true},
         '/settings/newapp':

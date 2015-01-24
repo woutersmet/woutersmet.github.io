@@ -170,3 +170,10 @@ td.data a {color:#333;text-decoration:underline;}
 
 .colortheme {background:#fafafa;display:block;margin:15px;}
 .themecolor {height:30px;border-radius:3px;margin:5px;border:1px solid black;float:left;padding:5px;color:white;}
+
+.systeminfo {
+  color:#aaa;
+  background:#eee;
+  padding:5px;
+  font-size:90%;
+}

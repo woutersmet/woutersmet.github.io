@@ -23,16 +23,26 @@
       $scope.message = 'This is object list settings';
   })
 
+  .controller('TVSettingsOrganisationCtrl', function($scope) {
+  })
+
   .controller('TVSettingsAppAddNewCtrl', ['$scope', 'fbutil',function($scope,fbutil) {
     //adding new app
     $scope.message = 'This is adding new app';
     $scope.newapp = {name : 'test'};
 
+    $scope.createOrg = function(){
+      //alert("Will save" + $scope.newapp.name);
+      var ref = fbutil.ref('orgs');
+      console.log(ref);
+      ref.child($scope.newapp.name).set($scope.newapp);
+    };
+
     $scope.createApp = function(){
       //alert("Will save" + $scope.newapp.name);
       var ref = fbutil.ref('apps');
       console.log(ref);
-      ref.push($scope.newapp);
+      ref.child($scope.newapp.name).set($scope.newapp);
     };
 
   }]);

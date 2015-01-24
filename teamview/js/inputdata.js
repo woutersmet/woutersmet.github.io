@@ -88,8 +88,29 @@ global.system.colorthemes = [
 * SPECIFIC APP
  */
 
+global.org = {
+  name : 'tadabon',
+  label : 'TadaBon'
+}
+
+global.org.apps = {
+  crm : {
+    name : "crm",
+    label : "Customer Relations",
+    language : "nl",
+    objects : ['contact','company','deal','lead', 'product']
+  },
+  accounting : {
+    name : "accounting",
+    label : "Accounting",
+    language : "nl",
+    objects : ['company','invoice','estimate','product','line_item','payment']
+  },
+}
+
 global.app = {
-  appname : "Customer Relations",
+  name : "crm",
+  label : "Customer Relations",
   language : "nl"
 };
 
@@ -156,18 +177,19 @@ global.app.objects = [
         id : 1,
         name : 'contact',
         label : 'contact',
-        plurallabel : 'contacts',
+        plurallabel : 'contacten',
         icon : 'user',
         fields : [
-          {id: 1, name : 'name', label : 'name', type : 'text'},
-          {id: 2, name : 'datecreated', label : 'datecreated', type : 'date'},
-          {id: 3, name : 'role', label : 'role', type : 'picklist', options : {picklistvalues : ['new','open','closed']}},
-          {id: 4, name : 'email', label : 'email', type : 'email'},
-          {id: 5, name : 'phone', label : 'phone', type : 'text'},
-          {id: 5, name : 'company', label : 'company', type : 'relation'},
+          {id: 1, name : 'firstname', label : 'voornaam', type : 'text'},
+          {id: 2, name : 'lastname', label : 'familienaam', type : 'text'},
+          {id: 3, name : 'datecreated', label : 'datecreated', type : 'date'},
+          {id: 4, name : 'role', label : 'role', type : 'picklist', options : {picklistvalues : ['new','open','closed']}},
+          {id: 5, name : 'email', label : 'email', type : 'email'},
+          {id: 6, name : 'phone', label : 'phone', type : 'text'},
+          {id: 7, name : 'company', label : 'company', type : 'relation'},
         ],
         views : [
-          {name : 'all_contacts', label : 'All contacts', filter : [], columns : ['name','email','phone']},
+          {name : 'contact_all', label : 'Alle contacten', filter : [], columns : ['name','email','phone']},
           {name : 'managers', label : 'Managers', filter : {role : 'manager'}, columns : ['name','email']},
         ],
         layouts : {
@@ -180,19 +202,19 @@ global.app.objects = [
       {
         id : 2,
         name : 'company',
-        label : 'company',
-        plurallabel : 'companies',
+        label : 'bedrijf',
+        plurallabel : 'bedrijven',
         icon : 'home',
         fields : [
-          {id : 1, name : 'name', label : 'name', type : 'text'},
-          {id : 2, name : 'country', label : 'country', type : 'text'},
+          {id : 1, name : 'name', label : 'naam', type : 'text'},
+          {id : 2, name : 'country', label : 'land', type : 'text'},
           {id : 3, name : 'datecreated', label : 'date created', type : 'date'},
           {id : 3, name : 'createdby', label : 'created by', type : 'user'},
           {id : 4, name : 'type', label : 'type', type : 'picklist', options : {picklistvalues : ['prospect','customer','partner']}},
           {id : 5, name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
         ],
         views : [
-          {name : 'all_companies', label : 'All companies', filter : [], columns : ['name','industry']},
+          {name : 'company_all', label : 'Alle bedrijven', filter : [], columns : ['name','industry']},
         ],
         layouts : {
               detail : {
@@ -214,7 +236,7 @@ global.app.objects = [
           {id : 4, name : 'owner', label : 'owner', type : 'user'},
         ],
         views : [
-          {name : 'all_deals', label : 'All deals', filter : [], columns : ['name','stage']}
+          {name : 'deal_all', label : 'Alle deals', filter : [], columns : ['name','stage']}
         ],
       },
       {
@@ -234,7 +256,7 @@ global.app.objects = [
           {name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['internet','retail','agriculture']}},
         ],
         views : [
-          {name : 'all_leads', label : 'All leads', filter : [], columns : ['name','company','email']}
+          {name : 'lead_all', label : 'Alle leads', filter : [], columns : ['name','company','email']}
         ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},
@@ -244,8 +266,8 @@ global.app.objects = [
       {
         id : 5,
         name : 'task',
-        label : 'task',
-        plurallabel : 'tasks',
+        label : 'taak',
+        plurallabel : 'taken',
         icon : 'tasks',
         fields : [
           {name : 'subject', label : 'subject', type : 'text'},
@@ -262,7 +284,8 @@ global.app.objects = [
       {
         id : 6,
         name : 'project',
-        plurallabel : 'projects',
+        label : 'project',
+        plurallabel : 'projecten',
         icon : 'tasks',
         fields : [
           {name : 'name', label : 'name', type : 'text'},

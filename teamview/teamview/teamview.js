@@ -14,6 +14,7 @@ var TeamViewApp = angular.module('TeamViewApp', [
 
   .run(function($rootScope) { //global app setup stuff
       $rootScope.app = global.app;
+      $rootScope.org = global.org;
       applyAppStyles();
   });
 

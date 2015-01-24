@@ -1,0 +1,19 @@
+<h2>Organisation settings</h2>
+
+Organisation: <strong>{{org.label}}</strong> (API name: {{org.name}})
+
+<h3>Apps</h3>
+
+<ul>
+    <li ng-repeat="app in org.apps">
+        <a href="#">{{app.label}}</a><br />
+        Objects:
+        <ul>
+            <li ng-repeat="objectname in app.objects">{{objectname}}</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Objects</h3>
+
+<h3>Users</h3>
