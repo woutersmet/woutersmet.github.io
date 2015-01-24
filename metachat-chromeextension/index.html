@@ -3,35 +3,35 @@
 <head>
     <title>MetaChat - chat with fellow visitors of web sites</title>
 
-
-</head>
-<body>
-<h1>MetaChat</h1>
-<h2>chat with fellow visitors of the site you are on</h2>
-<strong>MetaChat</strong> is a Chrome plugin built with FireBase that shows a chat window where you can chat with people
-also on the same site.
-<br>
-To run the program:
-<ul>
-  <li>Download and unpack the <a href="metachat.zip" target="_blank">Metachat.zip</a> file somewhere</li>
-  <li>go to <a href="chrome://extensions">chrome://extensions</a></li>
-  <li>Check 'developer mode'</li>
-  <li>Press 'load unpacked extension' and select the folder where you unpacked the metachat zip file</li>
-</ul>
-<p>
-  On this page you can see / participate in sites that people are on.
-</p>
 <style type="text/css">
 body {
     font-family: Arial;
+    background-color:#eee;
 }
+
+#bigcentraltable {
+  background-color:white;
+  text-align:left;
+}
+
+#bigcentraltable td {
+  background:white;
+  padding:10px;
+}
+
   #mainPopup {
     padding: 10px;
     width: 400px;
     float:left;
   }
 
-    #header {
+  .header {
+    background-color:#eef;
+    padding:10px;
+    margin-bottom:10px;
+  }
+
+    #chatheader {
         background-color:#eee;
         padding:10px;
         border-bottom:3px solid #aaa;
@@ -73,6 +73,33 @@ body {
     .author {color:#18d;font-weight:bold;}
     .me {color:#d33;}
 </style>
+</head>
+<body>
+<center><table id="bigcentraltable"><tr><td>
+<div class="header">
+<img src="metachatscreenshot.png" style="width:300px;float:right;" />
+<h1>MetaChat</h1>
+<a href="http://woutersmet.github.io">&larr; back to woutersmet.github.io experiments</a>
+<h2>Chat with fellow visitors of the site you are on</h2>
+
+<strong>MetaChat</strong> is a Chrome extension that shows a chat window where you can chat with people
+also on the same site.
+<br>
+To run the program:
+<ul>
+  <li>Download and unpack the <a href="metachat.zip" target="_blank">Metachat.zip</a> file somewhere</li>
+  <li>go to <strong>chrome://extensions</strong> to manage your extensions</li>
+  <li>Check 'developer mode' checkbox</li>
+  <li>Press 'load unpacked extension' button and select the folder where you unpacked the metachat zip file</li>
+  <li>Surf to a site, and click the icon in the top right to start chatting!</li>
+</ul>
+
+
+</div>
+
+<p>
+  On this page you can see / participate in sites that people have used meta chat on so far:
+</p>
 
 <div id="rooms">
   <h2>Rooms</h2>
@@ -81,19 +108,22 @@ body {
   </div>
 </div>
 <div id="mainPopup">
-<div id="header">
+<div id="chatheader">
     <h1> Meta chat!</h1>
 
-    Chat with fellow visitors of <strong><span id="sitename"></span></strong>
+    Chat with fellow visitors of <strong><span id="sitename">[pick a room on the left]</span></strong>
 </div>
 <div id='messagesDiv'></div>
 <input type='text' id='nameInput' placeholder='Name'>
 <input type='text' id='messageInput' placeholder='Message'>
 
 </div>
+
+</td></td></table></center>
 <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script src="jquery.min.js"></script>
 <script src="metachat.js"></script>
+
 
 </body>
 </html>
