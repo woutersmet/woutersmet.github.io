@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <title>MetaChat - chat with fellow visitors of web sites</title>
+
+
+</head>
+<body>
+<h1>MetaChat</h1>
+<h2>chat with fellow visitors of the site you are on</h2>
+<strong>MetaChat</strong> is a Chrome plugin built with FireBase that shows a chat window where you can chat with people
+also on the same site.
+<br>
+To run the program:
+<ul>
+  <li>Download and unpack the <a href="metachat.zip" target="_blank">Metachat.zip</a> file somewhere</li>
+  <li>go to <a href="chrome://extensions">chrome://extensions</a></li>
+  <li>Check 'developer mode'</li>
+  <li>Press 'load unpacked extension' and select the folder where you unpacked the metachat zip file</li>
+</ul>
+<p>
+  On this page you can see / participate in sites that people are on.
+</p>
+<style type="text/css">
+body {
+    font-family: Arial;
+}
+  #mainPopup {
+    padding: 10px;
+    width: 400px;
+    float:left;
+  }
+
+    #header {
+        background-color:#eee;
+        padding:10px;
+        border-bottom:3px solid #aaa;
+    }
+  h1 {
+    font-size: 2em;
+        color:#379;
+        margin:0;
+  }
+
+    input {
+        font-size:15px;
+    }
+
+    #rooms {
+      float:left;
+      width:200px;
+      overflow:auto;
+      height:400px;
+      border:1px solid #aaa;
+    }
+    .room {
+      display:block;
+      border-bottom:1px solid #ddd;
+      text-decoration:none;
+      color:#17d;
+      padding:10px;
+    }
+
+    .room:hover {
+      background-color:#eee;
+    }
+    #rooms h2 {background-color:#ddd;margin:0;}
+
+    #messagesDiv {height:300px;border:3px solid #eee;overflow:auto;}
+    #nameInput {width:15%;}
+    #messageInput {width:80%;}
+    .message {padding-bottom:4px;}
+    .author {color:#18d;font-weight:bold;}
+    .me {color:#d33;}
+</style>
+
+<div id="rooms">
+  <h2>Rooms</h2>
+  <div id="roomslist">
+
+  </div>
+</div>
+<div id="mainPopup">
+<div id="header">
+    <h1> Meta chat!</h1>
+
+    Chat with fellow visitors of <strong><span id="sitename"></span></strong>
+</div>
+<div id='messagesDiv'></div>
+<input type='text' id='nameInput' placeholder='Name'>
+<input type='text' id='messageInput' placeholder='Message'>
+
+</div>
+<script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js"></script>
+<script src="jquery.min.js"></script>
+<script src="metachat.js"></script>
+
+</body>
+</html>
