@@ -65,5 +65,6 @@
         $scope.msg = null;
         $scope.emailerr = null;
         $scope.emailmsg = null;
-      }
-    });
+      };
+
+    }]);

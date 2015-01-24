@@ -19,7 +19,7 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       '/user':
           {templateUrl: 'teamview/user/user_index.html',controller: 'TVUserCtrl'},
         '/user/account':
-          {templateUrl: 'teamview/user/user_account.html',controller: 'TVUserAccountCtrl'},
+          {templateUrl: 'teamview/user/user_account.html',controller: 'TVUserAccountCtrl', authRequired : true},
       //settings
         '/settings':
           {templateUrl: 'teamview/settings/settings_index.html',controller: 'TVSettingsCtrl'},
