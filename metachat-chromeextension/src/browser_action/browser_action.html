@@ -10,14 +10,20 @@
 
 <style type="text/css">
 	#mainPopup {
-
 		padding: 10px;
-		height: 200px;
 		width: 400px;
 		font-family: Arial;
 	}
+
+    #header {
+        background-color:#eee;
+        padding:10px;
+        border-bottom:3px solid #aaa;
+    }
 	h1 {
 		font-size: 2em;
+        color:#379;
+        margin:0;
 	}
 
     input {
@@ -33,10 +39,11 @@
 </style>
 
 <div id="mainPopup">
-<h1> Meta chat!</h1>
+<div id="header">
+    <h1> Meta chat!</h1>
 
-Chat with fellow visitors of <strong><span id="sitename"></span></strong>
-
+    Chat with fellow visitors of <strong><span id="sitename"></span></strong>
+</div>
 <div id='messagesDiv'></div>
 <input type='text' id='nameInput' placeholder='Name'>
 <input type='text' id='messageInput' placeholder='Message'>
