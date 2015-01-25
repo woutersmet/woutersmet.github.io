@@ -1,7 +1,7 @@
 <h2>{{'app settings'|lng|tc}}</h2>
 <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#settings">{{'settings'|lng|tc}}</a></li>
-    <li role="presentation"><a href="#settings/objects/list">{{'objects'|lng|tc}}</a></li>
+    <li role="presentation" class="active"><a href="#{{apppath}}/settings">{{'settings'|lng|tc}}</a></li>
+    <li role="presentation"><a href="#{{apppath}}/settings/objects/list">{{'objects'|lng|tc}}</a></li>
 </ul>
 
 {{ message }}
@@ -39,6 +39,66 @@
       </label>
     </td>
   </tr>
+  <tr>
+    <td>App objects</td>
+    <td>
+      <div class="pull-left" style="border:3px solid #aaa;margin-right:10px;padding:10px;">
+      Org available objects:<br>
+      <select name="test" multiple id="availableobjects" style="width:150px;height:200px;">
+        <option ng-repeat="object in app.objects">{{object.label}}</option>
+      </select>
+      </div>
+      <div class="pull-left"  style="border:3px solid #aaa;margin-right:10px;padding:10px;margin-top:50px;">
+        <button class="btn btn-default btn-sm" id="addobjectbtn">Add &rarr;</button><br />
+        <button class="btn btn-default btn-sm" id="removeobjectbtn">&larr; Del</button>
+      </div>
+      <div class="pull-left"  style="border:3px solid #aaa;margin-right:10px;padding:10px;">
+      Objects in app:<br>
+      <select name="test" multiple id="appobjects"  style="width:150px;height:200px;">
+        <option disabled>-- with tab --</option>
+        <option ng-repeat="object in app.objects">{{object.label}}</option>
+        <option disabled>-- without tab --</option>
+        <option ng-repeat="object in app.objects">{{object.label}}</option>
+      </select>
+      </div>
+      <div class="pull-left"  style="border:3px solid #aaa;margin-right:10px;padding:10px;margin-top:50px;">
+        <button class="btn btn-default btn-sm" id="addobjectbtn"> &#9650; Up</button><br />
+        <button class="btn btn-default btn-sm" id="removeobjectbtn"> &#9660; Down</button>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>App users</td>
+    <td>
+      <div class="pull-left" style="border:3px solid #aaa;margin-right:10px;padding:10px;">
+      Org available users:<br>
+      <select name="test" multiple id="availableusers" style="width:150px;height:200px;">
+        <option ng-repeat="object in app.users">{{object.label}}</option>
+      </select>
+      </div>
+      <div class="pull-left"  style="border:3px solid #aaa;margin-right:10px;padding:10px;margin-top:50px;">
+        <button class="btn btn-default btn-sm" id="addobjectbtn">Add &rarr;</button><br />
+        <button class="btn btn-default btn-sm" id="removeobjectbtn">&larr; Del</button>
+      </div>
+      <div class="pull-left"  style="border:3px solid #aaa;margin-right:10px;padding:10px;">
+      users in app:<br>
+      <select name="test" multiple id="appusers"  style="width:150px;height:200px;">
+        <option disabled>-- admin --</option>
+        <option ng-repeat="user in app.users">{{user.label}}</option>
+        <option disabled>-- regular --</option>
+        <option ng-repeat="user in app.users">{{user.label}}</option>
+        <option disabled>-- external --</option>
+        <option ng-repeat="user in app.users">{{user.label}}</option>
+      </select>
+      </div>
+      <div class="pull-left"  style="border:3px solid #aaa;margin-right:10px;padding:10px;margin-top:50px;">
+        <button class="btn btn-default btn-sm" id="addobjectbtn"> &#9650; Up</button><br />
+        <button class="btn btn-default btn-sm" id="removeobjectbtn"> &#9660; Down</button>
+      </div>
+    </td>
+  </tr>
+
 </table>
 </form>
 

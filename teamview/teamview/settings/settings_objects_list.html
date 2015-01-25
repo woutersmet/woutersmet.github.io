@@ -1,7 +1,7 @@
 <h2>Settings</h2>
 <ul class="nav nav-pills">
 <li role="presentation"><a href="#settings">Settings</a></li>
-    <li role="presentation" class="active"><a href="#settings/objects/list">Objects</a></li>
+    <li role="presentation" class="active"><a href="#{{apppath}}/settings/objects/list">Objects</a></li>
 </ul>
 
 {{ message }}
@@ -19,8 +19,8 @@
     <tbody>
     <tr ng-repeat="object in objects">
         <td>{{ object.id }}</td>
-        <td><a href="#settings/objects/detail/{{object.id}}">{{ object.name }}</a></td>
-        <td><a href="#settings/objects/detail/{{object.id}}">Detail</a></td>
+        <td><a href="#{{apppath}}/settings/objects/detail/{{object.id}}">{{ object.name }}</a></td>
+        <td><a href="#{{apppath}}/settings/objects/detail/{{object.id}}">Detail</a></td>
     </tr>
     </tbody>
 </table>

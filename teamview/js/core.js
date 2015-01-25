@@ -2,6 +2,33 @@ function debug(smt){
   console.log(smt);
 }
 
+function getSideBarLinks(section){
+  if (section == 'settings'){
+    return [
+      {
+        toplink : {label : 'Settings', url : ''},
+        sublinks : [
+          {label : 'Team', url : '/team'},
+          {label : 'Objects', url : '/objects'},
+          {label : 'Something Else', url : '/somethingelse'},
+        ]
+      }
+    ];
+  }
+  else {
+    return [
+      {
+        toplink : {label : 'link 1', url : '/app/settings/YES'},
+        sublinks : [
+          {label : 'link 1', url : '/app/settings/YES'},
+          {label : 'link 2', url : '/app/settings/YES'},
+          {label : 'link 3', url : '/app/settings/YES'},
+        ]
+      }
+    ];
+  }
+}
+
   function getViewByObjectAndName(objectname,viewname){
     for (i in global.app.objects){
       if (global.app.objects[i].name == objectname){

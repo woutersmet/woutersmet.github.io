@@ -8,8 +8,8 @@ var TeamViewApp = angular.module('TeamViewApp', [
     'TeamView.decorators',
     'TeamView.directives',
     'TeamView.filters',
-    'TeamView.routes',
-    'TeamView.services'
+    'TeamView.services',
+    'TeamView.routes'
   ])
 
   .run(function($rootScope) { //global app setup stuff

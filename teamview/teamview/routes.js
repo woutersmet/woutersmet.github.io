@@ -107,6 +107,16 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       }
       else {
         // all other routes are added normally
+
+        //WOUTER: add resolve stuff for left/top nav? //source: http://odetocode.com/blogs/scott/archive/2014/05/20/using-resolve-in-angularjs-routes.aspx
+        /*
+        route.resolve = {
+              leftmenuResult : function(leftMenuService){
+                return true;//leftMenuService.updateLeftMenu();
+            }
+        };
+        */
+
         $routeProvider.when(path, route);
       }
     });
@@ -148,51 +158,3 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       }
     }
   ]);
-
-/*
-  //var TeamViewApp = angular.module('TeamViewApp', ['TeamView.Filters'])
-  //Define Routing for app
-  TeamViewApp.config(['$routeProvider',
-    function($routeProvider) {
-      $routeProvider.
-      //user
-        when('/user',
-          {templateUrl: 'teamview/user/user_index.html',controller: 'TVUserCtrl'}).
-        when('/user/account',
-          {templateUrl: 'teamview/user/user_account.html',controller: 'TVUserAccountCtrl'}).
-      //settings
-        when('/settings',
-          {templateUrl: 'teamview/settings/settings_index.html',controller: 'TVSettingsCtrl'}).
-        when('/settings/team',
-          {templateUrl: 'teamview/settings/settings_team.html',controller: 'TVSettingsObjectListCtrl'}).
-        when('/settings/objects/list',
-          {templateUrl: 'teamview/settings/settings_objects_list.html',controller: 'TVSettingsObjectListCtrl'}).
-        when('/settings/objects/detail/:objectid',
-          {templateUrl: 'teamview/settings/settings_objects_detail.html',controller: 'TVSettingsObjectDetailCtrl'}).
-        when('/settings/objects/addnew',
-          {templateUrl: 'teamview/settings/settings_objects_addnew.html',controller: 'TVSettingsObjectAddNewCtrl'}).
-      //reports
-       when('/reports',
-          {templateUrl: 'teamview/reports/reports_index.html',controller: 'TVReportsCtrl'}).
-      //app
-      when('/app',
-          {templateUrl: 'teamview/app/app_index.html',controller: 'TVAppIndexCtrl'}).
-      //items
-      when('/app/:objectname',
-          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'}).
-      when('/app/:objectname/:viewname',
-          {templateUrl: 'teamview/app/app_item_list.html',controller: 'TVAppItemListCtrl'}).
-      when('/app/:objectname/detail/:itemid',
-          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppItemDetailCtrl'}).
-      when('/app/:objectname/addnew',
-          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppItemAddNewCtrl'}).
-      //editing / creating views
-      when('/app/:objectname/:viewname/edit',
-          {templateUrl: 'teamview/app/app_item_detail.html',controller: 'TVAppViewEditCtrl'}).
-      when('/app/:objectname/addnewview',
-          {templateUrl: 'teamview/app/app_item_addnew.html',controller: 'TVAppViewAddNewCtrl'}).
-      otherwise({
-          redirectTo: '/app'
-        });
-  }]);
-*/

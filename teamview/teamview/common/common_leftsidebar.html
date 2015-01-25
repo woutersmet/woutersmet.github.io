@@ -17,3 +17,10 @@
     <a href="#{{apppath}}/settings"><strong>{{app.label}}</strong></a> is a TeamView app in the
     <a href="#{{apppath}}/settings/org"><strong>{{org.label}}</strong></a> organisation.
 </div>
+
+test: {{leftsidebar.test}}
+
+<ul class="nav nav-sidebar" ng-repeat="contextlink in contextlinks">
+    <li class="active background-secondary"><a href="{{contextlink.toplink.url}}">{{contextlink.toplink.label}}</a>
+    <li ng-repeat="sublink in contextlink.sublinks"><a href="{{sublink.url}}">{{sublink.label}}</a>
+</ul>

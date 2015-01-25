@@ -2,10 +2,12 @@
 * SETTINGS CONTROLLERS
  */
 
-  TeamViewAppControllers.controller('TVSettingsCtrl', function($scope){
+  TeamViewAppControllers.controller('TVSettingsCtrl', ['$scope','$rootScope', function($scope, $rootScope){
     $scope.message = 'Settings home';
     $scope.colorthemes = global.system.colorthemes;
-  })
+
+    $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
 
   .controller('TVSettingsObjectDetailCtrl', function($scope, $routeParams){
     $scope.message = 'object detail';
