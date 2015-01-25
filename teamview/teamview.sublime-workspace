@@ -519,13 +519,45 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "teamview/_common/common_leftsidebar.html",
+			"settings":
+			{
+				"buffer_size": 887,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2826,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "teamview/common/common_topnav.html",
+			"settings":
+			{
+				"buffer_size": 2842,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Engagor Staging",
 	"command_palette":
 	{
-		"height": 289.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
 			[
 				"syntaht",
 				"Set Syntax: HTML"
@@ -543,7 +575,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 746.0
 	},
 	"console":
 	{
@@ -564,144 +596,148 @@
 	},
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/tadabon/meta_resources/materials/bonnen effectjes.docx",
-		"/Applications/MAMP/htdocs/tadabon/static/css/bootstrap.css",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.developer.html",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/locale.php",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/logsController.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/link-parse-opml.php",
-		"/Applications/MAMP/htdocs/tadabon/controllers/shopmanager/layoutController.php",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/developerController.php",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.invoice.php",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.order.php",
-		"/Users/woutersmet/Desktop/woutersmet.github.io/buildingblocks/index.js",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/services/fastspring/Subscriptions.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/payments/Subscriptions.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Account.php",
-		"/Applications/MAMP/htdocs/engagor/app/global/sass/subscription.scss",
-		"/Applications/MAMP/htdocs/engagor/app/protected/ci_tests/services/urlshorteners/services_urlshorteners_bitly_test.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/utils/SysUser.php",
-		"/Applications/MAMP/htdocs/engagor/system/tools/swapit",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/component/Transactions.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/export/ComponentGroupTaskInfo.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/export/ComponentTask.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/Component.php",
-		"/Applications/MAMP/htdocs/engagor/lib/tmhOAuth/composer.json",
-		"/Applications/MAMP/htdocs/engagor/lib/simpletest/compatibility.php",
-		"/Applications/MAMP/htdocs/engagor/lib/dompdf/lib/fonts/Courier-Oblique.afm",
-		"/Applications/MAMP/htdocs/engagor/api/config.inc",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Invoice.php",
-		"/Applications/MAMP/htdocs/engagor/lib/simpletest/invoker.php",
-		"/Applications/MAMP/htdocs/engagor/api/classes/locales/ig_ng.php",
-		"/Applications/MAMP/htdocs/engagor/app/index.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/sync/Salesforce.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/product/Account.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Intel.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Date.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Currency.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Curdbee.php",
-		"/Applications/MAMP/htdocs/engagor/api/classes/locales/sq_al.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/bookmark.php",
-		"/Applications/MAMP/htdocs/tadabon/bumptemplates.sh",
-		"/Applications/MAMP/htdocs/tadabon/templates/site.cssincludes.html",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/editorial-calendar/languages/editorial-calendar-sv_SE.mo",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/class-simplepie.php",
-		"/Applications/MAMP/htdocs/tadabon/configuration.inc.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.invoicefieldsinput.html",
-		"/Applications/MAMP/htdocs/tadabon/static/css/public-combined.css",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.subscribe.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.checkout.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.html",
-		"/Applications/MAMP/htdocs/tadabon/blog/.qidb/Packages",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/searchController.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/themes/tadablog/functions.php",
-		"/Applications/MAMP/htdocs/tadabon/static/css/style.css",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-config.php",
-		"/Applications/MAMP/htdocs/tadabon/min/config-test.php",
-		"/Applications/MAMP/htdocs/tadabon/min/config.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/peters-collaboration-e-mails/peters_collaboration_emails-nl_NL.mo",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/jetpack/scss/atoms/colors/_colors.scss",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/jetpack/scss/_utilities/_clearings.scss",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/jetpack/scss/_utilities/_print.scss",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/css/wp-pointer.css",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-activate.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/custom-header.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.voorwaarden.html",
-		"/Applications/MAMP/htdocs/tadabon/controllers/public/voorwaardenController.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.index.html",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/shopsController.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.voucherpreview.html",
-		"/Applications/MAMP/htdocs/tadabon/lib/phpqrcode/VERSION",
-		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.layout.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.giftvouchers.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.addtocartformvoucher.html",
-		"/Applications/MAMP/htdocs/tadabon/controllers/public/storefrontController.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.cart.html",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.pdf.php",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.cronjob.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/class-wp-ajax-response.php",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.pdf_alphapdf.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/formatting.php",
-		"/Applications/MAMP/htdocs/tadabon/storage/cachefiles/shoplist-featured-oost-vlaanderen.txt",
-		"/Applications/MAMP/htdocs/tadabon/controllers/public/fileController.php",
-		"/Applications/MAMP/htdocs/engagor/lib/simpletest/form.php",
-		"/Applications/MAMP/htdocs/engagor/app/global/css/pictonic/svgs/folder-open.svg",
-		"/Applications/MAMP/htdocs/engagor/api/scripts/fastdata.php",
-		"/Applications/MAMP/htdocs/engagor/api/scripts/syncInvoices.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/controller/admin/SubscriptionController.php",
-		"/Applications/MAMP/htdocs/engagor/system/tools/sync",
-		"/Applications/MAMP/htdocs/engagor/api/scripts/syncSubscriptions.php",
-		"/Applications/MAMP/htdocs/engagor/lib/yaml-php/lib/sfYaml.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/pdf.giftvoucher.DOOS01.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/pdf.giftvoucher.html",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/pluggable-deprecated.php",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.shop.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/jetpack/class.jetpack-post-images.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/.qidb/Filedigests",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/jetpack/languages/jetpack-fa_IR.mo",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.shop.deliveryfieldsinput.html",
-		"/Applications/MAMP/htdocs/tadabon/controllers/shopmanager/ordersController.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.orders.one.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.orders.html",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.accountspaypal.php",
-		"/Applications/MAMP/htdocs/tadabon/lib/mailgun-composer-stuff/vendor/guzzle/guzzle/docs/plugins/history-plugin.rst",
-		"/Applications/MAMP/htdocs/tadabon/lib/mailgun-composer-stuff/vendor/guzzle/guzzle/src/Guzzle/Common/HasDispatcherInterface.php",
-		"/Applications/MAMP/htdocs/tadabon/lib/stripe-php-1.10.1/test/Stripe/DiscountTest.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/.qidb/Dirnames",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/giftvouchersController.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.shops.one.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.shops.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.salestools.html",
-		"/Applications/MAMP/htdocs/tadabon/storage/cachefiles/shopdetails-elaba.txt",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/salestoolsController.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-content/plugins/google-analyticator/google-api-php-client/src/io/Google_IO.php",
-		"/Applications/MAMP/htdocs/tadabon/google6c3426c59557ef99.html",
-		"/Applications/MAMP/htdocs/tadabon/classes/class.shopmanagerbasecontroller.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.welcome.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/shopmanager/shopmanager.actionstates.html",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/link-manager.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/js/mediaelement/mediaelement-and-player.min.js",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/ms-admin.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/media.php",
-		"/Applications/MAMP/htdocs/tadabon/templates/admin/admin.invoices.html",
-		"/Applications/MAMP/htdocs/tadabon/classes/framework/class.db.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-includes/class.wp-dependencies.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/ms-delete-site.php",
-		"/Applications/MAMP/htdocs/tadabon/controllers/admin/invoicesController.php",
-		"/Applications/MAMP/htdocs/tadabon/index.php",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-content/themes/engagor/templates/head.php",
-		"/Users/woutersmet/Desktop/bounced emails.csv",
-		"/Applications/MAMP/htdocs/engagor-wordpress/wp-signup.php"
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/js/core.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/config.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/js/inputdata.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/app_item_list.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/app_item_detail.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/app_item_home.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/firebase-simple-login/firebase-simple-loginTAKENFROMCDN.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/html5-boilerplate/doc/TOC.md",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/teamview.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/common/common_leftsidebar.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/lib/js/firebase-simple-login.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/css/style.css",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/partials/login.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/_common/common_leftsidebar.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settingsControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/routes.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_organisation.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_objects_list.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/config/security-rules.json",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/firebase.utils.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/controllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/appControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/_common/common_topnav.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_app_addnew.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/insight/node_modules/os-name/node_modules/.bin/osx-release",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_objects_detail.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/class_webdriver_logging_Entry.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/request/node_modules/mime-types/component.json",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/module_selenium-webdriver_chrome_class_Options.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma/lib/reporters/DotsColor.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/lib/util/rootCheck.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/test/lib/mock.fbutil.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/decompress-zip/node_modules/binary/test/from_buffer.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/filters.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/commonControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/request/node_modules/hawk/test/message.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/example/example_spec.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/module_selenium-webdriver_error.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/shelljs/make.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/enum_webdriver_promise_ControlFlow_EventType.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/class_webdriver_promise_ControlFlow.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/app_view_addnew.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/angular/README.md",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/class_goog_labs_testing_GreaterThanEqualToMatcher.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/lib/util/createLink.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/lib/util/createError.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/templates/std/conflict-resolved.std",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/mout/date/timezoneOffset.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/html5-boilerplate/index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/partials/home.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/home/home_index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/http-server/node_modules/union/test/simple-test.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/simpleLogin.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/app_item_addnew.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_newapp.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/interface_goog_labs_testing_Matcher.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/mout/array/intersection.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/decompress-zip/node_modules/binary/test/not_enough_buf.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/notloggedin.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/app/app_index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/user/user_account.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/user/user_index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/home/home_login.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/user/userControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/home/homeControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/docs/library-only.md",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/LICENSE",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/partials/account.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/directives.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/decorators.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/lib/webdriver/firefoxdomexecutor.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/firebase.utils.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/app.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/angularfire/dist/angularfire.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/angular/angular.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/config.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/routes.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/userAgent.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/tmp/test-all.sh",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/decorators.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/firebase.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/services.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/angular/angular.min.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/lib/js/angular.minOLD.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/lib/js/angular.min.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/es5-ext/test/error/valid-error.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/insight/node_modules/inquirer/node_modules/rx/src/core/linq/observable/timeinterval.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/inquirer/node_modules/rx/src/core/linq/observable/timeinterval.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/insight/node_modules/inquirer/node_modules/rx/src/core/linq/observable/interval.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/inquirer/node_modules/rx/src/core/linq/observable/interval.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/decompress-zip/node_modules/binary/test/interval.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/changeEmail.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/reports/reportsControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/auth/authControllers.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/reports/reports_index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/mout/object/hasOwn.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/CHANGELOG.md",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/cardinal/test/cardinal-highlight-file-async.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/cardinal/test/cardinal-highlight-json.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/test/unit/controllers.spec.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/firebase.json",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/filters.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/partials/chat.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/auth/auth_login.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_team_list.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_objects_addnew.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_leftsidebar.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview.sublime-project",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma/lib/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/http-server/public/index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/lib/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma-script-launcher/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma-phantomjs-launcher/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma-junit-reporter/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma-firefox-launcher/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma-coffee-preprocessor/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma-chrome-launcher/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/js/index.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/mout/lang/isDate.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/karma/node_modules/connect/lib/middleware/directory.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/protractor/node_modules/selenium-webdriver/docs/enum_webdriver_FirefoxDomExecutor_EventType_.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/js/data.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/bower/node_modules/mout/object/deepEquals.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/node_modules/shelljs/src/toEnd.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/js/directives.js"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"*.js",
+			"*.html",
+			"*.*",
+			"*.js",
 			"*.html",
 			"*.php",
 			"*.html",
@@ -825,10 +861,6 @@
 			"*.php\n*.php",
 			"*.html",
 			"*.php",
-			"*.html",
-			"*.*",
-			"*.js",
-			"*.*",
 			"*.html"
 		]
 	},
@@ -837,134 +869,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"invoicepdfurl",
-			"filepa",
-			"promptsave",
-			"{email :",
-			"email",
-			"var3",
-			"var2",
-			"Header",
-			"<td>",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"invoice__c",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"estimate",
-			"Estimate",
-			"Not Ch",
-			"Edit | Del",
-			"\">",
-			"<option",
-			"<inpu",
-			"id=\"",
-			"\">",
-			"value=\"",
-			"ue=\"",
-			"Nog geen bestaande ondergrond op dit moment",
-			"Fermacell",
-			"Egaline",
-			"Fermacell",
-			"Andere",
-			"Leverancier",
-			"Bedrijf",
-			"Architect",
-			"Particulier",
-			"00N240000027q0s",
-			"00N240000027q6k",
-			"Andere",
-			"Particulier",
-			"country_code",
-			"<tex",
-			"textarea",
-			"id",
-			"order by",
-			"<th>account executive",
-			"issue",
 			"span",
-			"'list'",
-			"Subscription_Issues",
-			"bad_payers",
-			"overdue for more than",
-			"maxplanarray",
-			"simpleplan",
-			"'enterprisev3'",
-			"enterprisev3 as enterprise",
-			"\"enterprisev3\"",
-			"'enterprisev3'",
-			"'enterprisev3' => 'enterprise'",
-			"111",
-			";",
-			"eee",
-			"panel-heading",
-			"archive-header",
-			"gratis",
-			"geen spam",
-			"ffffdd",
-			"rel=\"bookmark\"",
-			"bloglogo",
-			"class=\"page-head\"",
-			"<aside",
-			"ddd",
-			"koop een cadeaubon online!",
-			"mijn winkel",
-			"blue.css",
-			"</span>",
-			"from invoices",
-			"into invoices",
-			"overtadabon",
-			"deliveryzipcode",
-			"receivername",
-			"aaa",
-			"FANCY",
-			"SJE",
-			"DOOSJE",
-			"EENVOUDIG",
-			"packagi",
-			"deliveryzip",
-			"deliveryzipcode",
-			"receiver",
-			"deliverymethod",
-			"aaffaa",
-			"ffffaa",
-			"var",
-			"deliveryzipcode",
-			"order_deliverylocations",
-			"var",
-			"type",
-			"mysql_error",
+			"'/",
+			"apdop",
+			"naam",
+			"tasks",
+			"country",
+			"companies",
+			"test",
+			"newappname",
+			"newapp",
+			"firebaseRef",
+			"simplelogin:",
+			"editview",
+			"TVSettingsAppAddNewCtrl",
+			"TVSettingsAppddNewCtrl",
+			"TeamViewAppControllers",
+			"},",
+			"primary",
+			"<button",
+			"<form>",
+			"TVLoginCtrl",
+			"user",
+			"userservices",
+			"user",
+			"'user'",
+			"userprovider",
+			"/account",
+			"intervalprovider",
+			"TeamViewApp",
+			"TeamViewApp.c",
+			"TeamViewApp",
+			"TeamViewAppControllers",
+			"HOME",
+			"}).",
+			"when(",
+			"changeemail",
+			"firebase",
+			"js/",
+			"js",
+			"teamviewapp",
+			"firebase.utils",
+			"tvfilters",
+			"titlecase",
+			"reverse",
+			"loginRedirectPath",
+			"routes",
+			"myApp",
+			"firebase-simple-login",
+			"INSTANCE",
+			"instance",
+			"INSTANCE",
+			"object",
+			"manage team",
+			"manage",
+			"kleuren",
+			"colors",
+			"{{'",
+			"instellingen",
+			"settings",
+			"primary",
+			"444",
+			"fff",
+			"/#",
+			"English",
+			"Search",
+			"manage team",
+			"my views",
+			"my ",
+			"action",
+			"|ln",
+			"|lang",
+			"app",
+			"objectapp",
+			"objectsApp",
+			"TVLanguageFilter",
+			"search",
+			"overview",
+			"app",
+			"new",
+			"del",
+			"new",
+			"edit",
+			"settings",
+			"reports",
+			"add",
+			"fonts",
+			"js/",
+			"sm",
+			"h5",
+			"ref=\"#",
+			"date",
+			"industry",
+			"company",
+			"industry",
+			"name",
+			"{{object.name}}/detail",
+			"number",
+			"user",
+			"owner",
+			"email",
+			"text",
+			"name",
+			"here",
+			"viewname",
+			"columns",
 			"item",
-			"packagedvoucherrecipient",
-			"orderDataata",
-			"ordertype",
-			"locationid",
-			"givername",
-			"invoice",
-			"deliverylocationid",
-			"placedbyuserid",
-			"insertid",
-			"deliveryaddress"
+			"objectname",
+			"data",
+			"name",
+			"getItemList",
+			"getObjectItems",
+			"914",
+			"a22",
+			"822",
+			"faa",
+			"27d",
+			"5af",
+			"666",
+			"999",
+			"777",
+			"444",
+			"f2f2f2",
+			"eee",
+			"777",
+			"dropdowntitle",
+			"muted",
+			"test",
+			"333"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -992,8 +1024,99 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "teamview/_common/common_leftsidebar.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 887,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								782,
+								790
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2588,
+								2588
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 721.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "teamview/common/common_topnav.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1025,
+								1025
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1048,516 +1171,516 @@
 		"selected_items":
 		[
 			[
-				"readme",
-				"README.md"
+				"core.js",
+				"js/core.js"
 			],
 			[
-				"betalingcon",
-				"controllers/public/betalingController.php"
+				"itemlis",
+				"teamview/app/app_item_list.html"
 			],
 			[
-				"admin.invoices.one",
-				"templates/admin/admin.invoices.one.html"
+				"inputdata",
+				"js/inputdata.js"
 			],
 			[
-				"admin.invoice",
-				"templates/admin/admin.invoices.html"
+				"topnav",
+				"teamview/common/common_topnav.html"
 			],
 			[
-				"admin.deve",
-				"templates/admin/admin.developer.html"
+				"sidebar.",
+				"teamview/common/common_leftsidebar.html"
 			],
 			[
-				"developercon",
-				"controllers/admin/developerController.php"
+				"index.html",
+				"index.html"
+			],
+			[
+				"leftside",
+				"teamview/_common/common_leftsidebar.html"
+			],
+			[
+				"settingsorg",
+				"teamview/settings/settings_organisation.html"
+			],
+			[
+				"teamview.js",
+				"teamview/teamview.js"
+			],
+			[
+				"settingscon",
+				"teamview/settings/settingsControllers.js"
+			],
+			[
+				"route",
+				"teamview/routes.js"
+			],
+			[
+				"organisa",
+				"teamview/settings/settings_organisation.html"
+			],
+			[
+				"routes.js",
+				"teamview/routes.js"
+			],
+			[
+				"style.css",
+				"css/style.css"
+			],
+			[
+				"routes",
+				"teamview/routes.js"
+			],
+			[
+				"appcontro",
+				"teamview/app/appControllers.js"
+			],
+			[
+				"fbutil",
+				"teamview/firebase.utils.js"
+			],
+			[
+				"controllers",
+				"angularfire-seed/app/js/controllers.js"
+			],
+			[
+				"login.ht",
+				"angularfire-seed/app/partials/login.html"
+			],
+			[
+				"settings_ap",
+				"teamview/settings/settings_app_addnew.html"
 			],
 			[
 				"style.",
 				"css/style.css"
 			],
 			[
-				"index.js",
-				"js/index.js"
+				"home.ht",
+				"angularfire-seed/app/partials/home.html"
 			],
 			[
-				"core.js",
-				"core.js"
+				"login",
+				"angularfire-seed/app/partials/login.html"
 			],
 			[
-				"subscriptions.",
-				"app/protected/class/subscription/component/Subscriptions.php"
+				"simple-login",
+				"lib/js/firebase-simple-login.js"
 			],
 			[
-				"componenttransa",
-				"app/protected/class/subscription/component/Transactions.php"
+				"index.ht",
+				"index.html"
 			],
 			[
-				"invoices.html",
-				"app/protected/view/admin/subscription/components/invoices.html"
+				"itemlist",
+				"teamview/app/app_item_list.html"
 			],
 			[
-				"subscription",
-				"app/protected/class/subscription/Account.php"
+				"itemde",
+				"teamview/app/app_item_detail.html"
 			],
 			[
-				"bootstrap.css",
-				"static/css/bootstrap.css"
+				"item_add",
+				"teamview/app/app_item_addnew.html"
 			],
 			[
-				"cssinc",
-				"templates/site.cssincludes.html"
+				"settingsco",
+				"teamview/settings/settingsControllers.js"
 			],
 			[
-				"style.css",
-				"static/css/style.css"
+				"newap",
+				"teamview/settings/settings_newapp.html"
 			],
 			[
-				"style-blog",
-				"static/css/style-blog.css"
+				"appcon",
+				"teamview/app/appControllers.js"
 			],
 			[
-				"config",
-				"blog/wp-config.php"
+				"appitemde",
+				"teamview/app/app_item_detail.html"
 			],
 			[
-				"checkout.ht",
-				"templates/public/public.shop.checkout.html"
+				"userac",
+				"teamview/user/user_account.html"
 			],
 			[
-				"public.shop",
-				"templates/public/public.shop.html"
+				"style.cs",
+				"css/style.css"
 			],
 			[
-				"voorwaar",
-				"templates/public/public.voorwaarden.html"
+				"commonco",
+				"teamview/commonControllers.js"
 			],
 			[
-				"shopmanager.layout",
-				"templates/shopmanager/shopmanager.layout.html"
+				"home_inde",
+				"teamview/home/home_index.html"
 			],
 			[
-				"admin.voucher",
-				"templates/admin/admin.giftvouchers.html"
+				"controllers.",
+				"angularfire-seed/app/js/controllers.js"
 			],
 			[
-				"class.order",
-				"classes/class.order.php"
+				"homecontro",
+				"teamview/home/homeControllers.js"
 			],
 			[
-				"cart.html",
-				"templates/public/public.shop.cart.html"
+				"home_login",
+				"teamview/home/home_login.html"
 			],
 			[
-				"storefront",
-				"controllers/public/storefrontController.php"
+				"login.html",
+				"angularfire-seed/app/partials/login.html"
 			],
 			[
-				"formvoucher",
-				"templates/public/public.shop.addtocartformvoucher.html"
+				"account.ht",
+				"angularfire-seed/app/partials/account.html"
 			],
 			[
-				"subscriptioncurd",
-				"app/protected/class/subscription/Curdbee.php"
+				"directives",
+				"teamview/directives.js"
 			],
 			[
-				"syncin",
-				"api/scripts/syncInvoices.php"
+				"firectives",
+				"angularfire-seed/app/js/directives.js"
 			],
 			[
-				"filecon",
-				"controllers/public/fileController.php"
+				"angularfire",
+				"angularfire-seed/app/bower_components/angularfire/dist/angularfire.js"
 			],
 			[
-				"pdf.gif",
-				"templates/pdf.giftvoucher.DOOS01.html"
+				"config.js",
+				"angularfire-seed/app/js/config.js"
 			],
 			[
-				"class.shop",
-				"classes/class.shop.php"
+				"usercon",
+				"teamview/user/userControllers.js"
 			],
 			[
-				"class.pdf",
-				"classes/class.pdf.php"
+				"controllers.js",
+				"angularfire-seed/app/js/controllers.js"
 			],
 			[
-				"delivery",
-				"templates/public/public.shop.deliveryfieldsinput.html"
+				"routes.",
+				"teamview/routes.js"
 			],
 			[
-				"orders.one",
-				"templates/shopmanager/shopmanager.orders.one.html"
+				"usercont",
+				"teamview/user/userControllers.js"
 			],
 			[
-				"orderscon",
-				"controllers/shopmanager/ordersController.php"
+				"useraccount",
+				"teamview/user/user_account.html"
 			],
 			[
-				"shopmanager.order.",
-				"templates/shopmanager/shopmanager.orders.html"
+				"homeinde",
+				"teamview/home/home_index.html"
 			],
 			[
-				"admin.shops.one",
-				"templates/admin/admin.shops.one.html"
+				"homeco",
+				"teamview/home/homeControllers.js"
 			],
 			[
-				"search",
-				"controllers/admin/searchController.php"
+				"home_",
+				"teamview/home/home_index.html"
 			],
 			[
-				"shopscon",
-				"controllers/admin/shopsController.php"
+				"angular.min",
+				"angularfire-seed/app/bower_components/angular/angular.min.js"
 			],
 			[
-				"giftvoucher",
-				"controllers/admin/giftvouchersController.php"
+				"angular.js",
+				"angularfire-seed/app/bower_components/angular/angular.js"
 			],
 			[
-				"admin.vouch",
-				"templates/admin/admin.giftvouchers.html"
+				"angular.min.js",
+				"lib/js/angular.min.js"
 			],
 			[
-				"shopmanager.orders",
-				"templates/shopmanager/shopmanager.orders.html"
+				"reportsco",
+				"teamview/reports/reportsControllers.js"
 			],
 			[
-				"deliveryfie",
-				"templates/public/public.shop.deliveryfieldsinput.html"
+				"appcont",
+				"teamview/app/appControllers.js"
 			],
 			[
-				"class.db",
-				"classes/framework/class.db.php"
+				"home.",
+				"angularfire-seed/app/partials/home.html"
 			],
 			[
-				"cartform",
-				"templates/public/public.shop.addtocartformvoucher.html"
+				"user_account",
+				"teamview/user/user_account.html"
 			],
 			[
-				"deliveryfi",
-				"templates/public/public.shop.deliveryfieldsinput.html"
+				"rout",
+				"teamview/routes.js"
 			],
 			[
-				"invoicefieldsinpu",
-				"templates/public/public.shop.invoicefieldsinput.html"
+				"filters.js",
+				"teamview/filters.js"
 			],
 			[
-				"public.checkout",
-				"templates/public/public.shop.checkout.html"
+				"changeemail",
+				"angularfire-seed/app/js/changeEmail.js"
 			],
 			[
-				"admin.dev",
-				"templates/admin/admin.developer.html"
+				"angularfire.js",
+				"angularfire-seed/app/bower_components/angularfire/dist/angularfire.js"
 			],
 			[
-				"developc",
-				"controllers/admin/developerController.php"
+				"firebase.utils",
+				"angularfire-seed/app/js/firebase.utils.js"
 			],
 			[
-				"class.invoi",
-				"classes/class.invoice.php"
+				"services.js",
+				"teamview/services.js"
 			],
 			[
-				"class.cronjob",
-				"classes/class.cronjob.php"
+				"app.sj",
+				"angularfire-seed/app/js/app.js"
 			],
 			[
-				"",
-				"cron_daily.php"
+				"decorators",
+				"teamview/decorators.js"
 			],
 			[
-				"form.html",
-				"templates/public/public.shop.addtocartformvoucher.html"
+				"idnex.ht",
+				"index.html"
 			],
 			[
-				"addtocart",
-				"templates/public/public.shop.addtocartformvoucher.html"
+				"filters",
+				"teamview/filters.js"
 			],
 			[
-				"orderconfirmcon",
-				"templates/mail/mail.orderconfirmcontent.html"
+				"direct",
+				"teamview/directives.js"
 			],
 			[
-				"ordernotifi",
-				"templates/mail/mail.ordernotification.html"
+				"decor",
+				"teamview/decorators.js"
 			],
 			[
-				"cart.ht",
-				"templates/public/public.shop.cart.html"
+				"decorators.js",
+				"angularfire-seed/app/js/decorators.js"
 			],
 			[
-				"baseco",
-				"classes/framework/class.basecontroller.php"
+				"services.",
+				"teamview/services.js"
 			],
 			[
-				"index",
-				"index.php"
+				"app.js",
+				"angularfire-seed/app/js/app.js"
 			],
 			[
-				"addtoca",
-				"templates/public/public.shop.addtocartformvoucher.html"
-			],
-			[
-				"addtocar",
-				"templates/public/public.shop.addtocartformvoucher.html"
-			],
-			[
-				"configu",
-				"configuration.inc.php"
-			],
-			[
-				"orders.ht",
-				"templates/shopmanager/shopmanager.orders.html"
-			],
-			[
-				"addto",
-				"templates/public/public.shop.addtocartformvoucher.html"
-			],
-			[
-				"developer",
-				"controllers/admin/developerController.php"
-			],
-			[
-				"public.voucher",
-				"templates/public/public.shop.addtocartformvoucher.html"
-			],
-			[
-				".css",
-				"static/css/style.css"
+				"authco",
+				"teamview/auth/authControllers.js"
 			],
 			[
 				"confi",
-				"configuration.inc.php"
+				"angularfire-seed/app/js/config.js"
 			],
 			[
-				"public.sho",
-				"templates/public/public.shop.html"
+				"bower.json",
+				"angularfire-seed/bower.json"
 			],
 			[
-				"voucherpreview",
-				"templates/public/public.voucherpreview.html"
+				"security",
+				"angularfire-seed/config/security-rules.json"
 			],
 			[
-				"groupbuy",
-				"templates/public/public.shop.groupbuycontribute.html"
+				"index",
+				"index.html"
 			],
 			[
-				"groupbuycon",
-				"templates/public/public.shop.groupbuycontribute.html"
+				"app_view_add",
+				"teamview/app/app_view_addnew.html"
 			],
 			[
-				"minipri",
-				"templates/public/public.shop.voucherminipreview.html"
+				"view_edit",
+				"teamview/app/app_view_edit.html"
 			],
 			[
-				"shopmanager.orders.one",
-				"templates/shopmanager/shopmanager.orders.one.html"
+				"inputd",
+				"js/inputdata.js"
 			],
 			[
-				"voucher",
-				"templates/pdf.giftvoucher.html"
+				"services",
+				"teamview/services.js"
 			],
 			[
-				"voucherpre",
-				"templates/public/public.voucherpreview.html"
+				"item",
+				"teamview/app/app_item_detail.html"
 			],
 			[
-				"checkout.htl",
-				"templates/public/public.shop.checkout.html"
+				"settingsinde",
+				"teamview/settings/settings_index.html"
 			],
 			[
-				"class.track",
-				"api/classes/class.tracking.php"
+				"settings",
+				"teamview/settings/settings_index.html"
 			],
 			[
-				"engagor.trackers",
-				"app/global/js/engagor.trackers.js"
+				"inde",
+				"index.html"
 			],
 			[
-				"hubspot",
-				"app/global/js/engagor.hubspotpage.js"
+				"appindex",
+				"teamview/app/app_index.html"
 			],
 			[
-				"class.image",
-				"classes/class.image.php"
+				"leftsi",
+				"teamview/settings/settings_leftsidebar.html"
 			],
 			[
-				"shopinfo",
-				"templates/shopmanager/shopmanager.index.shopinfoform.html"
+				"appitems",
+				"teamview/app/app_item_list.html"
 			],
 			[
-				"shopmanager.inde",
-				"templates/shopmanager/shopmanager.index.html"
+				"common",
+				"teamview/commonControllers.js"
 			],
 			[
-				"layoutco",
-				"controllers/shopmanager/layoutController.php"
+				"appco",
+				"teamview/app/appControllers.js"
 			],
 			[
-				"salesforcesyn",
-				"app/protected/class/salesforce/Sync.php"
+				"index.h",
+				"index.html"
 			],
 			[
-				"salesforce",
-				"api/scripts/syncSalesForce.php"
+				"usersco",
+				"teamview/user/userControllers.js"
 			],
 			[
-				"settingscon",
-				"app/protected/controller/SettingsController.php"
+				"inputda",
+				"js/inputdata.js"
 			],
 			[
-				"class.tra",
-				"api/classes/class.tracking.php"
+				"bootstrap.min.",
+				"lib/css/bootstrap.min.css"
 			],
 			[
-				"engagor.tra",
-				"app/global/js/engagor.trackers.js"
+				"input",
+				"js/inputdata.js"
 			],
 			[
-				"class.trak",
-				"api/classes/class.tracking.php"
+				"appitem",
+				"teamview/app/app_item_list.html"
 			],
 			[
-				"public.shop.",
-				"templates/public/public.shop.html"
+				"reports",
+				"teamview/reports/reports_index.html"
 			],
 			[
-				"shop.left",
-				"templates/public/public.shop.leftsidebar.html"
+				"appde",
+				"teamview/app/app_object_detail.html"
 			],
 			[
-				"salesto",
-				"controllers/admin/salestoolsController.php"
+				"objectdet",
+				"teamview/settings/settings_objects_detail.html"
+			],
+			[
+				"appobjecli",
+				"teamview/app/app_object_list.html"
 			],
 			[
 				"index.",
-				"index.php"
+				"index.html"
 			],
 			[
-				"class.memor",
-				"classes/class.memory.php"
+				"inputdat",
+				"js/inputdata.js"
 			],
 			[
-				"data.task",
-				"pages/data.tasks.php"
+				"data.js",
+				"js/data.js"
 			],
 			[
-				"class.meta",
-				"classes/class.meta.php"
+				"appobje",
+				"teamview/app/app_object_detail.html"
 			],
 			[
-				"basic.json",
-				"lib/knowledge/yokoknowledge_basic.json"
+				"appob",
+				"teamview/app/app_object_detail.html"
 			],
 			[
-				"parse_sentime",
-				"lib/language/lang_parse_sentiments.json"
+				"objectdetail",
+				"teamview/settings/settings_objects_detail.html"
 			],
 			[
-				"class.parser",
-				"classes/class.parser.php"
+				"appdeta",
+				"teamview/app/app_object_detail.html"
 			],
 			[
-				"class.lang",
-				"classes/class.lang.php"
+				"appcontr",
+				"teamview/app/appControllers.js"
 			],
 			[
-				"sentiment",
-				"lib/language/lang_parse_sentiments.json"
+				"appinde",
+				"teamview/app/app_index.html"
 			],
 			[
-				"class.parse",
-				"classes/class.parser.php"
+				"reportscon",
+				"teamview/reports/reportsControllers.js"
 			],
 			[
-				"data.tasks",
-				"pages/data.tasks.php"
+				"objectlist",
+				"teamview/app/app_object_list.html"
 			],
 			[
-				"sentimen",
-				"lib/language/lang_parse_sentiments.json"
+				"reportsinde",
+				"teamview/reports/reports_index.html"
 			],
 			[
-				"data.bro",
-				"pages/data.browse.php"
+				"core.",
+				"js/core.js"
 			],
 			[
-				"class.data",
-				"classes/class.data.php"
+				"style",
+				"css/style.css"
 			],
 			[
-				"relationsf",
-				"lib/language/NEWSTYLElang_parse_questions_relationsandpreferences.json"
+				"appin",
+				"teamview/app/app_index.html"
 			],
 			[
-				"relations",
-				"lib/language/NEWSTYLElang_parse_questions_relationsandpreferences.json"
+				"styl",
+				"css/style.css"
 			],
 			[
-				"class.questionbrain",
-				"classes/class.questionbrain.php"
+				"objectlis",
+				"teamview/app/app_object_list.html"
 			],
 			[
-				"newstyle",
-				"lib/language/NEWSTYLElang_parse_questions_onthology.json"
+				"appobjec",
+				"teamview/app/app_object_detail.html"
 			],
 			[
-				"class.memo",
-				"classes/class.memory.php"
+				"sideb",
+				"teamview/settings/settings_leftsidebar.html"
 			],
 			[
-				"datata",
-				"pages/data.browse.datatable.php"
+				"settingsobj",
+				"teamview/settings/settings_objects_list.html"
 			],
 			[
-				"yokoknow",
-				"lib/knowledge/yokoknowledge_actions.json"
+				"settings.html",
+				"settings.html"
 			],
 			[
-				"class.memory",
-				"classes/class.memory.php"
+				"objectse",
+				"teamview/settings/settings_objects_detail.html"
 			],
 			[
-				"questionbrain",
-				"classes/class.questionbrain.php"
+				"user",
+				"teamview/user/user_index.html"
 			],
 			[
-				"class.con",
-				"classes/class.conversation.php"
+				"userco",
+				"teamview/user/userControllers.js"
 			],
 			[
-				"class.da",
-				"classes/class.data.php"
-			],
-			[
-				"class.bra",
-				"classes/class.brain.php"
-			],
-			[
-				"class.par",
-				"classes/class.parser.php"
-			],
-			[
-				"chat.php",
-				"pages/chat.php"
-			],
-			[
-				"class.met",
-				"classes/class.meta.php"
-			],
-			[
-				"knowledgebas",
-				"lib/knowledge/yokoknowledge_basic.json"
-			],
-			[
-				"list",
-				"lib/language/lang_lists.json"
-			],
-			[
-				"class.brain",
-				"classes/class.brain.php"
-			],
-			[
-				"class.conver",
-				"classes/class.conversation.php"
+				"userscon",
+				"teamview/user/usersControllers.js"
 			]
 		],
 		"width": 0.0
