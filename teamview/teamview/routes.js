@@ -20,7 +20,7 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       templateUrl: 'partials/chat.html',
       controller: 'ChatCtrl'
     },
-    '/:orgid/login': {
+    '/login': {
       templateUrl: 'teamview/home/home_login.html',
       controller: 'TVLoginCtrl'
     },

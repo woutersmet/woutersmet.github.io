@@ -8,6 +8,8 @@
     $scope.syncedValue = fbutil.syncObject('syncedValue');
     $scope.user = user;
     $scope.FBURL = FBURL;
+
+    $scope.widgets = global.app.widgets;
   }])
 
   //from firebaseseed app

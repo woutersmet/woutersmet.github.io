@@ -104,7 +104,6 @@ function getSideBarLinks(section){
     return items;
   }
 
-
 //source:
  function applyAppStyles(){
    var css = '';//h1 { background: red; }';
