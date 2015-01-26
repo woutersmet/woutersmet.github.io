@@ -116,8 +116,8 @@ global.app = {
 };
 
 //global.app.appcolors = {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'};
-global.app.appcolors = {themename: 'engagor', primary : "#414f59", secondary: '#b7ca33', links : '#3bb9bb'};
-//global.app.appcolors = {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}; //podio
+//global.app.appcolors = {themename: 'engagor', primary : "#414f59", secondary: '#b7ca33', links : '#3bb9bb'};
+global.app.appcolors = {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}; //podio
 //global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}; //forest
 //global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'}; //dark grey boring
 
