@@ -53,7 +53,12 @@ getCurrentTabUrl(function(currenturl){
       var cleanurl = currenturl.replace('\.','_dot_').replace(/https?:\/\//,'').replace(/\/.*/,'');
       $('#sitename').html(displayurl);
 
-      var myDataRef = new Firebase('https://metachat.firebaseio.com/' + cleanurl + '/');
+      var myDataRef = new Firebase('https://metachat.firebaseio.com/');
+
+        usersRef.child(userId).once('value', function(snapshot) {
+          var exists = (snapshot.val() !== null);
+          userExistsCallback(userId, exists);
+        });
 
       //remember username?
       /*
@@ -74,13 +79,15 @@ getCurrentTabUrl(function(currenturl){
           }
           */
           var text = $('#messageInput').val();
-          myDataRef.push({name: window.username, text: text});
-          $('#messageInput').val('');
 
+          if (text != ''){
+            myDataRef.child(cleanurl).push({name: window.username, text: text});
+            $('#messageInput').val('');
+          }
         }
       });
 
-      myDataRef.on('child_added', function(snapshot) {
+      myDataRef.child(cleanurl).on('child_added', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
