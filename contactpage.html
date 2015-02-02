@@ -19,12 +19,6 @@ See <a href="https://eu5.salesforce.com/lead/leadcapture.jsp" target="_blank">ht
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
 <!--  ----------------------------------------------------------------------  -->
 
-<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-
-<input type=hidden name="oid" value="00D24000000IKvL">
-<input type=hidden name="retURL" value="http://www.liquidfloors.be/nl/contact/bedankt">
-<input type=hidden name="lead_source" value="Website">
-
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
 <!--  these lines if you wish to test in debug mode.                          -->
@@ -33,21 +27,27 @@ See <a href="https://eu5.salesforce.com/lead/leadcapture.jsp" target="_blank">ht
 <!--  value="wouter@liquidfloors.be">                                         -->
 <!--  ----------------------------------------------------------------------  -->
 
-<label for="company">Bedrijf</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="leadform">
 
-<label for="first_name">Voornaam</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+<input type=hidden name="oid" value="00D24000000IKvL">
+<input type=hidden name="retURL" value="http://www.liquidfloors.be/nl/contact/bedankt">
+<input type=hidden name="lead_source" value="Website">
 
-<label for="last_name">Familienaam</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+<label for="company">Bedrijf</label><input required="Required"  id="company" maxlength="40" name="company" size="20" type="text" /><br>
 
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+<label for="first_name">Voornaam</label><input required="Required"  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
 
-<label for="phone">Telefoon</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+<label for="last_name">Familienaam</label><input required="Required"  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
 
-<label for="00N2400000353On">Straat + Nr.:</label><input id="00N2400000353On" maxlength="100" name="00N2400000353On" size="20" type="text" /><br>
+<label for="email">Email</label><input required="Required"  id="email" maxlength="80" name="email" size="20" type="email" /><br>
 
-<label for="00N2400000353Ox">Gemeente:</label><input id="00N2400000353Ox" maxlength="100" name="00N2400000353Ox" size="20" type="text" /><br>
+<label for="phone">Telefoon</label><input required="Required"  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
 
-<label for="00N2400000353Os">Postcode:</label><input id="00N2400000353Os" maxlength="30" name="00N2400000353Os" size="20" type="text" /><br>
+<label for="00N2400000353On">Straat + Nr.:</label><input required="Required" id="00N2400000353On" maxlength="100" name="00N2400000353On" size="20" type="text" /><br>
+
+<label for="00N2400000353Ox">Gemeente:</label><input required="Required" id="00N2400000353Ox" maxlength="100" name="00N2400000353Ox" size="20" type="text" /><br>
+
+<label for="00N2400000353Os">Postcode:</label><input required="Required" id="00N2400000353Os" maxlength="30" name="00N2400000353Os" size="20" type="text" /><br>
 
 Land:<select  id="00N2400000353QK" name="00N2400000353QK" title="Billing Country"><option value="">--None--</option><option value="Afghanistan">Afghanistan</option>
 <option value="Aland Islands">Aland Islands</option>
@@ -296,6 +296,8 @@ Uw vraag:<textarea  id="00N24000002Yt96" name="00N24000002Yt96" rows="5" type="t
 
 </form>
 
+<style> .leadform label {width:200px;float:left;} .leadform input,textarea {width:200px !important;}</style>
+
 <h2>Vraag offerte aan</h2>
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
@@ -309,11 +311,6 @@ Uw vraag:<textarea  id="00N24000002Yt96" name="00N24000002Yt96" rows="5" type="t
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
 <!--  ----------------------------------------------------------------------  -->
 
-<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-
-<input type=hidden name="oid" value="00D24000000IKvL">
-<input type=hidden name="retURL" value="http://www.liquidfloors.be/nl/contact/bedankt">
-<input type=hidden  name="lead_source" value="Website">
 
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
@@ -323,27 +320,34 @@ Uw vraag:<textarea  id="00N24000002Yt96" name="00N24000002Yt96" rows="5" type="t
 <!--  value="wouter@liquidfloors.be">                                         -->
 <!--  ----------------------------------------------------------------------  -->
 
-<label for="company">Bedrijf</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="leadform">
 
-<label for="first_name">Voornaam</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+<input type=hidden name="oid" value="00D24000000IKvL">
+<input type=hidden name="retURL" value="http://www.liquidfloors.be/nl/contact/bedankt">
+<input type=hidden  name="lead_source" value="Website">
 
-<label for="last_name">Familienaam</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
 
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+<label for="company">Bedrijf</label><input required="required" id="company" maxlength="40" name="company" size="20" type="text" /><br>
 
-<label for="phone">Telefoon</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+<label for="first_name">Voornaam</label><input required="required" id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
 
-<label for="00N2400000353On">Straat + Nr.:</label><input id="00N2400000353On" maxlength="100" name="00N2400000353On" size="20" type="text" /><br>
+<label for="last_name">Familienaam</label><input required="required" id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
 
-<label for="00N2400000353Ox">Gemeente:</label><input id="00N2400000353Ox" maxlength="100" name="00N2400000353Ox" size="20" type="text" /><br>
+<label for="email">Email</label><input required="required" id="email" maxlength="80" name="email" size="20" type="text" /><br>
 
-<label for="00N2400000353Os">Postcode:</label><input id="00N2400000353Os" maxlength="30" name="00N2400000353Os" size="20" type="text" /><br>
+<label for="phone">Telefoon</label><input required="required" id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
 
-<label for="00N2400000353QU">Werf Straat + Nr.:</label><input  id="00N2400000353QU" maxlength="100" name="00N2400000353QU" size="20" type="text" /><br>
+<label for="00N2400000353On">Straat + Nr.:</label><input required="required"id="00N2400000353On" maxlength="100" name="00N2400000353On" size="20" type="text" /><br>
 
-<label for="00N2400000353QZ">Werf postcode:</label><input  id="00N2400000353QZ" maxlength="30" name="00N2400000353QZ" size="20" type="text" /><br>
+<label for="00N2400000353Ox">Gemeente:</label><input required="required"id="00N2400000353Ox" maxlength="100" name="00N2400000353Ox" size="20" type="text" /><br>
 
-<label for="00N2400000353Qe">Werf stad:</label><input  id="00N2400000353Qe" maxlength="100" name="00N2400000353Qe" size="20" type="text" /><br>
+<label for="00N2400000353Os">Postcode:</label><input required="required"id="00N2400000353Os" maxlength="30" name="00N2400000353Os" size="20" type="text" /><br>
+
+<label for="00N2400000353QU">Werf Straat + Nr.:</label><input required="required" id="00N2400000353QU" maxlength="100" name="00N2400000353QU" size="20" type="text" /><br>
+
+<label for="00N2400000353QZ">Werf postcode:</label><input required="required" id="00N2400000353QZ" maxlength="30" name="00N2400000353QZ" size="20" type="text" /><br>
+
+<label for="00N2400000353Qe">Werf stad:</label><input required="required" id="00N2400000353Qe" maxlength="100" name="00N2400000353Qe" size="20" type="text" /><br>
 
 <label for="00N2400000353Qo">Werf land: <select  id="00N2400000353Qo" name="00N2400000353Qo" title="Project Country"><option value="">--None--</option><option value="Afghanistan">Afghanistan</option>
 <option value="Aland Islands">Aland Islands</option>
@@ -588,14 +592,14 @@ Uw vraag:<textarea  id="00N24000002Yt96" name="00N24000002Yt96" rows="5" type="t
 </label>
 <br/ >
 
-U Bent:<select  id="00N240000027q0s" name="00N240000027q0s" title="U Bent"><option value="">--None--</option><option value="Particulier">Particulier</option>
+<label>U Bent:</label><select  id="00N240000027q0s" name="00N240000027q0s" title="U Bent"><option value="">--None--</option><option value="Particulier">Particulier</option>
 <option value="Architect">Architect</option>
 <option value="Bedrijf">Bedrijf</option>
 <option value="Leverancier">Leverancier</option>
 <option value="Andere">Andere</option>
 </select><br>
 
-Bestaande Ondergrond:
+<label>Bestaande Ondergrond:</label>
 <select  id="00N240000027q6k" name="00N240000027q6k" title="Bestaande Ondergrond"><option value="">--None--</option><option value="Andere">Andere</option>
 <option value="Beton">Beton</option>
 <option value="Chape">Chape</option>
@@ -607,7 +611,7 @@ Bestaande Ondergrond:
 <option value="Vloeichape">Vloeichape</option>
 </select><br>
 
-Voorziene Uitvoeringsdatum:<span class="dateInput dateOnlyInput"><input  id="00N2400000353Rm" name="00N2400000353Rm" size="12" type="text" placeholder="dd/mm/yyy" /></span><br>
+<label>Voorziene Uitvoeringsdatum:</label><span class="dateInput dateOnlyInput"><input required="required" id="00N2400000353Rm" name="00N2400000353Rm" size="12" type="text" placeholder="dd/mm/yyy" /></span><br>
 (Indien deze datum nog onbekend is, geeft u een gewenste datum in.)<br />
 
 <input type="submit" name="submit">
