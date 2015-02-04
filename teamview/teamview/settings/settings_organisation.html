@@ -27,14 +27,18 @@
 <div class="panel panel-default" ng-repeat="app in org.apps">
         <div class="panel-heading" style="background:{{app.appcolors.primary}}">
             <a href="#" style="color:white;">{{app.label}}</a><br /></div>
-        <div class="panel-contents">
-            Objects:
-            <ul class="settings-objectlist">
-                <li>user</li>
-                <li ng-repeat="objectname in app.objects" style="background:{{app.appcolors.secondary}}">
-                    {{objectname}}
+        <div class="panel-contents" style="padding:10px;">
+            <p>{{app.description}}</p>
+            <ul>
+                <li>Created: Oct 15th, 2014
                 </li>
-            </ul>
+                <li>Objects:
+                    <ul class="settings-objectlist">
+                        <li ng-repeat="objectname in app.objects" style="background:{{app.appcolors.secondary}};color:white;">
+                            {{objectname}}
+                        </li>
+                    </ul>
+                </li>
         </div>
 </div>
 

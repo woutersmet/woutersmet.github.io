@@ -17,8 +17,8 @@ function getSideBarLinks(section){
       {
         toplink : {label : 'Personal Settings', url : ''},
         sublinks : [
-          {label : 'My account', url : 'settings/org'},
-          {label : 'My profile', url : 'settings/app'}
+          {label : 'Account / preferences', url : 'settings/preferences'},
+          {label : 'Profile', url : 'settings/profile'}
         ]
       }
     ];

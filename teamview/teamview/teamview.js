@@ -16,6 +16,7 @@ var TeamViewApp = angular.module('TeamViewApp', [
       $rootScope.app = global.app;
       $rootScope.org = global.org;
       $rootScope.apppath = '/' + global.org.name + '/' + global.app.name;
+      $rootScope.orgpath = '/' + global.org.name;
       applyAppStyles();
   });
 

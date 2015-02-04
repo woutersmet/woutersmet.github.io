@@ -14,6 +14,22 @@
     $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
   }])
 
+  /*
+  PERSONAL
+   */
+    .controller('TVSettingsPreferencesCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+      $scope.message = 'This is user preferences';
+
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+  .controller('TVSettingsProfileCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+      $scope.message = 'This is user profile';
+
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+
 /*
 * USERS
  */

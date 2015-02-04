@@ -1,6 +1,6 @@
 <ul class="nav nav-sidebar" ng-repeat="contextlink in contextlinks">
-    <li class="active background-secondary"><a href="#{{apppath}}/{{contextlink.toplink.url}}">{{contextlink.toplink.label}}</a>
-    <li ng-repeat="sublink in contextlink.sublinks"><a href="#{{apppath}}/{{sublink.url}}">{{sublink.label}}</a>
+    <li class="active background-secondary"><a href="#{{orgpath}}/{{contextlink.toplink.url}}">{{contextlink.toplink.label}}</a>
+    <li ng-repeat="sublink in contextlink.sublinks"><a href="#{{orgpath}}/{{sublink.url}}">{{sublink.label}}</a>
 </ul>
 
 
@@ -21,8 +21,8 @@
 </ul>
 
 <div class="systeminfo">
-    <a href="#{{apppath}}/settings"><strong>{{app.label}}</strong></a> is a TeamView app in the
-    <a href="#{{apppath}}/settings/org"><strong>{{org.label}}</strong></a> organisation.
+    <a href="#{{orgpath}}/settings"><strong>{{app.label}}</strong></a> is a TeamView app in the
+    <a href="#{{orgpath}}/settings/org"><strong>{{org.label}}</strong></a> organisation.
 </div>
 
 test: {{leftsidebar.test}}
