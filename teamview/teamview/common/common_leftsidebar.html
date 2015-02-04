@@ -1,3 +1,9 @@
+<ul class="nav nav-sidebar" ng-repeat="contextlink in contextlinks">
+    <li class="active background-secondary"><a href="#{{apppath}}/{{contextlink.toplink.url}}">{{contextlink.toplink.label}}</a>
+    <li ng-repeat="sublink in contextlink.sublinks"><a href="#{{apppath}}/{{sublink.url}}">{{sublink.label}}</a>
+</ul>
+
+
 <ul class="nav nav-sidebar">
     <li class="active background-secondary"><a href="#">{{object.name}} {{'links'}}</a></li>
     <li ng-repeat="navitem in leftnavitems"><a href="#{{navitem.link}}">{{navitem.name}}</a></li>
@@ -8,6 +14,7 @@
     <li><a href="#">Analytics</a></li>
     <li><a href="#">Export</a></li>
 </ul>
+
 <ul class="nav nav-sidebar">
     <li class="active background-secondary"><a href="#">{{'global links'|lng|tc}}</a></li>
     <li><a href="">Nav item again</a></li>
@@ -19,8 +26,3 @@
 </div>
 
 test: {{leftsidebar.test}}
-
-<ul class="nav nav-sidebar" ng-repeat="contextlink in contextlinks">
-    <li class="active background-secondary"><a href="{{contextlink.toplink.url}}">{{contextlink.toplink.label}}</a>
-    <li ng-repeat="sublink in contextlink.sublinks"><a href="{{sublink.url}}">{{sublink.label}}</a>
-</ul>

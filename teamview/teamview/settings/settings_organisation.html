@@ -1,18 +1,42 @@
+<div class="objecttitle">System settings</div>
 <h2>Organisation settings</h2>
 
-Organisation: <strong>{{org.label}}</strong> (API name: {{org.name}})
+<table class="table table-bordered">
+    <tr>
+        <th>Organisation name</th><td><strong>{{org.label}}</strong> (API name: {{org.name}})</td>
+    </tr>
+    <tr>
+        <th>Date created</th><td>2015-02-02</td>
+    </tr>
+    <tr>
+        <th>Default interface language</th><td>English</td>
+    </tr>
+    <tr>
+        <th>Owner user</th><td>Wouter Smet</td>
+    </tr>
+    <tr>
+        <th>TeamView Edition</th><td>Enterprise Edition</td>
+    </tr>
+    <tr>
+        <th>User Licences</th><td>12/23</td>
+    </tr>
+</table>
 
 <h3>Apps</h3>
 
-<ul>
-    <li ng-repeat="app in org.apps">
-        <a href="#">{{app.label}}</a><br />
-        Objects:
-        <ul>
-            <li ng-repeat="objectname in app.objects">{{objectname}}</li>
-        </ul>
-    </li>
-</ul>
+<div class="panel panel-default" ng-repeat="app in org.apps">
+        <div class="panel-heading" style="background:{{app.appcolors.primary}}">
+            <a href="#" style="color:white;">{{app.label}}</a><br /></div>
+        <div class="panel-contents">
+            Objects:
+            <ul class="settings-objectlist">
+                <li>user</li>
+                <li ng-repeat="objectname in app.objects" style="background:{{app.appcolors.secondary}}">
+                    {{objectname}}
+                </li>
+            </ul>
+        </div>
+</div>
 
 <h3>Objects</h3>
 

@@ -3,7 +3,7 @@
 angular.module('TeamView.filters', [])
     .filter('lng', function() { //returns local version according to app language
       return function(input) {
-            var translations = global.system.translations[global.app.language];
+            var translations = global.system.translations[global.org.language];
             if (typeof translations[input] !== 'undefined'){
               return translations[input];
             }

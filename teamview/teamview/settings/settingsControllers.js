@@ -9,26 +9,68 @@
     $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
   }])
 
-  .controller('TVSettingsObjectDetailCtrl', function($scope, $routeParams){
+  .controller('TVSettingsOrganisationCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+
+    $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+/*
+* USERS
+ */
+
+  .controller('TVSettingsUserListCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+      $scope.users = global.org.users;
+      $scope.message = 'This is user settings';
+
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+/*
+* OBJECTS
+ */
+  .controller('TVSettingsObjectDetailCtrl', ['$scope', '$rootScope', '$routeParams', function($scope, $rootScope, $routeParams){
     $scope.message = 'object detail';
 
     $scope.object = getObjectById($routeParams.objectid);
-  })
 
-  .controller('TVSettingsObjectAddNewCtrl', function($scope) {
+    $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+  .controller('TVSettingsObjectAddNewCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
     $scope.fieldtypes = global.system.fieldtypes;
       $scope.message = 'This is Add new order screen';
-  })
 
-  .controller('TVSettingsObjectListCtrl', function($scope) {
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+  .controller('TVSettingsObjectListCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
       $scope.objects = global.app.objects;
       $scope.message = 'This is object list settings';
-  })
 
-  .controller('TVSettingsOrganisationCtrl', function($scope) {
-  })
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
 
-  .controller('TVSettingsAppAddNewCtrl', ['$scope', 'fbutil',function($scope,fbutil) {
+/*
+* APPS
+ */
+
+  .controller('TVSettingsAppListCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+      $scope.apps = global.org.apps;
+      $scope.message = 'Manage apps';
+
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+  .controller('TVSettingsAppDetailCtrl', ['$scope', '$rootScope', '$routeParams', function($scope, $rootScope, $routeParams){
+      $scope.app = global.org.apps[$routeParams.appname];
+      $scope.colorthemes = global.system.colorthemes;
+      $scope.message = 'Manage app detail';
+
+      $rootScope.contextlinks = getSideBarLinks('settings');// {test : 'test234'};
+  }])
+
+
+  .controller('TVSettingsAppAddNewCtrl', ['$scope', '$rootScope','fbutil',function($scope,$rootScope, fbutil) {
     //adding new app
     $scope.message = 'This is adding new app';
     $scope.newapp = {name : 'test'};

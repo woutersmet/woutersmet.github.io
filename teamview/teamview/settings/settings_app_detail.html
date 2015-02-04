@@ -1,10 +1,16 @@
-<h2>{{'app settings'|lng|tc}}</h2>
-<ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#{{apppath}}/settings">{{'settings'|lng|tc}}</a></li>
-    <li role="presentation"><a href="#{{apppath}}/settings/objects/list">{{'objects'|lng|tc}}</a></li>
-</ul>
+<h2>Manage app: {{app.label}}</h2>
 
-{{ message }}
+<table class="table table-bordered">
+    <tr>
+        <th>App name</th><td><strong>{{app.label}}</strong> (API name: {{app.name}})</td>
+    </tr>
+    <tr>
+        <th>Date created</th><td>2015-02-02</td>
+    </tr>
+    <tr>
+        <th>Color scheme</th><td>English</td>
+    </tr>
+</table>
 
 <form>
 <table class="table">
@@ -101,27 +107,3 @@
 
 </table>
 </form>
-
-<div class="alert alert-info">
-<h4>{{'define objects'}}</h4>
-<p>
-  Define the objects that will make up your app. For example:<br>
-  <ul>
-    <li>Contacts, companies, activities and deals</li>
-    <li>Invoices, estimates and payments</li>
-    <li>Projects, tasks and milestones</li>
-  </ul>
-</p>
-</div>
-
-<div class="alert alert-warning">
-<h4>Manage users</h4>
-<p>
-  Define the objects that will make up your app. For example:<br>
-  <ul>
-    <li>Contacts, companies, activities and deals</li>
-    <li>Invoices, estimates and payments</li>
-    <li>Projects, tasks and milestones</li>
-  </ul>
-</p>
-</div>

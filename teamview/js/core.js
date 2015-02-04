@@ -6,11 +6,19 @@ function getSideBarLinks(section){
   if (section == 'settings'){
     return [
       {
-        toplink : {label : 'Settings', url : ''},
+        toplink : {label : 'System Settings', url : 'settings'},
         sublinks : [
-          {label : 'Team', url : '/team'},
-          {label : 'Objects', url : '/objects'},
-          {label : 'Something Else', url : '/somethingelse'},
+          {label : 'Organisation overview', url : 'settings/org'},
+          {label : 'Manage Apps', url : 'settings/apps'},
+          {label : 'Manage Users', url : 'settings/users'},
+          {label : 'Manage Objects', url : 'settings/objects'}
+        ]
+      },
+      {
+        toplink : {label : 'Personal Settings', url : ''},
+        sublinks : [
+          {label : 'My account', url : 'settings/org'},
+          {label : 'My profile', url : 'settings/app'}
         ]
       }
     ];
@@ -94,11 +102,12 @@ function getSideBarLinks(section){
       }
   }
 
-  function getContextualNavItems(name){
+  function getContextualNavItems(section){
+    if (typeof section == 'undefined') return;
     var items = [
-      {name : 'dynamic link 1', link : 'settings/objects/list'},
-      {name : 'dynamic link 2', link : 'settings/objects/list'},
-      {name : 'dynamic link 3', link : 'settings/objects/list'}
+      {section : 'dynamic link 1', link : 'settings/objects/list'},
+      {section : 'dynamic link 2', link : 'settings/objects/list'},
+      {section : 'dynamic link 3', link : 'settings/objects/list'}
     ];
 
     return items;

@@ -6,6 +6,9 @@
     <h2 class="item-heading"><span class="glyphicon glyphicon-{{object.icon}}"></span> {{ item.name }} </h2>
     <a href="#/app/{{object.name}}">&larr; {{'back to list'|lng}}</a>
 
+    <div class="panel panel-default socialfeed" ng-include src="'teamview/common/common_objectfeed.html'">
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading clearfix text-center">
             <span class="pull-left">Details</span>

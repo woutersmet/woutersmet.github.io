@@ -91,28 +91,47 @@ global.system.colorthemes = [
 
 global.org = {
   name : 'tadabon',
-  label : 'TadaBon'
+  label : 'TadaBon',
+  language : "en"
 }
 
 global.org.apps = {
   crm : {
     name : "crm",
     label : "Customer Relations",
-    language : "nl",
-    objects : ['contact','company','deal','lead', 'product']
+    objects : ['contact','company','deal','lead', 'product'],
+    appcolors : {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}
   },
   accounting : {
     name : "accounting",
     label : "Accounting",
-    language : "nl",
-    objects : ['company','invoice','estimate','product','line_item','payment']
+    objects : ['company','invoice','estimate','product','line_item','payment'],
+    appcolors : {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}
+  },
+  humanresources : {
+    name : "humanresources",
+    label : "human resources",
+    objects : ['employee','time_off_request', 'job_application','onboarding_step','offboarding_step'],
+    appcolors : {themename: 'grayscale', primary : "#666", secondary: '#999', links : '#888'}
+  },
+  projects : {
+    name : "projects",
+    label : "projects",
+    objects : ['project','milestone','task','file'],
+    appcolors : {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}
   },
 }
 
+global.org.users = [
+  {firstname : 'Wouter', lastname : 'Smet', email : 'woutersmet@gmail.com', role : 'owner'},
+  {firstname : 'Jochen', lastname : 'Boeykens', email : 'jochen.boeykens@gmail.com', role : 'admin'},
+  {firstname : 'John', lastname : 'Doe', email : 'john.doe@gmail.com', role : 'user'},
+  {firstname : 'Jane', lastname : 'Doe', email : 'jane.doe@gmail.com', role : 'user'}
+];
+
 global.app = {
   name : "crm",
-  label : "Customer Relations",
-  language : "nl"
+  label : "Customer Relations"
 };
 
 //global.app.appcolors = {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'};
@@ -180,19 +199,19 @@ global.app.objects = [
         id : 1,
         name : 'contact',
         label : 'contact',
-        plurallabel : 'contacten',
+        plurallabel : 'contacts',
         icon : 'user',
         fields : [
-          {id: 1, name : 'firstname', label : 'voornaam', type : 'text'},
-          {id: 2, name : 'lastname', label : 'familienaam', type : 'text'},
-          {id: 3, name : 'datecreated', label : 'datecreated', type : 'date'},
+          {id: 1, name : 'firstname', label : 'first name', type : 'text'},
+          {id: 2, name : 'lastname', label : 'last name', type : 'text'},
+          {id: 3, name : 'datecreated', label : 'date created', type : 'date'},
           {id: 4, name : 'role', label : 'role', type : 'picklist', options : {picklistvalues : ['new','open','closed']}},
           {id: 5, name : 'email', label : 'email', type : 'email'},
           {id: 6, name : 'phone', label : 'phone', type : 'text'},
           {id: 7, name : 'company', label : 'company', type : 'relation'},
         ],
         views : [
-          {name : 'contact_all', label : 'Alle contacten', filter : [], columns : ['name','email','phone']},
+          {name : 'contact_all', label : 'All contacts', filter : [], columns : ['name','email','phone']},
           {name : 'managers', label : 'Managers', filter : {role : 'manager'}, columns : ['name','email']},
         ],
         layouts : {
@@ -205,8 +224,8 @@ global.app.objects = [
       {
         id : 2,
         name : 'company',
-        label : 'bedrijf',
-        plurallabel : 'bedrijven',
+        label : 'company',
+        plurallabel : 'companies',
         icon : 'home',
         fields : [
           {id : 1, name : 'name', label : 'naam', type : 'text'},
@@ -217,7 +236,7 @@ global.app.objects = [
           {id : 5, name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['B2B','food','internet','retail','agriculture']}},
         ],
         views : [
-          {name : 'company_all', label : 'Alle bedrijven', filter : [], columns : ['name','industry']},
+          {name : 'company_all', label : 'All companies', filter : [], columns : ['name','industry']},
         ],
         layouts : {
               detail : {
@@ -239,7 +258,7 @@ global.app.objects = [
           {id : 4, name : 'owner', label : 'owner', type : 'user'},
         ],
         views : [
-          {name : 'deal_all', label : 'Alle deals', filter : [], columns : ['name','stage']}
+          {name : 'deal_all', label : 'All deals', filter : [], columns : ['name','stage']}
         ],
       },
       {
@@ -259,7 +278,7 @@ global.app.objects = [
           {name : 'industry', label : 'industry', type : 'picklist', options : {picklistvalues : ['internet','retail','agriculture']}},
         ],
         views : [
-          {name : 'lead_all', label : 'Alle leads', filter : [], columns : ['name','company','email']}
+          {name : 'lead_all', label : 'All leads', filter : [], columns : ['name','company','email']}
         ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},
@@ -269,8 +288,8 @@ global.app.objects = [
       {
         id : 5,
         name : 'task',
-        label : 'taak',
-        plurallabel : 'taken',
+        label : 'task',
+        plurallabel : 'tasks',
         icon : 'tasks',
         fields : [
           {name : 'subject', label : 'subject', type : 'text'},
