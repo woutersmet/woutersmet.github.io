@@ -17,11 +17,13 @@ var TeamViewApp = angular.module('TeamViewApp', [
       //$rootScope.org = global.org; doing it data based now!
       debug($routeParams);
       debug($location.path());
-      var orgname = $location.path().split('/')[1];
-      debug(orgname);
+      var splitpath = $location.path().split('/');
+      var orgname = splitpath[1];
+      var appname = splitpath[2];
+      debug('org: ' + orgname + ' / app: ' + appname);
 
       //get org data
-      var sync = $firebase(new Firebase("https://teamview.firebaseio.com/organisations/" + orgname));
+      var sync = $firebase(new Firebase("https://teamview.firebaseio.com/organisations/" + orgname + '/config'));
 
       var org = sync.$asObject();
      $rootScope.org = org;

@@ -82,6 +82,8 @@
       alert('creating your new org: ' + orglabel);
 
       var org = {
+          name : orgname,
+          label : orglabel,
           config : {
             name : orgname,
             label : orglabel,
