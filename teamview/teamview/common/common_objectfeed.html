@@ -1,10 +1,18 @@
-<div class="feed-header">
-  <a href="" class="feed-viewtoggle" ng-click="showfeed = !showfeed">
-    <span ng-show="!showfeed">Show</span><span ng-show="showfeed">Hide</span> feed
-  </a>
-</div>
+<div class="feed-updates col-md-6 clearfix" ng-show="showfeed">
 
-<div class="feed-updates" ng-show="showfeed">
+    <div class="feed-update clearfix">
+        <div class="feed-update-avatar">
+            <img src="img/feed-default-avatar.gif" class="feed-avatar-image" />
+        </div>
+        <div class="feed-update-content-container">
+                <textarea class="form-control"></textarea>
+
+                <div class="feed-update-actions">
+                  <button class="btn btn-default btn-xs pull-right" style="margin-top:3px;">Share</button>
+                </div>
+        </div>
+    </div>
+
     <div class="feed-update clearfix">
         <div class="feed-update-avatar">
             <img src="img/feed-default-avatar.gif" class="feed-avatar-image" />
@@ -28,7 +36,7 @@
                       <img src="img/feed-default-avatar.gif" class="feed-avatar-comment-image" />
                   </div>
                   <div class="feed-comment-content-container">
-                      <input type="text" />
+                      <input type="text" class="form-control" />
                   </div>
               </div>
 

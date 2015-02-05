@@ -21,6 +21,28 @@ global.system.fieldtypes = [
     {name : 'user', label : 'App User', glyphicon : 'pencil'},
   ];
 
+global.system.sidebarlinks = {
+  'settings' :
+    [
+      {
+        toplink : {label : 'System Settings', url : 'settings'},
+        sublinks : [
+          {label : 'Organisation overview', url : 'settings/org'},
+          {label : 'Manage Apps', url : 'settings/apps'},
+          {label : 'Manage Users', url : 'settings/users'},
+          {label : 'Manage Objects', url : 'settings/objects'}
+        ]
+      },
+      {
+        toplink : {label : 'Personal Settings', url : ''},
+        sublinks : [
+          {label : 'Account / preferences', url : 'settings/preferences'},
+          {label : 'Profile', url : 'settings/profile'}
+        ]
+      }
+    ]
+  };
+
 global.system.translations = {
     en : {
       'actions' : 'actions',
@@ -82,7 +104,8 @@ global.system.colorthemes = [
   {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'},
   {themename: 'vivid', primary : "#933", secondary: '#999', links : '#27d'},
   {themename: 'grayscale', primary : "#666", secondary: '#999', links : '#888'},
-  {themename: 'engagor', primary : "#414f59", secondary: '#b7ca33', links : '##3bb9bb'},
+  {themename: 'engagor', primary : "#414f59", secondary: '#b7ca33', links : '#3bb9bb'},
+  {themename: 'tadabon', primary : "#116183", secondary: 'rgb(194,152,93)', links : '#428bca'}
   ]
 
 /*
@@ -140,7 +163,7 @@ global.app = {
 
 //global.app.appcolors = {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'};
 //global.app.appcolors = {themename: 'engagor', primary : "#414f59", secondary: '#b7ca33', links : '#3bb9bb'};
-global.app.appcolors = {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}; //podio
+global.app.appcolors = {themename: 'tadabon', primary : "#116183", secondary: '#dddd88', links : '#428bca'};
 //global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}; //forest
 //global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'}; //dark grey boring
 
@@ -183,6 +206,11 @@ global.app.data =
           {id:1,name : 'Oracle', stage : 'new'},
           {id:2,name : 'McDonalds', stage : 'closed lost'},
     ],
+    'project' : [
+          {id:1,name : 'Website for client 1', status : 'completed'},
+          {id:2,name : 'McDonalds summer campaign', status : 'in progress'}
+      ]
+
   };
 
 global.app.reports = [
@@ -231,6 +259,7 @@ global.app.objects = [
         label : 'company',
         plurallabel : 'companies',
         icon : 'home',
+        activenav : 'activenav', //makes no sense of course, this is UI stuff not data/object definition
         fields : [
           {id : 1, name : 'name', label : 'naam', type : 'text'},
           {id : 2, name : 'country', label : 'land', type : 'text'},
@@ -302,6 +331,9 @@ global.app.objects = [
           {name : 'datecreated', label : 'datecreated', type : 'date'},
           {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['todo','done']}},
         ],
+        views : [
+          {name : 'task_all', label : 'All tasks', filter : [], columns : ['name','assignedto', 'status']}
+        ],
         layouts : [
             {type : 'list', label : 'Default List View', name : 'default_list_view'},
             {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
@@ -311,7 +343,7 @@ global.app.objects = [
         id : 6,
         name : 'project',
         label : 'project',
-        plurallabel : 'projecten',
+        plurallabel : 'projects',
         icon : 'tasks',
         fields : [
           {name : 'name', label : 'name', type : 'text'},
@@ -320,10 +352,15 @@ global.app.objects = [
           {name : 'datecreated', label : 'datecreated', type : 'date'},
           {name : 'status', label : 'status', type : 'picklist', options : {picklistvalues : ['not started yet','in progress','completed','invoiced']}},
         ],
-        layouts : [
-            {type : 'list', label : 'Default List View', name : 'default_list_view'},
-            {type : 'detail', label : 'Default Detail View', name : 'default_detail_view'}
-        ]
+        views : [
+          {name : 'project_all', label : 'All projects', filter : [], columns : ['name','status']}
+        ],
+        layouts : {
+            detail : {
+                top: { left : ['name','assignedto'], right : ['status']},
+                detail: { left : ['comments']}
+              }
+          }
       },
       {
         id : 6,

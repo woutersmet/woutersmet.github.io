@@ -24,25 +24,27 @@
   </tr>
   <tr>
     <td>{{'app colors'|lng|tc}}</td>
-    <td style="height:300px;overflow:auto;">
-      <label class="colortheme clearfix" ng-repeat="colortheme in colorthemes">
-        <input type="radio" name="appcolors" value="{{colortheme.themename}}" />
-        {{colortheme.themename}}
-        <div class="themecolors clearfix pull-right">
-          <div class="themecolor" style="background:{{colortheme.primary}}">{{'primary'|lng}}</div>
-          <div class="themecolor" style="background:{{colortheme.secondary}}">{{'secondary'|lng}}</div>
-          <div class="themecolor" style="color:{{colortheme.links}};background:white;">{{'links'|lng}}</div>
-        </div>
-      </label>
-      <label class="colortheme clearfix">
-        <input type="radio" name="appcolors" value="customtheme" />
-        Custom
-        <div class="themecolors clearfix pull-right">
-          <div class="themecolor" style="background:#555">{{'primary'|lng}}<input size="1" type="text" class="colorpic" /></div>
-          <div class="themecolor" style="background:#777">{{'secondary'|lng}}<input size="1" type="text" class="colorpic" /></div>
-          <div class="themecolor" style="color:#999;background:white;">{{'links'|lng}}<input size="1" type="text" class="colorpic" /></div>
-        </div>
-      </label>
+    <td>
+      <div style="height:300px;overflow:auto;">
+        <label class="colortheme clearfix" ng-repeat="colortheme in colorthemes">
+          <input type="radio" name="appcolors" value="{{colortheme.themename}}" />
+          {{colortheme.themename}}
+          <div class="themecolors clearfix pull-right">
+            <div class="themecolor" style="background:{{colortheme.primary}}">{{'primary'|lng}}</div>
+            <div class="themecolor" style="background:{{colortheme.secondary}}">{{'secondary'|lng}}</div>
+            <div class="themecolor" style="color:{{colortheme.links}};background:white;">{{'links'|lng}}</div>
+          </div>
+        </label>
+        <label class="colortheme clearfix">
+          <input type="radio" name="appcolors" value="customtheme" />
+          Custom
+          <div class="themecolors clearfix pull-right">
+            <div class="themecolor" style="background:#555">{{'primary'|lng}}<input size="1" type="text" class="colorpic" /></div>
+            <div class="themecolor" style="background:#777">{{'secondary'|lng}}<input size="1" type="text" class="colorpic" /></div>
+            <div class="themecolor" style="color:#999;background:white;">{{'links'|lng}}<input size="1" type="text" class="colorpic" /></div>
+          </div>
+        </label>
+      </div>
     </td>
   </tr>
   <tr>

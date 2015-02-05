@@ -51,7 +51,7 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
           //apps
         '/:orgname/settings/apps':
           {section: 'settings', templateUrl: 'teamview/settings/settings_apps_list.html',controller: 'TVSettingsAppListCtrl', authRequired: true},
-        '/:orgname/settings/apps/detail':
+        '/:orgname/settings/apps/:appname':
           {section: 'settings', templateUrl: 'teamview/settings/settings_apps_detail.html',controller: 'TVSettingsAppDetailCtrl', authRequired: true},
         '/:orgname/settings/apps/addnew':
           {section: 'settings', templateUrl: 'teamview/settings/settings_apps_addnew.html',controller: 'TVSettingsAppAddNewCtrl', authRequired: true},
@@ -73,6 +73,11 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
        '/:orgname/:appname/reports':
           {section: 'reports', templateUrl: 'teamview/reports/reports_index.html',controller: 'TVReportsCtrl', authRequired: true},
       /*
+      * FEEDS
+       */
+      '/:orgname/:appname/feed':
+          {section: 'feed', templateUrl: 'teamview/feed/feed_index.html',controller: 'TVFeedIndexCtrl', authRequired: true},
+      /*
       * APP ITEMS
        */
       //items
@@ -90,7 +95,7 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
       '/:orgname/:appname/app/:objectname/:viewname/editview':
           {section: 'settings', templateUrl: 'teamview/app/app_view_edit.html',controller: 'TVAppViewEditCtrl', authRequired: true},
       '/:orgname/:appname/app/:objectname/addnewview':
-          {section: 'settings', templateUrl: 'teamview/app/app_view_addnew.html',controller: 'TVAppViewAddNewCtrl'}
+          {section: 'settings', templateUrl: 'teamview/app/app_view_edit.html',controller: 'TVAppViewAddNewCtrl'}
   })
 
   /**
@@ -155,6 +160,8 @@ angular.module('TeamView.routes', ['ngRoute', 'simpleLogin'])
    */
   .run(['$rootScope', '$location', 'simpleLogin', 'ROUTES', 'loginRedirectPath',
     function($rootScope, $location, simpleLogin, ROUTES, loginRedirectPath) {
+      $rootScope.title = global.org.label + ': ' + global.app.label;
+
       // watch for login status changes and redirect if appropriate
       simpleLogin.watch(check, $rootScope);
 

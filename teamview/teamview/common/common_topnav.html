@@ -6,20 +6,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#" style="background-image:url(user_files/app_images/{{org.name}}.gif);">
 
             <span class="appname">{{ app.label }}</span>
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#{{apppath}}"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li ng-repeat="object in navobjects | limitTo : 4" >
+            <li><a href="#{{apppath}}/"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="#{{apppath}}/feed"><span class="glyphicon glyphicon-comment"></span></a></li>
+
+            <li ng-repeat="object in navobjects | limitTo : 4" class="{{object.activenav}}">
               <a href="#{{apppath}}/app/{{object.name}}">
                 <span class="glyphicon glyphicon-{{object.icon}}"></span>
                 {{object.plurallabel | uppercase}}
               </a>
             </li>
+
              <li class="dropdown" dropdown>
               <a class="dropdown-toggle" dropdown-toggle role="button" >{{'more...'|lng|tc}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -28,16 +31,29 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#{{apppath}}/reports"><span class="glyphicon glyphicon-stats"> {{'reports'|lng|tc}}</a></li>
-            <li><a href="#{{apppath}}/messages"><span class="glyphicon glyphicon-envelope"></span></a></li>
+            <li><a href="#{{apppath}}/reports"><span class="glyphicon glyphicon-stats"></span> {{'reports'|lng|tc}}</a></li>
+
+            <li class="dropdown" dropdown>
+              <a class="dropdown-toggle" role="button" dropdown-toggle>
+                <span class="glyphicon glyphicon-bell"></span>
+                <div class="notif-counter">2</div>
+                </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#{{orgpath}}">Notification 1</a></li>
+                <li><a href="#{{orgpath}}">Notification 2</a></li>
+              </ul>
+          </li>
+
           <li class="dropdown" dropdown is-open="status.isopen">
           <a class="dropdown-toggle" role="button" dropdown-toggle ng-disabled="disabled">
+          <span class="glyphicon glyphicon-cog"></span>
             {{'settings'|lng|tc}} <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#{{orgpath}}/settings/profile"><span class="dimmed">Logged in as: </span><br />Wouter Smet</a></li>
             <li class="divider"></li>
-            <li><a href="#{{orgpath}}/settings">{{'app settings'|lng|tc}}</a></li>
+            <li><a href="#{{orgpath}}/settings">{{'system settings'|lng|tc}}</a></li>
+            <li><a href="#{{orgpath}}/settings/apps/{{app.name}}">{{'app settings'|lng|tc}}</a></li>
             <li><a href="#{{orgpath}}/settings/preferences">{{'preferences'|lng|tc}}</a></li>
             <li class="divider"></li>
             <li><a href="#{{orgpath}}/">{{'switch to app'|lng|tc}}: CRM</a></li>

@@ -3,25 +3,8 @@ function debug(smt){
 }
 
 function getSideBarLinks(section){
-  if (section == 'settings'){
-    return [
-      {
-        toplink : {label : 'System Settings', url : 'settings'},
-        sublinks : [
-          {label : 'Organisation overview', url : 'settings/org'},
-          {label : 'Manage Apps', url : 'settings/apps'},
-          {label : 'Manage Users', url : 'settings/users'},
-          {label : 'Manage Objects', url : 'settings/objects'}
-        ]
-      },
-      {
-        toplink : {label : 'Personal Settings', url : ''},
-        sublinks : [
-          {label : 'Account / preferences', url : 'settings/preferences'},
-          {label : 'Profile', url : 'settings/profile'}
-        ]
-      }
-    ];
+  if (typeof global.system.sidebarlinks[section] !== 'undefined'){
+    return global.system.sidebarlinks[section];
   }
   else {
     return [

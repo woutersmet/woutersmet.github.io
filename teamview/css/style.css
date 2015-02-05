@@ -11,6 +11,14 @@ body {
 .dropdown-toggle,.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 /*
+* default bootstrap corrections
+ */
+.panel-heading {padding:3px 10px;}
+.nav-sidebar li.active a {padding:3px 10px;cursor:default;}
+label {font-weight:normal;}
+.glyphicon {opacity:0.5;}
+.table {margin-bottom:0;}
+/*
  * Global add-ons
  */
 
@@ -32,8 +40,11 @@ body {
 }
 
 .navbar-inverse ul.nav li a{color:#f2f2f2;opacity:;}
+.navbar-inverse li.activenav {box-shadow:inset #777 0 -5px 00;}
 .navbar-inverse .navbar-brand .appname {color:#000;opacity:0.4;}
 .navbar-inverse ul.dropdown-menu li a {color:#555;}
+
+
 /*
  * Sidebar
  */
@@ -148,6 +159,15 @@ body {
   color:#aaa;
 }
 
+.notif-counter {
+  font-size:7px;
+  border-radius:5px;
+  height:10px;
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+
 /*
 * APP: ITEM DETAIL
  */
@@ -184,14 +204,14 @@ td.data a {color:#333;text-decoration:underline;}
 .socialfeed {padding:3px;}
 .socialfeed a.feed-viewtoggle {cursor:pointer;text-decoration:none;}
 
-.socialfeed .feed-update {margin-bottom:5px;padding:5px;}
-.socialfeed .feed-avatar-image {height:30px; float:left;}
-.socialfeed .feed-update-content-container {float:left;padding:0px 5px;}
+.socialfeed .feed-update {background:white;margin-bottom:5px;padding:5px;width:100%;border:1px solid #eee;}
+.socialfeed .feed-avatar-image {width:8%; float:left;}
+.socialfeed .feed-update-content-container {float:left;padding:0px 5px;width:90%;}
 .socialfeed .feed-update-actions {font-size:90%;color:#999;}
 .socialfeed .feed-update-actions li {display:inline;padding:0;}
 .socialfeed .feed-update-actions ul {padding:0;}
 
-.socialfeed .feed-comment {background:#fafafa;border:1px solid #ddd;border-radius:3px;padding:5px;margin-bottom:5px;}
+.socialfeed .feed-comment {background:#fafafa;border:1px solid #ddd;border-radius:3px;padding:5px;margin-bottom:5px;width:100%;}
 .socialfeed .feed-comment-avatar {float:left;}
 .socialfeed .feed-avatar-comment-image {height:20px;}
 .socialfeed .feed-comment-content-container {padding:0 10px; float:left;}
@@ -200,3 +220,4 @@ td.data a {color:#333;text-decoration:underline;}
 * SETTINGS
  */
 ul.settings-objectlist li {display:inline; list-style:none;margin:3px;padding:3px;border-radius:2px;background-color:#fafafa;border:1px solid #ddd;}
+div.appsummary {margin:10px;}

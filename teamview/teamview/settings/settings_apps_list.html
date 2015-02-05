@@ -1,18 +1,20 @@
 <h2>Manage apps</h2>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="app in apps">
-        <td>{{ app.id }}</td>
-        <td><a href="#{{apppath}}/settings/apps/detail/{{app.name}}">{{ app.name }}</a></td>
-        <td><a href="#{{apppath}}/settings/apps/detail/{{app.name}}">Detail</a></td>
-    </tr>
-    </tbody>
-</table>
+<div class="panel panel-default appsummary" ng-repeat="app in apps">
+                <div class="panel-heading" style="background:{{app.appcolors.primary}}">
+                    <a href="#{{orgpath}}/settings/apps/{{app.name}}" style="color:white;">{{app.label}}</a><br /></div>
+                <div class="panel-contents" style="padding:10px;">
+                    <p>{{app.description}}</p>
+                    <ul>
+                        <li>Created: Oct 15th, 2014
+                        </li>
+                        <li>Objects:
+                            <ul class="settings-objectlist">
+                                <li ng-repeat="objectname in app.objects" style="background:{{app.appcolors.secondary}};color:white;">
+                                    {{objectname}}
+                                </li>
+                            </ul>
+                        </li>
+                        </ul>
+                </div>
+        </div>
