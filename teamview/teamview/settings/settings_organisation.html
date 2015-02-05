@@ -33,6 +33,7 @@
         <span class="pull-left">Organisation Apps</span>
 
         <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">{{'manage apps'|lng|tc}}</a>
+        <button class="btn btn-default btn-xs" ng-click="openNewApp()">+ {{'add new app'|lng|tc}}</button>
     </div>
     <div class="panel-content">
 
@@ -60,6 +61,7 @@
         <span class="pull-left">Organisation Users</span>
 
         <a href="#/app/{{object.name}}/addnew" class="btn btn-default btn-xs">{{'manage users'|lng|tc}}</a>
+        <button class="btn btn-default btn-xs" ng-click="openNewUser()">+ {{'add new user'|lng|tc}}</button>
     </div>
     <div class="panel-content">
 
@@ -75,3 +77,4 @@
     </table>
 
 </div></div>
+

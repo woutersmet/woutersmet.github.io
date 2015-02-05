@@ -13,10 +13,14 @@
 
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" dropdown>
     <li class="dropdowntitle">{{'my views'|lng|tc}}</li>
-    <li role="presentation" ng-repeat="view in object.views"><a role="menuitem" tabindex="-1" href="#{{apppath}}/app/{{object.name}}/{{view.name}}">{{view.label}}</a></li>
+    <li role="presentation" ng-repeat="view in object.views">
+      <a role="menuitem" tabindex="-1" href="#{{apppath}}/app/{{object.name}}/{{view.name}}"><span class="glyphicon glyphicon-th-list"> {{view.label}}</a>
+    </li>
 
     <li class='dropdowntitle'>{{'team views'|lng|tc}}</li>
-    <li role="presentation" ng-repeat="view in object.views"><a role="menuitem" tabindex="-1" href="#{{apppath}}/app/{{object.name}}/{{view.name}}">{{view.label}}</a></li>
+    <li role="presentation" ng-repeat="view in object.views">
+      <a role="menuitem" tabindex="-1" href="#{{apppath}}/app/{{object.name}}/{{view.name}}"><span class="glyphicon glyphicon-th-list"> {{view.label}}</a>
+    </li>
   </ul>
 
   <div style="clear:both;"></div>

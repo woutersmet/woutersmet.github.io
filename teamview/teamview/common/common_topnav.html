@@ -27,6 +27,8 @@
               <a class="dropdown-toggle" dropdown-toggle role="button" >{{'more...'|lng|tc}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li ng-repeat="object in navobjects | limitTo : -(navobjects.length - 4)" ><a href="#{{apppath}}/app/{{object.name}}">{{object.plurallabel | uppercase}}</a></li>
+                <li class="divider"></li>
+                <li><a href="#{{apppath}}/settings/objects/addnew">{{'new object'|lng|tc}}...</a></li>
               </ul>
             </li>
           </ul>
@@ -36,7 +38,7 @@
             <li class="dropdown" dropdown>
               <a class="dropdown-toggle" role="button" dropdown-toggle>
                 <span class="glyphicon glyphicon-bell"></span>
-                <div class="notif-counter">2</div>
+                <div class="notif-counter">42</div>
                 </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#{{orgpath}}">Notification 1</a></li>

@@ -18,9 +18,10 @@ FB-Synced value test: <input ng-model="syncedValue.$value" type="text" ng-change
 <a href="#settings/widgets/addnew" class="btn btn-default btn-sm pull-right">+ {{'new'|lng|tc}} {{'widget'|lng|tc}}</a>
 <h2>{{appname}} {{'dashboard'|lng|tc}}</h2>
 
-<div ng-repeat="widget in widgets" class="col-md-4">
+<div ng-repeat="widget in widgets" class="col-md-{{widget.colwidth}}">
     <div class="widget">
     <a href="#{{widget.link}}">
+    asdf
         <h3>{{widget.label}}</h3>
         <div class="bignumber severity-{{widget.severity}}">{{widget.value}}</div>
     </a>

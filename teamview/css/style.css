@@ -160,12 +160,18 @@ label {font-weight:normal;}
 }
 
 .notif-counter {
-  font-size:7px;
-  border-radius:5px;
-  height:10px;
-  position:absolute;
-  bottom:0;
-  right:0;
+opacity:0.9;
+font-size: 9px;
+border-radius: 7px;
+height: 15px;
+background: red;
+color: white;
+width: 15px;
+position: absolute;
+right: 1px;
+bottom: 12px;
+line-height: 15px;
+text-align:center;
 }
 
 /*

@@ -163,9 +163,9 @@ global.app = {
 
 //global.app.appcolors = {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'};
 //global.app.appcolors = {themename: 'engagor', primary : "#414f59", secondary: '#b7ca33', links : '#3bb9bb'};
-global.app.appcolors = {themename: 'tadabon', primary : "#116183", secondary: '#dddd88', links : '#428bca'};
+//global.app.appcolors = {themename: 'tadabon', primary : "#116183", secondary: '#dddd88', links : '#428bca'};
 //global.app.appcolors = {primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}; //forest
-//global.app.appcolors = {primary : "#933", secondary: '#999', links : '#27d'}; //dark grey boring
+global.app.appcolors = {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'};
 
 global.app.data =
   {
@@ -220,10 +220,10 @@ global.app.reports = [
 ];
 
 global.app.widgets = [
-      {id : 1, type : 'feed', name : 'widget_1', label : 'Feed',value : 35, severity : 'low', link : 'app/task'},
-      {id : 2, type : 'number', name : 'widget_2', label : 'Widget 2',value : 12, severity : 'medium', link : 'app/company'},
-      {id : 3, type : 'number', name : 'widget_3', label : 'Widget 3',value : 35.2, severity : 'high', link : 'app/contact'},
-      {id : 4, type : 'number', name : 'widget_4', label : 'Widget 4',value : 0.2, severity : 'medium', link : 'app/contact'}
+      {id : 1, colwidth : 6, type : 'feed', name : 'widget_1', label : 'Feed',value : 35, severity : 'low', link : 'app/task'},
+      {id : 2, colwidth : 6, type : 'number', name : 'widget_2', label : 'Widget 2',value : 12, severity : 'medium', link : 'app/company'},
+      {id : 3, colwidth : 4, type : 'number', name : 'widget_3', label : 'Widget 3',value : 35.2, severity : 'high', link : 'app/contact'},
+      {id : 4, colwidth : 4, type : 'number', name : 'widget_4', label : 'Widget 4',value : 0.2, severity : 'medium', link : 'app/contact'}
     ];
 
 global.app.objects = [
@@ -258,7 +258,7 @@ global.app.objects = [
         name : 'company',
         label : 'company',
         plurallabel : 'companies',
-        icon : 'home',
+        icon : 'globe',
         activenav : 'activenav', //makes no sense of course, this is UI stuff not data/object definition
         fields : [
           {id : 1, name : 'name', label : 'naam', type : 'text'},

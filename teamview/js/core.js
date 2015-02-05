@@ -20,6 +20,10 @@ function getSideBarLinks(section){
   }
 }
 
+function generateName(label){
+  return label.toLowerCase().replace(/[@\!\s;,\.\?\/]/g, '_');
+}
+
   function getViewByObjectAndName(objectname,viewname){
     for (i in global.app.objects){
       if (global.app.objects[i].name == objectname){
