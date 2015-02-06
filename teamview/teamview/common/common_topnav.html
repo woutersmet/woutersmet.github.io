@@ -13,8 +13,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#{{apppath}}/"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li><a href="#{{apppath}}/feed"><span class="glyphicon glyphicon-comment"></span></a></li>
+            <li><a href="#{{apppath}}/"><icon s="home"></icon></a></li>
+            <li><a href="#{{apppath}}/feed"><icon s="comment"></icon></a></li>
 
             <li ng-repeat="object in navobjects | limitTo : 4" class="{{object.activenav}}">
               <a href="#{{apppath}}/app/{{object.name}}">
@@ -26,18 +26,20 @@
              <li class="dropdown" dropdown>
               <a class="dropdown-toggle" dropdown-toggle role="button" >{{'more...'|lng|tc}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="object in navobjects | limitTo : -(navobjects.length - 4)" ><a href="#{{apppath}}/app/{{object.name}}">{{object.plurallabel | uppercase}}</a></li>
+                <li ng-repeat="object in navobjects | limitTo : -(navobjects.length - 4)" >
+                  <a href="#{{apppath}}/app/{{object.name}}"><span class="glyphicon glyphicon-{{object.icon}}"></span> {{object.plurallabel | uppercase}}</a>
+                </li>
                 <li class="divider"></li>
                 <li><a href="#{{apppath}}/settings/objects/addnew">{{'new object'|lng|tc}}...</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#{{apppath}}/reports"><span class="glyphicon glyphicon-stats"></span> {{'reports'|lng|tc}}</a></li>
+            <li><a href="#{{apppath}}/reports"><icon s="stats"></icon> {{'reports'|lng|tc}}</a></li>
 
             <li class="dropdown" dropdown>
               <a class="dropdown-toggle" role="button" dropdown-toggle>
-                <span class="glyphicon glyphicon-bell"></span>
+                <icon s="bell"></icon>
                 <div class="notif-counter">42</div>
                 </a>
               <ul class="dropdown-menu" role="menu">
@@ -48,7 +50,7 @@
 
           <li class="dropdown" dropdown is-open="status.isopen">
           <a class="dropdown-toggle" role="button" dropdown-toggle ng-disabled="disabled">
-          <span class="glyphicon glyphicon-cog"></span>
+          <icon s="cog"></icon>
             {{'settings'|lng|tc}} <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">

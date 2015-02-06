@@ -16,8 +16,11 @@ body {
 .panel-heading {padding:3px 10px;}
 .nav-sidebar li.active a {padding:3px 10px;cursor:default;}
 label {font-weight:normal;}
-.glyphicon {opacity:0.5;}
+.glyphicon {opacity:0.4;}
 .table {margin-bottom:0;}
+
+.content-container {background:#fafafa;padding:20px;}
+
 /*
  * Global add-ons
  */
@@ -182,12 +185,12 @@ text-align:center;
 h2 {margin-top:2px;}
 h2 {color:#444;}
 .detailpane {background:white;}
-.item-detail {background:#fafafa;padding:20px;}
 
 .inline {display:inline;width:auto;}
 
 .listtoolbar {background:#fafafa;padding:10px;}
-thead {background:#eee;}
+.table thead {background:#eee;}
+.table thead tr th {border-bottom:1px solid #999; padding:3px;}
 
 td.data a {color:#333;text-decoration:underline;}
 

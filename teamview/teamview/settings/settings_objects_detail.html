@@ -1,58 +1,57 @@
-<h2>Object detail: {{ object.name }} </h2>
+<div class="objecttitle">{{'System Settings'|lng|tc}}</div>
 
-<ul class="nav nav-pills">
-    <li role="presentation"><a href="#{{apppath}}/settings">Settings</a></li>
-    <li role="presentation" class="active"><a href="#{{apppath}}/settings/objects/list">Objectss</a></li>
-</ul>
+<h2><icon s="paperclip"></icon> Object detail: {{ object.name }} </h2>
 
-<a href="#{{apppath}}/settings/objects/list">&larr; Back to list</a>
+<a href="#{{orgpath}}/settings/objects">&larr; Back to list</a>
 
-<h3>Info</h3>
 
-<p>
-This is the detail of object # {{ object.id }}
-</p>
+<div class="content-container">
 
-<h3>Settings</h3>
+<div class="panel panel-default">
+    <div class="panel-heading clearfix text-center">
+        <span class="pull-left">Object details</span>
+    </div>
+    <div class="panel-content">
 <table class="table table-striped">
-    <tbody>
-    <tr>
-        <th>Created</th>
-        <td>2014-01-15</td>
-    </tr>
+        <tr><th>Icon</th><td>{{object.icon}}</td></tr>
+        <tr><th>Name</th><td>{{object.label}}</td></tr>
+        <tr><th>Plural name</th><td>{{object.plurallabel}}</td></tr>
 </table>
 
-<h3>Fields</h3>
+</div></div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>Label</th>
-            <th>Name</th>
+<div class="panel panel-default">
+    <div class="panel-heading clearfix text-center">
+        <span class="pull-left">Object fields</span>
+
+        <button class="btn btn-default btn-xs"> + {{'add new field'|lng|tc}}</button>
+    </div>
+    <div class="panel-content">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Label</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="field in object.fields">
+            <td>{{field.label}}</td>
+            <td>{{field.type}}</td>
+            <td>{{field.name}}</td>
         </tr>
-    </thead>
-    <tr ng-repeat="field in object.fields">
-        <td>{{field.label}}</td>
-        <td>{{field.type}}</td>
-        <td>{{field.name}}</td>
-    </tr>
-</table>
+    </table>
+</div>
+</div>
 
-<h3>Layouts</h3>
+<div class="panel panel-default">
+    <div class="panel-heading clearfix text-center">
+        <span class="pull-left">Site Forms</span>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tr ng-repeat="layout in object.layouts">
-        <td>{{layout.type}}</td>
-        <td>{{layout.label}}</td>
-        <td>{{layout.name}}</td>
-    </tr>
-</table>
-
-<h3>Site forms</h3>
+        <button class="btn btn-default btn-xs"> + {{'add new site form'|lng|tc}}</button>
+    </div>
+    <div class="panel-content">
+    </div>
+</div>
+</div>

@@ -10,13 +10,18 @@
             <th style="width:20px;"><input type="checkbox" /></th>
             <th style="width:70px;">Action</th>
             <th>Name</th>
+            <th>Date Created</th>
         </tr>
     </thead>
     <tbody>
     <tr ng-repeat="report in reports">
         <td><input type="checkbox" /></td>
-        <td><a href="#">edit</a> | <a href="#">del</a></td>
-        <td class='data'><a href="#{{apppath}}/app/reports/view/{{report.id}}">{{ report.label }}</a></td>
+        <td>
+            <a href="#{{apppath}}/{{item.id}}/edit" title="{{'edit'|lng|tc}}"><icon s="pencil"></icon></a> |
+          <a href="#{{apppath}}/{{item.id}}" title="{{'del'|lng|tc}}"><icon s="remove"></icon></a>
+        </td>
+        <td class='data'><a href="#{{apppath}}/reports/view/{{report.id}}">{{ report.label }}</a></td>
+        <td>2015-01-01</td>
     </tr>
     </tbody>
 </table>

@@ -10,6 +10,25 @@ angular.module('TeamView.directives', ['simpleLogin'])
     };
   }])
 
+  //glyphicons faster
+  .directive('icon', function() {
+    return {
+      restrict : 'E',
+      scope: {
+        customerInfo: '=s'
+      },
+      replace : true,
+      template : '<span class="glyphicon"></span>',
+      link: function(scope, element, attrs) {
+        debug("Icon symbol:");
+
+        if (attrs.s) {
+          element.addClass('glyphicon-' + attrs.s);
+        }
+    },
+    };
+  })
+
   /**
    * A directive that shows elements only when user is logged in.
    */

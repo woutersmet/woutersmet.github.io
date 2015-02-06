@@ -122,21 +122,21 @@ global.org.apps = {
   crm : {
     name : "crm",
     label : "Customer Relations",
-    description : "For managing our Customer Relations",
+    description : "For managing prospects and existing customers",
     objects : ['contact','company','deal','lead', 'product'],
     appcolors : {themename : 'podio',primary : "#5092BD", secondary: '#5FC660', links : '#3376A4'}
   },
   accounting : {
     name : "accounting",
     label : "Accounting",
-    description : "For managing our Accounting",
+    description : "For managing invoices, quotes, cashflow and taxes",
     objects : ['company','invoice','estimate','product','line_item','payment'],
     appcolors : {themename : 'forest', primary : "#738E73", secondary: '#D39B7E', links : '#78AD7B'}
   },
   humanresources : {
     name : "humanresources",
     label : "human resources",
-    description : "For managing our human resources",
+    description : "For managing employees, time off requests, job applications, onboarding, and more",
     objects : ['employee','time_off_request', 'job_application','onboarding_step','offboarding_step'],
     appcolors : {themename: 'grayscale', primary : "#666", secondary: '#999', links : '#888'}
   },
