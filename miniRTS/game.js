@@ -64,6 +64,12 @@ $(document).ready(function(){
         gridchanged = true;
       }
     }
+    else if (newgamestate.grid.cells[to][1] == 'o' && newgamestate.grid.cells[from][1] == 'c'){ //dragged ore truck on an ore mine! Creating refinery...
+        debug("dragged ore truck on an ore mine! Creating refinery and removing truck...");
+
+        delete(newgamestate.grid.cells[from]);
+        newgamestate.grid.cells[to] = ['b','m',10];
+    }
     else if (newgamestate.grid.cells[to][0] == 'e'){ //environment! cannot move there
         debug("Dragging to environment! No movement allowed - just redraw grid");
     }

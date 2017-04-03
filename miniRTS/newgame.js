@@ -6,9 +6,11 @@ Data.getMaps(function(map){
   var listEl = $('<option value="'+map.name+'">' + map.name + '</option>');
   $('#mapselect').append(listEl);
 
-  var selectEl = $('<div class="listedmap"><label><input type="radio" name="mapname" value="'+map.name+'">' + map.name + '</label></div>');
+  var selectEl = $('<label class="clearfix listedmap"><h4><input type="radio" name="mapname" value="'+map.name+'">' + map.name + '</h4></label>');
   var gridEl = $('<div class="grid" id="grid-' + map.name + '"></div>');
+  var descriptionEl = $('<div class="description">'+(typeof map.description == 'undefined' ? '(no description)' : map.description) + '</div><div style="clear:both;></div>');
   selectEl.append(gridEl);
+  selectEl.append(descriptionEl);
   //draw grid
   drawGrid(gridEl,map.grid);
   $('#maplist').append(selectEl);

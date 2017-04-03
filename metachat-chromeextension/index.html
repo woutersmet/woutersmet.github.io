@@ -46,14 +46,10 @@ body {
         font-size:15px;
     }
 
-    #rooms {
-      float:left;
-      width:200px;
-      overflow:auto;
-      height:400px;
-      border:1px solid #aaa;
-    }
-    .room {
+    .listpanel {float:left;width:200px;overflow:auto;height:400px;border:1px solid #aaa;}
+    .listpanel h2 {background-color:#eee;margin:0;padding:2px;}
+
+    .list-item {
       display:block;
       border-bottom:1px solid #ddd;
       text-decoration:none;
@@ -61,10 +57,9 @@ body {
       padding:10px;
     }
 
-    .room:hover {
+    .list-item:hover {
       background-color:#eee;
     }
-    #rooms h2 {background-color:#ddd;margin:0;}
 
     #messagesDiv {height:300px;border:3px solid #eee;overflow:auto;}
     #nameInput {width:15%;}
@@ -101,9 +96,22 @@ To run the program:
   On this page you can see / participate in sites that people have used meta chat on so far:
 </p>
 
-<div id="rooms">
-  <h2>Rooms</h2>
-  <div id="roomslist">
+
+<div class="listpanel" id="sites">
+    <h2>Sites</h2>
+    <button href="#" id="newsitebutton">+ Add site</button>
+    <div class="panellist" id="siteslist">
+
+  </div>
+</div>
+
+<div class="listpanel" id="rooms">
+    <h2 id="listtitle">Rooms</h2>
+    Within site <span class="currentsitename"></span><br />
+
+    <button href="#" id="newroombutton">+ Add room</button>
+
+    <div class="panellist" id="roomslist">
 
   </div>
 </div>
@@ -111,11 +119,23 @@ To run the program:
 <div id="chatheader">
     <h1> Meta chat!</h1>
 
-    Chat with fellow visitors of <strong><span id="sitename">[pick a room on the left]</span></strong>
+    Site: <strong><span class="currentroomname">[pick a room on the left]</span></strong><br />
+    Room: <strong><span class="currentsitename">[pick a room on the left]</span></strong>
 </div>
 <div id='messagesDiv'></div>
-<input type='text' id='nameInput' placeholder='Name'>
-<input type='text' id='messageInput' placeholder='Message'>
+
+<div id="messageinputs" style="display:none;">
+  <span class="currentusername"></span>:
+  <input type='text' id='messageInput' placeholder='Message'>
+</div>
+<div id="loginprompt">
+  Log in to participate:
+  <form method="post" id="loginform">
+    <input size="10" type='text' id='usernameInput' placeholder='Username'>
+    <input size="10" type='password' id='passwordInput' placeholder='Password'>
+    <input type="submit" value="Log in" id="loginbutton" />
+  </form>
+</div>
 
 </div>
 
@@ -123,7 +143,6 @@ To run the program:
 <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script src="jquery.min.js"></script>
 <script src="metachat.js"></script>
-
 
 </body>
 </html>

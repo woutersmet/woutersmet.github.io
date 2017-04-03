@@ -1,29 +1,3 @@
-
-
-$(document).ready(function(){
-
-window.map = {
-  name : 'whatever',
-  grid : {
-     cells : {
-     '1-1' : ['b','h',10],
-     '1-2' : ['b','t',10],
-     '2-1' : ['e','o',10],
-     '3-1' : ['b','s',10],
-     '4-1' : ['e','b',10],
-     '2-5' : ['r','s',10],
-     '4-4' : ['r','t',10],
-     '5-1' : ['e','b',10],
-     '5-4' : ['e','b',10],
-     '5-5' : ['r','h',10]
-     },
-     cols : 5,
-     rows : 5
-   }
- };
-
-drawGrid($('#grid'),window.map.grid);
-
 function fillSizes(){
   var max = 12;
   for (var i=2;i<=12;i++){
@@ -38,7 +12,57 @@ function fillSizes(){
   }
 }
 
-fillSizes();
+$(document).ready(function(){
+
+  fillSizes();
+
+  urlvars = getUrlVars();
+  debug(urlvars);
+
+  var mapname = urlvars.mapname;
+  if (typeof mapname != 'undefined'){
+    debug("We are editing a map! Name: " + mapname);
+
+    Data.getMap(mapname, function(loadedmap){
+      debug("Loaded map!");
+      debug(loadedmap);
+      window.map = loadedmap;
+
+      drawGrid($('#grid'),window.map.grid);
+
+      $('#mapname').val(window.map.name);
+      $('#colsselect').val(window.map.grid.cols);
+      $('#rowsselect').val(window.map.grid.rows);
+      $('#maptitle').html("editing " + "'" + window.map.name + "'");
+      $('#description').html(window.map.description);
+    });
+  }
+  else {
+    window.map = {
+      name : 'whatever',
+      description : 'my new map',
+      grid : {
+         cells : {
+         '1-1' : ['b','h',10],
+         '1-2' : ['b','t',10],
+         '2-1' : ['e','o',10],
+         '3-1' : ['b','s',10],
+         '4-1' : ['e','b',10],
+         '2-5' : ['r','s',10],
+         '4-4' : ['r','t',10],
+         '5-1' : ['e','b',10],
+         '5-4' : ['e','b',10],
+         '5-5' : ['r','h',10]
+         },
+         cols : 5,
+         rows : 5
+       }
+     };
+
+     $('#maptitle').html('new map');
+    drawGrid($('#grid'),window.map.grid);
+  }
+
 
 function onUnitPickClicked(e){
   var color = $(this).data('color');
@@ -64,8 +88,14 @@ $('#saveform').change(function(e){
     alert ("Please enter a name");
     return;
   }
+  var description = $('#description').val();
 
-  Data.saveMap(name,getUserName(),window.map.grid);
+  Data.saveMap(name,description,getUserName(),window.map.grid, 
+    function(){
+      alert('Changes saved!');
+      var currentUrl = document.location.href;
+      document.location= currentUrl + (currentUrl.indexOf("?") > -1 ? '' : '?mapname=' +name);
+    });
  });
 
  $('#grid').on('mousedown','.grid-cell',function(){

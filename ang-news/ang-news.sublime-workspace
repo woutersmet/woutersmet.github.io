@@ -519,6 +519,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/scripts/controllers/posts.js",
+			"settings":
+			{
+				"buffer_size": 230,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Engagor Staging",
 	"command_palette":
@@ -572,6 +580,45 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/controllers/nav.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/controllers/postview.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/views/showpost.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/views/posts.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/app.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/controllers/posts.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/services/post.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/index.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/bower_components/bootstrap/less/input-groups.less",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/services/auth.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/views/nav.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/bower_components/bootstrap/less/mixins/nav-vertical-align.less",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/bower_components/angularfire/dist/angularfire.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/angularfire.min.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/controllers/auth.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/bower_components/angularfire/dist/angularfire.min.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/firebase.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/bower_components/angular/angular.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/ang-news.sublime-project",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/scripts/filters/url.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/.tmp/styles/main.css",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/views/register.html",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/nav.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/bower_components/bootstrap/less/responsive-embed.less",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/README.md",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/bower_components/jquery/src/css/addGetHookIf.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/app/bower_components/bootstrap/less/mixins/nav-vertical-align.less",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/karma/lib/config.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/karma/config.tpl.coffee",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/grunt-usemin/lib/configwriter.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/grunt/CONTRIBUTING.md",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/grunt-autoprefixer/node_modules/autoprefixer-core/node_modules/caniuse-db/features-json/css-opacity.json",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/karma/lib/middleware/strip_host.js",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/grunt-svgmin/node_modules/svgo/node_modules/sax/examples/shopping.xml",
+		"/Users/woutersmet/Desktop/Gouden gids Fietsen scrapewebsites_com export 2014-4-29.cv",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/package.json",
+		"/Applications/MAMP/htdocs/woutersmet.github.io/ang-news/node_modules/grunt-google-cdn/node_modules/bower/node_modules/mout/lang/isPlainObject.js",
 		"/Applications/MAMP/htdocs/teamview.github.io/.htaccess",
 		"/Applications/MAMP/htdocs/teamview.github.io/teamview/common/common_topnav.html",
 		"/Applications/MAMP/htdocs/teamview.github.io/teamview/app/app_index.html",
@@ -660,56 +707,18 @@
 		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/lib/fonts/glyphicons-halflings-regular.svg",
 		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/services.js",
 		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/mockfirebase/CONTRIBUTING.md",
-		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/mockfirebase/tutorials/authentication.md",
-		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/mockfirebase/tutorials/errors.md",
-		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/html5-boilerplate/doc/misc.md",
-		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/test/lib/mock.firebase.js",
-		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/html5-boilerplate/CONTRIBUTING.md",
-		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/teamview/settings/settings_app_edit.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/site.cssincludes.html",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/network/site-themes.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/wp-admin/network/site-info.php",
-		"/Applications/MAMP/htdocs/tadabon/blog/.qidb/Sha1header",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.wedstrijd.html",
-		"/Applications/MAMP/htdocs/tadabon/templates/public/public.betaling.html",
-		"/Applications/MAMP/htdocs/tadabon/static/css/public-combined.css",
-		"/Applications/MAMP/htdocs/tadabon/lib/fb-foradminbackend/persistentstorage_user_id.txt",
-		"/Applications/MAMP/htdocs/tadabon/blog/.qidb/Packages",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/crm/Subscription.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/controller/admin/ManageController.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/view/admin/crm.subscription.mini.html",
-		"/Applications/MAMP/htdocs/engagor/app/protected/view/admin/crm.subscription.list.html",
-		"/Applications/MAMP/htdocs/engagor/app/protected/view/admin/crm.subscription.editor.html",
-		"/Applications/MAMP/htdocs/engagor/app/protected/view/admin/crm.subscription.details.html",
-		"/Applications/MAMP/htdocs/engagor/app/protected/view/admin/crm.subscription.html",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/services/CrmIntegrationConnectedServiceConfigurationInterface.php",
-		"/Applications/MAMP/htdocs/engagor/api/scripts/ciTestRunner.php",
-		"/Applications/MAMP/htdocs/engagor/api/config.inc",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/admin/Account.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/Pager.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/export/CsvExportResultsMerger.php",
-		"/Applications/MAMP/htdocs/engagor/Rakefile",
-		"/Applications/MAMP/htdocs/engagor/system/tools/searchApacheLogs",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/payments/Subscriptions.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/subscription/Subscription.php",
-		"/Applications/MAMP/htdocs/engagor/lib/datasift/DataSift/Push/Subscription.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/services/fastspring/Subscriptions.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/SubscriptionMetrics.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/layout/subscription.html",
-		"/Applications/MAMP/htdocs/engagor/app/global/sass/subscription.scss",
-		"/Applications/MAMP/htdocs/engagor/app/protected/ci_tests/services/urlshorteners/services_urlshorteners_bitly_test.php",
-		"/Applications/MAMP/htdocs/engagor/app/protected/class/utils/SysUser.php",
-		"/Applications/MAMP/htdocs/engagor/system/tools/swapit"
+		"/Applications/MAMP/htdocs/woutersmet.github.io/teamview/angularfire-seed/app/bower_components/mockfirebase/tutorials/authentication.md"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"*.*",
 			"*.php",
 			"*.js",
 			"*.html",
@@ -836,8 +845,7 @@
 			"*.*\n*.*",
 			"*.php\n*.*",
 			"*.html\n*.*",
-			"*.php\n*.*",
-			"*.php\n*.html"
+			"*.php\n*.*"
 		]
 	},
 	"find_state":
@@ -845,6 +853,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"signedIn",
+			"firebasesimplelogin",
+			"login",
+			"firebaseSimpleLogin",
+			"nav",
+			"post",
+			"services",
+			"container",
+			"debug",
+			"index",
+			"title",
+			"asdf",
+			"MainCtrl",
 			"=",
 			"index",
 			"test",
@@ -959,20 +980,7 @@
 			"this->data",
 			"_REQUEST",
 			"$_GET",
-			"'search'",
-			"res",
-			"oosterlinck",
-			"Oosterlinck Burgemeester",
-			"BELFOCA NV Anthos",
-			"selected=\"sele",
-			"*",
-			"podio",
-			"user",
-			"/login",
-			"name",
-			"Home",
-			"tvhomectrl",
-			"appindexctrl"
+			"'search'"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1000,8 +1008,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/scripts/controllers/posts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								230,
+								230
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1055,6 +1092,110 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"post",
+				"app/scripts/controllers/posts.js"
+			],
+			[
+				"index.ht",
+				"app/index.html"
+			],
+			[
+				"nav",
+				"app/scripts/controllers/nav.js"
+			],
+			[
+				"postview",
+				"app/scripts/controllers/postview.js"
+			],
+			[
+				"app.js",
+				"app/scripts/app.js"
+			],
+			[
+				"post.ht",
+				"app/views/showpost.html"
+			],
+			[
+				"posts.",
+				"app/views/posts.html"
+			],
+			[
+				"post.js",
+				"app/scripts/services/post.js"
+			],
+			[
+				"nav.js",
+				"app/scripts/controllers/nav.js"
+			],
+			[
+				"auth.js",
+				"app/scripts/controllers/auth.js"
+			],
+			[
+				"angularfire.min",
+				"app/scripts/angularfire.min.js"
+			],
+			[
+				"angularfire.js",
+				"bower_components/angularfire/dist/angularfire.js"
+			],
+			[
+				"angularfire",
+				"app/scripts/angularfire.min.js"
+			],
+			[
+				"firebase",
+				"app/scripts/firebase.js"
+			],
+			[
+				"register",
+				"app/views/register.html"
+			],
+			[
+				"register.html",
+				"app/views/register.html"
+			],
+			[
+				"index",
+				"app/index.html"
+			],
+			[
+				"index.html",
+				"index.html"
+			],
+			[
+				"main.css",
+				".tmp/styles/main.css"
+			],
+			[
+				"posts.ht",
+				"app/views/posts.html"
+			],
+			[
+				"url.js",
+				"app/scripts/filters/url.js"
+			],
+			[
+				"nav.html",
+				"app/views/nav.html"
+			],
+			[
+				"nav.",
+				"app/views/nav.html"
+			],
+			[
+				"showpost",
+				"app/views/showpost.html"
+			],
+			[
+				"posts.html",
+				"app/views/posts.html"
+			],
+			[
+				"posts.js",
+				"app/scripts/controllers/posts.js"
+			],
 			[
 				"htac",
 				".htaccess"
@@ -1162,10 +1303,6 @@
 			[
 				"feed.",
 				"teamview/feed/feed_index.html"
-			],
-			[
-				"index",
-				"index.html"
 			],
 			[
 				"routes.js",
@@ -1364,10 +1501,6 @@
 				"teamview/filters.js"
 			],
 			[
-				"index.ht",
-				"index.html"
-			],
-			[
 				"left",
 				"teamview/common/common_leftsidebar.html"
 			],
@@ -1440,10 +1573,6 @@
 				"teamview/home/home_index.html"
 			],
 			[
-				"index.html",
-				"index.html"
-			],
-			[
 				"services.js",
 				"teamview/services.js"
 			],
@@ -1468,104 +1597,12 @@
 				"teamview/admin.js"
 			],
 			[
-				"nav",
-				"teamview/common/common_topnav.html"
-			],
-			[
 				"admin.ht",
 				"admin.html"
 			],
 			[
 				"login.html",
 				"teamview/home/home_login.html"
-			],
-			[
-				"settings_inde",
-				"teamview/settings/settings_index.html"
-			],
-			[
-				"mani",
-				"manifest.json"
-			],
-			[
-				"browser_action",
-				"src/browser_action/browser_action.html"
-			],
-			[
-				"",
-				"src/browser_action/browser_action.js"
-			],
-			[
-				"window.",
-				"window.html"
-			],
-			[
-				"routes.",
-				"angularfire-seed/app/js/routes.js"
-			],
-			[
-				"authco",
-				"teamview/auth/authControllers.js"
-			],
-			[
-				"rout",
-				"angularfire-seed/app/js/routes.js"
-			],
-			[
-				"app.js",
-				"angularfire-seed/app/js/app.js"
-			],
-			[
-				"confi",
-				"angularfire-seed/app/js/config.js"
-			],
-			[
-				"bower.json",
-				"angularfire-seed/bower.json"
-			],
-			[
-				"security",
-				"angularfire-seed/config/security-rules.json"
-			],
-			[
-				"appcontro",
-				"teamview/app/appControllers.js"
-			],
-			[
-				"app_view_add",
-				"teamview/app/app_view_addnew.html"
-			],
-			[
-				"view_edit",
-				"teamview/app/app_view_edit.html"
-			],
-			[
-				"services",
-				"teamview/services.js"
-			],
-			[
-				"item",
-				"teamview/app/app_item_detail.html"
-			],
-			[
-				"settingsco",
-				"teamview/settings/settingsControllers.js"
-			],
-			[
-				"inde",
-				"index.html"
-			],
-			[
-				"appitems",
-				"teamview/app/app_item_list.html"
-			],
-			[
-				"common",
-				"teamview/commonControllers.js"
-			],
-			[
-				"appco",
-				"teamview/app/appControllers.js"
 			]
 		],
 		"width": 0.0

@@ -11,6 +11,8 @@ window.units = {
   a : {name : 'artillery',  type : 'draggable', speed : 2, range : 3, attackbonus : { t : 2, f : 2, h : 1},    price : 200},
   v : {name : 'attack dog', type : 'draggable', speed : 1, range : 3, attackbonus : { t : 2},    price : 200},
   i : {name : 'engineer',   type : 'draggable', speed : 1, range : 1, attackbonus : { t : 2},    price : 250},
+  c : {name : 'ore truck',   type : 'draggable', speed : 1, range : 1, attackbonus : { t : 2},    price : 500},
+  d : {name : 'mega tank',   type : 'draggable', speed : 3, range : 2, attackbonus : { t : 2, f : 2, h : 1},    price : 400},
   u : {name : 'war ship',   type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 300},
   j : {name : 'submarine',  type : 'draggable', speed : 2, range : 2, attackbonus : { t : 2},    price : 250},
 
@@ -18,6 +20,7 @@ window.units = {
   h : {name : 'home base',    type : 'building', range : 3, price : 700},
   p : {name : 'sea base',    type : 'building', range : 3, price : 700},
   q : {name : 'research center',    type : 'building', range : 3, price : 700},
+  m : {name : 'ore refinery',    type : 'building', range : 3, price : 700},
 
   b : {name : 'forest',    type : 'environment' },
   x : {name : 'water',type : 'environment'},
@@ -74,11 +77,11 @@ window.units = {
 
  function getReachedCells(grid,row,col,range){
     var cacheKey = row + '-' + col + '-' + range;
-    debug("Getting reached cells for " + cacheKey);
+    //debug("Getting reached cells for " + cacheKey);
 
     var reached = [];
     if (typeof window.reachedCache[cacheKey] != 'undefined') {
-      debug("Found " + cacheKey + " in cache!");
+      //debug("Found " + cacheKey + " in cache!");
       reached = window.reachedCache[cacheKey];
     }
     else {
@@ -109,8 +112,8 @@ window.units = {
       window.reachedCache[cacheKey] = reached;
     }
 
-    debug("Got these reached cells for range " + range + " from col " + col + " and row " + row);
-    debug(reached);
+    //debug("Got these reached cells for range " + range + " from col " + col + " and row " + row);
+    //debug(reached);
     return reached;
  }
 

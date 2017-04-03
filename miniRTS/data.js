@@ -36,7 +36,7 @@ function getRef(section){
   return ref;
 }
 
-Data.saveMap = function (mapname, createdby, grid){
+Data.saveMap = function (mapname, mapdescription, createdby, grid, callback){
   debug("Will save map with name " + mapname);
   // CREATE A REFERENCE TO FIREBASE
   var mapRef = getRef('maps');
@@ -51,13 +51,16 @@ Data.saveMap = function (mapname, createdby, grid){
   debug("Map contains colors:" + colors);
 
   var values = {
-    grid : grid,
-    createdby : createdby,
     name : mapname,
+    description : mapdescription,
+    createdby : createdby,
+    grid : grid,
     colors : colors
   };
 
   mapRef.child(mapname).set(values);
+
+  callback();
 }
 
 Data.getMaps = function(callback){
@@ -110,6 +113,7 @@ Data.createGame = function(mapname, playername, callback){
       created : date.toString(),
       createdtime : Math.floor(date.getTime() / 1000),
       createddate : date.getYear() + '-' + date.getDate() + '-' + date.getDay(),
+      status : 'paused',
       map : mapname,
       log : [
         {
