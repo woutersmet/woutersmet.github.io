@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">  <title>Instant RTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <title>Blitz Battle - RTS with tiny tanks</title>
     <link rel="icon" href="img/favicon.ico">
 
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
@@ -12,9 +12,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
   <script src="https://cdn.firebase.com/js/client/2.0.3/firebase.js"></script>
-  <script src='data.js'></script>
-  <script src='core.js'></script>
-  <script src='index.js'></script>
+  <script src='global.js'></script>
+  <script src='app-data.js'></script>
+  <script src='app-core.js'></script>
+  <script src='app-index.js'></script>
+  <script src='app-game.js'></script>
+  <script src='app-mapbuilder.js'></script>
+  <script src='app-newgame.js'></script>
 
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -34,61 +38,25 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
-            <img src="img/square.png" style="height:20px;float:left;" />
-            Instant RTS
-          </a>
+          <span class="navbar-brand" href="index.html">
+            <img src="img/square.png" style="height:20px;float:left;margin-right:3px;" />
+             Blitz Battle
+          </span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Play</a></li>
-            <li><a href="newgame.html">New game</a></li>
-            <li><a href="mapbuilder.html">Map builder</a></li>
-            <li><a href="help.html">About / help</a></li>
+            <li class="active"><a id="nav-index" data-file="index" href="index.html">Home</a></li>
+            <li><a id="nav-newgame" data-file="newgame" href="newgame.html">New Game</a></li>
+            <li><a id="nav-mapbuilder" data-file="mapbuilder" href="mapbuilder.html">Map builder</a></li>
+            <li><a id="nav-help" data-file="help" href="help.html">About / help</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-<div class="container" id="container">
+<div class="container" id="globalcontainer">
 
-  <div class="col-md-4">
-  <h2>Tiny RTS!</h2>
-  <img src="img/teaser6.png" style="max-width:100%;float:right;" />
-  <p>
-    Build and move tiny tanks and soldiers on a grid map to destroy your enemy! Real-time multiplayer RTS.
-  </p>
-
-  <p>
-    You can join an active game or <a href="newgame.html">create a new game</a> yourself.
-  </p>
-
-  <p>
-    <small>This is <a href="http://www.woutersmet.com" target="_blank">Wouter</a>'s experiment in <a href="http://www.firebase.com" target="_blank">FireBase</a> (<a href="https://woutertest.firebaseio.com/" target="_blank">DB link</a>).</small>
-  </p>
-
-  </div>
-  <div class="col-md-8">
-
-  <h2>Join active game</h2>
-
-  <form method="get" action="game.html">
-      Enter a game id:
-      <input name="gameid" type="text" class="form-control" style="display:inline;width:100px;" />
-      <input type="submit" class="btn btn-primary" value="Join game" />
-      or <a href="newgame.html">Create a new game</a>
-  </form>
-
-  <h4>Recently created games</h4>
-  <div id="nogamesfound">
-    No games found. <a href="newgame.html">Start a new game</a>
-  </div>
-
-  <div id='gameslist'>
-
-  </div>
-
-  </div>
+<!-- page content be here, loaded by index.js -->
 </div>
 
 <footer><center><img src="img/all_units_tiny2.png" /></center></footer>

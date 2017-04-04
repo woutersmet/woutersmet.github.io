@@ -1,0 +1,82 @@
+
+  <div id="loading"><em>Loading game...</em></div>
+
+  <div id="gamecontainer" style="display:none;">
+    <div class="col-md-9">
+
+   <div id="players">
+      <div class="playercontainer" id="playercontainer-b">
+        <div id="player-b" class="player">&nbsp;</div>
+        <div id="playermoney-b" class="playermoney">&nbsp;</div>
+        <a id="inviteplayer-b" href="#" class="inviteplayer">Invite</a>
+        <a id="joinasplayer-b" href="#" class="joinasplayer">Join</a>
+      </div>
+      <div class="playercontainer" id="playercontainer-r">
+        <div id="player-r" class="player">&nbsp;</div>
+        <div id="playermoney-r" class="playermoney">&nbsp;</div>
+        <a id="inviteplayer-r" href="#" class="inviteplayer">Invite</a>
+        <a id="joinasplayer-r" href="" class="joinasplayer">Join</a>
+      </div>
+      <div class="playercontainer" id="playercontainer-g">
+        <div id="player-g" class="player">&nbsp;</div>
+        <div id="playermoney-g" class="playermoney">&nbsp;</div>
+        <a id="inviteplayer-g" href="#" class="inviteplayer">Invite</a>
+        <a id="joinasplayer-g" href="" class="joinasplayer">Join</a>
+      </div>
+      <div class="playercontainer" id="playercontainer-y">
+        <div id="player-y" class="player">&nbsp;</div>
+        <div id="playermoney-y" class="playermoney">&nbsp;</div>
+        <a id="inviteplayer-y" href="#" class="inviteplayer">Invite</a>
+        <a id="joinasplayer-y" href="" class="joinasplayer">Join</a>
+      </div>
+      <div style="clear:both;"></div>
+   </div>
+
+  <div style="clear:both;"></div>
+   <div id="gridcontainer">
+    <table class="grid" id="grid"></table>
+    <img class="unitcircle" id="circle-speed-1" src="img/circle_speed_1.png" />
+    <img class="unitcircle" id="circle-range-1" src="img/circle_range_1.png" />
+    <img class="unitcircle" id="circle-speed-2" src="img/circle_speed_1.png" />
+    <img class="unitcircle" id="circle-range-2" src="img/circle_range_1.png" />
+    <img class="unitcircle" id="circle-speed-3" src="img/circle_speed_1.png" />
+    <img class="unitcircle" id="circle-range-3" src="img/circle_range_1.png" />
+  </div>
+
+    <div style="clear:both;"></div>
+
+   <div id="activeunitcontainer">
+      <img src="img/unitgraphics/large_b.png" class="activeunit-graphic" id="activeunit-graphic" />
+      <div class="unitdetailscontainer">
+        <h3 id="activeunit-name-header"><span id="activeunit-name"></span></h3>
+
+        <div class="shop" id="shop-draggables">
+        </div>
+
+        <div class="shop" id="shop-buildings">
+          <h4>Building shop</h4>
+        </div>
+
+      </div>
+        <div style="clear:both;"></div>
+   </div>
+   </div>
+
+   <div class="col-md-3" class="sidebar" id="sidebar">
+
+    <h2>Game <span id="currentgameid"></span></h2>
+    <ul>
+      <li>Map: <span id="currentmapname"></span></li>
+      <li>Created: <span id="currentgamecreatedate"></span></li>
+    </ul>
+
+    Move mode:
+    <select id="modeselect" class="form-control">
+      <option value="DRAG">Drag &amp; drop (best for desktop)</option>
+      <option value="CLICK">Click (best for mobile)</option>
+    </select>
+   </div>
+
+   <h4>Links</h4>
+   <a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
+</div>

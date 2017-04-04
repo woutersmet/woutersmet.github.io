@@ -1,0 +1,58 @@
+
+<a href="https://woutertest.firebaseio.com/" target="_blank">https://woutertest.firebaseio.com/</a>
+
+<div class="col-md-9">
+  <h2>Map builder: <span id="maptitle"></span></h2>
+  <a onClick="return confirm('Sure you want to start over? Will remove any unsaved changes.');" href="mapbuilder.html">Create new map</a>
+
+  <form id="saveform" style="background:#eee;padding:10px;margin:10px;">
+      <table>
+        <tr><th>Name:</th> <td><input name="mapname" id="mapname" /></td></tr>
+        <tr><th>Dimensions:</th>
+        <td>
+        # Cols: <select id="colsselect"></select>
+        # Rows: <select id="rowsselect"></select>
+        </td></tr>
+        <tr><th>Description:</th><td><textarea id="description"></textarea></td></tr>
+        <tr><th></th><td><input type="submit" value="Save map" /></td></tr>
+      </table>
+  </form>
+
+  <div style="background:#eee;padding:10px;margin:10px;">
+
+  <div class="row">
+   <div class="col-md-6" id="gridcontainer"><table class="grid" id="grid"></table></div>
+
+      <div class="col-md-6" id="unitpickercontainer">
+      <div style="clear:both;"></div>
+        Select a unit, then click on the map to place it:
+        <div id="unitpicker-e"><div id="unitpicker-e-environments"></div></div><br />
+
+        <div id="unitpicker-b"><div id="unitpicker-b-buildings"></div><div id="unitpicker-b-draggables"></div></div><br />
+        <div id="unitpicker-r"><div id="unitpicker-r-buildings"></div><div id="unitpicker-r-draggables"></div></div><br />
+        <div id="unitpicker-g"><div id="unitpicker-g-buildings"></div><div id="unitpicker-g-draggables"></div></div><br />
+        <div id="unitpicker-y"><div id="unitpicker-y-buildings"></div><div id="unitpicker-y-draggables"></div></div><br />
+      </div>
+      </div>
+
+      <div class="row">
+
+       <div id="activeunitcontainer">
+          <h3 id="activeunit-name-header">Selected: <span id="activeunit-name"></span></h3>
+          <img src="img/unitgraphics/large_b.png" class="activeunit-graphic" id="activeunit-graphic" />
+          <div style="clear:both;"></div>
+       </div>
+       </div>
+   </div>
+</div>
+
+<div id="menu">
+</div>
+
+<div class="col-md-3" id="sidebar">
+
+  <h3>Maps</h3>
+  <ul id="maplist">
+
+  </ul>
+</div>
