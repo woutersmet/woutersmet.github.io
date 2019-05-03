@@ -4,6 +4,7 @@
 // NOTE: You must replace the client id on the following line.
 var clientId = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
 var scopes = 'https://www.googleapis.com/auth/spreadsheets.readonly'; //no need for edit etc: 'https://www.googleapis.com/auth/spreadsheets';
+var accessToken = false;
 
 function init() {
   console.log("Init auth;")
@@ -17,9 +18,9 @@ function handleAuthResult(authResult) {
   var authorizeButton = document.getElementById('authorize-button');
   if (authResult && !authResult.error) {
     console.log('We are authorized! auth reseult:', authResult);
-    //authorizeButton.style.visibility = 'hidden';
     //maybe show user here or something?
     //makeApiCall();
+    accessToken = authResult.access_token;
     loadChart();
   } else {
     console.log('We are not authorized yet! Showing button');
@@ -89,13 +90,12 @@ function handleTqResponse(resp) {
 
         //for sheet we need authentication for (see https://developers.google.com/chart/interactive/docs/spreadsheets)
         if (tokenNeeded){
-          var token = gapi.auth.getToken();
-          if (!token){
+          if (!accessToken){
             alert('Cannot load sheet: you have not authorized the access to Google Sheets yet');
             return;
           }
           else {
-            src += '&access_token=' + encodeURIComponent(token.access_token);
+            src += '&access_token=' + encodeURIComponent(accessToken);
           }
         }
         
