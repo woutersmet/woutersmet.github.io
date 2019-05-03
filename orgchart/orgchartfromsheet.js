@@ -76,7 +76,7 @@ function handleTqResponse(resp) {
         if (urlFromInput != ''){
             var urlZonderEdit = urlFromInput.trim().substr(0,urlFromInput.indexOf('/edit'));
             spreadsheetUrl = urlZonderEdit;
-            Cookie.set('lastusedurl',spreadsheetUrl);
+            Cookies.set('lastusedurl',spreadsheetUrl);
             console.log("We gebruiken url van in de input: " + spreadsheetUrl);
         }
 
@@ -161,6 +161,6 @@ function handleTqResponse(resp) {
       }
 
       $(document).ready(function(){
-          var urlFromCookie = Cookie.get('lastusedurl');
+          var urlFromCookie = Cookies.get('lastusedurl');
           if (typeof urlFromCookie != 'undefined') $('#sheeturl').val(urlFromCookie);
       });
