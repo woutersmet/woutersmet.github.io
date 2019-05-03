@@ -7,7 +7,7 @@ var scopes = 'https://www.googleapis.com/auth/spreadsheets.readonly'; //no need 
 var accessToken = false;
 
 function init() {
-  console.log("Init auth;")
+  console.log("Init auth;");
   gapi.auth.authorize(
       {client_id: clientId, scope: scopes, immediate: true},
       handleAuthResult);
@@ -76,6 +76,7 @@ function handleTqResponse(resp) {
         if (urlFromInput != ''){
             var urlZonderEdit = urlFromInput.trim().substr(0,urlFromInput.indexOf('/edit'));
             spreadsheetUrl = urlZonderEdit;
+            Cookie.set('lastusedurl',spreadsheetUrl);
             console.log("We gebruiken url van in de input: " + spreadsheetUrl);
         }
 
@@ -158,3 +159,8 @@ function handleTqResponse(resp) {
         console.log("Loading chart...");
         getSheetData();
       }
+
+      $(document).ready(function(){
+          var urlFromCookie = Cookie.get('lastusedurl');
+          if (typeof urlFromCookie != 'undefined') $('#sheeturl').val(urlFromCookie);
+      });
