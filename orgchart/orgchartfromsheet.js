@@ -70,15 +70,13 @@ function handleTqResponse(resp) {
 
       //following https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name
       function getSheetData() {
-        var tokenNeeded = true;
-
-        var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M';
-
+        
+        var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M'; //default
         var urlFromInput = $('#sheeturl').val();
         if (urlFromInput != ''){
             var urlZonderEdit = urlFromInput.trim().substr(0,urlFromInput.indexOf('/edit'));
             spreadsheetUrl = urlZonderEdit;
-            console.log("We gebruiken url in de input: " + spreadsheetUrl);
+            console.log("We gebruiken url van in de input: " + spreadsheetUrl);
         }
 
         var sheetname = 'orgdata';
@@ -89,14 +87,12 @@ function handleTqResponse(resp) {
         var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
 
         //for sheet we need authentication for (see https://developers.google.com/chart/interactive/docs/spreadsheets)
-        if (tokenNeeded){
-          if (!accessToken){
-            alert('Cannot load sheet: you have not authorized the access to Google Sheets yet');
-            return;
-          }
-          else {
-            src += '&access_token=' + encodeURIComponent(accessToken);
-          }
+        if (!accessToken){
+          alert('Cannot load sheet: you have not authorized access to Google Sheets yet');
+          return;
+        }
+        else {
+          src += '&access_token=' + encodeURIComponent(accessToken);
         }
         
         console.log("Full url we will query: " + src);
