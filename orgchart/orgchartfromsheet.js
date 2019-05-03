@@ -70,7 +70,7 @@ function handleTqResponse(resp) {
 
       //following https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name
       function getSheetData() {
-        var tokenNeeded = false;
+        var tokenNeeded = true;
 
         var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M';
 
