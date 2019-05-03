@@ -99,6 +99,7 @@ function handleTqResponse(resp) {
           }
         }
         
+        console.log("Full url we will query: " + src);
         var query = new google.visualization.Query(src);
         query.send(handleSheetResponse);
       }
