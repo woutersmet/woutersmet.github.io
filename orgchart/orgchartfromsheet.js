@@ -71,6 +71,13 @@ function handleTqResponse(resp) {
         var tokenNeeded = false;
 
         var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M';
+
+        var urlFromInput = $('#sheeturl').val();
+        if (urlFromInput != ''){
+            var urlZonderEdit = urlFromInput.trim().substr(0,urlFromInput.indexOf('/edit'));
+            spreadsheetUrl = urlZonderEdit;
+            console.log("We gebruiken url in de input: " + spreadsheetUrl);
+        }
         var sheetname = 'orgdata';
         var range = 'A2:Z999';
 
