@@ -2,7 +2,7 @@
 * THE AUTH BIT
 */
 // NOTE: You must replace the client id on the following line.
-var clientId = '549821307845-9ef2xotqflhcqbv10.apps.googleusercontent.com';
+var clientId = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
 var scopes = 'https://www.googleapis.com/auth/spreadsheets';
 
 function init() {
