@@ -3,7 +3,7 @@
 */
 // NOTE: You must replace the client id on the following line.
 var clientId = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
-var scopes = 'https://www.googleapis.com/auth/spreadsheets';
+var scopes = 'https://www.googleapis.com/auth/spreadsheets.readonly'; //no need for edit etc: 'https://www.googleapis.com/auth/spreadsheets';
 
 function init() {
   console.log("Init auth;")
@@ -18,7 +18,8 @@ function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
     console.log('We are authorized!');
     authorizeButton.style.visibility = 'hidden';
-    makeApiCall();
+    //makeApiCall();
+    loadChart();
   } else {
     console.log('We are not authorized yet! Showing button');
     authorizeButton.style.visibility = '';
@@ -34,6 +35,7 @@ function handleAuthClick(event) {
   return false;
 }
 
+/*
 function makeApiCall() {
   console.log("Making test api call");
   // Note: The below spreadsheet is "Public on the web" and will work
@@ -50,6 +52,7 @@ function makeApiCall() {
 function handleTqResponse(resp) {
   document.write(JSON.stringify(resp));
 }
+*/
 
 /*
 * THE CHARTING BIT
