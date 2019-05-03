@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Org chart fed from google sheet</title>
+
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -95,6 +96,16 @@
 
   <body>
     <h1>Org chart controlled by google sheet</h1>
+
+
+    <!-- AUTHORIZE PART-->
+    <h3>Authorize:</h3>
+    <button id="authorize-button" style="visibility: hidden">Authorize</button>
+    <script src="orgchartfromsheet.js" type="text/javascript"></script>
+    <script src="https://apis.google.com/js/auth.js?onload=init"></script>
+
+    <hr />
+    <h3>Info</h3>
     Location of the source sheet: <a href="https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A1:B5" target="_blank">https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A1:B5</a><br />
     google documentation: https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name<br />
     jsfiddle inspiration: https://jsfiddle.net/gvaz4qb0/
