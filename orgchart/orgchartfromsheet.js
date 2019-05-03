@@ -1,3 +1,6 @@
+/*
+* THE AUTH BIT
+*/
 // NOTE: You must replace the client id on the following line.
 var clientId = '549821307845-9ef2xotqflhcqbv10.apps.googleusercontent.com';
 var scopes = 'https://www.googleapis.com/auth/spreadsheets';
@@ -30,7 +33,7 @@ function handleAuthClick(event) {
 }
 
 function makeApiCall() {
-  console.log("Making api call");
+  console.log("Making test api call");
   // Note: The below spreadsheet is "Public on the web" and will work
   // with or without an OAuth token.  For a better test, replace this
   // URL with a private spreadsheet.
@@ -45,3 +48,92 @@ function makeApiCall() {
 function handleTqResponse(resp) {
   document.write(JSON.stringify(resp));
 }
+
+/*
+* THE CHARTING BIT
+*/
+
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart','orgchart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      //google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(getSheetData);
+
+      //following https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name
+      function getSheetData() {
+
+        var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M';
+        var sheetname = 'orgdata';
+        var range = 'A2:Z999';
+
+        //something like: 
+        //var src = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
+        var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
+
+        //for sheet we need authentication for (see https://developers.google.com/chart/interactive/docs/spreadsheets)
+        src += '&access_token=' + encodeURIComponent(gapi.auth.getToken().access_token);
+
+        var query = new google.visualization.Query(src);
+        query.send(handleSheetResponse);
+      }
+
+      function extractRow(dataFromSheet, i){
+        var rowInfo = {
+          fullname : dataFromSheet.getValue(i,0),
+          firstname : dataFromSheet.getValue(i,1),
+          lastname : dataFromSheet.getValue(i,2),
+          role : dataFromSheet.getValue(i,3),
+          department : dataFromSheet.getValue(i,4),
+          team : dataFromSheet.getValue(i,5),
+          manager : dataFromSheet.getValue(i,6),
+          avatar : dataFromSheet.getValue(i,7),
+        };
+
+        var background =  rowInfo.department == 'Product' ? '#ffff88' : '#aaddff';
+        var styling = 'width:150px;background:'+background+';border:0;';
+
+        rowInfo.styling = styling;
+
+        return rowInfo;
+      }
+  
+      function handleSheetResponse(response) {
+        if (response.isError()) {
+          alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+          return;
+        }
+  
+        var dataFromSheet = response.getDataTable();
+        console.log("Source data: ", dataFromSheet);
+        //transform data table to include html, pictures, bg etc?
+        var size = dataFromSheet.getNumberOfRows();
+        console.log("Size: " + size);
+        
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+        data.addColumn('string', 'ToolTip');
+
+        for (var i = 0; i<size;i++){
+          var row = extractRow(dataFromSheet,i);
+          console.log("Formatting person at index " + i, row);
+
+          var formatted = '<div class="node-header"><img class="node-avatar" src="'+row.avatar+'" /><div class="node-name">' +row.fullname+ '</div><div class="node-role">'+row.role+'</div></div>';
+          formatted += '<div class="node-info">'+row.role+'<br /><div class="node-team">'+row.team+'</div></div>';
+
+          var newRow = [{v : row.fullname, f : formatted},row.manager,''];
+          data.addRow(newRow);
+          data.setRowProperty(i, 'style', row.styling);
+        }
+        
+        //var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+        chart.draw(data, { allowHtml: true /*, height: 400 */});
+      }
+
+      loadChart(){
+        console.log("Loading chart...");
+        getSheetData();
+      }
