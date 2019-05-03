@@ -16,9 +16,11 @@ function handleAuthResult(authResult) {
   console.log("Handling auth result:", authResult);
   var authorizeButton = document.getElementById('authorize-button');
   if (authResult && !authResult.error) {
+    console.log('We are authorized!');
     authorizeButton.style.visibility = 'hidden';
     makeApiCall();
   } else {
+    console.log('We are not authorized yet! Showing button');
     authorizeButton.style.visibility = '';
     authorizeButton.onclick = handleAuthClick;
   }
