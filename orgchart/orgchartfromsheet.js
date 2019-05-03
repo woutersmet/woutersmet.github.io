@@ -16,8 +16,9 @@ function handleAuthResult(authResult) {
   console.log("Handling auth result:", authResult);
   var authorizeButton = document.getElementById('authorize-button');
   if (authResult && !authResult.error) {
-    console.log('We are authorized!');
-    authorizeButton.style.visibility = 'hidden';
+    console.log('We are authorized! auth reseult:', authResult);
+    //authorizeButton.style.visibility = 'hidden';
+    //maybe show user here or something?
     //makeApiCall();
     loadChart();
   } else {
@@ -78,6 +79,7 @@ function handleTqResponse(resp) {
             spreadsheetUrl = urlZonderEdit;
             console.log("We gebruiken url in de input: " + spreadsheetUrl);
         }
+
         var sheetname = 'orgdata';
         var range = 'A2:Z999';
 
