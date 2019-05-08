@@ -166,5 +166,8 @@ function handleTqResponse(resp) {
 
       $(document).ready(function(){
           var urlFromCookie = Cookies.get('lastusedurl');
-          if (typeof urlFromCookie != 'undefined') $('#sheeturl').val(urlFromCookie);
+          if (typeof urlFromCookie != 'undefined'){
+            console.log("We have a url in cookie! " + urlFromCookie);
+            $('#sheeturl').val(urlFromCookie);
+          }
       });
