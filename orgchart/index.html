@@ -29,43 +29,40 @@
   <body>
 
       <header>
-          <div class="container"><h1>Woutersmet.github.io</h1></div>
+          <div class="container"><h1>Org Chart from Google Sheet</h1></div>
         </header>
 
           <div class="container">
         <div class="col-md-9">
-            <h2>Experiments</h2>
-    <h1>Org chart controlled by google sheet</h1>
+           
+    <br />
+    <div class="panel panel-success">
+        <div class="panel-heading">Config auth & data source</div>
+        <div class="panel-content" style="padding:10px;">
+          <strong>Welcome!</strong> This page shows an org chart driven by a google sheet. <br />
+          <a href="https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/" target="_blank">Public Example sheet</a> | 
+          <a href="https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A1:B5" target="_blank">(as JSON)</a> |
+          <a href="https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name" target="_blank">Google documentation</a> |
+        <a href="https://jsfiddle.net/gvaz4qb0/" target="_blank">jsfiddle inspiration</a>
+          
+          <div id="auth-todo">
+            Authorize app with google sheets: <button class="btn btn-primary" onClick="handleAuthClick();">Authorize</button>
+          </div>
 
-
-    <!-- AUTHORIZE PART-->
-    <h3>Authorize:</h3>
-    <button id="authorize-button" onClick="handleAuthClick();">Authorize</button>
-    d
-    <hr />
-    <h3>Info</h3>
-
-    Sheet URL:
-    <input type="text" id="sheeturl" class="form-control" />
+          <div id="auth-done" style="display:none;">
+              Authorized! <a href="#" onClick="handleAuthClick();">Re-authorize</a>
+            </div>
+    <br />Source sheet URL:
+    <input type="text" id="sheeturl" class="form-control" style="display:inline;width:auto;" />
     <button class="btn btn-default" onClick="loadChart();">Load chart</button><br />
+  </div></div>
 
-    Location of the source sheet: <a href="https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A1:B5" target="_blank">https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A1:B5</a><br />
-    google documentation: https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name<br />
-    jsfiddle inspiration: https://jsfiddle.net/gvaz4qb0/
-    <br />
-    <br />
-    The chart:
     <!--Div that will hold the chart-->
     <div id="chart_div"></div>
 
     </div>
 
-    <div class="col-md-3">
-        <h2>Where am I?</h2>
-        <p>
-          This is the personal silly little web dev playground of <a target="_blank" href="http://www.woutersmet.com">Wouter Smet</a> from Ghent.
-        </p>
-    </div>
+    
 
   </div>
   </body>

@@ -22,10 +22,12 @@ function handleAuthResult(authResult) {
     //makeApiCall();
     window.accessToken = authResult.access_token;
     loadChart();
+    $('#auth-todo').hide();
+    $('#auth-done').show();
   } else {
     console.log('We are not authorized yet! Showing button');
-    authorizeButton.style.visibility = '';
-    authorizeButton.onclick = handleAuthClick;
+    $('#auth-todo').show();
+    $('#auth-done').hide();
   }
 }
 
