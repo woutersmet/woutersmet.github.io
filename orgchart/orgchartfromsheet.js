@@ -4,7 +4,7 @@
 // NOTE: You must replace the client id on the following line.
 var clientId = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
 var scopes = 'https://www.googleapis.com/auth/spreadsheets.readonly'; //no need for edit etc: 'https://www.googleapis.com/auth/spreadsheets';
-var accessToken = false;
+window.accessToken = false;
 
 function init() {
   console.log("Init auth;");
@@ -20,7 +20,7 @@ function handleAuthResult(authResult) {
     console.log('We are authorized! auth reseult:', authResult);
     //maybe show user here or something?
     //makeApiCall();
-    accessToken = authResult.access_token;
+    window.accessToken = authResult.access_token;
     loadChart();
   } else {
     console.log('We are not authorized yet! Showing button');
@@ -83,17 +83,19 @@ function handleTqResponse(resp) {
         var sheetname = 'orgdata';
         var range = 'A2:Z999';
 
-        //something like: 
-        //var src = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
+        //something like:  'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
         var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
 
         //for sheet we need authentication for (see https://developers.google.com/chart/interactive/docs/spreadsheets)
-        if (!accessToken){
-          alert('Cannot load sheet: you have not authorized access to Google Sheets yet');
-          return;
-        }
-        else {
-          src += '&access_token=' + encodeURIComponent(accessToken);
+        if (urlFromInput != ''){
+            console.log("Using user-pasted url! We need accesstoken...");
+            if (!accessToken){
+              alert('Cannot load sheet: you have not authorized access to Google Sheets yet');
+              return;
+            }
+            else {
+              src += '&access_token=' + encodeURIComponent(accessToken);
+            }
         }
         
         console.log("Full url we will query: " + src);
