@@ -102,11 +102,9 @@ function extractRow(dataFromSheet, i){
 }
 
 function handleSheetResponse(response) {
-  if (response.isError()) {
-    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-    return;
-  }
+  if (response.isError()) return alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
 
+  //build data from sheet
   var dataFromSheet = response.getDataTable();
   console.log("Source data: ", dataFromSheet);
   //transform data table to include html, pictures, bg etc?
@@ -118,11 +116,15 @@ function handleSheetResponse(response) {
   data.addColumn('string', 'Manager');
   data.addColumn('string', 'ToolTip');
 
-  for (var i = 0; i<size;i++){
-    if (row.title == '') continue;
-    var row = extractRow(dataFromSheet,i);
-    console.log("Formatting person at index " + i, row);
+  var rows = [];
+  for (var i = 0; i<size;i++) rows.push(extractRow(dataFromSheet,i));
+  console.log("Rows to display:", rows);
 
+  //build chart data
+  for (var i = 0; i<size;i++){
+    if (typeof row == 'undefined') continue;
+    
+    var row = rows[i];
     var imgPart = row.avatar != '' ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
     var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
     
@@ -131,7 +133,7 @@ function handleSheetResponse(response) {
     data.setRowProperty(i, 'style', row.styling);
   }
   
-  //var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  //draw chart
   var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
   chart.draw(data, { allowHtml: true /*, height: 400 */});
 }
