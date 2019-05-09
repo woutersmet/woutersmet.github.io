@@ -32,7 +32,7 @@ function handleAuthResult(authResult) {
   }
 }
 
-function authorizeAndLoadChart() {
+function authorize() {
   console.log("Handling auth click");
   gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false},handleAuthResult);
   return false;
@@ -47,7 +47,7 @@ function authorizeAndLoadChart() {
 //google.charts.setOnLoadCallback(getSheetData);
 
 //following https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name
-function getSheetData() {
+function loadChart() {
   
   var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M'; //default
   var urlFromInput = $('#sheeturl').val();
@@ -69,6 +69,7 @@ function getSheetData() {
       console.log("Using user-pasted url! We need accesstoken...");
       if (!accessToken){
         alert('Cannot load sheet: you have not authorized access to Google Sheets yet');
+        authorize();
         return;
       }
       else {
@@ -136,11 +137,6 @@ function handleSheetResponse(response) {
   chart.draw(data, { allowHtml: true /*, height: 400 */});
 }
 
-function loadChart(){
-  console.log("Loading chart...");
-  getSheetData();
-}
-
 $(document).ready(function(){
     var urlFromCookie = Cookies.get('lastusedurl');
     if (typeof urlFromCookie != 'undefined' && urlFromCookie != ''){
@@ -148,12 +144,5 @@ $(document).ready(function(){
       $('#sheeturl').val(urlFromCookie);
     }
 
-    $('#loadbutton').click(function(){
-        if (typeof window.accessToken != undefined){
-          loadChart();
-        }
-        else {
-          authorizeAndLoadChart();
-        }
-    })
+    $('#loadbutton').click(loadChart);
 });
