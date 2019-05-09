@@ -168,7 +168,7 @@
       var url = new URL(document.location.href);
       var sheetidfromurl = url.searchParams.get("sheetid");
       console.log("Sheet id from url:" + sheetidfromurl);
-      if (typeof sheetid != 'undefined'){
+      if (typeof sheetidfromurl != 'undefined'){
         window.sheetid = sheetidfromurl;
       }
       else {
