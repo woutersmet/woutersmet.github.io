@@ -48,9 +48,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title" id="modal-title"></h4>
         </div>
         <div class="modal-body">
+          <img id="modal-image" src="" />
           <p>Some text in the modal.</p>
         </div>
         <div class="modal-footer">
@@ -267,10 +268,15 @@ function extractRow(dataFromSheet, i){
   function handleChartSelect() {
     var selectedItem = window.chart.getSelection()[0];
     if (selectedItem) {
-      console.log("Selected item: ", selectedItem);
+      var index = selectedItem.row;
+      console.log("Selected index: ", index);
   
+      var row = rows[index];
+      console.log("Row selected:", row);
       //var topping = data.getValue(selectedItem.row, 0);
       //alert('Chart selected!');
+      $('#modal-avatar').attr('src', row.avatar);
+      $('#modal-title').html(row.title);
       $('#node_modal').modal();
     }
   }
@@ -290,8 +296,11 @@ function handleSheetResponse(response) {
   data.addColumn('string', 'Manager');
   data.addColumn('string', 'ToolTip');
 
-  var rows = [];
-  for (var i = 0; i<size;i++) rows.push(extractRow(dataFromSheet,i));
+  window.rows = [];
+  for (var i = 0; i<size;i++){
+    var sheetrow = extractRow(dataFromSheet,i);
+    if (typeof sheetrow != 'undefined') rows.push(sheetrow);
+  }
   console.log("Rows to display:", rows);
 
   //build chart data
