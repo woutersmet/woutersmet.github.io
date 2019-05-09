@@ -122,9 +122,9 @@ function handleSheetResponse(response) {
 
   //build chart data
   for (var i = 0; i<size;i++){
+    var row = rows[i];
     if (typeof row == 'undefined') continue;
     
-    var row = rows[i];
     var imgPart = row.avatar != '' ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
     var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
     
