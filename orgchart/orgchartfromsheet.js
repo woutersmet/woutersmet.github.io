@@ -52,8 +52,9 @@ function loadChart() {
   var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M'; //default
   var urlFromInput = $('#sheeturl').val();
   if (urlFromInput != ''){
-      var urlZonderEdit = urlFromInput.trim().substr(0,urlFromInput.indexOf('/edit'));
-      spreadsheetUrl = urlZonderEdit;
+      var editPos = urlFromInput.indexOf('/edit');
+      if (editPos > 0) urlFromInput = urlFromInput.trim().substr(0,editPos);
+      spreadsheetUrl = urlFromInput;
       Cookies.set('lastusedurl',spreadsheetUrl);
       console.log("We gebruiken url van in de input: " + spreadsheetUrl);
   }
