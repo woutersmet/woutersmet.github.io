@@ -194,17 +194,18 @@ return rowInfo;
 function handleChartSelect() {
 var selectedItem = window.chart.getSelection()[0];
 if (selectedItem) {
-var index = selectedItem.row;
-console.log("Selected index: ", index);
+  var index = selectedItem.row;
+  console.log("Selected index: ", index);
 
-var row = rows[index];
-console.log("Row selected:", row);
-//var topping = data.getValue(selectedItem.row, 0);
-//alert('Chart selected!');
-$('#modal-avatar').attr('src', row.avatar);
-$('#modal-title').html(row.title);
-$('#node_modal').modal();
-}
+  var row = rows[index];
+  console.log("Row selected:", row);
+  //var topping = data.getValue(selectedItem.row, 0);
+  //alert('Chart selected!');
+  $('#modal-image').attr('src', row.avatar);
+  $('#modal-title').html(row.title);
+  $('#modal-subtitle').html(row.subtitle);
+  $('#node_modal').modal();
+  }
 }
 
 function handleSheetResponse(response) {
