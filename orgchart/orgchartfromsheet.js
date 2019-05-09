@@ -85,18 +85,15 @@ function loadChart() {
 
 function extractRow(dataFromSheet, i){
   var rowInfo = {
-    fullname : dataFromSheet.getValue(i,0),
-    firstname : dataFromSheet.getValue(i,1),
-    lastname : dataFromSheet.getValue(i,2),
-    role : dataFromSheet.getValue(i,3),
-    department : dataFromSheet.getValue(i,4),
-    team : dataFromSheet.getValue(i,5),
-    avatar : dataFromSheet.getValue(i,6),
-    code : dataFromSheet.getValue(i,7),
-    parentcode : dataFromSheet.getValue(i,8),
+    title : dataFromSheet.getValue(i,0),
+    subtitle : dataFromSheet.getValue(i,1),
+    avatar : dataFromSheet.getValue(i,2),
+    color : dataFromSheet.getValue(i,3),
+    code : dataFromSheet.getValue(i,4),
+    parentcode : dataFromSheet.getValue(i,5),
   };
 
-  var background =  rowInfo.department == 'Product' ? '#ffff88' : '#aaddff';
+  var background = rowInfo.color == '' ? '#eee' : rowInfo.color;
   var styling = 'width:150px;background:'+background+';border:0;';
 
   rowInfo.styling = styling;
@@ -125,9 +122,8 @@ function handleSheetResponse(response) {
     var row = extractRow(dataFromSheet,i);
     console.log("Formatting person at index " + i, row);
 
-    var formatted = '<div class="node-header"><img class="node-avatar" src="'+row.avatar+'" /><div class="node-name">' +row.fullname+ '</div><div class="node-role">'+row.role+'</div></div>';
-    formatted += '<div class="node-info">'+row.role+'<br /><div class="node-team">'+row.team+'</div></div>';
-
+    var formatted = '<div class="node"><div class="node-header"><img class="node-avatar" src="'+row.avatar+'" /><div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
+    
     var newRow = [{v : row.code, f : formatted},row.parentcode,''];
     data.addRow(newRow);
     data.setRowProperty(i, 'style', row.styling);
