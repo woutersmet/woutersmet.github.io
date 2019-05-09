@@ -146,4 +146,13 @@ $(document).ready(function(){
       console.log("We have a url in cookie! " + urlFromCookie);
       $('#sheeturl').val(urlFromCookie);
     }
+
+    $('#loadbutton').click(function(){
+        if (typeof window.accessToken != undefined){
+          loadChart();
+        }
+        else {
+          authorizeAndLoadChart();
+        }
+    })
 });
