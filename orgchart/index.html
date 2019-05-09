@@ -1,65 +1,75 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Org chart fed from google sheet</title>
+    <title>Google Sheets API + google Charts API: Org chart</title>
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-  <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="orgchartfromsheet.js" type="text/javascript"></script>
-    <!-- <script src="https://apis.google.com/js/auth.js?onload=init"></script> -->
-    <script src="https://apis.google.com/js/auth.js"></script>
+
+    <meta charset="utf-8" />
 
     <style>
-      body {font-family:Arial;}
-      header {background-color:#ddd;}
-      #sidebar{background-color:#fafafa;border:1px solid #aaa;border-radius:5px;cursor:default !important;}
-
-      /* org chart */
-      .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
-      .node-avatar {height:35px;float:left;}
-      .node-title {font-weight:bold;}
-      .node-subtitle {color:#555;}
-      
-      </style>
+        /* org chart */
+        .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
+        .node-avatar {height:35px;float:left;}
+        .node-title {font-weight:bold;}
+        .node-subtitle {color:#555;}
+        
+        </style>
   </head>
-
   <body>
 
-      <header>
-          <div class="container"><h1>Org Chart from Google Sheet</h1></div>
-        </header>
+    <p>Google Sheets API Quickstart</p>
 
-          <div class="container">
-        <div class="col-md-12">
-           
-    <br />
-    <div class="panel panel-success">
-        <div class="panel-heading">Config auth & data source</div>
-        <div class="panel-content" style="padding:10px;">
-          <strong>Welcome!</strong> This page shows an org chart driven by a google sheet. <br />
-          <a href="https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/" target="_blank">Public Example sheet</a> |
-          <a href="https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name" target="_blank">Google documentation</a> |
-        <a href="https://jsfiddle.net/gvaz4qb0/" target="_blank">jsfiddle inspiration</a> | 
-        <a href="https://developers.google.com/sheets/api/quickstart/js" target="_blank">Sheets API Doc</a>
-          
-        
-        <!-- <div id="auth-todo">Authorize app with google sheets: <button class="btn btn-primary" onClick="handleAuthClick();">Authorize</button></div>-->
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
 
-          <div id="auth-done" style="display:none;">
-              Authorized! <a href="#" onClick="handleAuthClick();">Re-authorize</a>
-            </div>
-    <br />Source sheet URL:
-    <input type="text" id="sheeturl" class="form-control" style="display:inline;width:auto;" />
-    <button class="btn btn-default" id="loadbutton">Load chart</button><br />
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+    <div class="container">
+        <h1>Dynamic org chart from google sheet</h1>
+        <form method="get">
+          Sheet id: <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
+        </form>
+        <br />
+        <div id="sheets"></div>
+      </div>
+        <div id="chart_div"></div>
+
+
+<!-- Modal -->
+<div id="node_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <img id="modal-image" src="" />
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
   </div>
-</div>
-</div>
 
-    <!--Div that will hold the chart-->
-     <center><div id="chart_div"></div></center>
+
+    <script src="orgchartfromsheet.js" type="text/javascript"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+      </script>
 
   </body>
 </html>

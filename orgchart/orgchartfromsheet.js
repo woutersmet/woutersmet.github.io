@@ -1,150 +1,277 @@
+
 // Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart','orgchart']});
 
-/*
-* THE AUTH BIT
-*/
-// NOTE: You must replace the client id on the following line.
-var clientId = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
-var scopes = 'https://www.googleapis.com/auth/spreadsheets.readonly'; //no need for edit etc: 'https://www.googleapis.com/auth/spreadsheets';
-window.accessToken = false;
+// Client ID and API key from the Developer Console
+var CLIENT_ID = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
+var API_KEY = 'AIzaSyDMyCyqGXZ5n951uc4oRCQCQScoCac1oE8';
 
-/*
-function init() {
-  console.log("Init auth;");
-  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},handleAuthResult);
+// Array of API discovery doc URLs for APIs used by the quickstart
+var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+
+// Authorization scopes required by the API; multiple scopes can be
+// included, separated by spaces.
+var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+
+var authorizeButton = document.getElementById('authorize_button');
+var signoutButton = document.getElementById('signout_button');
+
+/**
+ *  On load, called to load the auth2 library and API client library.
+ */
+function handleClientLoad() {
+  gapi.load('client:auth2', initClient);
 }
-*/
 
-function handleAuthResult(authResult) {
-  var authorizeButton = document.getElementById('authorize-button');
-  if (authResult && !authResult.error) {
-    console.log('Auth result: We are authorized! auth reseult:', authResult);
-    //maybe show user here or something?
-    window.accessToken = authResult.access_token;
-    loadChart();
-    $('#auth-todo').hide();
-    $('#auth-done').show();
+/**
+ *  Initializes the API client library and sets up sign-in state
+ *  listeners.
+ */
+function initClient() {
+  gapi.client.init({
+    apiKey: API_KEY,
+    clientId: CLIENT_ID,
+    discoveryDocs: DISCOVERY_DOCS,
+    scope: SCOPES
+  }).then(function () {
+    var authInstance = gapi.auth2.getAuthInstance();
+    console.log('auth instancce:' , authInstance);
+    
+    window.accessToken = authInstance.currentUser.get().getAuthResponse().access_token;
+    console.log("Access token: " + window.accessToken);
+    // Listen for sign-in state changes.
+    authInstance.isSignedIn.listen(updateSigninStatus);
+
+    // Handle the initial sign-in state.
+    updateSigninStatus(authInstance.isSignedIn.get());
+    authorizeButton.onclick = handleAuthClick;
+    signoutButton.onclick = handleSignoutClick;
+  }, function(error) {
+    appendPre(JSON.stringify(error, null, 2));
+  });
+}
+
+/**
+ *  Called when the signed in status changes, to update the UI
+ *  appropriately. After a sign-in, the API is called.
+ */
+function updateSigninStatus(isSignedIn) {
+  if (isSignedIn) {
+    authorizeButton.style.display = 'none';
+    signoutButton.style.display = 'block';
+    //listMajors();
+    listSheets(window.sheetid);
   } else {
-    console.log('Auth result: we are not authorized yet! Showing button');
-    $('#auth-todo').show();
-    $('#auth-done').hide();
+    authorizeButton.style.display = 'block';
+    signoutButton.style.display = 'none';
   }
 }
 
-function authorize() {
-  console.log("Authorizing...");
-  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false},handleAuthResult);
-  return false;
+/**
+ *  Sign in the user upon button click.
+ */
+function handleAuthClick(event) {
+  gapi.auth2.getAuthInstance().signIn();
 }
 
-/*
-* THE CHARTING BIT
-*/
+/**
+ *  Sign out the user upon button click.
+ */
+function handleSignoutClick(event) {
+  gapi.auth2.getAuthInstance().signOut();
+}
+
+/**
+ * Append a pre element to the body containing the given message
+ * as its text node. Used to display the results of the API call.
+ *
+ * @param {string} message Text to be placed in pre element.
+ */
+function appendPre(message) {
+  var pre = document.getElementById('content');
+  var textContent = document.createTextNode(message + '\n');
+  pre.appendChild(textContent);
+}
+
+//source: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/get
+function listSheets(sheetid) {
+  console.log("Listing sheets!");
+  var params = {
+    // The spreadsheet to request.
+    spreadsheetId: sheetid, //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'),  // same public one as below - Wouter
+
+    // The ranges to retrieve from the spreadsheet.
+    ranges: [],  // TODO: Update placeholder value.
+
+    // True if grid data should be returned.
+    // This parameter is ignored if a field mask was set in the request.
+    includeGridData: false,  // TODO: Update placeholder value.
+  };
+
+  var request = gapi.client.sheets.spreadsheets.get(params);
+  request.then(function(response) {
+    // TODO: Change code below to process the `response` object:
+    console.log(response.result);
+    var sheets = response.result.sheets;
+    for (var i =0;i<sheets.length;i++){
+      
+      $('#sheets').append($('<a class="tabbutton btn btn-default">'+sheets[i]['properties']['title']+'</a>'))
+    }
+
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });      
+}
+
+/**
+ * Print the names and majors of students in a sample spreadsheet:
+ * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ */
+function listMajors() {
+  gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+    range: 'Class Data!A2:E',
+  }).then(function(response) {
+    var range = response.result;
+    if (range.values.length > 0) {
+      appendPre('Name, Major:');
+      for (i = 0; i < range.values.length; i++) {
+        var row = range.values[i];
+        // Print columns A and E, which correspond to indices 0 and 4.
+        appendPre(row[0] + ', ' + row[4]);
+      }
+    } else {
+      appendPre('No data found.');
+    }
+  }, function(response) {
+    appendPre('Error: ' + response.result.error.message);
+  });
+}
+
 
 
 // Set a callback to run when the Google Visualization API is loaded.
 //google.charts.setOnLoadCallback(getSheetData);
 
 //following https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name
-function loadChart() {
-  
-  var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M'; //default
-  var urlFromInput = $('#sheeturl').val();
-  if (urlFromInput != ''){
-      var editPos = urlFromInput.indexOf('/edit');
-      if (editPos > 0) urlFromInput = urlFromInput.trim().substr(0,editPos);
-      spreadsheetUrl = urlFromInput;
-      Cookies.set('lastusedurl',spreadsheetUrl);
-      console.log("We gebruiken url van in de input: " + spreadsheetUrl);
-  }
+function loadChart(sheetid, sheetname) {
+console.log("Will load chart for sheet " + sheetid + " and tab" + sheetname);
 
-  var sheetname = 'orgdata';
-  var range = 'A2:Z999';
+var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/'+sheetid; //default
 
-  //something like:  'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
-  var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
+//var sheetname = 'orgdata';
+var range = 'A2:Z999';
 
-  //for sheet we need authentication for (see https://developers.google.com/chart/interactive/docs/spreadsheets)
-  if (urlFromInput != ''){
-      console.log("Using user-pasted url! We need accesstoken...");
-      if (!accessToken){
-        alert('Cannot load sheet: you have not authorized access to Google Sheets yet');
-        authorize();
-        return;
-      }
-      else {
-        src += '&access_token=' + encodeURIComponent(accessToken);
-      }
-  }
-  
-  console.log("Full url we will query: " + src);
-  var query = new google.visualization.Query(src);
-  query.send(handleSheetResponse);
+//something like:  'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
+var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
+
+src += '&access_token=' + encodeURIComponent(window.accessToken);
+
+console.log("Full url we will query: " + src);
+var query = new google.visualization.Query(src);
+query.send(handleSheetResponse);
 }
 
 function extractRow(dataFromSheet, i){
-  var rowInfo = {
-    title : dataFromSheet.getValue(i,0),
-    subtitle : dataFromSheet.getValue(i,1),
-    color : dataFromSheet.getValue(i,3),
-    code : dataFromSheet.getValue(i,4),
-    parentcode : dataFromSheet.getValue(i,5),
-    avatar : dataFromSheet.getValue(i,2),
-  };
+var rowInfo = {
+title : dataFromSheet.getValue(i,0),
+subtitle : dataFromSheet.getValue(i,1),
+color : dataFromSheet.getValue(i,3),
+code : dataFromSheet.getValue(i,4),
+parentcode : dataFromSheet.getValue(i,5),
+avatar : dataFromSheet.getValue(i,2),
+};
 
-  var background = rowInfo.color == null ? '#eee' : rowInfo.color;
-  var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrap;';
+var background = rowInfo.color == null ? '#eee' : rowInfo.color;
+var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrap;';
 
-  rowInfo.styling = styling;
+rowInfo.styling = styling;
 
-  return rowInfo;
+return rowInfo;
+}
+
+//sourcce: https://developers.google.com/chart/interactive/docs/basic_interactivity
+function handleChartSelect() {
+var selectedItem = window.chart.getSelection()[0];
+if (selectedItem) {
+var index = selectedItem.row;
+console.log("Selected index: ", index);
+
+var row = rows[index];
+console.log("Row selected:", row);
+//var topping = data.getValue(selectedItem.row, 0);
+//alert('Chart selected!');
+$('#modal-avatar').attr('src', row.avatar);
+$('#modal-title').html(row.title);
+$('#node_modal').modal();
+}
 }
 
 function handleSheetResponse(response) {
-  if (response.isError()) return alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+if (response.isError()) return alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
 
-  //build data from sheet
-  var dataFromSheet = response.getDataTable();
-  console.log("Source data: ", dataFromSheet);
-  //transform data table to include html, pictures, bg etc?
-  var size = dataFromSheet.getNumberOfRows();
-  console.log("Size: " + size);
-  
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Name');
-  data.addColumn('string', 'Manager');
-  data.addColumn('string', 'ToolTip');
+//build data from sheet
+var dataFromSheet = response.getDataTable();
+console.log("Source data: ", dataFromSheet);
+//transform data table to include html, pictures, bg etc?
+var size = dataFromSheet.getNumberOfRows();
+console.log("Size: " + size);
 
-  var rows = [];
-  for (var i = 0; i<size;i++) rows.push(extractRow(dataFromSheet,i));
-  console.log("Rows to display:", rows);
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Name');
+data.addColumn('string', 'Manager');
+data.addColumn('string', 'ToolTip');
 
-  //build chart data
-  for (var i = 0; i<size;i++){
-    var row = rows[i];
-    if (typeof row == 'undefined') continue;
-    
-    var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
-    var subtitlePart = row.subtitle != null ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
-    var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div>'+subtitlePart+'</div>';
-    
-    var newRow = [{v : row.code, f : formatted},row.parentcode,''];
-    data.addRow(newRow);
-    data.setRowProperty(i, 'style', row.styling);
-  }
-  
-  //draw chart
-  var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-  chart.draw(data, { allowHtml: true /*, height: 400 */});
+window.rows = [];
+for (var i = 0; i<size;i++){
+var sheetrow = extractRow(dataFromSheet,i);
+if (typeof sheetrow != 'undefined') rows.push(sheetrow);
+}
+console.log("Rows to display:", rows);
+
+//build chart data
+for (var i = 0; i<size;i++){
+var row = rows[i];
+if (typeof row == 'undefined') continue;
+
+var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
+var subtitlePart = row.subtitle != null ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
+var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div>'+subtitlePart+'</div>';
+
+var newRow = [{v : row.code, f : formatted},row.parentcode,''];
+data.addRow(newRow);
+data.setRowProperty(i, 'style', row.styling);
 }
 
-$(document).ready(function(){
-    var urlFromCookie = Cookies.get('lastusedurl');
-    if (typeof urlFromCookie != 'undefined' && urlFromCookie != ''){
-      console.log("We have a url in cookie! " + urlFromCookie);
-      $('#sheeturl').val(urlFromCookie);
-    }
+//draw chart
+window.chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+chart.draw(data, { allowHtml: true /*, height: 400 */});
 
-    $('#loadbutton').click(loadChart);
-});
+google.visualization.events.addListener(chart, 'select', handleChartSelect);
+
+}
+
+function tabClicked (){
+    var sheetname = $(this).html();
+    console.log("Clicked sheet: " + sheetname);
+    loadChart(window.sheetid, sheetname);
+}
+
+function initSheetId(){
+  var url = new URL(document.location.href);
+  var sheetidfromurl = url.searchParams.get("sheetid");
+  console.log("Sheet id from url:" + sheetidfromurl);
+  if (typeof sheetidfromurl != 'undefined'){
+    window.sheetid = sheetidfromurl;
+  }
+  else {
+    console.log("Got no sheet id from url! Using default...");
+    window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+  }
+  console.log('Set sheet id to ' + window.sheetid);
+  $('#sheetid').val(window.sheetid);
+}
+
+$('#sheets').on('click', '.tabbutton', tabClicked);
+
+initSheetId();
