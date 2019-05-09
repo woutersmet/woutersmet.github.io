@@ -94,7 +94,7 @@ function extractRow(dataFromSheet, i){
   };
 
   var background = rowInfo.color == null ? '#eee' : rowInfo.color;
-  var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrapstyl';
+  var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrap;';
 
   rowInfo.styling = styling;
 
