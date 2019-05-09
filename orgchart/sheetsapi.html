@@ -73,7 +73,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          listMajors();
+          //listMajors();
           listSheets(window.sheetid);
         } else {
           authorizeButton.style.display = 'block';
@@ -126,6 +126,11 @@
         request.then(function(response) {
           // TODO: Change code below to process the `response` object:
           console.log(response.result);
+          var sheets = response.result.sheets;
+          for (var i =0;i<sheets.length;i++){
+            
+            $('#sheets').append($('<a class="btn btn-default">'+sheets[i]['properties']['title']+'</a>'))
+          }
 
         }, function(reason) {
           console.error('error: ' + reason.result.error.message);
@@ -172,6 +177,7 @@
         window.sheetid = sheetidfromurl;
       }
       else {
+        console.log("Got no sheet id from url! Using default...");
         window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
       }
       console.log('Set sheet id to ' + window.sheetid);
@@ -181,5 +187,7 @@
     <form method="get">
       Sheet id: <input type="text" name="sheetid" /><input type="Submit" />
     </form>
+
+      <div id="sheets"></div>
   </body>
 </html>
