@@ -126,7 +126,8 @@ function handleSheetResponse(response) {
     if (typeof row == 'undefined') continue;
     
     var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
-    var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
+    var subtitlePart = row.subtitle != null ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
+    var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div>'+subtitlePart+'</div>';
     
     var newRow = [{v : row.code, f : formatted},row.parentcode,''];
     data.addRow(newRow);
