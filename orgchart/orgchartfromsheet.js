@@ -90,7 +90,8 @@ function extractRow(dataFromSheet, i){
     department : dataFromSheet.getValue(i,4),
     team : dataFromSheet.getValue(i,5),
     manager : dataFromSheet.getValue(i,6),
-    avatar : dataFromSheet.getValue(i,7),
+    code : dataFromSheet.getValue(i,7),
+    parentcode : dataFromSheet.getValue(i,8),
   };
 
   var background =  rowInfo.department == 'Product' ? '#ffff88' : '#aaddff';
