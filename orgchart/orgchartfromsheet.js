@@ -1,3 +1,6 @@
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart','orgchart']});
+
 /*
 * THE AUTH BIT
 */
@@ -6,10 +9,12 @@ var clientId = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercon
 var scopes = 'https://www.googleapis.com/auth/spreadsheets.readonly'; //no need for edit etc: 'https://www.googleapis.com/auth/spreadsheets';
 window.accessToken = false;
 
+/*
 function init() {
   console.log("Init auth;");
   gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},handleAuthResult);
 }
+*/
 
 function handleAuthResult(authResult) {
   var authorizeButton = document.getElementById('authorize-button');
@@ -27,7 +32,7 @@ function handleAuthResult(authResult) {
   }
 }
 
-function authorize() {
+function authorizeAndLoadChart() {
   console.log("Handling auth click");
   gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false},handleAuthResult);
   return false;
@@ -37,8 +42,6 @@ function authorize() {
 * THE CHARTING BIT
 */
 
-// Load the Visualization API and the corechart package.
-google.charts.load('current', {'packages':['corechart','orgchart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
 //google.charts.setOnLoadCallback(getSheetData);
