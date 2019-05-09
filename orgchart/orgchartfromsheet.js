@@ -91,7 +91,7 @@ function extractRow(dataFromSheet, i){
     role : dataFromSheet.getValue(i,3),
     department : dataFromSheet.getValue(i,4),
     team : dataFromSheet.getValue(i,5),
-    manager : dataFromSheet.getValue(i,6),
+    avatar : dataFromSheet.getValue(i,6),
     code : dataFromSheet.getValue(i,7),
     parentcode : dataFromSheet.getValue(i,8),
   };
