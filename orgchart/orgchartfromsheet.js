@@ -126,7 +126,7 @@ function handleSheetResponse(response) {
     var formatted = '<div class="node-header"><img class="node-avatar" src="'+row.avatar+'" /><div class="node-name">' +row.fullname+ '</div><div class="node-role">'+row.role+'</div></div>';
     formatted += '<div class="node-info">'+row.role+'<br /><div class="node-team">'+row.team+'</div></div>';
 
-    var newRow = [{v : row.fullname, f : formatted},row.manager,''];
+    var newRow = [{v : row.code, f : formatted},row.parentcode,''];
     data.addRow(newRow);
     data.setRowProperty(i, 'style', row.styling);
   }
