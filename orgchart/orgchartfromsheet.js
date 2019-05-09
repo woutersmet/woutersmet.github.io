@@ -87,13 +87,13 @@ function extractRow(dataFromSheet, i){
   var rowInfo = {
     title : dataFromSheet.getValue(i,0),
     subtitle : dataFromSheet.getValue(i,1),
-    avatar : dataFromSheet.getValue(i,2),
     color : dataFromSheet.getValue(i,3),
     code : dataFromSheet.getValue(i,4),
     parentcode : dataFromSheet.getValue(i,5),
+    avatar : dataFromSheet.getValue(i,2),
   };
 
-  var background = rowInfo.color == '' ? '#eee' : rowInfo.color;
+  var background = rowInfo.color == null ? '#eee' : rowInfo.color;
   var styling = 'width:150px;background:'+background+';border:0;';
 
   rowInfo.styling = styling;
@@ -125,7 +125,7 @@ function handleSheetResponse(response) {
     var row = rows[i];
     if (typeof row == 'undefined') continue;
     
-    var imgPart = row.avatar != '' ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
+    var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
     var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
     
     var newRow = [{v : row.code, f : formatted},row.parentcode,''];
