@@ -119,10 +119,12 @@ function handleSheetResponse(response) {
   data.addColumn('string', 'ToolTip');
 
   for (var i = 0; i<size;i++){
+    if (row.title == '') continue;
     var row = extractRow(dataFromSheet,i);
     console.log("Formatting person at index " + i, row);
 
-    var formatted = '<div class="node"><div class="node-header"><img class="node-avatar" src="'+row.avatar+'" /><div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
+    var imgPart = row.avatar != '' ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
+    var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div><div class="node-subtitle">'+row.subtitle+'</div></div>';
     
     var newRow = [{v : row.code, f : formatted},row.parentcode,''];
     data.addRow(newRow);
