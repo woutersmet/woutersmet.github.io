@@ -33,7 +33,7 @@ function handleAuthResult(authResult) {
 }
 
 function authorize() {
-  console.log("Handling auth click");
+  console.log("Authorizing...");
   gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false},handleAuthResult);
   return false;
 }
