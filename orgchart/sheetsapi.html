@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Google Sheets API Quickstart</title>
+    <title>Org chart fed from google sheet</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
     <meta charset="utf-8" />
   </head>
   <body>
@@ -107,7 +112,7 @@
         console.log("Listing sheets!");
         var params = {
           // The spreadsheet to request.
-          spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',  // same public one as below - Wouter
+          spreadsheetId: (window.sheetid != null ? window.sheetid : '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'),  // same public one as below - Wouter
   
           // The ranges to retrieve from the spreadsheet.
           ranges: [],  // TODO: Update placeholder value.
@@ -121,6 +126,7 @@
         request.then(function(response) {
           // TODO: Change code below to process the `response` object:
           console.log(response.result);
+
         }, function(reason) {
           console.error('error: ' + reason.result.error.message);
         });      
@@ -157,5 +163,21 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
+
+
+    <script>
+      var url = new URL(document.location.href);
+      var sheetidfromurl = url.searchParams.get("sheetid");
+      console.log("Sheet id from url:" + sheetidfromurl);
+      if (typeof sheetid != 'undefined'){
+        window.sheetid = sheetidfromurl;
+        console.log('Set sheet id to ' + window.sheetid);
+      }
+    </script>
+
+    <h1>Dynamic org chart</h1>>
+    <form method="get">
+      Sheet id: <input type="text" name="sheetid" /><input type="Submit" />
+    </form>
   </body>
 </html>
