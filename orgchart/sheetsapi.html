@@ -4,13 +4,22 @@
     <title>Google Sheets API + google Charts API: Org chart</title>
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <meta charset="utf-8" />
+
+    <style>
+        /* org chart */
+        .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
+        .node-avatar {height:35px;float:left;}
+        .node-title {font-weight:bold;}
+        .node-subtitle {color:#555;}
+        
+        </style>
   </head>
   <body>
-
 
     <p>Google Sheets API Quickstart</p>
 
@@ -29,6 +38,28 @@
         <div id="sheets"></div>
       </div>
         <div id="chart_div"></div>
+
+
+<!-- Modal -->
+<div id="node_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -232,6 +263,18 @@ function extractRow(dataFromSheet, i){
   return rowInfo;
 }
 
+
+function handleChartSelect() {
+  var selectedItem = chart.getSelection()[0];
+  if (selectedItem) {
+    console.log("Selected item: ", selectedItem);
+
+    //var topping = data.getValue(selectedItem.row, 0);
+    //alert('Chart selected!');
+    $('#node_modal').modal();
+  }
+}
+
 function handleSheetResponse(response) {
   if (response.isError()) return alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
 
@@ -268,6 +311,9 @@ function handleSheetResponse(response) {
   //draw chart
   var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
   chart.draw(data, { allowHtml: true /*, height: 400 */});
+
+  google.visualization.events.addListener(chart, 'select', handleChartSelect);
+
 }
 
       function tabClicked (){
