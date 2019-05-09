@@ -74,7 +74,7 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMajors();
-          listSheets();
+          listSheets(window.sheetid);
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -108,11 +108,11 @@
       }
 
       //source: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/get
-      function listSheets() {
+      function listSheets(sheetid) {
         console.log("Listing sheets!");
         var params = {
           // The spreadsheet to request.
-          spreadsheetId: (window.sheetid != null ? window.sheetid : '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'),  // same public one as below - Wouter
+          spreadsheetId: sheetid, //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'),  // same public one as below - Wouter
   
           // The ranges to retrieve from the spreadsheet.
           ranges: [],  // TODO: Update placeholder value.
@@ -171,8 +171,11 @@
       console.log("Sheet id from url:" + sheetidfromurl);
       if (typeof sheetid != 'undefined'){
         window.sheetid = sheetidfromurl;
-        console.log('Set sheet id to ' + window.sheetid);
       }
+      else {
+        window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+      }
+      console.log('Set sheet id to ' + window.sheetid);
     </script>
 
     <h1>Dynamic org chart</h1>>
