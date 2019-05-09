@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Org chart fed from google sheet</title>
+    <title>Google Sheets API + google Charts API: Org chart</title>
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
@@ -51,9 +51,12 @@
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES
         }).then(function () {
-          // Listen for sign-in state changes.
           var authInstance = gapi.auth2.getAuthInstance();
           console.log('auth instancce:' , authInstance);
+          
+          var accessToken = authInstance.currentUser.get().getAuthResponse().access_token;
+          console.log("Access token: " + accessToken);
+          // Listen for sign-in state changes.
           authInstance.isSignedIn.listen(updateSigninStatus);
 
           // Handle the initial sign-in state.
@@ -129,7 +132,7 @@
           var sheets = response.result.sheets;
           for (var i =0;i<sheets.length;i++){
             
-            $('#sheets').append($('<a class="btn btn-default">'+sheets[i]['properties']['title']+'</a>'))
+            $('#sheets').append($('<a class="tabbutton btn btn-default">'+sheets[i]['properties']['title']+'</a>'))
           }
 
         }, function(reason) {
@@ -170,24 +173,36 @@
     </script>
 
     <script>
-      var url = new URL(document.location.href);
-      var sheetidfromurl = url.searchParams.get("sheetid");
-      console.log("Sheet id from url:" + sheetidfromurl);
-      if (typeof sheetidfromurl != 'undefined'){
-        window.sheetid = sheetidfromurl;
+      function initSheetId(){
+        var url = new URL(document.location.href);
+        var sheetidfromurl = url.searchParams.get("sheetid");
+        console.log("Sheet id from url:" + sheetidfromurl);
+        if (typeof sheetidfromurl != 'undefined'){
+          window.sheetid = sheetidfromurl;
+        }
+        else {
+          console.log("Got no sheet id from url! Using default...");
+          window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+        }
+        console.log('Set sheet id to ' + window.sheetid);
+        $('#sheetid').val(window.sheetid);
       }
-      else {
-        console.log("Got no sheet id from url! Using default...");
-        window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+
+      function tabClicked (){
+          var sheetname = $(this).html();
+          console.log("Clicked sheet: " + sheetname);
       }
-      console.log('Set sheet id to ' + window.sheetid);
+
+      $('.tabbutton').on('click', tabClicked);
+
+      initSheetId();
     </script>
 
     <h1>Dynamic org chart from google sheet</h1>
     <form method="get">
-      Sheet id: <input type="text" name="sheetid" /><input type="Submit" />
+      Sheet id: <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
     </form>
-
+    <br />
       <div id="sheets"></div>
   </body>
 </html>
