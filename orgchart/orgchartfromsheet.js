@@ -118,6 +118,9 @@ function listSheets(sheetid) {
       $('#sheets').append($('<a class="tabbutton btn btn-default">'+sheets[i]['properties']['title']+'</a>'))
     }
 
+    //immediately load first sheet?
+    loadChart(window.sheetid, sheets[0]['properties']['title']);
+
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });      
