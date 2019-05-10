@@ -13,8 +13,8 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-var authorizeButton = $('#authorize_button');
-var signoutButton = $('#signout_button');
+var authorizeButton = document.getElementById('authorize_button');
+var signoutButton = document.getElementById('signout_button');
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -52,6 +52,7 @@ function initClient() {
   });
 }
 
+
 /**
  *  Called when the signed in status changes, to update the UI
  *  appropriately. After a sign-in, the API is called.
@@ -59,16 +60,17 @@ function initClient() {
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     console.log('We are signed in! If there is a sheet id we can try to load it');
-    authorizeButton.hide();
-    signoutButton.show();
+    authorizeButton.style.display = 'none';
+    signoutButton.style.display = 'block';
     //listMajors();
     listSheets(window.sheetid);
   } else {
-    console.log('We are not signed in! Showing signin button');
-    authorizeButton.show();
-    signoutButton.hide();
-  }
-}
+      console.log('We are not signed in! Showing signin button');
+          authorizeButton.style.display = 'block';
+          signoutButton.style.display = 'none';
+        }
+      }
+
 
 /**
  *  Sign in the user upon button click.
