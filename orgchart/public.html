@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
 
     <style>
-      .header {width:100%;background:#fafafa;border-bottom:1px solid #aaa;padding-bottom:5px;}
+      .header {width:100%;background:#fafafa;border-bottom:1px solid #aaa;padding-bottom:5px;display:none;}
       /*#chart_div {margin-top:100px;}*/
         /* org chart */
         .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
@@ -92,7 +92,7 @@ function initSheetIdAndName(){
     $('#sheetname').val(window.sheetname);
 }
 
-$('#headertoggle').click($('#header').toggle());
+$('#headertoggle').click(function(){$('#header').toggle();return false;});
 
 // Callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(initSheetIdAndName);
