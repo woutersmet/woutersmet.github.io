@@ -239,7 +239,7 @@ function handleSheetResponse(response) {
   for (var i = 0; i<size;i++){
     var sheetrow = extractRow(dataFromSheet,i);
     if (typeof sheetrow != 'undefined'){
-      if (sheetrow.parentcode == 'PARENT' && prevrow != null) sheetrow.parentcode = prevrow.code;
+      if (sheetrow.parentcode == 'PARENT' || sheetrow.parentcode == '^' && prevrow != null) sheetrow.parentcode = prevrow.code;
       rows.push(sheetrow);
       var prevrow = sheetrow;
     }
