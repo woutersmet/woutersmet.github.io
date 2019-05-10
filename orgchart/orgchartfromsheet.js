@@ -47,6 +47,7 @@ function initClient() {
     authorizeButton.onclick = handleAuthClick;
     signoutButton.onclick = handleSignoutClick;
   }, function(error) {
+    console.log('Auth error:', error);
     appendPre(JSON.stringify(error, null, 2));
   });
 }
@@ -71,6 +72,7 @@ function updateSigninStatus(isSignedIn) {
  *  Sign in the user upon button click.
  */
 function handleAuthClick(event) {
+  console.log('Signing in!');
   gapi.auth2.getAuthInstance().signIn();
 }
 
@@ -78,6 +80,7 @@ function handleAuthClick(event) {
  *  Sign out the user upon button click.
  */
 function handleSignoutClick(event) {
+  console.log('Signing out!');
   gapi.auth2.getAuthInstance().signOut();
 }
 
