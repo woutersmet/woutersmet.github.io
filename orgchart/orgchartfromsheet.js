@@ -93,6 +93,10 @@ function appendPre(message) {
   pre.appendChild(textContent);
 }
 
+function sheetNameToId(sheetname){
+   return 'tabbutton-' + sheetname.trim().toLowerCase().replace(' ', '-');
+}
+
 //source: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/get
 function listSheets(sheetid) {
   console.log("Listing sheets!");
@@ -114,8 +118,9 @@ function listSheets(sheetid) {
     console.log(response.result);
     var sheets = response.result.sheets;
     for (var i =0;i<sheets.length;i++){
-      
-      $('#sheets').append($('<a class="tabbutton btn btn-default">'+sheets[i]['properties']['title']+'</a>'))
+      var sheetname = sheets[i]['properties']['title'];
+      var sheetid = sheetNameToId(sheetname)
+      $('#sheets').append($('<a id="'+sheetid+'" class="tabbutton btn btn-default">'+sheetname+'</a>'))
     }
 
     //immediately load first sheet?
@@ -160,10 +165,14 @@ function listMajors() {
 function loadChart(sheetid, sheetname) {
 console.log("Will load chart for sheet " + sheetid + " and tab" + sheetname);
 
+var sheetId = sheetNameToId(sheetname);
+$('.tabbutton').removeClass('btn-primary');
+$('#' + sheetId).addClass('btn-primary');
+
 var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/'+sheetid; //default
 
 //var sheetname = 'orgdata';
-var range = 'A2:Z999';
+var range = 'A2:G999';
 
 //something like:  'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
 var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;

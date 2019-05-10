@@ -13,7 +13,8 @@
     <meta charset="utf-8" />
 
     <style>
-      #chart_div {width:100%;overflow:auto;}
+      .header {width:100%;position:fixed;background:#fafafa;border-bottom:1px solid #aaa;}
+      /*#chart_div {margin-top:100px;}*/
         /* org chart */
         .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
         .node-avatar {height:35px;float:left;}
@@ -27,20 +28,25 @@
     <!--<p>Google Sheets API Quickstart</p> -->
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
+    <div class="header">
+      <div class="container">
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-
-    <div class="container">
+        <pre id="content" style="display:none;white-space: pre-wrap;"></pre> 
+        
         <h1>Dynamic org chart from google sheet</h1>
+
+        <button class="btn btn-default" id="authorize_button" style="display: none;">Authorize</button>
+        <button class="btn btn-default" id="signout_button" style="display: none;">Sign Out</button>
+        
         <form method="get">
           Sheet id: <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
         </form>
         <br />
         <div id="sheets"></div>
       </div>
-        <div id="chart_div"></div>
+      </div>
+    
+    <div id="chart_div"></div>
 
 
 <!-- Modal -->
@@ -51,12 +57,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="modal-title"></h4>
+          <h2 class="modal-title" id="modal-title"></h2>
           <span id="modal-subtitle"></span>
         </div>
         <div class="modal-body">
           <img id="modal-image" src="" />
-          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
