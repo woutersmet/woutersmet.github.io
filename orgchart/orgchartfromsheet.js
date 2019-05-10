@@ -7,25 +7,27 @@ google.charts.load('current', {'packages':['corechart','orgchart']});
 
 //following https://google-developers.appspot.com/chart/interactive/docs/spreadsheets#sheet-name
 function loadChart(sheetid, sheetname) {
-console.log("Will load chart for sheet " + sheetid + " and tab" + sheetname);
+  console.log("Will load chart for sheet " + sheetid + " and tab" + sheetname);
 
-var sheetId = sheetNameToId(sheetname);
-$('.tabbutton').removeClass('btn-primary');
-$('#' + sheetId).addClass('btn-primary');
+  if ($('.tabbutton').length > 0){
+    var sheetId = sheetNameToId(sheetname);
+    $('.tabbutton').removeClass('btn-primary');
+    $('#' + sheetId).addClass('btn-primary');
+  }
 
-var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/'+sheetid; //default
+  var spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/'+sheetid; //default
 
-//var sheetname = 'orgdata';
-var range = 'A2:G999';
+  //var sheetname = 'orgdata';
+  var range = 'A2:G999';
 
-//something like:  'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
-var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
+  //something like:  'https://docs.google.com/spreadsheets/d/12akgYh-crO4jv7lrsJ5dVrtrXdsxORfLkWdVKNqme_M/gviz/tq?sheet=orgdata&range=A2:D205';
+  var src = spreadsheetUrl + '/gviz/tq?sheet=' + sheetname + '&range=' + range;
 
-src += '&access_token=' + encodeURIComponent(window.accessToken);
+  if (window.accessToken) src += '&access_token=' + encodeURIComponent(window.accessToken);
 
-console.log("Full url we will query: " + src);
-var query = new google.visualization.Query(src);
-query.send(handleSheetResponse);
+  console.log("Full url we will query: " + src);
+  var query = new google.visualization.Query(src);
+  query.send(handleSheetResponse);
 }
 
 function extractRow(dataFromSheet, i){
