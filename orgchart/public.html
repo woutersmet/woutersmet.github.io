@@ -93,7 +93,8 @@ function initSheetIdAndName(){
     $('#sheetname').val(window.sheetname);
 }
 
-initSheetIdAndName();
+// Callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(initSheetIdAndName);
   </script>
   </body>
 </html>
