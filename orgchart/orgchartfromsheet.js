@@ -61,12 +61,12 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     console.log('We are signed in! If there is a sheet id we can try to load it');
     authorizeButton.style.display = 'none';
-    signoutButton.style.display = 'block';
+    signoutButton.style.display = 'inline';
     //listMajors();
     listSheets(window.sheetid);
   } else {
       console.log('We are not signed in! Showing signin button');
-          authorizeButton.style.display = 'block';
+          authorizeButton.style.display = 'inline';
           signoutButton.style.display = 'none';
         }
       }
