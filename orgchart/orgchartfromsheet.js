@@ -4,7 +4,7 @@ google.charts.load('current', {'packages':['corechart','orgchart']});
 
 // Client ID and API key from the Developer Console
 var CLIENT_ID = '498555875533-ehs1pktc3k9pr35v87pctfarigdbjna2.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyDMyCyqGXZ5n951uc4oRCQCQScoCac1oE8';
+var API_KEY = 'AIzaSyDMyCyqGXZ5n951uc4oRCQCQScoCac1oE8'; 
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
@@ -58,11 +58,13 @@ function initClient() {
  */
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
+    console.log('We are signed in! If there is a sheet id we can try to load it');
     authorizeButton.hide();
     signoutButton.show();
     //listMajors();
     listSheets(window.sheetid);
   } else {
+    console.log('We are not signed in! Showing signin button');
     authorizeButton.show();
     signoutButton.hide();
   }
