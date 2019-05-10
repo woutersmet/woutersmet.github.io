@@ -185,21 +185,21 @@ query.send(handleSheetResponse);
 }
 
 function extractRow(dataFromSheet, i){
-var rowInfo = {
-title : dataFromSheet.getValue(i,0),
-subtitle : dataFromSheet.getValue(i,1),
-color : dataFromSheet.getValue(i,3),
-code : dataFromSheet.getValue(i,4),
-parentcode : dataFromSheet.getValue(i,5),
-avatar : dataFromSheet.getValue(i,2),
-};
+  var rowInfo = {
+  title : dataFromSheet.getValue(i,0),
+  subtitle : dataFromSheet.getValue(i,1),
+  color : dataFromSheet.getValue(i,3),
+  code : dataFromSheet.getValue(i,4),
+  parentcode : dataFromSheet.getValue(i,5),
+  avatar : dataFromSheet.getValue(i,2),
+  };
 
-var background = rowInfo.color == null ? '#eee' : rowInfo.color;
-var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrap;';
+  var background = rowInfo.color == null ? '#eee' : rowInfo.color;
+  var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrap;';
 
-rowInfo.styling = styling;
+  rowInfo.styling = styling;
 
-return rowInfo;
+  return rowInfo;
 }
 
 //sourcce: https://developers.google.com/chart/interactive/docs/basic_interactivity
@@ -221,46 +221,50 @@ if (selectedItem) {
 }
 
 function handleSheetResponse(response) {
-if (response.isError()) return alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+  if (response.isError()) return alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
 
-//build data from sheet
-var dataFromSheet = response.getDataTable();
-console.log("Source data: ", dataFromSheet);
-//transform data table to include html, pictures, bg etc?
-var size = dataFromSheet.getNumberOfRows();
-console.log("Size: " + size);
+  //build data from sheet
+  var dataFromSheet = response.getDataTable();
+  console.log("Source data: ", dataFromSheet);
+  //transform data table to include html, pictures, bg etc?
+  var size = dataFromSheet.getNumberOfRows();
+  console.log("Size: " + size);
 
-var data = new google.visualization.DataTable();
-data.addColumn('string', 'Name');
-data.addColumn('string', 'Manager');
-data.addColumn('string', 'ToolTip');
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Name');
+  data.addColumn('string', 'Manager');
+  data.addColumn('string', 'ToolTip');
 
-window.rows = [];
-for (var i = 0; i<size;i++){
-var sheetrow = extractRow(dataFromSheet,i);
-if (typeof sheetrow != 'undefined') rows.push(sheetrow);
-}
-console.log("Rows to display:", rows);
+  window.rows = [];
+  for (var i = 0; i<size;i++){
+    var sheetrow = extractRow(dataFromSheet,i);
+    if (typeof sheetrow != 'undefined'){
+      if (sheetrow.parentcode == 'PARENT' && prevrow != null) sheetrow.parentcode = prevrow.code;
+      rows.push(sheetrow);
+      var prevrow = sheetrow;
+    }
+  }
+  console.log("Rows to display:", rows);
 
-//build chart data
-for (var i = 0; i<size;i++){
-var row = rows[i];
-if (typeof row == 'undefined') continue;
+  //build chart data
+  for (var i = 0; i<size;i++){
+  var row = rows[i];
+  if (typeof row == 'undefined') continue;
 
-var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
-var subtitlePart = row.subtitle != null ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
-var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div>'+subtitlePart+'</div>';
+  var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
+  var subtitlePart = row.subtitle != null ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
+  var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div>'+subtitlePart+'</div>';
 
-var newRow = [{v : row.code, f : formatted},row.parentcode,''];
-data.addRow(newRow);
-data.setRowProperty(i, 'style', row.styling);
-}
+  var newRow = [{v : row.code, f : formatted},row.parentcode,''];
+  data.addRow(newRow);
+  data.setRowProperty(i, 'style', row.styling);
+  }
 
-//draw chart
-window.chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-chart.draw(data, { allowHtml: true /*, height: 400 */});
+  //draw chart
+  window.chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+  chart.draw(data, { allowHtml: true /*, height: 400 */});
 
-google.visualization.events.addListener(chart, 'select', handleChartSelect);
+  google.visualization.events.addListener(chart, 'select', handleChartSelect);
 
 }
 
