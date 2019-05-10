@@ -28,11 +28,9 @@
     <!--<p>Google Sheets API Quickstart</p> -->
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <div class="header">
+    <a href="#" id="headertoggle">Toggle header</a>
+    <div class="header" id="header" style="display:none;">
       <div class="container">
-
-        <pre id="content" style="display:none;white-space: pre-wrap;"></pre> 
-        
         <h3>Org chart powered by Google Sheet</h3>
 
         [version for 'anybody with the link' sources]
@@ -83,15 +81,18 @@ function initSheetIdAndName(){
       window.sheetname = sheetnamefromurl;
     }
     else {
-      console.log("Got no sheet id from url! Using default...");
+      console.log("Got no sheet id from url! Using default + showing header...");
       window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
       window.sheetname = 'orgchart';
+      $('#header').show();
     }
     loadChart(window.sheetid, window.sheetname);
     console.log('Set sheet id to ' + window.sheetid);
     $('#sheetid').val(window.sheetid);
     $('#sheetname').val(window.sheetname);
 }
+
+$('#headertoggle').click($('#header').toggle());
 
 // Callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(initSheetIdAndName);
