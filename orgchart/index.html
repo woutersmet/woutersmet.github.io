@@ -16,6 +16,7 @@
       .header {width:100%;position:fixed;background:#fafafa;border-bottom:1px solid #aaa;}
       /*#chart_div {margin-top:100px;}*/
         /* org chart */
+        #chart_div {margin-top:200px;}
         .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
         .node-avatar {height:35px;float:left;}
         .node-title {font-weight:bold;}
@@ -35,11 +36,12 @@
         
         <h1>Dynamic org chart from google sheet</h1>
 
-        <button class="btn btn-default" id="authorize_button" style="display: none;">Authorize</button>
-        <button class="btn btn-default" id="signout_button" style="display: none;">Sign Out</button>
-        
         <form method="get">
-          Sheet id: <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
+            <button class="btn btn-default" id="authorize_button" style="display: none;">Authorize Google Sheets</button>
+            <button class="btn btn-default" id="signout_button" style="display: none;">Sign Out of Google</button>
+
+            | Source data spreadsheet id: <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
+            <div style="color:#aaa;font-size:80%;">The sheet id is this part from the url: https://docs.google.com/spreadsheets/d/<strong>11PcicZCWMZNVqaAcj9pOSe2buwQzVh3HsBnM-vpXSzw</strong>/edit#gid=2030868492</div>
         </form>
         <br />
         <div id="sheets"></div>
