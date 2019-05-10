@@ -35,15 +35,15 @@
         
         <h3>Org chart powered by Google Sheet</h3>
 
-        <button class="btn btn-default" id="authorize_button" style="display: none;">Authorize Google Sheets</button>
-        <button class="btn btn-default" id="signout_button" style="display: none;">Sign Out of Google</button>
+        [version for 'anybody with the link' sources]
         <form method="get" style="display:inline;">
 
-            | Source data spreadsheet id: <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
+            | Source data spreadsheet id: 
+            <input type="text" name="sheetid" id="sheetid" /><input class='btn btn-primary' value="Set sheet id" type="Submit" />
+            sheet name: <input type="text" name="sheetname" id="sheetname" />
+            <input class='btn btn-primary' value="Set sheet id+name" type="Submit" />
             <div style="color:#aaa;font-size:80%;">The sheet id is this part from the url: https://docs.google.com/spreadsheets/d/<strong>11PcicZCWMZNVqaAcj9pOSe2buwQzVh3HsBnM-vpXSzw</strong>/edit#gid=2030868492</div>
         </form>
-        <br />
-        <div id="sheets"></div>
       </div>
       </div>
     
@@ -71,16 +71,30 @@
     </div>
   </div>
 
-
     <script src="orgchartfromsheet.js" type="text/javascript"></script>
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-      </script>
+  <script>
 
+function initSheetIdAndName(){
+    var url = new URL(document.location.href);
+    var sheetidfromurl = url.searchParams.get("sheetid");
+    var sheetnamefromurl = url.searchParams.get("sheetname");
+    console.log("Sheet id from url:" + sheetidfromurl + ' and name: ' + sheetnamefromurl);
+    if (typeof sheetidfromurl != 'undefined'){
+      window.sheetid = sheetidfromurl;
+      window.sheetname = sheetnamefromurl;
+    }
+    else {
+      console.log("Got no sheet id from url! Using default...");
+      window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+      window.sheetname = 'orgchart';
+    }
+    loadChart(window.sheetid, window.sheetname);
+    console.log('Set sheet id to ' + window.sheetid);
+    $('#sheetid').val(window.sheetid);
+    $('#sheetname').val(window.sheetname);
+}
 
-        <script>
-          listSheets(window.sheetid);
-        </script>
+initSheetIdAndName();
+  </script>
   </body>
 </html>

@@ -71,12 +71,40 @@
     </div>
   </div>
 
-
+    <script src="auth.js" type="text/javascript"></script>
     <script src="orgchartfromsheet.js" type="text/javascript"></script>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
       </script>
+
+<script>
+
+function tabClicked (){
+  var sheetname = $(this).html();
+  console.log("Clicked sheet: " + sheetname);
+  loadChart(window.sheetid, sheetname);
+}
+
+function initSheetId(){
+  var url = new URL(document.location.href);
+  var sheetidfromurl = url.searchParams.get("sheetid");
+  console.log("Sheet id from url:" + sheetidfromurl);
+  if (typeof sheetidfromurl != 'undefined'){
+    window.sheetid = sheetidfromurl;
+  }
+  else {
+    console.log("Got no sheet id from url! Using default...");
+    window.sheetid = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms';
+  }
+  console.log('Set sheet id to ' + window.sheetid);
+  $('#sheetid').val(window.sheetid);
+}
+
+$('#sheets').on('click', '.tabbutton', tabClicked);
+
+initSheetId();
+</script>
 
   </body>
 </html>
