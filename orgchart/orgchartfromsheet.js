@@ -34,14 +34,15 @@ function extractRow(dataFromSheet, i){
   var rowInfo = {
   title : dataFromSheet.getValue(i,0),
   subtitle : dataFromSheet.getValue(i,1),
+  avatar : dataFromSheet.getValue(i,2),
   color : dataFromSheet.getValue(i,3),
   code : dataFromSheet.getValue(i,4),
   parentcode : dataFromSheet.getValue(i,5),
-  avatar : dataFromSheet.getValue(i,2),
+  popupdetails : dataFromSheet.getValue(i,6),
   };
 
   var background = rowInfo.color == null ? '#eee' : rowInfo.color;
-  var styling = 'width:150px;background:'+background+';border:0;vertical-align:top;white-space:nowrap;';
+  var styling = 'background:'+background+';';
 
   rowInfo.styling = styling;
 
@@ -62,6 +63,7 @@ if (selectedItem) {
   $('#modal-image').attr('src', row.avatar);
   $('#modal-title').html(row.title);
   $('#modal-subtitle').html(row.subtitle);
+  $('#modal-details').html(row.popupdetails);
   $('#node_modal').modal();
   }
 }
@@ -98,8 +100,8 @@ function handleSheetResponse(response) {
   if (typeof row == 'undefined') continue;
 
   var imgPart = row.avatar != null ? '<img class="node-avatar" src="'+row.avatar+'" />' : ''
-  var subtitlePart = row.subtitle != null ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
-  var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div></div>'+subtitlePart+'</div>';
+  var subtitlePart = row.subtitle != null  ? '<div class="node-subtitle">'+row.subtitle+'</div>' : '';
+  var formatted = '<div class="node"><div class="node-header">'+imgPart+'<div class="node-title">' +row.title+ '</div><div style="clear:both;"></div></div>'+subtitlePart+'</div>';
 
   var newRow = [{v : row.code, f : formatted},row.parentcode,''];
   data.addRow(newRow);

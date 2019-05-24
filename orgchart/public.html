@@ -16,10 +16,16 @@
       .header {width:100%;background:#fafafa;border-bottom:1px solid #aaa;padding-bottom:5px;display:none;}
       /*#chart_div {margin-top:100px;}*/
         /* org chart */
+
+        td.google-visualization-orgchart-node {width:150px;border:0;vertical-align:top;}
+        .node {width:150px;}
         .node-header {background-color:rgba(255, 255, 255, 0.5);text-align:left;}
         .node-avatar {height:35px;float:left;}
         .node-title {font-weight:bold;}
-        .node-subtitle {color:#555;}
+        .node-subtitle {color:rgba(10,10,10,0.7);}
+
+        img.modal-image{float:left;margin-right:10px;width:150px;}
+        div.modal-details {white-space: pre-wrap;}
         
         </style>
   </head>
@@ -28,6 +34,7 @@
     <!--<p>Google Sheets API Quickstart</p> -->
 
     <!--Add buttons to initiate auth sequence and sign out-->
+    <a onClick="window.open(document.location.href);" href="#" target="_blank">Pop out</a> | 
     <a href="#" id="headertoggle">Toggle header</a>
     <div class="header" id="header" style="display:none;">
       <div class="container">
@@ -58,7 +65,9 @@
           <span id="modal-subtitle"></span>
         </div>
         <div class="modal-body">
-          <img id="modal-image" src="" />
+          <img id="modal-image" class="modal-image" src="" />
+          <div id="modal-details" class='modal-details'></div>
+          <div style="clear:both;"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
