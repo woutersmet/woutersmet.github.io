@@ -35,24 +35,26 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <a onClick="window.open(document.location.href);" href="#" target="_blank">Pop out</a> | 
+    <a id="sheetlink" href="#" target="_blank">To sheet</a> | 
     <a href="#" id="headertoggle">Toggle header</a>
     <div class="header" id="header" style="display:none;">
       <div class="container">
         <h3>Org chart powered by Google Sheet</h3>
-
-        [version for 'anybody with the link' sources]
+        
+        
         <form method="get">
-            | Source data spreadsheet id: 
+            Source data spreadsheet id: 
             <input type="text" name="sheetid" id="sheetid" />
             sheet name: <input type="text" name="sheetname" id="sheetname" />
             <input class='btn btn-primary' value="Set sheet id+name" type="Submit" />
-            <div style="color:#aaa;font-size:80%;">The sheet id is this part from the url: https://docs.google.com/spreadsheets/d/<strong>11PcicZCWMZNVqaAcj9pOSe2buwQzVh3HsBnM-vpXSzw</strong>/edit#gid=2030868492</div>
+            <div style="color:#aaa;font-size:80%;">Sheet should have a 'anybody with the link' sharing setting. <br />The sheet id is this part from the url: https://docs.google.com/spreadsheets/d/<strong>11PcicZCWMZNVqaAcj9pOSe2buwQzVh3HsBnM-vpXSzw</strong>/edit#gid=2030868492</div>
         </form>
       </div>
       </div>
     
     <div id="chart_div"></div>
 
+    <!-- test -->
 <!-- Modal -->
 <div id="node_modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -99,6 +101,7 @@ function initSheetIdAndName(){
     console.log('Set sheet id to ' + window.sheetid);
     $('#sheetid').val(window.sheetid);
     $('#sheetname').val(window.sheetname);
+    $('#sheetlink').attr('href', 'https://docs.google.com/spreadsheets/d/'+window.sheetid+'/edit');
 }
 
 $('#headertoggle').click(function(){$('#header').toggle();return false;});
