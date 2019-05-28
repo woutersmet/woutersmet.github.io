@@ -27,7 +27,7 @@ function loadChart(sheetid, sheetname) {
 
   console.log("Full url we will query: " + src);
   var query = new google.visualization.Query(src);
-  query.send(handleSheetResponse);
+  query.send(handleSheetResponse); //hallo
 }
 
 function extractRow(dataFromSheet, i){
@@ -38,8 +38,8 @@ function extractRow(dataFromSheet, i){
   avatar : dataFromSheet.getValue(i,3),
   color : dataFromSheet.getValue(i,4),
   code : dataFromSheet.getValue(i,5),
-  parentcode : dataFromSheet.getValue(i,6),
-  popupdetails : dataFromSheet.getValue(i,7),
+  parentcode : '' + dataFromSheet.getValue(i,6),
+  popupdetails :'' + dataFromSheet.getValue(i,7),
   };
 
   var background = rowInfo.color == null ? '#eee' : rowInfo.color;
