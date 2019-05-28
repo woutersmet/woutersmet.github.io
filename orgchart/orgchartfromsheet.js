@@ -37,9 +37,9 @@ function extractRow(dataFromSheet, i){
   subsubtitle : dataFromSheet.getValue(i,2),
   avatar : dataFromSheet.getValue(i,3),
   color : dataFromSheet.getValue(i,4),
-  code : dataFromSheet.getValue(i,5),
+  code : '' + dataFromSheet.getValue(i,5),
   parentcode : '' + dataFromSheet.getValue(i,6),
-  popupdetails :'' + dataFromSheet.getValue(i,7),
+  popupdetails : dataFromSheet.getValue(i,7),
   };
 
   var background = rowInfo.color == null ? '#eee' : rowInfo.color;
